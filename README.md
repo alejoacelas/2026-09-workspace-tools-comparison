@@ -6,6 +6,8 @@ Workspace MCP is the broader office connector; gdoc is a useful document-review 
 
 The upstream snapshots are Workspace MCP `54b1c56f7f9912ce32681460d7ca38f9c2a37564` and gdoc `dbfa4c34bfa699ee8dd9839da85eea1fac177d44`, inspected September 12, 2026. Local clones live in the ignored `repos/` directory; their upstream remotes remain intact.
 
+The active project is at `~/best/once/2026-09-workspace-tools-comparison`, restored from the archive to continue evaluating and using the tools. Local installation and live authorization checks are documented separately in [SETUP.md](SETUP.md).
+
 ## Evidence
 
 - [Call-count probe](probe-calls.py) and [results for gdoc](gdoc-call-probes.json) / [Workspace](workspace-call-probes.json) distinguish agent operations from Google API executions.
