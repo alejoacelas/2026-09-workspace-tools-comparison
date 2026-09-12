@@ -62,3 +62,13 @@ The human wanted a Pillow diagram of the gdoc escaped-pipe table case.
 - Labeled the observation as offline parser output, reviewed the actual PNG independently, and added it to the main report with reproduction instructions.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 6223905
+
+## Parallel regression ideas, live confirmation, and illustrated collection
+
+The human wanted agents to invent and test additional failure cases, collecting confirmed results progressively in a Google Doc with Pillow illustrations.
+
+- Three agents executed 68 synthetic offline specimens with controls and exclusions; nine examples were confirmed through live gdoc operations and independent Google state checks. Selected-tab reads omitted nested-table values and converted numbered steps to bullets, while default cat retained the tested content.
+- Created a personal Google Doc with a guide and nine illustrated case tabs, including commands, setup, evidence limits, and known-family overlap. Two agents reviewed every exported content page; native checks verified ten tabs and nine embedded images.
+- Kept scratch resource IDs and raw exports local. Published synthetic evidence and reusable probes; no upstream fixes or PRs were made. Stale-read refusals were resolved by fresh reads and excluded from content failures.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 0b7b99c (plan), 1b312c9 (live write evidence), 4dbc545 (publication), e9eb933 (review refinements and extra probe), 7b78965 (live read findings), a9571b4 (report and final verification)
