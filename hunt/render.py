@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parent
 FONT=Path('/System/Library/Fonts/Supplemental');W=1120
 COLORS=[('#1a73e8','#e8f0fe'),('#137333','#e6f4ea'),('#b3261e','#fce8e6')]
 def font(size=32,bold=False,code=False):
- return ImageFont.truetype(str(FONT/('Courier New.ttf' if code else 'Arial Bold.ttf' if bold else 'Arial.ttf')),size)
+ return ImageFont.truetype(str(FONT/(('Courier New Bold.ttf' if bold else 'Courier New.ttf') if code else 'Arial Bold.ttf' if bold else 'Arial.ttf')),size)
 def panel(label,kind,data,color,diagnostic=None):
  lines=textwrap.wrap(diagnostic,78) if diagnostic else []
  if kind=='source': data=[line for s in data.splitlines() for line in (textwrap.wrap(s,62,replace_whitespace=False,drop_whitespace=False) or [''])];h=80+38*len(data)

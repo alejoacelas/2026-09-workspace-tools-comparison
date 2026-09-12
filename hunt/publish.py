@@ -13,8 +13,9 @@ def main():
  collection=json.loads((b.LOCAL/'collection.json').read_text());id=collection['id']
  for c in json.loads((ROOT/'confirmed.json').read_text()):
   if c['id'] in collection['cases']:continue
+  assert not any(t['tabProperties']['title']==c['short']+' '+c['title'] for t in b.state(id)['tabs']), 'Unrecorded existing case tab: inspect before retrying'
   r=b.cli(['add-tab',id,c['short']+' '+c['title'],'--json']);assert r['returncode']==0,r
-  d=b.state(id);tab=next(t['tabProperties']['tabId'] for t in d['tabs'] if t['tabProperties']['title']==c['short']+' '+c['title'])
+  tab=json.loads(r['stdout'])['id']
   top=c['short']+' · '+c['title']+'\n'+c['intent']+'\n'
   tail='\nBug. '+c['bug']+'\nCommands\n'+c['commands']+'\nSetup: use a separate blank tab; specimen.md contains the exact Markdown shown above.\nEvidence: live native readback; command returned success. '+c['novelty']+'\nSource and reproduction evidence\n'
   text=top+'\n'+tail

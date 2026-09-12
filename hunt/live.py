@@ -26,6 +26,8 @@ def new(label):
     r=cli(['new',label,'--json','--paged']); assert r['returncode']==0,r
     obj=json.loads(r['stdout']); return obj.get('id',obj.get('documentId'))
 if __name__=='__main__':
+    if (LOCAL/'collection.json').exists():
+        print('https://docs.google.com/document/d/'+json.loads((LOCAL/'collection.json').read_text())['id']+'/edit');sys.exit(0)
     identity()
     id=json.loads((LOCAL/'collection.json').read_text())['id'] if (LOCAL/'collection.json').exists() else new('gdoc bug hunt — confirmed cases')
     assert id

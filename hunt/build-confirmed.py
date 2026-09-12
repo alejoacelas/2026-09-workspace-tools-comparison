@@ -43,7 +43,10 @@ for r in json.loads((ROOT/'live-results.json').read_text()):
    urls=[e['textRun']['textStyle']['link']['url'] for el in r['state']['body'] if 'paragraph' in el for e in el['paragraph']['elements'] if e.get('textRun',{}).get('textStyle',{}).get('link')]
    assert urls==['https://example.com/policy "Policy handbook"']
    c['expected']['diagnostic']='Link target: https://example.com/policy';c['observed']['diagnostic']='Link target: '+urls[0]
-  else:assert actual!=exp
+  else:
+   actual_text='\n'.join(''.join(s['text'] for s in line) for line in actual)
+   expected_text='\n'.join(''.join(s['text'] for s in line) for line in exp)
+   assert actual_text!=expected_text,(key,actual_text)
  out.append(c)
 (ROOT/'confirmed.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
 print('Promoted',len(out),'live cases')
