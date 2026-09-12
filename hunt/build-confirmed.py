@@ -81,5 +81,8 @@ if extra and extra.get('pdf_verification',{}).get('visually_checked'):
  'commands':'gdoc cat DOC --tab TAB --account PERSONAL\ngdoc cat DOC --account PERSONAL',
  'setup':'Setup: import the HTML ol start=7 specimen from export-extra-probe.py. Google PDF confirms the numbering; the second command is the passing read control.',
  'source':'https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py'})
+for path in sorted(ROOT.glob('round*/confirmed.json')):
+ out.extend(json.loads(path.read_text()))
+assert len({c['id'] for c in out})==len(out)
 (ROOT/'confirmed.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
 print('Promoted',len(out),'live cases')

@@ -1,0 +1,9 @@
+{
+  "tool": "find_and_replace_doc",
+  "find_text": "Before  after",
+  "replace_text": "Replacement",
+  "is_error": false,
+  "response": "Replaced 0 occurrence(s) of 'Before  after' with 'Replacement' in document DOC. Link: https://docs.google.com/document/d/DOC/edit",
+  "person_count_before": 1,
+  "person_count_after": 1
+}

@@ -1,0 +1,689 @@
+[
+  {
+    "case": "plain_control",
+    "operation": "edit",
+    "old_text": "draft",
+    "new_text": "final",
+    "before": {
+      "plain_text": "Status draft.\n\n",
+      "person_count": 0,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 15,
+          "textRun": {
+            "content": "Status draft.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 15,
+          "endIndex": 16,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Status final.\n\n",
+      "person_count": 0,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 15,
+          "textRun": {
+            "content": "Status final.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 15,
+          "endIndex": 16,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Status draft.\n\n"
+  },
+  {
+    "case": "person_before_target",
+    "operation": "edit",
+    "old_text": "draft",
+    "new_text": "final",
+    "before": {
+      "plain_text": "Owner:  status draft.\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 24,
+          "textRun": {
+            "content": " status draft.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 24,
+          "endIndex": 25,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Owner:  status final.\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 24,
+          "textRun": {
+            "content": " status final.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 24,
+          "endIndex": 25,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Owner:  status draft.\n\n"
+  },
+  {
+    "case": "person_after_target",
+    "operation": "edit",
+    "old_text": "draft",
+    "new_text": "final",
+    "before": {
+      "plain_text": "Status draft owned by .\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 23,
+          "textRun": {
+            "content": "Status draft owned by ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 23,
+          "endIndex": 24,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 24,
+          "endIndex": 26,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 26,
+          "endIndex": 27,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Status final owned by .\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 23,
+          "textRun": {
+            "content": "Status final owned by ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 23,
+          "endIndex": 24,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 24,
+          "endIndex": 26,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 26,
+          "endIndex": 27,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Status draft owned by .\n\n"
+  },
+  {
+    "case": "file_before_target",
+    "operation": "edit",
+    "old_text": "draft",
+    "new_text": "final",
+    "before": {
+      "plain_text": "Plan  status draft.\n\n",
+      "person_count": 0,
+      "file_chip_count": 1,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 6,
+          "textRun": {
+            "content": "Plan ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 6,
+          "endIndex": 7,
+          "richLink": {
+            "textStyle": {},
+            "richLinkProperties": {
+              "title": "Synthetic chip editing file_before_target",
+              "uri": "https://docs.google.com/document/d/DOC/edit",
+              "mimeType": "application/vnd.google-apps.kix"
+            }
+          }
+        },
+        {
+          "startIndex": 7,
+          "endIndex": 22,
+          "textRun": {
+            "content": " status draft.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 22,
+          "endIndex": 23,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Plan  status final.\n\n",
+      "person_count": 0,
+      "file_chip_count": 1,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 6,
+          "textRun": {
+            "content": "Plan ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 6,
+          "endIndex": 7,
+          "richLink": {
+            "textStyle": {},
+            "richLinkProperties": {
+              "title": "Synthetic chip editing file_before_target",
+              "uri": "https://docs.google.com/document/d/DOC/edit",
+              "mimeType": "application/vnd.google-apps.kix"
+            }
+          }
+        },
+        {
+          "startIndex": 7,
+          "endIndex": 22,
+          "textRun": {
+            "content": " status final.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 22,
+          "endIndex": 23,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Plan  status draft.\n\n"
+  },
+  {
+    "case": "person_cross_gap",
+    "operation": "edit",
+    "old_text": "Before  after",
+    "new_text": "Replacement",
+    "before": {
+      "plain_text": "Before  after.\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Before ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 17,
+          "textRun": {
+            "content": " after.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 17,
+          "endIndex": 18,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Replacement.\n\n",
+      "person_count": 0,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 14,
+          "textRun": {
+            "content": "Replacement.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 14,
+          "endIndex": 15,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Before  after.\n\n"
+  },
+  {
+    "case": "file_cross_gap",
+    "operation": "edit",
+    "old_text": "Before  after",
+    "new_text": "Replacement",
+    "before": {
+      "plain_text": "Before  after.\n\n",
+      "person_count": 0,
+      "file_chip_count": 1,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Before ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "richLink": {
+            "textStyle": {},
+            "richLinkProperties": {
+              "title": "Synthetic chip editing file_cross_gap",
+              "uri": "https://docs.google.com/document/d/DOC/edit",
+              "mimeType": "application/vnd.google-apps.kix"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 17,
+          "textRun": {
+            "content": " after.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 17,
+          "endIndex": 18,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Replacement.\n\n",
+      "person_count": 0,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 14,
+          "textRun": {
+            "content": "Replacement.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 14,
+          "endIndex": 15,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK replaced 1 occurrence\n",
+    "stderr": "",
+    "selected_tab_read_before": "Before  after.\n\n"
+  },
+  {
+    "case": "person_visible_name",
+    "operation": "visible_name",
+    "old_text": "PERSON",
+    "new_text": "Example Owner",
+    "before": {
+      "plain_text": "Owner: .\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 11,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 11,
+          "endIndex": 12,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Owner: .\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 11,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 11,
+          "endIndex": 12,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 3,
+    "stdout": "",
+    "stderr": "ERR: no match found",
+    "selected_tab_read_before": "Owner: .\n\n"
+  },
+  {
+    "case": "person_append",
+    "operation": "append",
+    "old_text": null,
+    "new_text": null,
+    "before": {
+      "plain_text": "Owner: .\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 11,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 11,
+          "endIndex": 12,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "after": {
+      "plain_text": "Owner: .\nAdditional sentence.\n\n",
+      "person_count": 1,
+      "file_chip_count": 0,
+      "elements": [
+        {
+          "startIndex": 1,
+          "endIndex": 8,
+          "textRun": {
+            "content": "Owner: ",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 8,
+          "endIndex": 9,
+          "person": {
+            "textStyle": {},
+            "personProperties": {
+              "name": "PERSON",
+              "email": "PERSON_EMAIL"
+            }
+          }
+        },
+        {
+          "startIndex": 9,
+          "endIndex": 11,
+          "textRun": {
+            "content": ".\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 11,
+          "endIndex": 32,
+          "textRun": {
+            "content": "Additional sentence.\n",
+            "textStyle": {}
+          }
+        },
+        {
+          "startIndex": 32,
+          "endIndex": 33,
+          "textRun": {
+            "content": "\n",
+            "textStyle": {}
+          }
+        }
+      ]
+    },
+    "returncode": 0,
+    "stdout": "OK inserted into \"Tab 1\"\n",
+    "stderr": "",
+    "selected_tab_read_before": "Owner: .\n\n"
+  }
+]

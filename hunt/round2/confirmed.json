@@ -1,0 +1,327 @@
+[
+  {
+    "id": "h10-chip-read",
+    "short": "H10",
+    "title": "Selected-tab read omits smart chips",
+    "intent": "Read the owner named in a native person chip.",
+    "bug": "The selected-tab reader skips person, date and file chips, removing their visible names, dates and titles. Ordinary adjacent text and links survive. Plain gdoc cat and Workspace retain these chips. The illustrated name is anonymized.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Person: "
+          },
+          {
+            "text": "Alex Example",
+            "chip": true
+          },
+          {
+            "text": " owns budget."
+          }
+        ]
+      ],
+      "label": "BEFORE — NATIVE PERSON CHIP",
+      "diagnostic": "Name anonymized: Alex Example represents the account owner."
+    },
+    "expected": {
+      "kind": "source",
+      "data": "Person: Alex Example owns budget.",
+      "label": "EXPECTED — READABLE CONTENT",
+      "diagnostic": "Retain the visible name; a hyperlink is also acceptable."
+    },
+    "observed": {
+      "kind": "source",
+      "data": "Person:  owns budget.",
+      "label": "OBSERVED — SELECTED-TAB OUTPUT"
+    },
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc cat DOC --account PERSONAL",
+    "setup": "Setup: create native chips with chips.py. Alex Example represents the account owner; no other person was contacted."
+  },
+  {
+    "id": "h11-tsv-crlf",
+    "short": "H11",
+    "title": "Windows TSV imports hidden carriage returns",
+    "intent": "Import a two-column TSV file whose lines end with CRLF.",
+    "bug": "The TSV reader removes LF but leaves CR in each final cell. The cells can look normal, but exact comparisons and header lookup fail. The same values with LF-only TSV or CRLF CSV import correctly.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "source",
+      "data": "Item\\tValue\\r\\n\nBudget\\t100\\r\\n",
+      "label": "BEFORE — TSV BYTES (ESCAPED)"
+    },
+    "expected": {
+      "kind": "sheet",
+      "data": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "label": "EXPECTED — GOOGLE SHEETS",
+      "diagnostic": "Stored B2: \"100\". Exact comparison with \"100\": TRUE."
+    },
+    "observed": {
+      "kind": "sheet",
+      "data": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "label": "OBSERVED — GOOGLE SHEETS",
+      "diagnostic": "Stored B2: \"100\\r\". Exact comparison: FALSE. The CR is invisible."
+    },
+    "commands": "gdoc cells SHEET Data!A1 --file crlf.tsv --account PERSONAL",
+    "setup": "Setup: use literal CRLF line endings, not the displayed backslash escapes. The diagram normalizes the tested range to A1:B2."
+  },
+  {
+    "id": "h12-long-number",
+    "short": "H12",
+    "title": "Ten-digit identifier becomes list numbering",
+    "intent": "Write the literal line identifying revenue account 1234567890.",
+    "bug": "A line starting with a ten-digit number and a period is treated as a numbered list. The identifier disappears and Google renders item 1 instead. CommonMark limits ordered-list markers to nine digits; the independent parser treats this input as plain text.",
+    "markdown": "1234567890. Revenue account",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "1234567890. Revenue account"
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "1.  Revenue account"
+          }
+        ]
+      ]
+    },
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL"
+  },
+  {
+    "id": "h13-bracket-link",
+    "short": "H13",
+    "title": "Bracketed link label becomes literal Markdown",
+    "intent": "Create a Finance [Q3] hyperlink.",
+    "bug": "A valid link label containing nested square brackets is not parsed as a link. The entire Markdown expression becomes visible prose. gdoc also emits this syntax when exporting a native link with that label, so its own output cannot make the round trip.",
+    "markdown": "Read [Finance [Q3]](https://example.com/q3).",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Read "
+          },
+          {
+            "text": "Finance [Q3]",
+            "link": true
+          },
+          {
+            "text": "."
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Read [Finance [Q3]](https://example.com/q3)."
+          }
+        ]
+      ],
+      "label": "OBSERVED — STORED DOCUMENT TEXT"
+    },
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL"
+  },
+  {
+    "id": "h14-entity-url",
+    "short": "H14",
+    "title": "Entity text changes hyperlink parameters",
+    "intent": "Create a Budget link whose query has parameters a=1 and b=2.",
+    "bug": "The Markdown entity &amp; is stored literally in the link destination. Its second query key becomes amp;b rather than b. The visible Budget label remains correct, so checking only document text misses the failure.",
+    "markdown": "Open [Budget](https://example.com/report?a=1&amp;b=2).",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Open "
+          },
+          {
+            "text": "Budget",
+            "link": true
+          },
+          {
+            "text": "."
+          }
+        ]
+      ],
+      "diagnostic": "URL: https://example.com/report?a=1&b=2"
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Open "
+          },
+          {
+            "text": "Budget",
+            "link": true
+          },
+          {
+            "text": "."
+          }
+        ]
+      ],
+      "diagnostic": "URL: https://example.com/report?a=1&amp;b=2"
+    },
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL"
+  },
+  {
+    "id": "h15-merged-label",
+    "short": "H15",
+    "title": "Merged label receives its neighbor’s edit",
+    "intent": "Replace the visible cell immediately right of Merged A with Updated.",
+    "bug": "Label-based cell selection moves one underlying column instead of past the merged span. It targets a covered slot; Google appends the replacement into the merged label, leaving the visible neighbor unchanged. Explicit column selection succeeds. A fresh three-column-span specimen reproduced the error.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "merged-row",
+      "data": [
+        {
+          "text": "Merged A",
+          "span": 2
+        },
+        {
+          "text": "C",
+          "span": 1
+        }
+      ],
+      "label": "BEFORE — LABEL SPANS TWO COLUMNS"
+    },
+    "expected": {
+      "kind": "merged-row",
+      "data": [
+        {
+          "text": "Merged A",
+          "span": 2
+        },
+        {
+          "text": "Updated",
+          "span": 1
+        }
+      ]
+    },
+    "observed": {
+      "kind": "merged-row",
+      "data": [
+        {
+          "text": "Merged AUpdated",
+          "span": 2
+        },
+        {
+          "text": "C",
+          "span": 1
+        }
+      ]
+    },
+    "commands": "gdoc edit DOC Updated --cell \"Merged A\" --tab TAB --account PERSONAL",
+    "setup": "Setup: import the one-row colspan=2 table from structure.py. The CLI documents --cell as replacing the cell to the right of the label; --col 2 is the passing control."
+  },
+  {
+    "id": "h16-chip-phantom-match",
+    "short": "H16",
+    "title": "A phantom text match deletes the chip",
+    "intent": "Replace the literal phrase \"Before  after\" with \"Replacement\".",
+    "bug": "gdoc concatenates text on either side of a chip into a phrase that is not actually contiguous, then deletes the chip while replacing that phrase. Both person and file chips were lost. Google’s native replacement and Workspace find zero matches and preserve the chip. Adjacent ordinary edits pass.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Before "
+          },
+          {
+            "text": "Alex Example",
+            "chip": true
+          },
+          {
+            "text": " after."
+          }
+        ]
+      ],
+      "label": "BEFORE — NATIVE PERSON CHIP",
+      "diagnostic": "Name anonymized. Selected-tab cat misleadingly reports: Before  after."
+    },
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Before "
+          },
+          {
+            "text": "Alex Example",
+            "chip": true
+          },
+          {
+            "text": " after."
+          }
+        ]
+      ],
+      "diagnostic": "Native Google and Workspace: 0 matches; chip preserved."
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Replacement."
+          }
+        ]
+      ],
+      "diagnostic": "gdoc reports 1 replacement; native person count drops from 1 to 0."
+    },
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc edit DOC \"Before  after\" Replacement --tab TAB --account PERSONAL",
+    "setup": "Setup: use the person-chip paragraph from chips-edits.py; two spaces separate Before and after in the search phrase. Alex Example is an anonymized account name."
+  }
+]

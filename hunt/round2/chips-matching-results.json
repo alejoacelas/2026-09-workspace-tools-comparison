@@ -1,0 +1,452 @@
+{
+  "scope": "12 offline matching cases; 8 nontext variants of one mechanism, 4 ordinary text controls. Only person/file variants are live-validated elsewhere.",
+  "cases": [
+    {
+      "case": "person",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "person": {
+                    "personProperties": {
+                      "email": "person@example.invalid"
+                    }
+                  }
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "date",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "dateElement": {
+                    "dateElementProperties": {
+                      "displayText": "2030-01-02"
+                    }
+                  }
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "file",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "richLink": {
+                    "richLinkProperties": {
+                      "title": "Budget",
+                      "uri": "https://example.invalid/budget"
+                    }
+                  }
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "footnote",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "footnoteReference": {
+                    "footnoteId": "synthetic-footnote",
+                    "footnoteNumber": "1"
+                  }
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "image",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "inlineObjectElement": {
+                    "inlineObjectId": "synthetic-image"
+                  }
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "horizontal_rule",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "horizontalRule": {}
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "page_break",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "pageBreak": {}
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "column_break",
+      "expectation": "Hypothesis: a nontext boundary should not synthesize adjacent literal text; native person oracle independently confirms this.",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 15
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Before "
+                  }
+                },
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "columnBreak": {}
+                },
+                {
+                  "startIndex": 9,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": " after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "actual_double_space",
+      "expectation": "match",
+      "matches": [
+        {
+          "startIndex": 1,
+          "endIndex": 14
+        }
+      ],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 15,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 15,
+                  "textRun": {
+                    "content": "Before  after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "single_space",
+      "expectation": "no match",
+      "matches": [],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 14,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 14,
+                  "textRun": {
+                    "content": "Before after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "line_break",
+      "expectation": "no match",
+      "matches": [],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 15,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 15,
+                  "textRun": {
+                    "content": "Before\n after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "literal_object_replacement",
+      "expectation": "no match",
+      "matches": [],
+      "body": {
+        "content": [
+          {
+            "startIndex": 1,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": "Before \ufffc after\n"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

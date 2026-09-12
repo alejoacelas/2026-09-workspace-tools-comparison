@@ -1,0 +1,2911 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "account": "personal verified",
+  "cases": [
+    {
+      "id": "regular_coordinate",
+      "html": "<table><tr><td>A</td><td>B</td><td>C</td></tr><tr><td>D</td><td>E</td><td>F</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "1,2",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": false,
+      "intended_cell_text": "F",
+      "before": {
+        "text": "\nA\nB\nC\nD\nE\nF\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "A",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "B",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 24,
+            "end": 25
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nA\tB\tC\nD\tE\tF\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nA\nB\nC\nD\nE\nUpdated\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "A",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "B",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 30,
+            "end": 31
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "Updated"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "colspan_rightmost",
+      "html": "<table><tr><td colspan=\"2\">Merged A</td><td>C</td></tr><tr><td>D</td><td>E</td><td>F</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "0,2",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": true,
+      "intended_cell_text": "C",
+      "before": {
+        "text": "\nMerged A\n\nC\nD\nE\nF\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 30,
+            "end": 31
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nMerged A\t\tC\nD\tE\tF\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": ""
+      },
+      "after": {
+        "text": "\nMerged A\n\nUpdated\nD\nE\nF\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 36,
+            "end": 37
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Merged A",
+        "",
+        "Updated",
+        "D",
+        "E",
+        "F"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "colspan_wrong_column",
+      "html": "<table><tr><td colspan=\"2\">Merged A</td><td>C</td><td>D</td></tr><tr><td>E</td><td>F</td><td>G</td><td>H</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "0,2",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": true,
+      "intended_cell_text": "C",
+      "before": {
+        "text": "\nMerged A\n\nC\nD\nE\nF\nG\nH\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 4,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "G",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "H",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 36,
+            "end": 37
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nMerged A\t\tC\tD\nE\tF\tG\tH\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": ""
+      },
+      "after": {
+        "text": "\nMerged A\n\nUpdated\nD\nE\nF\nG\nH\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 4,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "G",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "H",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 42,
+            "end": 43
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Merged A",
+        "",
+        "Updated",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "rowspan_wrong_column",
+      "html": "<table><tr><td rowspan=\"2\">Merged A</td><td>B</td><td>C</td></tr><tr><td>D</td><td>E</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "1,1",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": true,
+      "intended_cell_text": "D",
+      "before": {
+        "text": "\nMerged A\nB\nC\nMerged A\nD\nE\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 2,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "B",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 38,
+            "end": 39
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nMerged A\tB\tC\nMerged A\tD\tE\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nMerged A\nB\nC\nMerged A\nUpdated\nE\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 2,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "B",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 44,
+            "end": 45
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Merged A",
+        "B",
+        "C",
+        "Merged A",
+        "Updated",
+        "E"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "colspan_unmerged_row_control",
+      "html": "<table><tr><td colspan=\"2\">Merged A</td><td>C</td></tr><tr><td>D</td><td>E</td><td>F</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "1,2",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": true,
+      "intended_cell_text": "F",
+      "before": {
+        "text": "\nMerged A\n\nC\nD\nE\nF\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "F",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 30,
+            "end": 31
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nMerged A\t\tC\nD\tE\tF\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nMerged A\n\nC\nD\nE\nUpdated\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "D",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "E",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 36,
+            "end": 37
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Merged A",
+        "",
+        "C",
+        "D",
+        "E",
+        "Updated"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "multiline_cell_edit",
+      "html": "<table><tr><td>Label</td><td><p>North</p><p>South</p></td></tr><tr><td>Keep</td><td>900</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "0,1",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": false,
+      "intended_cell_text": "North\nSouth",
+      "before": {
+        "text": "\nLabel\nNorth\nSouth\nKeep\n900\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "Label",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "North\nSouth",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Keep",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "900",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 37,
+            "end": 38
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nLabel\tNorth\nSouth\nKeep\t900\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nLabel\nUpdated\nKeep\n900\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "Label",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Keep",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "900",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 33,
+            "end": 34
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Label",
+        "Updated",
+        "Keep",
+        "900"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "empty_cell_edit",
+      "html": "<table><tr><td>Label</td><td></td></tr><tr><td>Keep</td><td>900</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "0,1",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": false,
+      "intended_cell_text": "",
+      "before": {
+        "text": "\nLabel\n\nKeep\n900\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "Label",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Keep",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "900",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 26,
+            "end": 27
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nLabel\t\nKeep\t900\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": ""
+      },
+      "after": {
+        "text": "\nLabel\nUpdated\nKeep\n900\n\n",
+        "tables": [
+          {
+            "rows": 2,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "Label",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ],
+              [
+                {
+                  "text": "Keep",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "900",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 33,
+            "end": 34
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Label",
+        "Updated",
+        "Keep",
+        "900"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "multiline_label_control",
+      "html": "<table><tr><td><p>North</p><p>South</p></td><td>100</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "North\nSouth",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": false,
+      "intended_cell_text": "100",
+      "before": {
+        "text": "\nNorth\nSouth\n100\n\n",
+        "tables": [
+          {
+            "rows": 1,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "North\nSouth",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "100",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 23,
+            "end": 24
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nNorth\nSouth\t100\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nNorth\nSouth\nUpdated\n\n",
+        "tables": [
+          {
+            "rows": 1,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "North\nSouth",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "Updated",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 27,
+            "end": 28
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "North\nSouth",
+        "Updated"
+      ],
+      "assessment": "pass"
+    },
+    {
+      "id": "decimal_control",
+      "before": {
+        "text": "Review\nNote\nApprove\n",
+        "tables": [],
+        "paragraphs": [
+          {
+            "text": "Review",
+            "start": 1,
+            "end": 8,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Note",
+            "start": 8,
+            "end": 13,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Approve",
+            "start": 13,
+            "end": 21,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          }
+        ],
+        "lists": [
+          {
+            "label": "list-0",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "1. Review  \n2. Note  \n3. Approve",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "1. Review\n2. Note\n3. Approve\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "control-or-known-list-family",
+      "note": "Native glyph/list identity must be inspected; not counted as new H09-independent family."
+    },
+    {
+      "id": "upper_alpha_known_variant",
+      "before": {
+        "text": "Review\nNote\nApprove\n",
+        "tables": [],
+        "paragraphs": [
+          {
+            "text": "Review",
+            "start": 1,
+            "end": 8,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Note",
+            "start": 8,
+            "end": 13,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Approve",
+            "start": 13,
+            "end": 21,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          }
+        ],
+        "lists": [
+          {
+            "label": "list-0",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "UPPER_ALPHA",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "1. Review  \n2. Note  \n3. Approve",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "1. Review\n2. Note\n3. Approve\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "control-or-known-list-family",
+      "note": "Native glyph/list identity must be inspected; not counted as new H09-independent family."
+    },
+    {
+      "id": "upper_roman_known_variant",
+      "before": {
+        "text": "Review\nNote\nApprove\n",
+        "tables": [],
+        "paragraphs": [
+          {
+            "text": "Review",
+            "start": 1,
+            "end": 8,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Note",
+            "start": 8,
+            "end": 13,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Approve",
+            "start": 13,
+            "end": 21,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          }
+        ],
+        "lists": [
+          {
+            "label": "list-0",
+            "levels": [
+              {
+                "bulletAlignment": "END",
+                "glyphType": "UPPER_ROMAN",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "UPPER_ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%3)",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "(%4)",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "(%5)",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "(%6)",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "(%7)",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "(%8)",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "1. Review  \n2. Note  \n3. Approve",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "1. Review\n2. Note\n3. Approve\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "control-or-known-list-family",
+      "note": "Native glyph/list identity must be inspected; not counted as new H09-independent family."
+    },
+    {
+      "id": "resumed_same_list_known_variant",
+      "before": {
+        "text": "Review\nNote\nApprove\n",
+        "tables": [],
+        "paragraphs": [
+          {
+            "text": "Review",
+            "start": 1,
+            "end": 8,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Note",
+            "start": 8,
+            "end": 13
+          },
+          {
+            "text": "Approve",
+            "start": 13,
+            "end": 21,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          }
+        ],
+        "lists": [
+          {
+            "label": "list-0",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "1. Review\n\nNote\n\n2. Approve",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "1. Review\nNote\n1. Approve\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "control-or-known-list-family",
+      "note": "Native glyph/list identity must be inspected; not counted as new H09-independent family."
+    },
+    {
+      "id": "separate_lists_known_variant",
+      "before": {
+        "text": "Review\nNote\nApprove\n",
+        "tables": [],
+        "paragraphs": [
+          {
+            "text": "Review",
+            "start": 1,
+            "end": 8,
+            "bullet": {
+              "listId": "list-0",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          },
+          {
+            "text": "Note",
+            "start": 8,
+            "end": 13
+          },
+          {
+            "text": "Approve",
+            "start": 13,
+            "end": 21,
+            "bullet": {
+              "listId": "list-2",
+              "textStyle": {
+                "underline": false
+              }
+            }
+          }
+        ],
+        "lists": [
+          {
+            "label": "list-0",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          },
+          {
+            "label": "list-1",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          },
+          {
+            "label": "list-2",
+            "levels": [
+              {
+                "bulletAlignment": "START",
+                "glyphType": "UPPER_ALPHA",
+                "glyphFormat": "%0.",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%1.",
+                "indentFirstLine": {
+                  "magnitude": 54,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 72,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%2.",
+                "indentFirstLine": {
+                  "magnitude": 90,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 108,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%3.",
+                "indentFirstLine": {
+                  "magnitude": 126,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 144,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%4.",
+                "indentFirstLine": {
+                  "magnitude": 162,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 180,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%5.",
+                "indentFirstLine": {
+                  "magnitude": 198,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 216,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "DECIMAL",
+                "glyphFormat": "%6.",
+                "indentFirstLine": {
+                  "magnitude": 234,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 252,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "START",
+                "glyphType": "ALPHA",
+                "glyphFormat": "%7.",
+                "indentFirstLine": {
+                  "magnitude": 270,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 288,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              },
+              {
+                "bulletAlignment": "END",
+                "glyphType": "ROMAN",
+                "glyphFormat": "%8.",
+                "indentFirstLine": {
+                  "magnitude": 306,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 324,
+                  "unit": "PT"
+                },
+                "textStyle": {
+                  "underline": false
+                },
+                "startNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "1. Review\n\nNote\n\n1. Approve",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "1. Review\nNote\n1. Approve\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "control-or-known-list-family",
+      "note": "Native glyph/list identity must be inspected; not counted as new H09-independent family."
+    },
+    {
+      "id": "multiline_read_control",
+      "before": {
+        "text": "\nNorth\nSouth\n100\n200\n\n",
+        "tables": [
+          {
+            "rows": 1,
+            "columns": 2,
+            "cells": [
+              [
+                {
+                  "text": "North\nSouth",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "100\n200",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 27,
+            "end": 28
+          }
+        ],
+        "lists": []
+      },
+      "reads": {
+        "default": {
+          "returncode": 0,
+          "stdout": "\n\n| North South | 100 200 |\n| :---- | :---- |\n\n",
+          "stderr": ""
+        },
+        "selected": {
+          "returncode": 0,
+          "stdout": "\nNorth\nSouth\t100\n200\n\n",
+          "stderr": ""
+        }
+      },
+      "assessment": "pass"
+    },
+    {
+      "id": "colspan_label_control",
+      "html": "<table><tr><td colspan=\"2\">Merged A</td><td>C</td></tr></table>",
+      "command": [
+        "edit",
+        "DOC",
+        "Updated",
+        "--cell",
+        "Merged A",
+        "--tab",
+        "TAB",
+        "--account",
+        "PERSONAL"
+      ],
+      "native_span_verified": true,
+      "intended_cell_text": "C",
+      "before": {
+        "text": "\nMerged A\n\nC\n\n",
+        "tables": [
+          {
+            "rows": 1,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged A",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 20,
+            "end": 21
+          }
+        ],
+        "lists": []
+      },
+      "read": {
+        "returncode": 0,
+        "stdout": "\nMerged A\t\tC\n\n",
+        "stderr": ""
+      },
+      "edit": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "after": {
+        "text": "\nMerged AUpdated\n\nC\n\n",
+        "tables": [
+          {
+            "rows": 1,
+            "columns": 3,
+            "cells": [
+              [
+                {
+                  "text": "Merged AUpdated",
+                  "rowSpan": 1,
+                  "columnSpan": 2
+                },
+                {
+                  "text": "",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                },
+                {
+                  "text": "C",
+                  "rowSpan": 1,
+                  "columnSpan": 1
+                }
+              ]
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "",
+            "start": 1,
+            "end": 2
+          },
+          {
+            "text": "",
+            "start": 27,
+            "end": 28
+          }
+        ],
+        "lists": []
+      },
+      "expected_cell_texts": [
+        "Merged A",
+        "",
+        "Updated"
+      ],
+      "assessment": "live-confirmed-wrong-target",
+      "replication": {
+        "before": {
+          "text": "\nBudget\n\n\n700\n\n",
+          "tables": [
+            {
+              "rows": 1,
+              "columns": 4,
+              "cells": [
+                [
+                  {
+                    "text": "Budget",
+                    "rowSpan": 1,
+                    "columnSpan": 3
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "700",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  }
+                ]
+              ]
+            }
+          ],
+          "paragraphs": [
+            {
+              "text": "",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "text": "",
+              "start": 22,
+              "end": 23
+            }
+          ],
+          "lists": []
+        },
+        "command": [
+          "edit",
+          "DOC",
+          "800",
+          "--cell",
+          "Budget",
+          "--tab",
+          "TAB"
+        ],
+        "result": {
+          "returncode": 0,
+          "stdout": "OK replaced 1 occurrence\n",
+          "stderr": "WARN: doc changed since last read"
+        },
+        "after": {
+          "text": "\nBudget800\n\n\n700\n\n",
+          "tables": [
+            {
+              "rows": 1,
+              "columns": 4,
+              "cells": [
+                [
+                  {
+                    "text": "Budget800",
+                    "rowSpan": 1,
+                    "columnSpan": 3
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "700",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  }
+                ]
+              ]
+            }
+          ],
+          "paragraphs": [
+            {
+              "text": "",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "text": "",
+              "start": 25,
+              "end": 26
+            }
+          ],
+          "lists": []
+        }
+      },
+      "explicit_column_control": {
+        "before": {
+          "text": "\nMerged A\n\nC\n\n",
+          "tables": [
+            {
+              "rows": 1,
+              "columns": 3,
+              "cells": [
+                [
+                  {
+                    "text": "Merged A",
+                    "rowSpan": 1,
+                    "columnSpan": 2
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "C",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  }
+                ]
+              ]
+            }
+          ],
+          "paragraphs": [
+            {
+              "text": "",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "text": "",
+              "start": 20,
+              "end": 21
+            }
+          ],
+          "lists": []
+        },
+        "command": [
+          "edit",
+          "DOC",
+          "Updated",
+          "--cell",
+          "Merged A",
+          "--col",
+          "2",
+          "--tab",
+          "TAB"
+        ],
+        "result": {
+          "returncode": 0,
+          "stdout": "OK replaced 1 occurrence\n",
+          "stderr": "WARN: doc changed since last read"
+        },
+        "after": {
+          "text": "\nMerged A\n\nUpdated\n\n",
+          "tables": [
+            {
+              "rows": 1,
+              "columns": 3,
+              "cells": [
+                [
+                  {
+                    "text": "Merged A",
+                    "rowSpan": 1,
+                    "columnSpan": 2
+                  },
+                  {
+                    "text": "",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  },
+                  {
+                    "text": "Updated",
+                    "rowSpan": 1,
+                    "columnSpan": 1
+                  }
+                ]
+              ]
+            }
+          ],
+          "paragraphs": [
+            {
+              "text": "",
+              "start": 1,
+              "end": 2
+            },
+            {
+              "text": "",
+              "start": 26,
+              "end": 27
+            }
+          ],
+          "lists": []
+        }
+      }
+    }
+  ]
+}

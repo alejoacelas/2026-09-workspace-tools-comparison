@@ -1,0 +1,332 @@
+{
+  "pin": "dbfa4c34",
+  "cases": [
+    {
+      "id": "tsv-lf",
+      "input": "Item\tValue\nBudget\t100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "tsv-crlf",
+      "input": "Item\tValue\r\nBudget\t100\r\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value\r"
+        ],
+        [
+          "Budget",
+          "100\r"
+        ]
+      ],
+      "returncode": 0,
+      "matches": false,
+      "stderr": ""
+    },
+    {
+      "id": "csv-crlf",
+      "input": "Item,Value\r\nBudget,100\r\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "tsv-cr",
+      "input": "Item\tValue\rBudget\t100\r",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value\r"
+        ],
+        [
+          "Budget",
+          "100\r"
+        ]
+      ],
+      "returncode": 0,
+      "matches": false,
+      "stderr": ""
+    },
+    {
+      "id": "csv-bom",
+      "input": "﻿Item,Value\nBudget,100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "﻿Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": false,
+      "stderr": ""
+    },
+    {
+      "id": "tsv-leading-zero",
+      "input": "Code\tValue\n00123\t00100\n",
+      "expected": [
+        [
+          "Code",
+          "Value"
+        ],
+        [
+          "00123",
+          "00100"
+        ]
+      ],
+      "actual": [
+        [
+          "Code",
+          "Value"
+        ],
+        [
+          "00123",
+          "00100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "csv-quoted-newline",
+      "input": "Item,Value\n\"North\nSouth\",100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "North\nSouth",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "North\nSouth",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "tsv-quoted-newline",
+      "input": "Item\tValue\n\"North\nSouth\"\t100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "North\nSouth",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "\"North"
+        ],
+        [
+          "South\"",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": false,
+      "stderr": ""
+    },
+    {
+      "id": "csv-quoted-comma",
+      "input": "Item,Value\n\"North, South\",100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "North, South",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "North, South",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "csv-quotes",
+      "input": "Item,Value\n\"The \"\"North\"\" team\",100\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "The \"North\" team",
+          "100"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "The \"North\" team",
+          "100"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "raw-formula",
+      "input": "Item,Value\nTotal,=1+2\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Total",
+          "=1+2"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Total",
+          "=1+2"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "id": "entered-formula",
+      "input": "Item,Value\nTotal,=1+2\n",
+      "expected": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Total",
+          "3"
+        ]
+      ],
+      "actual": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Total",
+          "3"
+        ]
+      ],
+      "returncode": 0,
+      "matches": true,
+      "stderr": ""
+    }
+  ]
+}

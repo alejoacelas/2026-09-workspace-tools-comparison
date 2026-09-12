@@ -1,0 +1,14 @@
+{
+  "operation": "native replaceAllText",
+  "find_text": "Before  after",
+  "replace_text": "Replacement",
+  "occurrences_changed": 0,
+  "person_count_before": 1,
+  "person_count_after": 1,
+  "positive_control": {
+    "find_text": "after",
+    "replace_text": "later",
+    "occurrences_changed": 1,
+    "person_count_after": 1
+  }
+}

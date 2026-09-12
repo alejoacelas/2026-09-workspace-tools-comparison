@@ -11,6 +11,8 @@ def panel(label,kind,data,color,diagnostic=None):
  lines=textwrap.wrap(diagnostic,78) if diagnostic else []
  if kind=='source': data=[line for s in data.splitlines() for line in (textwrap.wrap(s,62,replace_whitespace=False,drop_whitespace=False) or [''])];h=80+38*len(data)
  elif kind=='nested-table':h=280
+ elif kind=='sheet':h=120+65*len(data)
+ elif kind=='merged-row':h=160
  elif kind=='table':h=80+65*len(data)
  else:h=80+48*len(data)
  h+=22+32*len(lines)
@@ -23,6 +25,18 @@ def panel(label,kind,data,color,diagnostic=None):
   d.rectangle((42,76,1022,242),outline='#5f6368',width=2);d.text((60,86),'Outer cell',fill='#202124',font=font())
   for j,t in enumerate(['Materials','475']):
    x=66+j*450;d.rectangle((x,140,x+450,205),outline='#5f6368',width=2);d.text((x+16,153),t,fill='#202124',font=font())
+ elif kind=='merged-row':
+  x=42
+  for cell in data:
+   width=320*cell['span'];d.rectangle((x,76,x+width,141),outline='#5f6368',width=2);d.text((x+16,89),cell['text'],font=font(),fill='#202124');x+=width
+ elif kind=='sheet':
+  left=82;top=108
+  for j,name in enumerate(['A','B']):
+   x=left+j*450;d.rectangle((x,76,x+450,108),fill='#f1f3f4',outline='#dadce0');d.text((x+215,78),name,font=font(24),fill='#5f6368')
+  for i,row in enumerate(data):
+   y=top+i*65;d.rectangle((42,y,82,y+65),fill='#f1f3f4',outline='#dadce0');d.text((55,y+18),str(i+1),font=font(24),fill='#5f6368')
+   for j,value in enumerate(row):
+    x=left+j*450;d.rectangle((x,y,x+450,y+65),outline='#dadce0',width=2);d.text((x+16,y+13),value,font=font(),fill='#202124')
  elif kind=='table':
   for i,row in enumerate(data):
    for j,t in enumerate(row):
@@ -33,9 +47,11 @@ def panel(label,kind,data,color,diagnostic=None):
    x=42
    for seg in row:
     f=font(32,seg.get('bold',False),seg.get('code',False));t=seg['text'];width=d.textlength(t,font=f)
+    if seg.get('chip'):
+     d.rounded_rectangle((x,y-3,x+width+48,y+39),radius=20,fill='#e8eaed');d.ellipse((x+10,y+8,x+28,y+26),fill='#5f6368');x+=36
     d.text((x,y),t,fill='#1155cc' if seg.get('link') else '#202124',font=f)
     if seg.get('link'):d.line((x,y+35,x+width,y+35),fill='#1155cc',width=1)
-    x+=width
+    x+=width+(12 if seg.get('chip') else 0)
    assert x<W-20,(label,x,row)
    y+=48
  if lines:
@@ -46,7 +62,7 @@ def main():
  out=ROOT/'figures';out.mkdir(exist_ok=True)
  for c in json.loads((ROOT/'confirmed.json').read_text()):
   before=c.get('before',{'kind':'source','data':c['markdown'],'label':'BEFORE — MARKDOWN SOURCE'})
-  panels=[panel(before['label'],before['kind'],before['data'],COLORS[0])]
+  panels=[panel(before['label'],before['kind'],before['data'],COLORS[0],before.get('diagnostic'))]
   for label,key,col in [('EXPECTED','expected',COLORS[1]),('OBSERVED — LIVE GOOGLE DOC','observed',COLORS[2])]:
    p=c[key];panels.append(panel(p.get('label',label),p['kind'],p['data'],col,p.get('diagnostic')))
   im=Image.new('RGB',(W,sum(p.height for p in panels)+34),'white');y=0
