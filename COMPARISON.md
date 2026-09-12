@@ -4,6 +4,8 @@
 
 The strongest result is not a winner: **both tools flattened the same nested list, while a direct Google API reference preserved it.** Comparing the apps with each other would have accepted a shared failure. Conversely, tests that examined gdoc's emitted requests predicted correct nesting and were contradicted by the live result. That is why the report separates interface coverage, generated requests, and actual native document state.
 
+Several gdoc failures here were already recorded in the existing bug hunt. The contribution is independent reproduction, cross-tool comparison and controlled reference tests; the report does not claim those bug families were newly discovered.
+
 This report concerns **public gdoc 0.21.0 (`dbfa4c3`) and Workspace MCP 1.26.0 (`54b1c56`)**, inspected and tested on 12 September 2026. It does not give public upstream credit for fixes in the user's private campaign branch or open PRs.
 
 [Feature matrix: all 39 gdoc commands](evidence/feature-matrix.md) · [Actual tool names](COMMANDS.md) · [gdoc fixes → Workspace](evidence/gdoc-fixes-crosscheck.md) · [Workspace fixes → gdoc](evidence/workspace-fixes-crosscheck.md) · [Regression assessment](evidence/regression-assessment.md) · [36-input Markdown corpus](evidence/markdown-corpus.md) · [Local installation](SETUP.md)
@@ -174,7 +176,7 @@ Requested change: replace `cat` with `dog` after `İ`.
 
 ![Before, expected and observed Unicode replacement](figures/gdoc-unicode-search.png)
 
-**Bug:** `İ` lowercases into two code points, but gdoc searches that transformed string using an index map built from the untransformed text. The wrong range reaches its actual replacement builder. On the longer live specimen, `İ cat sat` became `İ cdogsat`, making the removed space obvious. `--case-sensitive` avoids this demonstrated path; Workspace delegates plain matching to Google. [Root-cause evidence](evidence/workspace-fixes-crosscheck.md#a-new-gdoc-bug-discovered-by-transferring-the-unicode-concern)
+**Bug:** `İ` lowercases into two code points, but gdoc searches that transformed string using an index map built from the untransformed text. The wrong range reaches its actual replacement builder. On the longer live specimen, `İ cat sat` became `İ cdogsat`, making the removed space obvious. `--case-sensitive` avoids this demonstrated path; Workspace delegates plain matching to Google. [Root-cause evidence](evidence/workspace-fixes-crosscheck.md#a-known-gdoc-bug-independently-reproduced-through-the-unicode-concern)
 
 **Commands**, on a prepared `İ cat` specimen:
 

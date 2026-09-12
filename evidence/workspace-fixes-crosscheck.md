@@ -1,12 +1,14 @@
 # Workspace fixes cross-checked against gdoc
 
-**Neither implementation is a safe universal oracle for the other.** Reverse testing found a distinct Unicode-indexing defect in gdoc, alongside the already identified Workspace Markdown defect. Workspace is better protected against oversized spreadsheet reads; gdoc is better protected against inherited heading styles in native Markdown edits. Several apparent wins simply reflect features the other tool does not offer.
+**Neither implementation is a safe universal oracle for the other.** Reverse testing independently reproduced a distinct Unicode-indexing defect in gdoc, alongside the already identified Workspace Markdown defect. Workspace is better protected against oversized spreadsheet reads; gdoc is better protected against inherited heading styles in native Markdown edits. Several apparent wins simply reflect features the other tool does not offer.
 
 Scope: Workspace `54b1c56f7f9912ce32681460d7ca38f9c2a37564` and gdoc `dbfa4c34bfa699ee8dd9839da85eea1fac177d44`. GitHub PR states checked 2026-09-12. The full PR responses, including head and merge commits, are in [workspace-prs.json](workspace-prs.json). Merged patches listed below were checked as ancestors of the pinned Workspace revision, not merely assumed present because GitHub calls them merged. An open/closed PR may have equivalent code in main under another commit; this audit checks the code too.
 
 The [runnable probe](../probes/workspace-fixes-crosscheck.py) produces [31 offline observations](workspace-fixes-probes.json) from real converter/helper calls and mocked Google-service boundaries. These are request-shape and local-behavior checks, not live API or rendered-document tests. Assertions intentionally reproduce defects: a passing probe is not a certificate of correctness.
 
-## A new gdoc bug discovered by transferring the Unicode concern
+## A known gdoc bug independently reproduced through the Unicode concern
+
+The gdoc Unicode family was already recorded in the existing bug-hunt campaign; this comparison adds independent execution and a Workspace counterpart, not a claim of first discovery.
 
 Workspace's converter uses Python character counts where Google Docs expects UTF-16 units. gdoc's Markdown converter handles that correctly, including repeated emoji and a woman-technologist ZWJ sequence. But gdoc's **case-insensitive phrase search** has a different index-expansion bug: `İ` (U+0130, Latin capital I with dot above) becomes two code points when lowercased, while gdoc keeps its original character-to-document-index map.
 
