@@ -124,6 +124,7 @@ async def main():
   for tool in ['gdoc','workspace']:
    doc=newdoc(tool+' unicode markdown');tab=docstate(doc)['tabs'][0]['tabProperties']['tabId']
    md=LOCAL/'emoji.md';md.write_text('# Plan 😀\n\nNext')
+   if tool=='gdoc':assert (await cli(['cat',doc,'--tab',tab]))['ok']
    await check('emoji_markdown',tool,lambda:cli(['write',doc,str(md),'--tab',tab]) if tool=='gdoc' else mcp(client,'manage_doc_tab',{'document_id':doc,'action':'populate_from_markdown','tab_id':tab,'markdown_text':md.read_text()}),doc)
   # Check preservation when changing plain text adjacent to unrelated native bold text.
   for tool in ['gdoc','workspace']:
@@ -137,7 +138,8 @@ async def main():
    doc=newdoc(tool+' paragraph inheritance','Heading\n')
    update(doc,[{'updateParagraphStyle':{'range':{'startIndex':1,'endIndex':9},'paragraphStyle':{'namedStyleType':'HEADING_1'},'fields':'namedStyleType'}}])
    tab=docstate(doc)['tabs'][0]['tabProperties']['tabId'];md=LOCAL/'append.md';md.write_text('Plain paragraph\n')
-   await check('append_after_heading',tool,lambda:cli(['insert',doc,str(md),'--tab',tab]) if tool=='gdoc' else mcp(client,'manage_doc_tab',{'document_id':doc,'action':'populate_from_markdown','tab_id':tab,'markdown_text':'Plain paragraph\n','replace_existing':False}),doc)
+   if tool=='gdoc':assert (await cli(['cat',doc,'--tab',tab]))['ok']
+   await check('append_after_heading',tool,lambda:cli(['insert',doc,str(md),'--tab',tab,'--position','end']) if tool=='gdoc' else mcp(client,'manage_doc_tab',{'document_id':doc,'action':'populate_from_markdown','tab_id':tab,'markdown_text':'Plain paragraph\n','replace_existing':False}),doc)
  results['ended_utc']=datetime.now(timezone.utc).isoformat()
  groups={}
  for row in results['samples']:groups.setdefault((row['case'],row['tool']),[]).append(row)

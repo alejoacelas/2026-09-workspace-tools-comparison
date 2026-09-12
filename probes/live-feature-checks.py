@@ -44,7 +44,7 @@ async def main():
    if not threads:continue
    cid=threads[0]['id']
    for trial in range(3):await b.measured('read_with_one_comment',tool,lambda:b.cli(['cat',doc,'--comments']) if tool=='gdoc' else b.mcp(client,'get_doc_as_markdown',{'document_id':doc,'include_comments':True}),trial,'Please verify the synthetic total.')
-   b.identity();r=await (b.cli(['reply',doc,cid,'Confirmed synthetic total.']) if tool=='gdoc' else b.mcp(client,'manage_document_comment',{'document_id':doc,'action':'reply','comment_id':cid,'reply_content':'Confirmed synthetic total.'}))
+   b.identity();r=await (b.cli(['reply',doc,cid,'Confirmed synthetic total.']) if tool=='gdoc' else b.mcp(client,'manage_document_comment',{'document_id':doc,'action':'reply','comment_id':cid,'comment_content':'Confirmed synthetic total.'}))
    thread=b.drive.comments().get(fileId=doc,commentId=cid,fields='replies(content),resolved').execute();record('reply_comment',tool,r['ok'] and any(x['content']=='Confirmed synthetic total.' for x in thread.get('replies',[])))
    b.identity();r=await (b.cli(['resolve',doc,cid]) if tool=='gdoc' else b.mcp(client,'manage_document_comment',{'document_id':doc,'action':'resolve','comment_id':cid}))
    thread=b.drive.comments().get(fileId=doc,commentId=cid,fields='resolved').execute();record('resolve_comment',tool,r['ok'] and thread.get('resolved') is True)
