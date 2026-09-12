@@ -37,3 +37,9 @@
 - Completed 68 offline specimens across three agents, then independently confirmed seven incorrect native writes and two selected-tab read failures against real synthetic Google Docs. Read cases also match a rendered Google PDF; default cat is a passing content control.
 - Published nine reviewed Pillow illustrations progressively into a personal Google Doc. Verified 10 tabs and 9 images; two agents inspected all 10 exported content pages. Google adds 10 tab-divider pages to its 20-page export.
 - Stale-read protection refused some fresh-fixture writes; fresh-read retries resolved setup state without forcing writes. These refusals are excluded from content-failure counts. Additional offline candidates remain outside the live-confirmed collection.
+
+## Continued hunt: broader office content [est 45m | actual —]
+
+1. [ ] [est 20m] Parallel smart-chip, native-structure, and linked-text investigations with live synthetic controls.
+2. [ ] [est 15m] Independent confirmation and progressive illustrated publication.
+3. [ ] [est 10m] Additional command coverage, deduplication, and final document verification.
