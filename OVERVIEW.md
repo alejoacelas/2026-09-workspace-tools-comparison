@@ -22,3 +22,7 @@ These steps overlap; live Google access is already authorized and verified, and 
 2. [5m] Review the report and images against raw evidence, record remaining limitations, and commit the deliverables.
 
 The deliverables are a main report, complete feature matrix, bug-transfer audits, raw benchmark results, and reproducible probes.
+
+## Parallel follow-up hunt
+
+Invent and execute additional synthetic gdoc cases in three independent areas, deduplicate existing campaign families, and confirm strong candidates on live personal-account scratch documents. Collect confirmed findings progressively in a new Google Doc with one Pillow Before / Expected / Observed illustration per finding. Keep fixture IDs and raw account data local; publish only synthetic, redacted evidence.

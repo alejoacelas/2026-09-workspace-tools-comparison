@@ -28,3 +28,8 @@
    a. [Report](COMPARISON.md) — concrete routing recommendations, observed failures and limits.
 2. [x] [est 5m | actual 2m] Two agents reviewed the report and figures; checked local links, JSON, script syntax and upstream cleanliness before committing.
    a. Corrected prior claims about comment deletion, existing-tab reparenting, and broad gdoc editing reliability; kept all private credentials/resource ledgers untracked.
+
+## Parallel follow-up hunt
+
+- Started three independent investigations: tables/blocks, inline Markdown, and document operations/export. Root handles independent confirmation, live fixtures, and progressive Google Doc publication.
+- Findings must state the exact execution route and distinguish previously known families from additional candidates; passing controls and discarded hypotheses remain in the evidence.
