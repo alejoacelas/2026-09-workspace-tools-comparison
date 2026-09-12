@@ -44,3 +44,12 @@ The human wanted a comprehensive gdoc-versus-Workspace report, including agents 
 - Kept the active project in `~/best/once/2026-09-workspace-tools-comparison` as requested. No private office document was changed and no credentials were committed.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: f19c463 (plan), 6b04f1b (initial harness), e15a3cb (review corrections), 36cdfbd (report and evidence)
+
+## Distinguish known bugs from new comparison evidence
+
+The human asked whether the gdoc findings were already recorded or covered by upcoming fixes.
+
+- Cross-checked existing bug-hunt records and current public PR scopes; distinguished proposed repair work from code already present in open PRs.
+- Corrected the comparison's novelty wording: several findings, including the Unicode family, were independent reproductions of known bugs. No private campaign specimens were copied into the public report.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: ca97dbc
