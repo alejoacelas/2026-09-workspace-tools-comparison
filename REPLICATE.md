@@ -53,3 +53,12 @@ The human asked whether the gdoc findings were already recorded or covered by up
 - Corrected the comparison's novelty wording: several findings, including the Unicode family, were independent reproductions of known bugs. No private campaign specimens were copied into the public report.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: ca97dbc
+
+## Illustrate the escaped-pipe table failure
+
+The human wanted a Pillow diagram of the gdoc escaped-pipe table case.
+
+- Rendered Before / Expected / Observed panels from the saved corpus: intended key `A|B` and value `100` become parsed cells `A` plus backslash and `B`, dropping `100`.
+- Labeled the observation as offline parser output, reviewed the actual PNG independently, and added it to the main report with reproduction instructions.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 6223905
