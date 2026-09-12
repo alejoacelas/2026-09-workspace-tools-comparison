@@ -1,0 +1,14 @@
+{
+  "input": "\ufeffItem,Value\nBudget,100\n",
+  "native_google_csv_import": [
+    [
+      "Item",
+      "Value"
+    ],
+    [
+      "Budget",
+      "100"
+    ]
+  ],
+  "header_matches": true
+}

@@ -1,0 +1,19 @@
+{
+  "greek": {
+    "source": "ΟΣ",
+    "find": "Σ",
+    "replacement": "X",
+    "gdoc_returncode": 3,
+    "gdoc_after": "ΟΣ",
+    "native_google_matches": 1,
+    "native_google_after": "ΟX"
+  },
+  "comments_plain": {
+    "returncode": 0,
+    "parsed_records": 2,
+    "fields_per_record": [
+      5,
+      2
+    ]
+  }
+}

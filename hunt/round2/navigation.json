@@ -1,0 +1,298 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "cases": [
+    {
+      "case": "tab_tree_depth",
+      "pass": true,
+      "details": {
+        "expected": [
+          {
+            "title": "Main",
+            "depth": 0
+          },
+          {
+            "title": "Branch",
+            "depth": 1
+          },
+          {
+            "title": "Leaf",
+            "depth": 2
+          },
+          {
+            "title": "Peer",
+            "depth": 0
+          }
+        ],
+        "actual": [
+          {
+            "title": "Main",
+            "depth": 0
+          },
+          {
+            "title": "Branch",
+            "depth": 1
+          },
+          {
+            "title": "Leaf",
+            "depth": 2
+          },
+          {
+            "title": "Peer",
+            "depth": 0
+          }
+        ]
+      }
+    },
+    {
+      "case": "all_tab_markers",
+      "pass": true,
+      "details": {
+        "all_four_markers_present": true
+      }
+    },
+    {
+      "case": "grandchild_read_by_title",
+      "pass": true,
+      "details": {
+        "returned_text": "### Leaf heading\nLeaf marker\n\n"
+      }
+    },
+    {
+      "case": "structure_full_topology",
+      "pass": true,
+      "details": {
+        "tab_titles": [
+          "Main",
+          "Branch",
+          "Leaf",
+          "Peer"
+        ]
+      }
+    },
+    {
+      "case": "structure_selected_subtree",
+      "pass": true,
+      "details": {
+        "selected_title": "Branch",
+        "children": [
+          "Leaf"
+        ]
+      }
+    },
+    {
+      "case": "structure_supported_mask",
+      "pass": true,
+      "details": {
+        "keys": [
+          "revisionId",
+          "tabs"
+        ]
+      }
+    },
+    {
+      "case": "toc_repeated_titles_and_levels",
+      "pass": true,
+      "details": {
+        "expected_titles_levels": [
+          [
+            "Repeated",
+            1
+          ],
+          [
+            "Repeated",
+            2
+          ],
+          [
+            "Detail",
+            3
+          ],
+          [
+            "Deep",
+            6
+          ]
+        ],
+        "actual_titles_levels": [
+          [
+            "Repeated",
+            1
+          ],
+          [
+            "Repeated",
+            2
+          ],
+          [
+            "Detail",
+            3
+          ],
+          [
+            "Deep",
+            6
+          ]
+        ],
+        "distinct_ids_for_repeated_titles": true
+      }
+    },
+    {
+      "case": "toc_deep_links",
+      "pass": true,
+      "details": {
+        "all_links_have_selected_tab_and_exact_heading_id": true
+      }
+    },
+    {
+      "case": "toc_depth_filter",
+      "pass": true,
+      "details": {
+        "actual": [
+          [
+            "Repeated",
+            1
+          ],
+          [
+            "Repeated",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "case": "toc_grandchild_no_links",
+      "pass": true,
+      "details": {
+        "text": "    - Leaf heading\n"
+      }
+    },
+    {
+      "case": "image_insert_explicit_dimensions",
+      "pass": true,
+      "details": {
+        "returncode": 0,
+        "native_images": [
+          {
+            "tab": "Main",
+            "size": {
+              "height": {
+                "magnitude": 49.6,
+                "unit": "PT"
+              },
+              "width": {
+                "magnitude": 112,
+                "unit": "PT"
+              }
+            }
+          }
+        ],
+        "source_png_px": [
+          1120,
+          496
+        ],
+        "requested_bounding_box_pt": [
+          112,
+          64
+        ],
+        "expected_fitted_size_pt": [
+          112,
+          49.6
+        ],
+        "oracle_correction": "Initial harness assumed exact width and height; Google defines both as an aspect-preserving bounding box. Corrected against documented native semantics; no app defect."
+      }
+    },
+    {
+      "case": "image_insert_grandchild_width_only",
+      "pass": true,
+      "details": {
+        "returncode": 0,
+        "native_images": [
+          {
+            "tab": "Main",
+            "size": {
+              "height": {
+                "magnitude": 49.6,
+                "unit": "PT"
+              },
+              "width": {
+                "magnitude": 112,
+                "unit": "PT"
+              }
+            }
+          },
+          {
+            "tab": "Leaf",
+            "size": {
+              "height": {
+                "magnitude": 62,
+                "unit": "PT"
+              },
+              "width": {
+                "magnitude": 140,
+                "unit": "PT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "image_inventory_all_nested_tabs",
+      "pass": true,
+      "details": {
+        "native_count": 2,
+        "reported_count": 2,
+        "reported_sizes": [
+          {
+            "type": "image",
+            "width": 112,
+            "height": 49.6
+          },
+          {
+            "type": "image",
+            "width": 140,
+            "height": 62
+          }
+        ]
+      }
+    },
+    {
+      "case": "image_replace_preserves_identity_size_tab",
+      "pass": true,
+      "details": {
+        "returncode": 0,
+        "before": {
+          "tab": "Leaf",
+          "size": {
+            "height": {
+              "magnitude": 62,
+              "unit": "PT"
+            },
+            "width": {
+              "magnitude": 140,
+              "unit": "PT"
+            }
+          }
+        },
+        "after": {
+          "tab": "Leaf",
+          "size": {
+            "height": {
+              "magnitude": 62,
+              "unit": "PT"
+            },
+            "width": {
+              "magnitude": 140,
+              "unit": "PT"
+            }
+          }
+        },
+        "same_object_id": true
+      }
+    },
+    {
+      "case": "image_inventory_select_one",
+      "pass": true,
+      "details": {
+        "returned_count": 1,
+        "correct_id": true
+      }
+    }
+  ]
+}

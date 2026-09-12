@@ -1,0 +1,140 @@
+{
+  "revision": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "scope": "one dedicated synthetic folder with child folder; exact native title/parent/identity/content checks; every search/list explicitly scoped",
+  "cases": [
+    {
+      "case": "mkdir_standard",
+      "returncode": 0,
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "case": "mkdir_punctuation_unicode",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "name": "Owner's archive (Σ)"
+    },
+    {
+      "case": "new_standard",
+      "returncode": 0,
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "case": "rename_apostrophe",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "name": "Director's notes"
+    },
+    {
+      "case": "scoped_exact_find_apostrophe",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "query": "'ROOT' in parents and trashed=false and name = 'Director\\'s notes'",
+      "result_names": [
+        "Director's notes"
+      ]
+    },
+    {
+      "case": "rename_backslash",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "name": "Archive\\2026"
+    },
+    {
+      "case": "scoped_exact_find_backslash",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "query": "'ROOT' in parents and trashed=false and name = 'Archive\\\\2026'",
+      "result_names": [
+        "Archive\\2026"
+      ]
+    },
+    {
+      "case": "rename_parentheses",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "name": "Plan (Q4)"
+    },
+    {
+      "case": "scoped_exact_find_parentheses",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "query": "'ROOT' in parents and trashed=false and name = 'Plan (Q4)'",
+      "result_names": [
+        "Plan (Q4)"
+      ]
+    },
+    {
+      "case": "rename_unicode",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "name": "Café Σ budget"
+    },
+    {
+      "case": "scoped_exact_find_unicode",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "query": "'ROOT' in parents and trashed=false and name = 'Café Σ budget'",
+      "result_names": [
+        "Café Σ budget"
+      ]
+    },
+    {
+      "case": "copy_identity_name_content",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "copy_name": "Director's copy \\ (Σ)",
+      "different_identity": true,
+      "source_name_unchanged": true,
+      "copy_in_source_folder": true
+    },
+    {
+      "case": "move_copy_only",
+      "returncode": 0,
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "case": "repeat_move_keeps_destination",
+      "returncode": 0,
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "case": "scoped_list_both_folders",
+      "returncode": 0,
+      "passed": true,
+      "stderr": "",
+      "folders": [
+        {
+          "folder": "root",
+          "passed": true,
+          "native_names": [
+            "Café Σ budget",
+            "Owner's archive (Σ)"
+          ],
+          "result_count": 2
+        },
+        {
+          "folder": "child",
+          "passed": true,
+          "native_names": [
+            "Director's copy \\ (Σ)"
+          ],
+          "result_count": 1
+        }
+      ]
+    }
+  ]
+}

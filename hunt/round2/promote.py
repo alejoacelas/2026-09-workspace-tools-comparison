@@ -53,5 +53,27 @@ scene=state([[seg('Before '),seg('Alex Example',chip=True),seg(' after.')]])
 case(16,'chip-phantom-match','A phantom text match deletes the chip','Replace the literal phrase "Before  after" with "Replacement".',
  'gdoc concatenates text on either side of a chip into a phrase that is not actually contiguous, then deletes the chip while replacing that phrase. Both person and file chips were lost. Google’s native replacement and Workspace find zero matches and preserve the chip. Adjacent ordinary edits pass.',
  before={**scene,'label':'BEFORE — NATIVE PERSON CHIP','diagnostic':'Name anonymized. Selected-tab cat misleadingly reports: Before  after.'},expected={**scene,'diagnostic':'Native Google and Workspace: 0 matches; chip preserved.'},observed=state([[seg('Replacement.')]],diagnostic='gdoc reports 1 replacement; native person count drops from 1 to 0.'),commands='gdoc cat DOC --tab TAB --account PERSONAL\ngdoc edit DOC "Before  after" Replacement --tab TAB --account PERSONAL',setup='Setup: use the person-chip paragraph from chips-edits.py; two spaces separate Before and after in the search phrase. Alex Example is an anonymized account name.')
+r=next(x for x in read('unicode-matching.json')['cases'] if x['case']=='sigma_exact_character')
+assert r['gdoc']['returncode']==3 and r['gdoc']['after']=='ΟΣ\n' and r['google']['after']=='ΟX\n'
+case(17,'greek-exact-match','A literal Greek character cannot be found','Replace the actual uppercase Σ in ΟΣ with X.',
+ 'Lowercasing the whole Greek word turns its final Σ into ς, while lowercasing the query Σ produces σ. gdoc then reports no match for the exact character present in the source. Google replaces it correctly. The same query in Budget Σ works in both tools.',
+ before=state([[seg('ΟΣ')]],label='BEFORE — NATIVE GOOGLE DOC',diagnostic='Find Σ (U+03A3); the source contains that exact character.'),expected=state([[seg('ΟX')]],diagnostic='Native Google: one replacement.'),observed=state([[seg('ΟΣ')]],diagnostic='gdoc exits 3: no match found. The document is unchanged.'),
+ commands='gdoc edit DOC "Σ" X --all --tab TAB --account PERSONAL',setup='Setup: insert the literal Greek characters ΟΣ into a blank native tab. The expected X is Latin; the initial Ο is Greek.',status='Live confirmed: exact-character search refused',evidence_label='Fresh independent reproduction: gdoc exits 3; Google finds one match.')
+r=next(x for x in read('review-commands.json')['cases'] if x['id']=='comments-plain-row-contract')
+assert r['parsed_record_count']==2 and r['tab_fields_per_record']==[5,2] and r['quoted_tsv_control_pass']
+case(18,'comment-tsv','One comment becomes two malformed TSV records','Read one multiline comment as stable TSV for another program.',
+ 'Comment text is interpolated into TSV without escaping or quoting embedded tabs and newlines. A quoting-aware TSV reader parses two records instead of one; Budget wrongly occupies the quote field. Native comment content and JSON output remain correct. Properly quoted multiline TSV is a passing control.',
+ before=state('Question A\\tBudget\\nIs **100** final? Keep <5% and "quotes".','source',label='BEFORE — COMMENT TEXT (ESCAPED)'),
+ expected=state('1 logical record; 5 fields\ncontent: entire original comment\nquote: empty','source',label='EXPECTED — PARSED TSV RECORDS'),
+ observed=state('Record 1: 5 fields\ncontent: Question A; quote: Budget\nRecord 2: 2 fields\nIs **100** final? Keep <5% and "quotes".','source',label='OBSERVED — PARSED TSV RECORDS'),
+ commands='gdoc comments DOC --plain --account PERSONAL\ngdoc comments DOC --json --account PERSONAL',setup='Setup: create the single comment from review-commands.py. Parse stdout with csv.reader(delimiter="\\t"); JSON is the passing control.',evidence_label='Live CLI stdout parsed independently; native comment data is intact.')
+r=next(x for x in read('sheet-followups.json')['cases'] if x['id']=='csv-utf8-bom');oracle=read('native-csv-control.json')
+assert r['actual'][0][0]=='\ufeffItem' and oracle['native_google_csv_import'][0][0]=='Item'
+case(19,'csv-signature','UTF-8 file signature becomes part of the header','Import a CSV whose UTF-8 encoding includes a byte-order signature.',
+ 'The importer treats the initial UTF-8 signature as a literal U+FEFF character in the first header. Item looks normal but no longer equals Item exactly. Native Google CSV import removes the signature and retains the intended header. This is an encoding interoperability defect, separate from CRLF handling.',
+ before=state('<UTF-8 signature>Item,Value\nBudget,100','source',label='BEFORE — CSV FILE WITH UTF-8 SIGNATURE'),
+ expected=state([['Item','Value'],['Budget','100']],'sheet',label='EXPECTED — GOOGLE SHEETS',diagnostic='Stored A1: "Item". Character count: 4; exact match: TRUE.'),
+ observed=state([['Item','Value'],['Budget','100']],'sheet',label='OBSERVED — GOOGLE SHEETS',diagnostic='Stored A1 starts with invisible U+FEFF. Count: 5; exact match: FALSE.'),
+ commands='gdoc cells SHEET Data!A1 --file utf8-bom.csv --account PERSONAL',setup='Setup: write the CSV using UTF-8 with BOM (utf-8-sig). The diagram normalizes the tested range to A1:B2.')
 (R/'confirmed.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
 print('Promoted',len(out),'round2 cases')

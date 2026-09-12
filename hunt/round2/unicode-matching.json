@@ -1,0 +1,771 @@
+{
+  "gdoc_revision": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "replacement": "MATCH",
+  "case_sensitive": false,
+  "oracle": "actual native Google replaceAllText result, not assumed Unicode normalization",
+  "cases": [
+    {
+      "case": "ascii_control",
+      "family": "control",
+      "source": "Budget draft",
+      "find": "DRAFT",
+      "before": {
+        "gdoc": "Budget draft\n",
+        "google": "Budget draft\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "Budget MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "Budget MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+0042",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074",
+        "U+0020",
+        "U+0064",
+        "U+0072",
+        "U+0061",
+        "U+0066",
+        "U+0074"
+      ],
+      "find_codepoints": [
+        "U+0044",
+        "U+0052",
+        "U+0041",
+        "U+0046",
+        "U+0054"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sigma_upper_to_small",
+      "family": "Greek sigma",
+      "source": "Σ",
+      "find": "σ",
+      "before": {
+        "gdoc": "Σ\n",
+        "google": "Σ\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+03A3"
+      ],
+      "find_codepoints": [
+        "U+03C3"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sigma_final_to_small",
+      "family": "Greek sigma",
+      "source": "ς",
+      "find": "σ",
+      "before": {
+        "gdoc": "ς\n",
+        "google": "ς\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ς\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+03C2"
+      ],
+      "find_codepoints": [
+        "U+03C3"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sigma_word_final",
+      "family": "Greek sigma",
+      "source": "ΟΣ",
+      "find": "οσ",
+      "before": {
+        "gdoc": "ΟΣ\n",
+        "google": "ΟΣ\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ΟΣ\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+039F",
+        "U+03A3"
+      ],
+      "find_codepoints": [
+        "U+03BF",
+        "U+03C3"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sigma_final_to_upper",
+      "family": "Greek sigma",
+      "source": "ς",
+      "find": "Σ",
+      "before": {
+        "gdoc": "ς\n",
+        "google": "ς\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ς\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+03C2"
+      ],
+      "find_codepoints": [
+        "U+03A3"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sharp_s_capital",
+      "family": "German sharp S",
+      "source": "ẞ",
+      "find": "ß",
+      "before": {
+        "gdoc": "ẞ\n",
+        "google": "ẞ\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 0,
+        "after": "ẞ\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+1E9E"
+      ],
+      "find_codepoints": [
+        "U+00DF"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sharp_s_expansion",
+      "family": "German sharp S",
+      "source": "Straße",
+      "find": "STRASSE",
+      "before": {
+        "gdoc": "Straße\n",
+        "google": "Straße\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "Straße\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+0053",
+        "U+0074",
+        "U+0072",
+        "U+0061",
+        "U+00DF",
+        "U+0065"
+      ],
+      "find_codepoints": [
+        "U+0053",
+        "U+0054",
+        "U+0052",
+        "U+0041",
+        "U+0053",
+        "U+0053",
+        "U+0045"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "kelvin_sign",
+      "family": "compatibility letter",
+      "source": "Kelvin",
+      "find": "kelvin",
+      "before": {
+        "gdoc": "Kelvin\n",
+        "google": "Kelvin\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+212A",
+        "U+0065",
+        "U+006C",
+        "U+0076",
+        "U+0069",
+        "U+006E"
+      ],
+      "find_codepoints": [
+        "U+006B",
+        "U+0065",
+        "U+006C",
+        "U+0076",
+        "U+0069",
+        "U+006E"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "long_s",
+      "family": "compatibility letter",
+      "source": "ſale",
+      "find": "sale",
+      "before": {
+        "gdoc": "ſale\n",
+        "google": "ſale\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ſale\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+017F",
+        "U+0061",
+        "U+006C",
+        "U+0065"
+      ],
+      "find_codepoints": [
+        "U+0073",
+        "U+0061",
+        "U+006C",
+        "U+0065"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "micro_sign",
+      "family": "compatibility letter",
+      "source": "µg",
+      "find": "μg",
+      "before": {
+        "gdoc": "µg\n",
+        "google": "µg\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "µg\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+00B5",
+        "U+0067"
+      ],
+      "find_codepoints": [
+        "U+03BC",
+        "U+0067"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "dotless_i",
+      "family": "Turkish I",
+      "source": "ı",
+      "find": "I",
+      "before": {
+        "gdoc": "ı\n",
+        "google": "ı\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ı\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+0131"
+      ],
+      "find_codepoints": [
+        "U+0049"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "dotted_i",
+      "family": "known Turkish-I expansion family",
+      "source": "İ",
+      "find": "i",
+      "before": {
+        "gdoc": "İ\n",
+        "google": "İ\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+0130"
+      ],
+      "find_codepoints": [
+        "U+0069"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "dotted_i_before_target",
+      "family": "known Turkish-I indexing damage",
+      "source": "İ cat sat",
+      "find": "cat",
+      "before": {
+        "gdoc": "İ cat sat\n",
+        "google": "İ cat sat\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "İ cMATCHsat\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "İ MATCH sat\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+0130",
+        "U+0020",
+        "U+0063",
+        "U+0061",
+        "U+0074",
+        "U+0020",
+        "U+0073",
+        "U+0061",
+        "U+0074"
+      ],
+      "find_codepoints": [
+        "U+0063",
+        "U+0061",
+        "U+0074"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "composed_name",
+      "family": "accent case control",
+      "source": "José",
+      "find": "JOSÉ",
+      "before": {
+        "gdoc": "José\n",
+        "google": "José\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+004A",
+        "U+006F",
+        "U+0073",
+        "U+00E9"
+      ],
+      "find_codepoints": [
+        "U+004A",
+        "U+004F",
+        "U+0053",
+        "U+00C9"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "decomposed_name",
+      "family": "normalization hypothesis",
+      "source": "José",
+      "find": "JOSÉ",
+      "before": {
+        "gdoc": "José\n",
+        "google": "José\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "José\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+004A",
+        "U+006F",
+        "U+0073",
+        "U+0065",
+        "U+0301"
+      ],
+      "find_codepoints": [
+        "U+004A",
+        "U+004F",
+        "U+0053",
+        "U+00C9"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "composed_to_decomposed",
+      "family": "normalization hypothesis",
+      "source": "José",
+      "find": "José",
+      "before": {
+        "gdoc": "José\n",
+        "google": "José\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "José\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+004A",
+        "U+006F",
+        "U+0073",
+        "U+00E9"
+      ],
+      "find_codepoints": [
+        "U+004A",
+        "U+006F",
+        "U+0073",
+        "U+0065",
+        "U+0301"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "curly_apostrophe",
+      "family": "literal punctuation control",
+      "source": "Owner’s budget",
+      "find": "Owner's",
+      "before": {
+        "gdoc": "Owner’s budget\n",
+        "google": "Owner’s budget\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found; but a near-match exists with different quote/dash style (e.g. ’ vs '). Re-run with --normalize to match it",
+        "after": "Owner’s budget\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH budget\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+004F",
+        "U+0077",
+        "U+006E",
+        "U+0065",
+        "U+0072",
+        "U+2019",
+        "U+0073",
+        "U+0020",
+        "U+0062",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074"
+      ],
+      "find_codepoints": [
+        "U+004F",
+        "U+0077",
+        "U+006E",
+        "U+0065",
+        "U+0072",
+        "U+0027",
+        "U+0073"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "nbsp",
+      "family": "literal whitespace control",
+      "source": "Budget draft",
+      "find": "Budget draft",
+      "before": {
+        "gdoc": "Budget draft\n",
+        "google": "Budget draft\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found; but the text appears with different whitespace (line breaks or non-breaking spaces). Adjust the anchor to match exactly",
+        "after": "Budget draft\n"
+      },
+      "google": {
+        "occurrences_changed": 0,
+        "after": "Budget draft\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+0042",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074",
+        "U+00A0",
+        "U+0064",
+        "U+0072",
+        "U+0061",
+        "U+0066",
+        "U+0074"
+      ],
+      "find_codepoints": [
+        "U+0042",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074",
+        "U+0020",
+        "U+0064",
+        "U+0072",
+        "U+0061",
+        "U+0066",
+        "U+0074"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "cyrillic_control",
+      "family": "control",
+      "source": "План",
+      "find": "ПЛАН",
+      "before": {
+        "gdoc": "План\n",
+        "google": "План\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "MATCH\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "MATCH\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+041F",
+        "U+043B",
+        "U+0430",
+        "U+043D"
+      ],
+      "find_codepoints": [
+        "U+041F",
+        "U+041B",
+        "U+0410",
+        "U+041D"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "ascii_nonmatch",
+      "family": "nonmatch control",
+      "source": "Budget draft",
+      "find": "absent",
+      "before": {
+        "gdoc": "Budget draft\n",
+        "google": "Budget draft\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "Budget draft\n"
+      },
+      "google": {
+        "occurrences_changed": 0,
+        "after": "Budget draft\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+0042",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074",
+        "U+0020",
+        "U+0064",
+        "U+0072",
+        "U+0061",
+        "U+0066",
+        "U+0074"
+      ],
+      "find_codepoints": [
+        "U+0061",
+        "U+0062",
+        "U+0073",
+        "U+0065",
+        "U+006E",
+        "U+0074"
+      ],
+      "replacement": "MATCH"
+    },
+    {
+      "case": "sigma_exact_character",
+      "family": "Greek sigma exact-character counterexample",
+      "source": "ΟΣ",
+      "find": "Σ",
+      "replacement": "X",
+      "before": {
+        "gdoc": "ΟΣ\n",
+        "google": "ΟΣ\n"
+      },
+      "gdoc": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: no match found",
+        "after": "ΟΣ\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "ΟX\n"
+      },
+      "same_final_text": false,
+      "source_codepoints": [
+        "U+039F",
+        "U+03A3"
+      ],
+      "find_codepoints": [
+        "U+03A3"
+      ]
+    },
+    {
+      "case": "sigma_office_prefix",
+      "family": "Greek sigma exact-character control",
+      "source": "Budget Σ",
+      "find": "Σ",
+      "replacement": "X",
+      "before": {
+        "gdoc": "Budget Σ\n",
+        "google": "Budget Σ\n"
+      },
+      "gdoc": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "",
+        "after": "Budget X\n"
+      },
+      "google": {
+        "occurrences_changed": 1,
+        "after": "Budget X\n"
+      },
+      "same_final_text": true,
+      "source_codepoints": [
+        "U+0042",
+        "U+0075",
+        "U+0064",
+        "U+0067",
+        "U+0065",
+        "U+0074",
+        "U+0020",
+        "U+03A3"
+      ],
+      "find_codepoints": [
+        "U+03A3"
+      ]
+    }
+  ]
+}

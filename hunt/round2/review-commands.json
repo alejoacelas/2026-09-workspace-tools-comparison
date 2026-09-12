@@ -1,0 +1,178 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "cases": [
+    {
+      "id": "literal-multiline-comment",
+      "pass": true,
+      "returncode": 0,
+      "expected": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+      "native": {
+        "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+        "resolved": false,
+        "replies": []
+      }
+    },
+    {
+      "id": "literal-multiline-reply",
+      "pass": true,
+      "returncode": 0,
+      "expected": "Answer B\nUse **120**; literal [draft] and R&D.",
+      "native": {
+        "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+        "resolved": false,
+        "replies": [
+          {
+            "content": "Answer B\nUse **120**; literal [draft] and R&D.",
+            "action": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "comments-json-thread",
+      "pass": true,
+      "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+      "reply_contents": [
+        "Answer B\nUse **120**; literal [draft] and R&D."
+      ]
+    },
+    {
+      "id": "resolve-with-message",
+      "pass": true,
+      "returncode": 0,
+      "native": {
+        "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+        "resolved": true,
+        "replies": [
+          {
+            "content": "Answer B\nUse **120**; literal [draft] and R&D.",
+            "action": ""
+          },
+          {
+            "content": "Resolved: checked 120; no other reviewer.",
+            "action": "resolve"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolved-list-filter",
+      "pass": true,
+      "default_count": 0,
+      "all_count": 1
+    },
+    {
+      "id": "reopen-retains-thread",
+      "pass": true,
+      "returncode": 0,
+      "native": {
+        "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+        "resolved": false,
+        "replies": [
+          {
+            "content": "Answer B\nUse **120**; literal [draft] and R&D.",
+            "action": ""
+          },
+          {
+            "content": "Resolved: checked 120; no other reviewer.",
+            "action": "resolve"
+          },
+          {
+            "content": "",
+            "action": "reopen"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comment-info-json-detail",
+      "pass": true,
+      "content": "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+      "native_reply_count": 3,
+      "cli_reply_count": 3
+    },
+    {
+      "id": "comments-plain-row-contract",
+      "pass": false,
+      "native_comment_count": 1,
+      "redacted_stdout": "COMMENT\topen\tAUTHOR\tQuestion A\tBudget\nIs **100** final? Keep <5% and \"quotes\".\t\n",
+      "classification": "machine-readable TSV contract candidate; native comment is intact and JSON is correct",
+      "parsed_record_count": 2,
+      "tab_fields_per_record": [
+        5,
+        2
+      ],
+      "parsed_redacted_records": [
+        [
+          "COMMENT",
+          "open",
+          "AUTHOR",
+          "Question A",
+          "Budget"
+        ],
+        [
+          "Is **100** final? Keep <5% and \"quotes\".",
+          ""
+        ]
+      ],
+      "expected_redacted_records": [
+        [
+          "COMMENT",
+          "open",
+          "AUTHOR",
+          "Question A\tBudget\nIs **100** final? Keep <5% and \"quotes\".",
+          ""
+        ]
+      ],
+      "quoted_tsv_control_pass": true
+    },
+    {
+      "id": "revision-diff-amount-control",
+      "pass": true,
+      "scope": "offline actual diff builder, no retained revisions required",
+      "hunks": [
+        {
+          "kind": "replace",
+          "block_type": "paragraph",
+          "runs": [
+            {
+              "op": "equal",
+              "text": "Budget is "
+            },
+            {
+              "op": "del",
+              "text": "100"
+            },
+            {
+              "op": "ins",
+              "text": "120"
+            },
+            {
+              "op": "equal",
+              "text": " pounds."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toc-depth-control",
+      "pass": true,
+      "headings": [
+        {
+          "text": "Review plan",
+          "level": 1
+        },
+        {
+          "text": "Costs",
+          "level": 2
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "cases": 10,
+    "passes": 9,
+    "scope": "nine live review/TOC cases and one offline diff control; no anchored-comment or preview paths"
+  }
+}

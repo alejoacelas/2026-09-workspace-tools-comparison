@@ -1,0 +1,227 @@
+{
+  "workspace_pin": "54b1c56f7f9912ce32681460d7ca38f9c2a37564",
+  "workspace_version": "1.26.0",
+  "route": "actual installed Workspace stdio manage_doc_tab populate_from_markdown",
+  "scope": "three new personal scratch Docs; no collection/sharing/deletion",
+  "cases": [
+    {
+      "id": "ten-digit-account",
+      "markdown": "1234567890. Revenue account",
+      "expected": {
+        "text": "1234567890. Revenue account",
+        "links": []
+      },
+      "gdoc_actual": {
+        "text": "Revenue account",
+        "links": []
+      },
+      "workspace_actual": {
+        "text": "1234567890. Revenue account",
+        "links": []
+      },
+      "workspace_native": {
+        "text": "1234567890. Revenue account\n\n\n",
+        "links": [],
+        "paragraphs": [
+          {
+            "runs": [
+              {
+                "text": "1234567890. Revenue account\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          }
+        ]
+      },
+      "mcp_is_error": false,
+      "response": "{\"action\":\"populate_from_markdown\",\"success\":true,\"message\":\"Populated tab 'TAB' in document DOC from 27 characters of markdown.\",\"requests_applied\":2,\"tab_id\":\"TAB\",\"link\":\"https://docs.google.com/document/d/DOC/edit\"}",
+      "pass": true
+    },
+    {
+      "id": "bracket-link-label",
+      "markdown": "Read [Finance [Q3]](https://example.com/q3).",
+      "expected": {
+        "text": "Read Finance [Q3].",
+        "links": [
+          "https://example.com/q3"
+        ]
+      },
+      "gdoc_actual": {
+        "text": "Read [Finance [Q3]](https://example.com/q3).",
+        "links": []
+      },
+      "workspace_actual": {
+        "text": "Read Finance [Q3].",
+        "links": [
+          "https://example.com/q3"
+        ]
+      },
+      "workspace_native": {
+        "text": "Read Finance [Q3].\n\n\n",
+        "links": [
+          "https://example.com/q3"
+        ],
+        "paragraphs": [
+          {
+            "runs": [
+              {
+                "text": "Read ",
+                "style": {}
+              },
+              {
+                "text": "Finance [Q3]",
+                "style": {
+                  "underline": true,
+                  "foregroundColor": {
+                    "color": {
+                      "rgbColor": {
+                        "red": 0.06666667,
+                        "green": 0.33333334,
+                        "blue": 0.8
+                      }
+                    }
+                  },
+                  "link": {
+                    "url": "https://example.com/q3"
+                  }
+                }
+              },
+              {
+                "text": ".\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          }
+        ]
+      },
+      "mcp_is_error": false,
+      "response": "{\"action\":\"populate_from_markdown\",\"success\":true,\"message\":\"Populated tab 'TAB' in document DOC from 44 characters of markdown.\",\"requests_applied\":3,\"tab_id\":\"TAB\",\"link\":\"https://docs.google.com/document/d/DOC/edit\"}",
+      "pass": true
+    },
+    {
+      "id": "entity-query-link",
+      "markdown": "Open [Budget](https://example.com/report?a=1&amp;b=2).",
+      "expected": {
+        "text": "Open Budget.",
+        "links": [
+          "https://example.com/report?a=1&b=2"
+        ]
+      },
+      "gdoc_actual": {
+        "text": "Open Budget.",
+        "links": [
+          "https://example.com/report?a=1&amp;b=2"
+        ]
+      },
+      "workspace_actual": {
+        "text": "Open Budget.",
+        "links": [
+          "https://example.com/report?a=1&b=2"
+        ]
+      },
+      "workspace_native": {
+        "text": "Open Budget.\n\n\n",
+        "links": [
+          "https://example.com/report?a=1&b=2"
+        ],
+        "paragraphs": [
+          {
+            "runs": [
+              {
+                "text": "Open ",
+                "style": {}
+              },
+              {
+                "text": "Budget",
+                "style": {
+                  "underline": true,
+                  "foregroundColor": {
+                    "color": {
+                      "rgbColor": {
+                        "red": 0.06666667,
+                        "green": 0.33333334,
+                        "blue": 0.8
+                      }
+                    }
+                  },
+                  "link": {
+                    "url": "https://example.com/report?a=1&b=2"
+                  }
+                }
+              },
+              {
+                "text": ".\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          },
+          {
+            "runs": [
+              {
+                "text": "\n",
+                "style": {}
+              }
+            ],
+            "bullet": false
+          }
+        ]
+      },
+      "mcp_is_error": false,
+      "response": "{\"action\":\"populate_from_markdown\",\"success\":true,\"message\":\"Populated tab 'TAB' in document DOC from 54 characters of markdown.\",\"requests_applied\":3,\"tab_id\":\"TAB\",\"link\":\"https://docs.google.com/document/d/DOC/edit\"}",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "cases": 3,
+    "passes": 3,
+    "normalization": "only trailing paragraph newlines ignored; exact text and hyperlink URLs otherwise"
+  }
+}

@@ -323,5 +323,130 @@
     },
     "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc edit DOC \"Before  after\" Replacement --tab TAB --account PERSONAL",
     "setup": "Setup: use the person-chip paragraph from chips-edits.py; two spaces separate Before and after in the search phrase. Alex Example is an anonymized account name."
+  },
+  {
+    "id": "h17-greek-exact-match",
+    "short": "H17",
+    "title": "A literal Greek character cannot be found",
+    "intent": "Replace the actual uppercase Σ in ΟΣ with X.",
+    "bug": "Lowercasing the whole Greek word turns its final Σ into ς, while lowercasing the query Σ produces σ. gdoc then reports no match for the exact character present in the source. Google replaces it correctly. The same query in Budget Σ works in both tools.",
+    "markdown": "",
+    "status": "Live confirmed: exact-character search refused",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "ΟΣ"
+          }
+        ]
+      ],
+      "label": "BEFORE — NATIVE GOOGLE DOC",
+      "diagnostic": "Find Σ (U+03A3); the source contains that exact character."
+    },
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "ΟX"
+          }
+        ]
+      ],
+      "diagnostic": "Native Google: one replacement."
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "ΟΣ"
+          }
+        ]
+      ],
+      "diagnostic": "gdoc exits 3: no match found. The document is unchanged."
+    },
+    "commands": "gdoc edit DOC \"Σ\" X --all --tab TAB --account PERSONAL",
+    "setup": "Setup: insert the literal Greek characters ΟΣ into a blank native tab. The expected X is Latin; the initial Ο is Greek.",
+    "evidence_label": "Fresh independent reproduction: gdoc exits 3; Google finds one match."
+  },
+  {
+    "id": "h18-comment-tsv",
+    "short": "H18",
+    "title": "One comment becomes two malformed TSV records",
+    "intent": "Read one multiline comment as stable TSV for another program.",
+    "bug": "Comment text is interpolated into TSV without escaping or quoting embedded tabs and newlines. A quoting-aware TSV reader parses two records instead of one; Budget wrongly occupies the quote field. Native comment content and JSON output remain correct. Properly quoted multiline TSV is a passing control.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "source",
+      "data": "Question A\\tBudget\\nIs **100** final? Keep <5% and \"quotes\".",
+      "label": "BEFORE — COMMENT TEXT (ESCAPED)"
+    },
+    "expected": {
+      "kind": "source",
+      "data": "1 logical record; 5 fields\ncontent: entire original comment\nquote: empty",
+      "label": "EXPECTED — PARSED TSV RECORDS"
+    },
+    "observed": {
+      "kind": "source",
+      "data": "Record 1: 5 fields\ncontent: Question A; quote: Budget\nRecord 2: 2 fields\nIs **100** final? Keep <5% and \"quotes\".",
+      "label": "OBSERVED — PARSED TSV RECORDS"
+    },
+    "commands": "gdoc comments DOC --plain --account PERSONAL\ngdoc comments DOC --json --account PERSONAL",
+    "setup": "Setup: create the single comment from review-commands.py. Parse stdout with csv.reader(delimiter=\"\\t\"); JSON is the passing control.",
+    "evidence_label": "Live CLI stdout parsed independently; native comment data is intact."
+  },
+  {
+    "id": "h19-csv-signature",
+    "short": "H19",
+    "title": "UTF-8 file signature becomes part of the header",
+    "intent": "Import a CSV whose UTF-8 encoding includes a byte-order signature.",
+    "bug": "The importer treats the initial UTF-8 signature as a literal U+FEFF character in the first header. Item looks normal but no longer equals Item exactly. Native Google CSV import removes the signature and retains the intended header. This is an encoding interoperability defect, separate from CRLF handling.",
+    "markdown": "",
+    "status": "Live confirmed; command returned success",
+    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
+    "before": {
+      "kind": "source",
+      "data": "<UTF-8 signature>Item,Value\nBudget,100",
+      "label": "BEFORE — CSV FILE WITH UTF-8 SIGNATURE"
+    },
+    "expected": {
+      "kind": "sheet",
+      "data": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "label": "EXPECTED — GOOGLE SHEETS",
+      "diagnostic": "Stored A1: \"Item\". Character count: 4; exact match: TRUE."
+    },
+    "observed": {
+      "kind": "sheet",
+      "data": [
+        [
+          "Item",
+          "Value"
+        ],
+        [
+          "Budget",
+          "100"
+        ]
+      ],
+      "label": "OBSERVED — GOOGLE SHEETS",
+      "diagnostic": "Stored A1 starts with invisible U+FEFF. Count: 5; exact match: FALSE."
+    },
+    "commands": "gdoc cells SHEET Data!A1 --file utf8-bom.csv --account PERSONAL",
+    "setup": "Setup: write the CSV using UTF-8 with BOM (utf-8-sig). The diagram normalizes the tested range to A1:B2."
   }
 ]
