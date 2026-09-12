@@ -290,3 +290,7 @@ This is a broad practical comparison, not every feature exercised against every 
 All named gdoc commands are mapped, but setup commands and unavailable operations are evaluated by source/interface evidence rather than invented live comparisons. The standalone local Markdown observer explicitly omits parts of Google's semantics; its nesting false positive is retained and explained. No adversarial pass fraction is presented as a real-world reliability rate.
 
 [Reproduction guide](evidence/performance.md) describes versions, accounts, fixture isolation, timing, raw outputs, and harness corrections. [README](README.md) links all runnable artifacts. [Run log](RUN-LOG.md) records completed work. Public sources and raw synthetic evidence support the conclusions; historical first-pass claims have been superseded by this report.
+
+## Follow-up: parallel regression hunt
+
+A subsequent three-agent investigation executed 68 offline specimens and collected [nine live-confirmed illustrated examples](https://docs.google.com/document/d/1H-p2wLRxdc3u8GEdfhpWODd5HZ_NKDzFv4Ap7DnFDt8/edit). The strongest additional office-work finding is route-dependent reading: `cat --tab` omits nested-table contents and can turn numbered steps into bullets, while ordinary `cat` retains the specific tested values and numbers. See the [hunt report, controls, and runnable evidence](hunt/README.md); counts are deliberately selected specimens, not a reliability rate. Broad campaign repair areas overlap these triggers, and no upstream fixes were made in this run.

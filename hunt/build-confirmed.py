@@ -64,15 +64,15 @@ if extra and extra['native_nested_table_confirmed']:
  'commands':'gdoc cat DOC --tab TAB --account PERSONAL\ngdoc cat DOC --account PERSONAL',
  'setup':'Setup: import the synthetic nested-table HTML from export-extra-probe.py; the first command fails the content check, the second is the passing control.',
  'source':'https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py'})
-# The rendered native PDF and default-cat control independently retain7/8.
-if extra and (ROOT.parent/'.local-hunt/export-extra-pdf.txt').exists():
- pdf=(ROOT.parent/'.local-hunt/export-extra-pdf.txt').read_text()
+# The rendered native PDF and default-cat control independently retain 7/8.
+if extra and extra.get('pdf_verification',{}).get('visually_checked'):
+ pdf=extra['pdf_verification']['extracted_text']
  assert '7.' in pdf and 'Review budget' in pdf and '8.' in pdf and 'Approve purchase' in pdf
  read=next(r for r in extra['reads'] if r['route']=='selected_tab')
  assert '- Review budget' in read['stdout'] and '- Approve purchase' in read['stdout']
  out.append({'id':'h09-numbered-list-read','short':'H09','title':'Selected-tab read changes numbers to bullets',
- 'intent':'Read a procedure while retaining steps7 and8.',
- 'bug':'The selected-tab reader emits unordered bullet markers for an imported numbered list. Steps7 and8 disappear. The native Google PDF displays7 and8, and gdoc cat without --tab preserves those numbers. The source document is unchanged.',
+ 'intent':'Read a procedure while retaining steps 7 and 8.',
+ 'bug':'The selected-tab reader emits unordered bullet markers for an imported numbered list. Steps 7 and 8 disappear. The native Google PDF displays 7 and 8, and gdoc cat without --tab preserves those numbers. The source document is unchanged.',
  'novelty':'Additional live list-read trigger; distinct from the offline counter examples.',
  'markdown':'','status':'Live selected-tab read failure; gdoc returns success',
  'before':{'label':'BEFORE — NATIVE GOOGLE DOC EXCERPT','kind':'segments','data':[[{'text':'7.  Review budget'}],[{'text':'8.  Approve purchase'}]]},

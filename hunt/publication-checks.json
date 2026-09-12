@@ -1,0 +1,58 @@
+{
+  "tabs": 10,
+  "cases": [
+    {
+      "case": "h01-escaped-pipe",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h02-empty-edge-cell",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h03-fence-close",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h04-link-title",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h05-code-delimiter",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h06-code-backslash",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h07-nested-emphasis",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h08-nested-table-read",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h09-numbered-list-read",
+      "images": 1,
+      "description_command_order": true
+    }
+  ],
+  "pdf_visual_qa": {
+    "result": "passed",
+    "review": "Two independent agents reviewed all 10 content pages; no clipping, split figures, or orphaned case descriptions.",
+    "pages": 20,
+    "content_pages": 10,
+    "google_generated_tab_divider_pages": 10,
+    "sha256": "7c66ac7d9c051695e1a9680e1207c225ecc5cf947526cfa2d758e914831894b2"
+  }
+}

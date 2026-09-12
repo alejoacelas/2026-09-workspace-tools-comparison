@@ -26,3 +26,5 @@ The deliverables are a main report, complete feature matrix, bug-transfer audits
 ## Parallel follow-up hunt
 
 Invent and execute additional synthetic gdoc cases in three independent areas, deduplicate existing campaign families, and confirm strong candidates on live personal-account scratch documents. Collect confirmed findings progressively in a new Google Doc with one Pillow Before / Expected / Observed illustration per finding. Keep fixture IDs and raw account data local; publish only synthetic, redacted evidence.
+
+The follow-up hunt is complete: [nine illustrated live examples](https://docs.google.com/document/d/1H-p2wLRxdc3u8GEdfhpWODd5HZ_NKDzFv4Ap7DnFDt8/edit), [68-specimen offline evidence and reproducers](hunt/README.md), and independently reviewed Google PDF layout. Eight examples extend the preceding comparison; they overlap broader known repair areas. No upstream fixes were made.

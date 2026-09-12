@@ -33,3 +33,7 @@
 
 - Started three independent investigations: tables/blocks, inline Markdown, and document operations/export. Root handles independent confirmation, live fixtures, and progressive Google Doc publication.
 - Findings must state the exact execution route and distinguish previously known families from additional candidates; passing controls and discarded hypotheses remain in the evidence.
+
+- Completed 68 offline specimens across three agents, then independently confirmed seven incorrect native writes and two selected-tab read failures against real synthetic Google Docs. Read cases also match a rendered Google PDF; default cat is a passing content control.
+- Published nine reviewed Pillow illustrations progressively into a personal Google Doc. Verified 10 tabs and 9 images; two agents inspected all 10 exported content pages. Google adds 10 tab-divider pages to its 20-page export.
+- Stale-read protection refused some fresh-fixture writes; fresh-read retries resolved setup state without forcing writes. These refusals are excluded from content-failure counts. Additional offline candidates remain outside the live-confirmed collection.
