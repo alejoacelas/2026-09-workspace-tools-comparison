@@ -22,3 +22,12 @@ The human wanted Workspace MCP installed using existing Google credentials and a
 - Added a side-by-side command table, the complete 122-entry Workspace tier inventory, all 39 public gdoc CLI commands, and setup/reauthorization instructions. Local credentials and private Drive results were not committed.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits 3b47168 (command comparison and setup record; local client configuration changes are outside Git)
+
+## Restore the active office tools project
+
+The human wanted the comparison project moved back here from the archive for continued work.
+
+- Moved `~/best/archive/2026-09-workspace-tools-comparison` to `~/best/once/2026-09-workspace-tools-comparison`, preserving both upstream clones and the project Git history.
+- Updated the Workspace MCP installation to use the restored source location and recorded successful personal and work Gmail/Calendar authorization checks.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 627d2a6
