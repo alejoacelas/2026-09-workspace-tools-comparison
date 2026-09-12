@@ -1,0 +1,2781 @@
+{
+  "pins": {
+    "gdoc": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+    "workspace": "54b1c56f7f9912ce32681460d7ca38f9c2a37564"
+  },
+  "oracle": "markdown-it CommonMark token text/styles, independent of gdoc; Workspace uses this same parser so Workspace agreement is not an independent vote",
+  "cases": [
+    {
+      "id": "plain_link",
+      "markdown": "Read [Policy](https://example.com/policy).",
+      "family": "control",
+      "expected": {
+        "text": "Read Policy.",
+        "styles": [
+          {
+            "text": "Policy",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_title",
+      "markdown": "Read [Policy](https://example.com/policy \"Policy handbook\").",
+      "family": "link destinations",
+      "expected": {
+        "text": "Read Policy.",
+        "styles": [
+          {
+            "text": "Policy",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy \"Policy handbook\""
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy \"Policy handbook\""
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_angle",
+      "markdown": "Read [Policy](<https://example.com/policy>).",
+      "family": "link destinations",
+      "expected": {
+        "text": "Read Policy.",
+        "styles": [
+          {
+            "text": "Policy",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "<https://example.com/policy>"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "<https://example.com/policy>"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read Policy.",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read Policy.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_empty",
+      "markdown": "Keep [draft]().",
+      "family": "empty destinations",
+      "expected": {
+        "text": "Keep draft.",
+        "styles": [
+          {
+            "text": "draft",
+            "kind": "link",
+            "url": ""
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Keep [draft]().",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Keep [draft]().\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Keep draft.",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Keep draft.\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 13,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_nested_label",
+      "markdown": "Read [policy [draft]](https://example.com/policy).",
+      "family": "nested link label",
+      "expected": {
+        "text": "Read policy [draft].",
+        "styles": [
+          {
+            "text": "policy [draft]",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Read [policy [draft]](https://example.com/policy).",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read [policy [draft]](https://example.com/policy).\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 52,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read policy [draft].",
+          "styles": [
+            {
+              "text": "policy [draft]",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read policy [draft].\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_escaped_label",
+      "markdown": "Read [policy \\[draft\\]](https://example.com/policy).",
+      "family": "control",
+      "expected": {
+        "text": "Read policy [draft].",
+        "styles": [
+          {
+            "text": "policy [draft]",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Read policy [draft].",
+          "styles": [
+            {
+              "text": "policy [draft]",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read policy [draft].\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read policy [draft].",
+          "styles": [
+            {
+              "text": "policy [draft]",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read policy [draft].\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_entity_query",
+      "markdown": "[Search](https://example.com/?q=budget&amp;year=2026)",
+      "family": "character references",
+      "expected": {
+        "text": "Search",
+        "styles": [
+          {
+            "text": "Search",
+            "kind": "link",
+            "url": "https://example.com/?q=budget&year=2026"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Search",
+          "styles": [
+            {
+              "text": "Search",
+              "kind": "link",
+              "url": "https://example.com/?q=budget&amp;year=2026"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Search\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/?q=budget&amp;year=2026"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Search",
+          "styles": [
+            {
+              "text": "Search",
+              "kind": "link",
+              "url": "https://example.com/?q=budget&year=2026"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Search\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/?q=budget&year=2026"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_entity_label",
+      "markdown": "[R&amp;D](https://example.com/research)",
+      "family": "character references",
+      "expected": {
+        "text": "R&D",
+        "styles": [
+          {
+            "text": "R&D",
+            "kind": "link",
+            "url": "https://example.com/research"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "R&amp;D",
+          "styles": [
+            {
+              "text": "R&amp;D",
+              "kind": "link",
+              "url": "https://example.com/research"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&amp;D\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/research"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "R&D",
+          "styles": [
+            {
+              "text": "R&D",
+              "kind": "link",
+              "url": "https://example.com/research"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&D\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 4,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/research"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 5,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "double_backtick",
+      "markdown": "Use ``a`b`` now.",
+      "family": "code delimiter length",
+      "expected": {
+        "text": "Use a`b now.",
+        "styles": [
+          {
+            "text": "a`b",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use `ab`` now.",
+          "styles": [
+            {
+              "text": "a",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use `ab`` now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a`b now.",
+          "styles": [
+            {
+              "text": "a`b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a`b now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "triple_backtick",
+      "markdown": "Use ```a``b``` now.",
+      "family": "code delimiter length",
+      "expected": {
+        "text": "Use a``b now.",
+        "styles": [
+          {
+            "text": "a``b",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use ``ab`` now.",
+          "styles": [
+            {
+              "text": "a",
+              "kind": "code"
+            },
+            {
+              "text": "b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use ``ab`` now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a``b now.",
+          "styles": [
+            {
+              "text": "a``b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a``b now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_trailing_slash",
+      "markdown": "Use `C:\\temp\\` now.",
+      "family": "backslash inside code",
+      "expected": {
+        "text": "Use C:\\temp\\ now.",
+        "styles": [
+          {
+            "text": "C:\\temp\\",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use `C:\\temp` now.",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use `C:\\temp` now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use C:\\temp\\ now.",
+          "styles": [
+            {
+              "text": "C:\\temp\\",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use C:\\temp\\ now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 19,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_escaped_tick",
+      "markdown": "Use `a\\`b` now.",
+      "family": "backslash inside code",
+      "expected": {
+        "text": "Use a\\b` now.",
+        "styles": [
+          {
+            "text": "a\\",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use a\\`b now.",
+          "styles": [
+            {
+              "text": "a\\`b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a\\`b now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a\\b` now.",
+          "styles": [
+            {
+              "text": "a\\",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a\\b` now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_trim_spaces",
+      "markdown": "Use ` code ` now.",
+      "family": "code whitespace",
+      "expected": {
+        "text": "Use code now.",
+        "styles": [
+          {
+            "text": "code",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use  code  now.",
+          "styles": [
+            {
+              "text": " code ",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use  code  now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use code now.",
+          "styles": [
+            {
+              "text": "code",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use code now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_preserve_spaces",
+      "markdown": "Use `  ` now.",
+      "family": "control",
+      "expected": {
+        "text": "Use    now.",
+        "styles": [
+          {
+            "text": "  ",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Use    now.",
+          "styles": [
+            {
+              "text": "  ",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use    now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use    now.",
+          "styles": [
+            {
+              "text": "  ",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use    now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 13,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_literal_escape",
+      "markdown": "Use `a\\*b` now.",
+      "family": "control",
+      "expected": {
+        "text": "Use a\\*b now.",
+        "styles": [
+          {
+            "text": "a\\*b",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Use a\\*b now.",
+          "styles": [
+            {
+              "text": "a\\*b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a\\*b now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a\\*b now.",
+          "styles": [
+            {
+              "text": "a\\*b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a\\*b now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_entity",
+      "markdown": "Use `&amp;` now.",
+      "family": "control",
+      "expected": {
+        "text": "Use &amp; now.",
+        "styles": [
+          {
+            "text": "&amp;",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Use &amp; now.",
+          "styles": [
+            {
+              "text": "&amp;",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use &amp; now.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use &amp; now.",
+          "styles": [
+            {
+              "text": "&amp;",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use &amp; now.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 16,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "bold_contains_code_marker",
+      "markdown": "**Use `a**b` today**",
+      "family": "delimiter inside code",
+      "expected": {
+        "text": "Use a**b today",
+        "styles": [
+          {
+            "text": "Use a**b today",
+            "kind": "bold"
+          },
+          {
+            "text": "a**b",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use `ab` today**",
+          "styles": [
+            {
+              "text": "Use `a",
+              "kind": "bold"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use `ab` today**\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a**b today",
+          "styles": [
+            {
+              "text": "Use a**b today",
+              "kind": "bold"
+            },
+            {
+              "text": "a**b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a**b today\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 16,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "italic_contains_code_marker",
+      "markdown": "*Use `a*b` today*",
+      "family": "delimiter inside code",
+      "expected": {
+        "text": "Use a*b today",
+        "styles": [
+          {
+            "text": "a*b",
+            "kind": "code"
+          },
+          {
+            "text": "Use a*b today",
+            "kind": "italic"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Use `ab` today*",
+          "styles": [
+            {
+              "text": "Use `a",
+              "kind": "italic"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use `ab` today*\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use a*b today",
+          "styles": [
+            {
+              "text": "a*b",
+              "kind": "code"
+            },
+            {
+              "text": "Use a*b today",
+              "kind": "italic"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use a*b today\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_code_bracket",
+      "markdown": "Read [`a]b`](https://example.com/policy).",
+      "family": "delimiter inside code",
+      "expected": {
+        "text": "Read a]b.",
+        "styles": [
+          {
+            "text": "a]b",
+            "kind": "code"
+          },
+          {
+            "text": "a]b",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "visible text",
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Read [a]b](https://example.com/policy).",
+          "styles": [
+            {
+              "text": "a]b",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read [a]b](https://example.com/policy).\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 41,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Read a]b.",
+          "styles": [
+            {
+              "text": "a]b",
+              "kind": "code"
+            },
+            {
+              "text": "a]b",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Read a]b.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 6,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 11,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "bold_link_title",
+      "markdown": "**[Policy](https://example.com/policy \"Guide\")**",
+      "family": "link destinations",
+      "expected": {
+        "text": "Policy",
+        "styles": [
+          {
+            "text": "Policy",
+            "kind": "bold"
+          },
+          {
+            "text": "Policy",
+            "kind": "link",
+            "url": "https://example.com/policy"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Policy",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "bold"
+            },
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy \"Guide\""
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy \"Guide\""
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Policy",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "bold"
+            },
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "inline_entity",
+      "markdown": "R&amp;D &copy; 2026 &#35;1",
+      "family": "character references",
+      "expected": {
+        "text": "R&D © 2026 #1",
+        "styles": []
+      },
+      "gdoc": {
+        "differences": [
+          "visible text"
+        ],
+        "actual": {
+          "text": "R&amp;D &copy; 2026 &#35;1",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&amp;D &copy; 2026 &#35;1\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 28,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "R&D © 2026 #1",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&D © 2026 #1\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "escaped_ampersand",
+      "markdown": "R\\&amp;D",
+      "family": "control",
+      "expected": {
+        "text": "R&amp;D",
+        "styles": []
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "R&amp;D",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&amp;D\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "R&amp;D",
+          "styles": [],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "R&amp;D\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "code_bold_literal",
+      "markdown": "Use `**plain**` today.",
+      "family": "control",
+      "expected": {
+        "text": "Use **plain** today.",
+        "styles": [
+          {
+            "text": "**plain**",
+            "kind": "code"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [],
+        "actual": {
+          "text": "Use **plain** today.",
+          "styles": [
+            {
+              "text": "**plain**",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use **plain** today.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Use **plain** today.",
+          "styles": [
+            {
+              "text": "**plain**",
+              "kind": "code"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Use **plain** today.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "link_angle_space",
+      "markdown": "[Policy](<https://example.com/policy draft>)",
+      "family": "link destinations",
+      "expected": {
+        "text": "Policy",
+        "styles": [
+          {
+            "text": "Policy",
+            "kind": "link",
+            "url": "https://example.com/policy%20draft"
+          }
+        ]
+      },
+      "gdoc": {
+        "differences": [
+          "style target or URL"
+        ],
+        "actual": {
+          "text": "Policy",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "<https://example.com/policy draft>"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "<https://example.com/policy draft>"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ]
+      },
+      "workspace": {
+        "differences": [],
+        "actual": {
+          "text": "Policy",
+          "styles": [
+            {
+              "text": "Policy",
+              "kind": "link",
+              "url": "https://example.com/policy%20draft"
+            }
+          ],
+          "range_errors": []
+        },
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy%20draft"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

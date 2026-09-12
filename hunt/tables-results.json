@@ -1,0 +1,2584 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "cases": [
+    {
+      "case": {
+        "id": "table_regular",
+        "md": "| A | B |\n|---|---|\n|x|100|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x",
+            "100"
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x",
+              "100"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_first_data_compact",
+        "md": "|A|B|\n|---|---|\n||100|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "",
+            "100"
+          ]
+        ],
+        "family": "empty-edge-cells"
+      },
+      "status": "candidate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "100",
+                ""
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "100",
+              ""
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td></td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_first_data_spaced",
+        "md": "|A|B|\n|---|---|\n| |100|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "",
+            "100"
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "",
+              "100"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td></td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_first_header_compact",
+        "md": "||B|\n|---|---|\n|x|100|",
+        "rows": [
+          [
+            "",
+            "B"
+          ],
+          [
+            "x",
+            "100"
+          ]
+        ],
+        "family": "empty-edge-cells"
+      },
+      "status": "candidate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "B"
+              ],
+              [
+                "x"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 1,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "B"
+            ],
+            [
+              "x"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th></th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_last_header_compact",
+        "md": "|A||\n|---|---|\n|x|100|",
+        "rows": [
+          [
+            "A",
+            ""
+          ],
+          [
+            "x",
+            "100"
+          ]
+        ],
+        "family": "empty-edge-cells"
+      },
+      "status": "candidate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A"
+              ],
+              [
+                "x"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 1,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A"
+            ],
+            [
+              "x"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_middle_data",
+        "md": "|A|B|C|\n|---|---|---|\n|x||100|",
+        "rows": [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "x",
+            "",
+            "100"
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B",
+                "C"
+              ],
+              [
+                "x",
+                "",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 3,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B",
+              "C"
+            ],
+            [
+              "x",
+              "",
+              "100"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n<th>C</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td></td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_last_data",
+        "md": "|A|B|\n|---|---|\n|x||",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x",
+            ""
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x",
+                ""
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x",
+              ""
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td></td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "empty_two_prefix_cells",
+        "md": "|A|B|C|\n|---|---|---|\n|||100|",
+        "rows": [
+          [
+            "A",
+            "B",
+            "C"
+          ],
+          [
+            "",
+            "",
+            "100"
+          ]
+        ],
+        "family": "empty-edge-cells"
+      },
+      "status": "candidate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B",
+                "C"
+              ],
+              [
+                "100",
+                "",
+                ""
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 3,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B",
+              "C"
+            ],
+            [
+              "100",
+              "",
+              ""
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n<th>C</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td></td>\n<td></td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "one_column_empty_row",
+        "md": "|A|\n|---|\n||",
+        "rows": [
+          [
+            "A"
+          ],
+          [
+            ""
+          ]
+        ],
+        "family": "empty-edge-cells"
+      },
+      "status": "candidate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n||\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A"
+              ]
+            ],
+            "num_rows": 1,
+            "num_cols": 1,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 1,
+            "end": 4,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n||\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 2,
+                "endIndex": 5,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td></td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "short_data_row",
+        "md": "|A|B|\n|---|---|\n|x|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x",
+            ""
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x",
+                ""
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x",
+              ""
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td></td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "long_data_row",
+        "md": "|A|B|\n|---|---|\n|x|100|ignored|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x",
+            "100"
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x",
+              "100"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "escaped_pipe_known",
+        "md": "|A|B|\n|---|---|\n|x\\|y|100|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x|y",
+            "100"
+          ]
+        ],
+        "family": "already-reported-escaped-pipe"
+      },
+      "status": "known-duplicate",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x\\",
+                "y"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x\\",
+              "y"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x|y</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "bold_unicode_cells",
+        "md": "|A|B|\n|---|---|\n|**😀**|café|",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "😀",
+            "café"
+          ]
+        ],
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "**😀**",
+                "café"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "😀",
+              "café"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>😀</strong></td>\n<td>café</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "no_outer_pipes",
+        "md": "A | B\n---|---\nx | 100",
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "x",
+            "100"
+          ]
+        ],
+        "family": "unsupported-grammar"
+      },
+      "status": "scope-gap",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "A | B\n---|---\nx | 100\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 6,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 6,
+            "end": 14,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 14,
+            "end": 22,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "A | B\n---|---\nx | 100\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 15,
+                "endIndex": 23,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<table>\n<thead>\n<tr>\n<th>A</th>\n<th>B</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>x</td>\n<td>100</td>\n</tr>\n</tbody>\n</table>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "mismatched_header_separator",
+        "md": "|A|B|\n|---|\n|x|100|",
+        "rows": [],
+        "family": "malformed-table-interpretation"
+      },
+      "status": "excluded-malformed-table",
+      "findings": [
+        "table rows/cell mapping differ"
+      ],
+      "observed": {
+        "plain_text": "\n",
+        "tables": [
+          {
+            "rows": [
+              [
+                "A",
+                "B"
+              ],
+              [
+                "x",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ],
+        "rendered_cells": [
+          [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "x",
+              "100"
+            ]
+          ]
+        ],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<p>|A|B|\n|---|\n|x|100|</p>\n",
+      "workspace_native_requests": [],
+      "workspace_literal_text_matches": null
+    },
+    {
+      "case": {
+        "id": "fence_basic",
+        "md": "```\n**literal**\n```",
+        "text": "**literal**",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "**literal**\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 11,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 12,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "**literal**\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>**literal**\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "**literal**\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 12
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 13
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_language",
+        "md": "```python\nx = 2\n```",
+        "text": "x = 2",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "x = 2\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 5,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 6,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "x = 2\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code class=\"language-python\">x = 2\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "x = 2\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 6
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 7
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_multiword_info",
+        "md": "```python title=demo.py\n**literal**\n```",
+        "text": "**literal**",
+        "family": "fence-info-grammar"
+      },
+      "status": "candidate",
+      "findings": [
+        "literal code text differs",
+        "code style coverage differs",
+        "literal Markdown acquired bold"
+      ],
+      "observed": {
+        "plain_text": "```python title=demo.py\nliteral\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 24,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 24,
+            "end": 31,
+            "style": {
+              "bold": true
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 24,
+            "end": 32,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "```python title=demo.py\nliteral\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 25,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 25,
+                "endIndex": 33,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 25,
+                "endIndex": 32,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code class=\"language-python\">**literal**\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "**literal**\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 12
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 13
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_false_close_backtick",
+        "md": "```\nfirst\n```not-a-close\n**literal**\n```",
+        "text": "first\n```not-a-close\n**literal**",
+        "family": "fence-info-grammar"
+      },
+      "status": "candidate",
+      "findings": [
+        "literal code text differs",
+        "code style coverage differs",
+        "literal Markdown acquired bold"
+      ],
+      "observed": {
+        "plain_text": "first\nliteral\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 5,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 6,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 6,
+            "end": 13,
+            "style": {
+              "bold": true
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 6,
+            "end": 14,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "first\nliteral\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>first\n```not-a-close\n**literal**\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "first\n```not-a-close\n**literal**\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 33
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 34
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_false_close_tilde",
+        "md": "~~~\nfirst\n~~~not-a-close\n**literal**\n~~~",
+        "text": "first\n~~~not-a-close\n**literal**",
+        "family": "fence-info-grammar"
+      },
+      "status": "candidate",
+      "findings": [
+        "literal code text differs",
+        "code style coverage differs",
+        "literal Markdown acquired bold"
+      ],
+      "observed": {
+        "plain_text": "first\nliteral\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 5,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 6,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 6,
+            "end": 13,
+            "style": {
+              "bold": true
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 6,
+            "end": 14,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "first\nliteral\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>first\n~~~not-a-close\n**literal**\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "first\n~~~not-a-close\n**literal**\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 33
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 34
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_close_trailing_spaces",
+        "md": "```\nx\n```   ",
+        "text": "x",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "x\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 2,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "x\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 3,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>x\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "x\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 2
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 3
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_longer_close",
+        "md": "```\nx\n````",
+        "text": "x",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "x\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 2,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "x\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 3,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>x\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "x\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 2
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 3
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_short_inner",
+        "md": "````\na\n```\nb\n````",
+        "text": "a\n```\nb",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "a\n```\nb\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 1,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 2,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 2,
+            "end": 5,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 2,
+            "end": 6,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          },
+          {
+            "start": 6,
+            "end": 7,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 6,
+            "end": 8,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "a\n```\nb\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 3,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 3,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 3,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>a\n```\nb\n</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "a\n```\nb\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 8
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 9
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    },
+    {
+      "case": {
+        "id": "fence_unclosed",
+        "md": "```\n**literal**",
+        "text": "**literal**",
+        "family": "control"
+      },
+      "status": "pass",
+      "findings": [],
+      "observed": {
+        "plain_text": "**literal**\n",
+        "tables": [],
+        "rendered_cells": [],
+        "styles": [
+          {
+            "start": 0,
+            "end": 11,
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            },
+            "type": "text_style"
+          },
+          {
+            "start": 0,
+            "end": 12,
+            "style": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "type": "paragraph_style"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "**literal**\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "request_range_findings": []
+      },
+      "independent_reference_html": "<pre><code>**literal**</code></pre>\n",
+      "workspace_native_requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1
+            },
+            "text": "**literal**\n"
+          }
+        },
+        {
+          "updateTextStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 12
+            },
+            "textStyle": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            },
+            "fields": "weightedFontFamily"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 13
+            },
+            "text": "\n"
+          }
+        }
+      ],
+      "workspace_literal_text_matches": true
+    }
+  ]
+}

@@ -1,0 +1,1139 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "scope": "20 pure export cases; no Google API calls; expectation definitions explicit",
+  "summary": {
+    "cases": 20,
+    "passed": 11,
+    "differences": 9
+  },
+  "results": [
+    {
+      "id": "office-punctuation",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Budget: £1,250.50; tax (20%) — approved!\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "Budget: £1,250.50; tax (20%) — approved!\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "Budget: £1,250.50; tax (20%) — approved!\n"
+    },
+    {
+      "id": "curly-quotes",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "“Friday’s review” — don’t postpone.\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "“Friday’s review” — don’t postpone.\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "“Friday’s review” — don’t postpone.\n"
+    },
+    {
+      "id": "windows-path",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Open C:\\reports\\2026\\final.txt\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "Open C:\\reports\\2026\\final.txt\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "Open C:\\reports\\2026\\final.txt\n"
+    },
+    {
+      "id": "comparison-symbols",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Actual < forecast; 3 > 2; x = 4.\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "Actual < forecast; 3 > 2; x = 4.\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "Actual < forecast; 3 > 2; x = 4.\n"
+    },
+    {
+      "id": "url-query-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Budget",
+                      "textStyle": {
+                        "link": {
+                          "url": "https://example.com/report?a=1&b=2"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": "\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": {
+        "text": "Budget\n",
+        "url": "https://example.com/report?a=1&b=2"
+      },
+      "mode": "roundtrip_link",
+      "classification": "control",
+      "passed": true,
+      "actual": {
+        "markdown": "[Budget](https://example.com/report?a=1&b=2)\n",
+        "text": "Budget\n",
+        "urls": [
+          "https://example.com/report?a=1&b=2"
+        ]
+      }
+    },
+    {
+      "id": "link-square-bracket-label",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Budget [draft]",
+                      "textStyle": {
+                        "link": {
+                          "url": "https://example.com/report"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": "\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": {
+        "text": "Budget [draft]\n",
+        "url": "https://example.com/report"
+      },
+      "mode": "roundtrip_link",
+      "classification": "candidate",
+      "passed": false,
+      "actual": {
+        "markdown": "[Budget [draft]](https://example.com/report)\n",
+        "text": "[Budget [draft]](https://example.com/report)\n",
+        "urls": []
+      }
+    },
+    {
+      "id": "link-email-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Email finance",
+                      "textStyle": {
+                        "link": {
+                          "url": "mailto:finance@example.com"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": "\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": {
+        "text": "Email finance\n",
+        "url": "mailto:finance@example.com"
+      },
+      "mode": "roundtrip_link",
+      "classification": "control",
+      "passed": true,
+      "actual": {
+        "markdown": "[Email finance](mailto:finance@example.com)\n",
+        "text": "Email finance\n",
+        "urls": [
+          "mailto:finance@example.com"
+        ]
+      }
+    },
+    {
+      "id": "ordered-start-seven",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Approve\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Publish\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            }
+          ]
+        },
+        "lists": {
+          "a": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 7
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      "expected": "7. Approve\n8. Publish\n",
+      "mode": "exact",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "1. Approve\n2. Publish\n"
+    },
+    {
+      "id": "adjacent-distinct-lists",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Checklist A\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Checklist B\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "b",
+                  "nestingLevel": 0
+                }
+              }
+            }
+          ]
+        },
+        "lists": {
+          "a": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          },
+          "b": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      "expected": "1. Checklist A\n1. Checklist B\n",
+      "mode": "exact",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "1. Checklist A\n2. Checklist B\n"
+    },
+    {
+      "id": "same-list-after-note",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Approve\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Note: obtain sign-off.\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Publish\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            }
+          ]
+        },
+        "lists": {
+          "a": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      "expected": "1. Approve\nNote: obtain sign-off.\n2. Publish\n",
+      "mode": "exact",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "1. Approve\nNote: obtain sign-off.\n1. Publish\n"
+    },
+    {
+      "id": "ordinary-numbering-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Approve\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Publish\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            }
+          ]
+        },
+        "lists": {
+          "a": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      "expected": "1. Approve\n2. Publish\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "1. Approve\n2. Publish\n"
+    },
+    {
+      "id": "new-list-after-note-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Approve\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "a",
+                  "nestingLevel": 0
+                }
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Another checklist.\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Publish\n",
+                      "textStyle": {}
+                    }
+                  }
+                ],
+                "bullet": {
+                  "listId": "b",
+                  "nestingLevel": 0
+                }
+              }
+            }
+          ]
+        },
+        "lists": {
+          "a": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          },
+          "b": {
+            "listProperties": {
+              "nestingLevels": [
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                },
+                {
+                  "glyphType": "DECIMAL",
+                  "startNumber": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      "expected": "1. Approve\nAnother checklist.\n1. Publish\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "1. Approve\nAnother checklist.\n1. Publish\n"
+    },
+    {
+      "id": "ordinary-table-tsv-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "table": {
+                "tableRows": [
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Item\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Cost\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Pens\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "100\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "Item\tCost\nPens\t100\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "Item\tCost\nPens\t100\n"
+    },
+    {
+      "id": "table-linked-cell",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "table": {
+                "tableRows": [
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Budget",
+                                    "textStyle": {
+                                      "link": {
+                                        "url": "https://example.com/budget"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "textRun": {
+                                    "content": "\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "100\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "https://example.com/budget",
+      "mode": "contains",
+      "classification": "representation-gap",
+      "passed": false,
+      "actual": "Budget\t100\n"
+    },
+    {
+      "id": "table-bold-cell",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "table": {
+                "tableRows": [
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Approved",
+                                    "textStyle": {
+                                      "bold": true
+                                    }
+                                  }
+                                },
+                                {
+                                  "textRun": {
+                                    "content": "\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "100\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "**Approved**",
+      "mode": "contains",
+      "classification": "representation-gap",
+      "passed": false,
+      "actual": "Approved\t100\n"
+    },
+    {
+      "id": "nested-table-content",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "table": {
+                "tableRows": [
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Breakdown\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "table": {
+                              "tableRows": [
+                                {
+                                  "tableCells": [
+                                    {
+                                      "content": [
+                                        {
+                                          "paragraph": {
+                                            "elements": [
+                                              {
+                                                "textRun": {
+                                                  "content": "Materials\n",
+                                                  "textStyle": {}
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "content": [
+                                        {
+                                          "paragraph": {
+                                            "elements": [
+                                              {
+                                                "textRun": {
+                                                  "content": "475\n",
+                                                  "textStyle": {}
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "Total\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "500\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": [
+        "Breakdown",
+        "Materials",
+        "475",
+        "Total",
+        "500"
+      ],
+      "mode": "contains_all",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "Breakdown\nTotal\t500\n"
+    },
+    {
+      "id": "multiline-cell-content-control",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "table": {
+                "tableRows": [
+                  {
+                    "tableCells": [
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "North\nSouth\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "content": [
+                          {
+                            "paragraph": {
+                              "elements": [
+                                {
+                                  "textRun": {
+                                    "content": "100\n",
+                                    "textStyle": {}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": [
+        "North",
+        "South",
+        "100"
+      ],
+      "mode": "contains_all",
+      "classification": "control",
+      "passed": true,
+      "actual": "North\nSouth\t100\n"
+    },
+    {
+      "id": "person-chip-visible-name",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "Owner: ",
+                      "textStyle": {}
+                    }
+                  },
+                  {
+                    "person": {
+                      "personProperties": {
+                        "name": "Alex Example",
+                        "email": "alex@example.com"
+                      }
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": "\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "Owner: Alex Example\n",
+      "mode": "exact",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "Owner: \n"
+    },
+    {
+      "id": "file-chip-visible-title",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "See ",
+                      "textStyle": {}
+                    }
+                  },
+                  {
+                    "richLink": {
+                      "richLinkProperties": {
+                        "title": "Budget 2026",
+                        "uri": "https://example.com/budget"
+                      }
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": " today.\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": [
+        "See",
+        "Budget 2026",
+        "today."
+      ],
+      "mode": "contains_all",
+      "classification": "candidate",
+      "passed": false,
+      "actual": "See  today.\n"
+    },
+    {
+      "id": "soft-line-break-visible-text",
+      "native_tab": {
+        "body": {
+          "content": [
+            {
+              "paragraph": {
+                "elements": [
+                  {
+                    "textRun": {
+                      "content": "First line",
+                      "textStyle": {}
+                    }
+                  },
+                  {
+                    "textRun": {
+                      "content": "\u000bSecond line\n",
+                      "textStyle": {}
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "lists": {}
+      },
+      "expected": "First line\u000bSecond line\n",
+      "mode": "exact",
+      "classification": "control",
+      "passed": true,
+      "actual": "First line\u000bSecond line\n"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+[
+  {
+    "id": "h01-escaped-pipe",
+    "short": "H01",
+    "title": "Escaped pipe discards the value",
+    "intent": "Create a two-column table whose key is A|B and whose value is 100.",
+    "bug": "A backslash-escaped pipe is split as a column boundary. The resulting table loses 100.",
+    "novelty": "Known comparison case; now also live-confirmed.",
+    "markdown": "| Key | Value |\n| --- | --- |\n| A\\|B | 100 |",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "table",
+      "data": [
+        [
+          "Key",
+          "Value"
+        ],
+        [
+          "A|B",
+          "100"
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "table",
+      "data": [
+        [
+          "Key",
+          "Value"
+        ],
+        [
+          "A\\",
+          "B"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "h02-empty-edge-cell",
+    "short": "H02",
+    "title": "Empty cell shifts the value",
+    "intent": "Create a table with an empty Key cell and 100 under Value.",
+    "bug": "A compact empty first cell is stripped before splitting the row. 100 moves into Key, leaving Value blank. Adding a space inside the empty cell avoids this particular trigger.",
+    "novelty": "Additional trigger within the broad Markdown grammar area.",
+    "markdown": "| Key | Value |\n| --- | --- |\n||100|",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "table",
+      "data": [
+        [
+          "Key",
+          "Value"
+        ],
+        [
+          "",
+          "100"
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "table",
+      "data": [
+        [
+          "Key",
+          "Value"
+        ],
+        [
+          "100",
+          ""
+        ]
+      ]
+    }
+  },
+  {
+    "id": "h03-fence-close",
+    "short": "H03",
+    "title": "Code fence ends too early",
+    "intent": "Write the whole fenced specimen as literal code.",
+    "bug": "A fence-like line with trailing text is mistaken for the closing fence. That line disappears and the following literal asterisks become bold formatting.",
+    "novelty": "Additional fence-grammar regression.",
+    "markdown": "```\nalpha\n```not-a-close\n**literal**\n```",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "alpha",
+            "code": true
+          }
+        ],
+        [
+          {
+            "text": "```not-a-close",
+            "code": true
+          }
+        ],
+        [
+          {
+            "text": "**literal**",
+            "code": true
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "alpha",
+            "bold": false,
+            "code": true,
+            "link": false
+          }
+        ],
+        [
+          {
+            "text": "literal",
+            "bold": true,
+            "code": false,
+            "link": false
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": "h04-link-title",
+    "short": "H04",
+    "title": "Link title enters the destination",
+    "intent": "Create a Policy hyperlink to https://example.com/policy.",
+    "bug": "The optional Markdown title is included in the actual hyperlink URL. The visible label looks correct, so a text-only check misses the failure.",
+    "novelty": "Additional trigger within the existing link grammar area.",
+    "markdown": "Read [Policy](https://example.com/policy \"Policy handbook\").",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Read "
+          },
+          {
+            "text": "Policy",
+            "link": true
+          },
+          {
+            "text": "."
+          }
+        ]
+      ],
+      "diagnostic": "Link target: https://example.com/policy"
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Read ",
+            "bold": false,
+            "code": false,
+            "link": false
+          },
+          {
+            "text": "Policy",
+            "bold": false,
+            "code": false,
+            "link": true
+          },
+          {
+            "text": ".",
+            "bold": false,
+            "code": false,
+            "link": false
+          }
+        ]
+      ],
+      "diagnostic": "Link target: https://example.com/policy \"Policy handbook\""
+    }
+  },
+  {
+    "id": "h05-code-delimiter",
+    "short": "H05",
+    "title": "Double-backtick code is corrupted",
+    "intent": "Write a code span containing one literal backtick.",
+    "bug": "The parser treats a multi-backtick delimiter as single-backtick fragments. It changes the literal code and leaves delimiter characters in the visible sentence.",
+    "novelty": "Additional code-span regression trigger.",
+    "markdown": "Use ``a`b`` now.",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use "
+          },
+          {
+            "text": "a`b",
+            "code": true
+          },
+          {
+            "text": " now."
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use `",
+            "bold": false,
+            "code": false,
+            "link": false
+          },
+          {
+            "text": "a",
+            "bold": false,
+            "code": true,
+            "link": false
+          },
+          {
+            "text": "b`` now.",
+            "bold": false,
+            "code": false,
+            "link": false
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": "h06-code-backslash",
+    "short": "H06",
+    "title": "Trailing backslash breaks code",
+    "intent": "Write the literal code C:\\temp\\, including its final backslash.",
+    "bug": "Backslash escaping is applied before code-span recognition. The closing delimiter is treated as escaped: code formatting disappears and the path changes.",
+    "novelty": "Additional code-span regression trigger.",
+    "markdown": "Use `C:\\temp\\` now.",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use "
+          },
+          {
+            "text": "C:\\temp\\",
+            "code": true
+          },
+          {
+            "text": " now."
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use `C:\\temp` now.",
+            "bold": false,
+            "code": false,
+            "link": false
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "id": "h07-nested-emphasis",
+    "short": "H07",
+    "title": "Literal code breaks surrounding bold",
+    "intent": "Make the whole sentence bold while preserving a**b as literal code.",
+    "bug": "Asterisks inside the code span terminate the surrounding emphasis. The code text is altered and formatting markers leak into the output.",
+    "novelty": "Additional code-span precedence trigger; same broad repair area as H05–H06.",
+    "markdown": "**Use `a**b` today**",
+    "status": "Live Google Docs failure; gdoc reports success",
+    "source": "https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py",
+    "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "expected": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use ",
+            "bold": true
+          },
+          {
+            "text": "a**b",
+            "bold": true,
+            "code": true
+          },
+          {
+            "text": " today",
+            "bold": true
+          }
+        ]
+      ]
+    },
+    "observed": {
+      "kind": "segments",
+      "data": [
+        [
+          {
+            "text": "Use `a",
+            "bold": true,
+            "code": false,
+            "link": false
+          },
+          {
+            "text": "b` today**",
+            "bold": false,
+            "code": false,
+            "link": false
+          }
+        ]
+      ]
+    }
+  }
+]

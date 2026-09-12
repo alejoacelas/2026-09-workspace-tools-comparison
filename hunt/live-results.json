@@ -1,0 +1,1557 @@
+[
+  {
+    "id": "h01-escaped-pipe",
+    "markdown": "| Key | Value |\n| --- | --- |\n| A\\|B | 100 |",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "\nKey\nValue\nA\\\nB\n\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 2,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 2,
+                "textRun": {
+                  "content": "\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        },
+        {
+          "startIndex": 2,
+          "endIndex": 25,
+          "table": {
+            "rows": 2,
+            "columns": 2,
+            "tableRows": [
+              {
+                "startIndex": 3,
+                "endIndex": 16,
+                "tableCells": [
+                  {
+                    "startIndex": 4,
+                    "endIndex": 9,
+                    "content": [
+                      {
+                        "startIndex": 5,
+                        "endIndex": 9,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 5,
+                              "endIndex": 9,
+                              "textRun": {
+                                "content": "Key\n",
+                                "textStyle": {
+                                  "bold": true
+                                }
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  },
+                  {
+                    "startIndex": 9,
+                    "endIndex": 16,
+                    "content": [
+                      {
+                        "startIndex": 10,
+                        "endIndex": 16,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 10,
+                              "endIndex": 16,
+                              "textRun": {
+                                "content": "Value\n",
+                                "textStyle": {
+                                  "bold": true
+                                }
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  }
+                ],
+                "tableRowStyle": {
+                  "minRowHeight": {
+                    "unit": "PT"
+                  }
+                }
+              },
+              {
+                "startIndex": 16,
+                "endIndex": 24,
+                "tableCells": [
+                  {
+                    "startIndex": 17,
+                    "endIndex": 21,
+                    "content": [
+                      {
+                        "startIndex": 18,
+                        "endIndex": 21,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 18,
+                              "endIndex": 21,
+                              "textRun": {
+                                "content": "A\\\n",
+                                "textStyle": {}
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  },
+                  {
+                    "startIndex": 21,
+                    "endIndex": 24,
+                    "content": [
+                      {
+                        "startIndex": 22,
+                        "endIndex": 24,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 22,
+                              "endIndex": 24,
+                              "textRun": {
+                                "content": "B\n",
+                                "textStyle": {}
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  }
+                ],
+                "tableRowStyle": {
+                  "minRowHeight": {
+                    "unit": "PT"
+                  }
+                }
+              }
+            ],
+            "tableStyle": {
+              "tableColumnProperties": [
+                {
+                  "widthType": "EVENLY_DISTRIBUTED"
+                },
+                {
+                  "widthType": "EVENLY_DISTRIBUTED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "startIndex": 25,
+          "endIndex": 26,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 25,
+                "endIndex": 26,
+                "textRun": {
+                  "content": "\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": [
+        [
+          [
+            "Key",
+            "Value"
+          ],
+          [
+            "A\\",
+            "B"
+          ]
+        ]
+      ]
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h02-empty-edge-cell",
+    "markdown": "| Key | Value |\n| --- | --- |\n||100|",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "\nKey\nValue\n100\n\n\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 2,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 2,
+                "textRun": {
+                  "content": "\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        },
+        {
+          "startIndex": 2,
+          "endIndex": 25,
+          "table": {
+            "rows": 2,
+            "columns": 2,
+            "tableRows": [
+              {
+                "startIndex": 3,
+                "endIndex": 16,
+                "tableCells": [
+                  {
+                    "startIndex": 4,
+                    "endIndex": 9,
+                    "content": [
+                      {
+                        "startIndex": 5,
+                        "endIndex": 9,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 5,
+                              "endIndex": 9,
+                              "textRun": {
+                                "content": "Key\n",
+                                "textStyle": {
+                                  "bold": true
+                                }
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  },
+                  {
+                    "startIndex": 9,
+                    "endIndex": 16,
+                    "content": [
+                      {
+                        "startIndex": 10,
+                        "endIndex": 16,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 10,
+                              "endIndex": 16,
+                              "textRun": {
+                                "content": "Value\n",
+                                "textStyle": {
+                                  "bold": true
+                                }
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  }
+                ],
+                "tableRowStyle": {
+                  "minRowHeight": {
+                    "unit": "PT"
+                  }
+                }
+              },
+              {
+                "startIndex": 16,
+                "endIndex": 24,
+                "tableCells": [
+                  {
+                    "startIndex": 17,
+                    "endIndex": 22,
+                    "content": [
+                      {
+                        "startIndex": 18,
+                        "endIndex": 22,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 18,
+                              "endIndex": 22,
+                              "textRun": {
+                                "content": "100\n",
+                                "textStyle": {}
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  },
+                  {
+                    "startIndex": 22,
+                    "endIndex": 24,
+                    "content": [
+                      {
+                        "startIndex": 23,
+                        "endIndex": 24,
+                        "paragraph": {
+                          "elements": [
+                            {
+                              "startIndex": 23,
+                              "endIndex": 24,
+                              "textRun": {
+                                "content": "\n",
+                                "textStyle": {}
+                              }
+                            }
+                          ],
+                          "paragraphStyle": {
+                            "namedStyleType": "NORMAL_TEXT",
+                            "alignment": "START",
+                            "lineSpacing": 100,
+                            "direction": "LEFT_TO_RIGHT",
+                            "spacingMode": "COLLAPSE_LISTS",
+                            "spaceAbove": {
+                              "unit": "PT"
+                            },
+                            "spaceBelow": {
+                              "unit": "PT"
+                            },
+                            "borderBetween": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderTop": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderBottom": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderLeft": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "borderRight": {
+                              "color": {},
+                              "width": {
+                                "unit": "PT"
+                              },
+                              "padding": {
+                                "unit": "PT"
+                              },
+                              "dashStyle": "SOLID"
+                            },
+                            "indentFirstLine": {
+                              "unit": "PT"
+                            },
+                            "indentStart": {
+                              "unit": "PT"
+                            },
+                            "indentEnd": {
+                              "unit": "PT"
+                            },
+                            "keepLinesTogether": false,
+                            "keepWithNext": false,
+                            "avoidWidowAndOrphan": false,
+                            "shading": {
+                              "backgroundColor": {}
+                            },
+                            "pageBreakBefore": false
+                          }
+                        }
+                      }
+                    ],
+                    "tableCellStyle": {
+                      "rowSpan": 1,
+                      "columnSpan": 1,
+                      "backgroundColor": {},
+                      "paddingLeft": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingRight": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingTop": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "paddingBottom": {
+                        "magnitude": 5,
+                        "unit": "PT"
+                      },
+                      "contentAlignment": "TOP"
+                    }
+                  }
+                ],
+                "tableRowStyle": {
+                  "minRowHeight": {
+                    "unit": "PT"
+                  }
+                }
+              }
+            ],
+            "tableStyle": {
+              "tableColumnProperties": [
+                {
+                  "widthType": "EVENLY_DISTRIBUTED"
+                },
+                {
+                  "widthType": "EVENLY_DISTRIBUTED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "startIndex": 25,
+          "endIndex": 26,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 25,
+                "endIndex": 26,
+                "textRun": {
+                  "content": "\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": [
+        [
+          [
+            "Key",
+            "Value"
+          ],
+          [
+            "100",
+            ""
+          ]
+        ]
+      ]
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h03-fence-close",
+    "markdown": "```\nalpha\n```not-a-close\n**literal**\n```",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "alpha\nliteral\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 7,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 7,
+                "textRun": {
+                  "content": "alpha\n",
+                  "textStyle": {
+                    "weightedFontFamily": {
+                      "fontFamily": "Courier New",
+                      "weight": 400
+                    }
+                  }
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        },
+        {
+          "startIndex": 7,
+          "endIndex": 15,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 7,
+                "endIndex": 15,
+                "textRun": {
+                  "content": "literal\n",
+                  "textStyle": {
+                    "bold": true
+                  }
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": []
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h04-link-title",
+    "markdown": "Read [Policy](https://example.com/policy \"Policy handbook\").",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "Read Policy.\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 14,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 6,
+                "textRun": {
+                  "content": "Read ",
+                  "textStyle": {}
+                }
+              },
+              {
+                "startIndex": 6,
+                "endIndex": 12,
+                "textRun": {
+                  "content": "Policy",
+                  "textStyle": {
+                    "underline": true,
+                    "foregroundColor": {
+                      "color": {
+                        "rgbColor": {
+                          "red": 0.06666667,
+                          "green": 0.33333334,
+                          "blue": 0.8
+                        }
+                      }
+                    },
+                    "link": {
+                      "url": "https://example.com/policy \"Policy handbook\""
+                    }
+                  }
+                }
+              },
+              {
+                "startIndex": 12,
+                "endIndex": 14,
+                "textRun": {
+                  "content": ".\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": []
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h05-code-delimiter",
+    "markdown": "Use ``a`b`` now.",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "Use `ab`` now.\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 16,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 6,
+                "textRun": {
+                  "content": "Use `",
+                  "textStyle": {}
+                }
+              },
+              {
+                "startIndex": 6,
+                "endIndex": 7,
+                "textRun": {
+                  "content": "a",
+                  "textStyle": {
+                    "weightedFontFamily": {
+                      "fontFamily": "Courier New",
+                      "weight": 400
+                    }
+                  }
+                }
+              },
+              {
+                "startIndex": 7,
+                "endIndex": 16,
+                "textRun": {
+                  "content": "b`` now.\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": []
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h06-code-backslash",
+    "markdown": "Use `C:\\temp\\` now.",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "Use `C:\\temp` now.\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 20,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 20,
+                "textRun": {
+                  "content": "Use `C:\\temp` now.\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": []
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  },
+  {
+    "id": "h07-nested-emphasis",
+    "markdown": "**Use `a**b` today**",
+    "command": "gdoc write DOC specimen.md --tab TAB --account PERSONAL",
+    "returncode": 0,
+    "state": {
+      "text": "Use `ab` today**\n",
+      "body": [
+        {
+          "endIndex": 1,
+          "sectionBreak": {
+            "sectionStyle": {
+              "columnSeparatorStyle": "NONE",
+              "contentDirection": "LEFT_TO_RIGHT",
+              "sectionType": "CONTINUOUS"
+            }
+          }
+        },
+        {
+          "startIndex": 1,
+          "endIndex": 18,
+          "paragraph": {
+            "elements": [
+              {
+                "startIndex": 1,
+                "endIndex": 7,
+                "textRun": {
+                  "content": "Use `a",
+                  "textStyle": {
+                    "bold": true
+                  }
+                }
+              },
+              {
+                "startIndex": 7,
+                "endIndex": 18,
+                "textRun": {
+                  "content": "b` today**\n",
+                  "textStyle": {}
+                }
+              }
+            ],
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT",
+              "direction": "LEFT_TO_RIGHT"
+            }
+          }
+        }
+      ],
+      "tables": []
+    },
+    "stdout": "OK wrote \"Tab 1\"\n",
+    "stderr": "",
+    "attempt_returncodes": [
+      0
+    ]
+  }
+]
