@@ -8,6 +8,7 @@ Workspace is the broader and faster sampled office connector; gdoc supplies excl
 
 | Artifact | Contents |
 |---|---|
+|[Illustrated bug hunt](hunt/README.md)|19 live-confirmed cases in a Google Doc; runnable evidence, passing controls and pending-fix coverage|
 |[Main report](COMPARISON.md)|Recommendations, feature gaps, timings, live failures and four Pillow illustrations|
 |[Feature matrix](evidence/feature-matrix.md)|All 39 public gdoc commands, consequential flags and CLI/MCP differences|
 |[Command names](COMMANDS.md)|Actual Workspace tools and gdoc subcommands|
@@ -18,7 +19,7 @@ Workspace is the broader and faster sampled office connector; gdoc supplies excl
 |[Live methodology](evidence/performance.md)|Timing samples, native-state checks, runtime versions and harness corrections|
 |[Installation](SETUP.md)|Local Workspace MCP registration and completed account authorization|
 
-The active project is `~/best/once/2026-09-workspace-tools-comparison`; it was restored from the archive for continued evaluation. Both upstream Git clones are retained in ignored `repos/`. Public evidence uses synthetic content; credentials, live resource IDs and transport logs remain Git-ignored in `.local-benchmark/`.
+The active project is `~/best/once/2026-09-workspace-tools-comparison`; it was restored from the archive for continued evaluation. Both upstream Git clones are retained in ignored `repos/`. Public evidence uses synthetic content; credentials, live resource IDs and transport logs remain Git-ignored in `.local-benchmark/` and `.local-hunt/`.
 
 ## Reproduce
 

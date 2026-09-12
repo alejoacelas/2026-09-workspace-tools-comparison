@@ -1,0 +1,252 @@
+{
+  "pin": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "status": "Preview enabled: two suggested replacements succeeded; native read-only previews preserve originals or show proposed text as appropriate.",
+  "cases": [
+    {
+      "case": "suggest_plain",
+      "command": "gdoc suggest DOC draft final --tab TAB --account PERSONAL",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK suggested 1 occurrence (#suggest.ANON)\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "before": {
+        "text": "draft\nreview\nΟΣ\n\n",
+        "suggestion_count": 0
+      },
+      "after": {
+        "text": "finaldraft\nreview\nΟΣ\n\n",
+        "suggestion_count": 1
+      },
+      "native_tabs_unchanged": false,
+      "pass": true
+    },
+    {
+      "case": "PREVIEW_SUGGESTIONS_ACCEPTED",
+      "state": {
+        "text": "final\nreview\nΟΣ\n\n",
+        "suggestion_count": 0
+      }
+    },
+    {
+      "case": "PREVIEW_WITHOUT_SUGGESTIONS",
+      "state": {
+        "text": "draft\nreview\nΟΣ\n\n",
+        "suggestion_count": 0
+      }
+    },
+    {
+      "case": "suggest_bold_inline",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK suggested 1 occurrence (#suggest.ANON)\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "inline": {
+        "text": "finaldraft\napprovedreview\nΟΣ\n\n",
+        "suggestion_count": 2
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟΣ\n\n",
+        "suggestion_count": 0
+      },
+      "accepted_approved_is_bold": true,
+      "pass": true
+    },
+    {
+      "case": "H17_case_sensitive_workaround",
+      "command": "gdoc edit DOC Σ X --all --case-sensitive --tab TAB --account PERSONAL",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK replaced 1 occurrence\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "state": {
+        "text": "finaldraft\napprovedreview\nΟX\n\n",
+        "suggestion_count": 2
+      },
+      "pass": true
+    },
+    {
+      "case": "overlap_pending",
+      "result": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "WARN: doc changed since last read\nERR: match at index 1 overlaps existing suggestion(s) suggest.ANON; accept or reject them first, or choose an anchor outside the suggested text"
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 2
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 2
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "native_tabs_unchanged": true,
+      "pass": true
+    },
+    {
+      "case": "disjoint_all",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK suggested 2 occurrences (#suggest.ANON, #suggest.ANON)\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 2
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "native_tabs_unchanged": false,
+      "pass": true
+    },
+    {
+      "case": "reject_heading",
+      "result": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: suggest supports plain text and inline formatting (bold, italic, strikethrough, code, links); headings, lists, blockquotes, horizontal rules, and tables are not supported yet. Use `gdoc edit` to apply structural Markdown directly."
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "native_tabs_unchanged": true,
+      "pass": true
+    },
+    {
+      "case": "reject_bullets",
+      "result": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: suggest supports plain text and inline formatting (bold, italic, strikethrough, code, links); headings, lists, blockquotes, horizontal rules, and tables are not supported yet. Use `gdoc edit` to apply structural Markdown directly."
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "native_tabs_unchanged": true,
+      "pass": true
+    },
+    {
+      "case": "reject_table",
+      "result": {
+        "returncode": 3,
+        "stdout": "",
+        "stderr": "ERR: suggest supports plain text and inline formatting (bold, italic, strikethrough, code, links); headings, lists, blockquotes, horizontal rules, and tables are not supported yet. Use `gdoc edit` to apply structural Markdown directly."
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\n\n",
+        "suggestion_count": 4
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\n\n",
+        "suggestion_count": 0
+      },
+      "native_tabs_unchanged": true,
+      "pass": true
+    },
+    {
+      "case": "empty_deletion",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK suggested 1 occurrence (#suggest.ANON)\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\nDelete token.\nUnicode token.\n\n",
+        "suggestion_count": 4
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\nDelete token.\nUnicode token.\n\n",
+        "suggestion_count": 5
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n.\nUnicode token.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\nDelete token.\nUnicode token.\n\n",
+        "suggestion_count": 0
+      },
+      "pass": true
+    },
+    {
+      "case": "unicode_bold",
+      "result": {
+        "returncode": 0,
+        "stdout": "OK suggested 1 occurrence (#suggest.ANON)\n",
+        "stderr": "WARN: doc changed since last read"
+      },
+      "before": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\nDelete token.\nUnicode token.\n\n",
+        "suggestion_count": 5
+      },
+      "after": {
+        "text": "finaldraft\napprovedreview\nΟX\nReviewed tokenReview token. Reviewed tokenReview token.\nBlock anchor.\nDelete token.\nReady 😀Unicode token.\n\n",
+        "suggestion_count": 6
+      },
+      "accepted_preview": {
+        "text": "final\napproved\nΟX\nReviewed token. Reviewed token.\nBlock anchor.\n.\nReady 😀.\n\n",
+        "suggestion_count": 0
+      },
+      "without_suggestions_preview": {
+        "text": "draft\nreview\nΟX\nReview token. Review token.\nBlock anchor.\nDelete token.\nUnicode token.\n\n",
+        "suggestion_count": 0
+      },
+      "pass": true,
+      "accepted_ready_emoji_is_bold": true
+    }
+  ]
+}

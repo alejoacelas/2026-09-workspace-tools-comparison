@@ -38,8 +38,12 @@
 - Published nine reviewed Pillow illustrations progressively into a personal Google Doc. Verified 10 tabs and 9 images; two agents inspected all 10 exported content pages. Google adds 10 tab-divider pages to its 20-page export.
 - Stale-read protection refused some fresh-fixture writes; fresh-read retries resolved setup state without forcing writes. These refusals are excluded from content-failure counts. Additional offline candidates remain outside the live-confirmed collection.
 
-## Continued hunt: broader office content [est 45m | actual —]
+## Continued hunt: broader office content [est 45m | actual 35m]
 
-1. [ ] [est 20m] Parallel smart-chip, native-structure, and linked-text investigations with live synthetic controls.
-2. [ ] [est 15m] Independent confirmation and progressive illustrated publication.
-3. [ ] [est 10m] Additional command coverage, deduplication, and final document verification.
+1. [x] Parallel investigations confirmed chip omission/deletion, merged-label targeting, Markdown link/number cases and hidden spreadsheet characters.
+2. [x] Added ten reviewed illustrated cases to the existing collection (19 total). Native checks verify 20 tabs and 19 embedded images; Google PDF export contains 20 content pages and 20 generated tab dividers.
+3. [x] Broadened testing through Unicode matching, comments/plain output, Drive, navigation/images, local round trips and native suggestions. Passing controls and unsupported cases remain in the evidence. Inspected all eleven open PR heads: #66 blocks H16 matches in actual-function tests, but is not installed; the other nine additional cases are not corrected by reviewed patches.
+
+- Native suggestions succeeded with the already-enrolled personal client, including bold/Unicode/deletion and multi-match cases; structural and overlapping changes refused safely. This corrects the earlier untested capability boundary.
+- The Google tab-title length cap rejected H19 publication before tab creation; shortening the title allowed publication. One native API error prevented an unusual tab-title fixture and remains explicitly unconfirmed.
+- Reviewed diagram PNGs and exported Google content pages independently. No upstream fixes or regression tests were added to gdoc; this repository contains executable probes and captured synthetic evidence.

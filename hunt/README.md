@@ -1,6 +1,6 @@
 # Parallel gdoc regression hunt
 
-**Nine illustrated examples reproduce against real Google Docs:** seven successful writes produce incorrect content or formatting; two successful selected-tab reads omit content or numbering. See the [Google Doc](https://docs.google.com/document/d/1H-p2wLRxdc3u8GEdfhpWODd5HZ_NKDzFv4Ap7DnFDt8/edit).
+**Nineteen illustrated cases are confirmed through live Google operations.** The continued hunt added ten cases covering smart chips, merged cells, Unicode matching, spreadsheet imports and output serialization. See the [continued-hunt evidence](round2/README.md). The first nine comprise seven incorrect writes and two selected-tab read failures. See the [Google Doc](https://docs.google.com/document/d/1H-p2wLRxdc3u8GEdfhpWODd5HZ_NKDzFv4Ap7DnFDt8/edit).
 
 Three agents tested 68 offline specimens. The live examples were independently checked against native Google state, and the two read cases against a rendered Google PDF. This is a deliberately adversarial collection, not an estimate of normal-work failure frequency. Eight examples extend the previous comparison; H01 confirms its escaped-pipe case live. These triggers overlap broader campaign repair areas and should not be counted as nine unrelated, globally novel bugs.
 
@@ -28,7 +28,7 @@ H01–H07 use `gdoc write --tab`, not whole-document Drive import. H08–H09 lea
 
 Expected Markdown meaning follows explicit synthetic assertions checked against [CommonMark](https://spec.commonmark.org/0.31.2/) and [GFM tables](https://github.github.com/gfm/#tables-extension-). These are conventions for judging advertised Markdown operations; gdoc does not claim full CommonMark compliance. The independent parser and Workspace provide useful cross-checks, but Workspace uses that same parser, so their agreement is not two independent votes. Live native readback—not agreement between implementations—establishes what Google actually stored.
 
-The best additional office-content lead is missing smart-chip labels in offline native-shaped fixtures. It remains outside the live-confirmed collection. Other ordinal variants, representation gaps, malformed input, and unsupported table shapes retain their original classifications. No upstream fix or PR was made in this run.
+The continued round confirmed missing smart-chip labels live and demonstrated that matching across an omitted chip can delete it. Pending PR #66 blocks that match in an executed patch-function check; it is not installed in the tested pin. See [repair coverage](round2/fix-coverage.md). Other ordinal variants, representation gaps, malformed input, and unsupported table shapes retain their original classifications. No upstream fix or PR was made in this run.
 
 ## Reproduce
 
@@ -46,4 +46,4 @@ The offline probes compare outputs and record differences; a zero exit status me
 
 Live `confirm.py` and `export-extra-probe.py` create or rewrite synthetic personal-account fixtures. `live.py` explicitly verifies the selected personal identity before writes. Raw snapshots, PDF exports, account-specific logs, and resource IDs remain in ignored, owner-only `.local-hunt/`. No resources are shared or permanently deleted by these probes.
 
-The publication scripts write only the locally recorded collection. Synthetic diagrams are hosted in this public repository; the Google Doc's sharing was not changed. The primary seven write fixtures, one extra read fixture, and the collection remain available in the personal account.
+The publication scripts write only the locally recorded collection. Synthetic diagrams are hosted in this public repository; the Google Doc's sharing was not changed. Synthetic fixtures from both rounds and the collection remain in the personal account.

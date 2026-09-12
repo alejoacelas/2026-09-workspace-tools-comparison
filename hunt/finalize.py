@@ -34,6 +34,31 @@ layout=[]
 for t in b.state(id)['tabs']:
  layout.append({'updateDocumentStyle':{'tabId':t['tabProperties']['tabId'],'documentStyle':{'marginTop':{'magnitude':36,'unit':'PT'},'marginBottom':{'magnitude':36,'unit':'PT'},'marginLeft':{'magnitude':54,'unit':'PT'},'marginRight':{'magnitude':54,'unit':'PT'}},'fields':'marginTop,marginBottom,marginLeft,marginRight'}})
 b.update(id,layout)
+# Synchronize reviewed explanations and fix notes without rewriting figures or commands.
+manifest=json.loads((b.ROOT/'hunt/confirmed.json').read_text())
+notes=[]
+for case in manifest:
+ tab=c['cases'][case['id']]
+ native=next(t for t in b.state(id)['tabs'] if t['tabProperties']['tabId']==tab)['documentTab']
+ for element in native['body']['content']:
+  line=''.join(e.get('textRun',{}).get('content','') for e in element.get('paragraph',{}).get('elements',[]))
+  desired=None
+  if line.startswith('Bug. '):desired='Bug. '+case['bug']+'\n'
+  if line.startswith('Evidence: '):desired='Evidence: '+case.get('evidence_label','Live native readback; command returned success.')+' '+case['novelty']+'\n'
+  if desired is not None and line!=desired:
+   notes.append({'replaceAllText':{'containsText':{'text':line,'matchCase':True},'replaceText':desired,'tabsCriteria':{'tabIds':[tab]}}})
+if notes:b.update(id,notes)
+d=b.state(id);links=[]
+for case in manifest:
+ if not case.get('fix_url'):continue
+ tab=c['cases'][case['id']]
+ native=next(t for t in d['tabs'] if t['tabProperties']['tabId']==tab)['documentTab']
+ for p in native['body']['content']:
+  for e in p.get('paragraph',{}).get('elements',[]):
+   text=e.get('textRun',{}).get('content','')
+   if 'PR #66' in text:
+    start=e['startIndex']+u(text[:text.index('PR #66')]);links.append({'updateTextStyle':{'range':{'tabId':tab,'startIndex':start,'endIndex':start+6},'textStyle':{'link':{'url':case['fix_url']}},'fields':'link'}})
+if links:b.update(id,links)
 d=b.state(id);b.save('collection-native.json',d)
 assert len(d['tabs'])==n+1
 checks=[]

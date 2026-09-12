@@ -1,5 +1,5 @@
 {
-  "tabs": 10,
+  "tabs": 20,
   "cases": [
     {
       "case": "h01-escaped-pipe",
@@ -45,14 +45,64 @@
       "case": "h09-numbered-list-read",
       "images": 1,
       "description_command_order": true
+    },
+    {
+      "case": "h10-chip-read",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h11-tsv-crlf",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h12-long-number",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h13-bracket-link",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h14-entity-url",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h15-merged-label",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h16-chip-phantom-match",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h17-greek-exact-match",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h18-comment-tsv",
+      "images": 1,
+      "description_command_order": true
+    },
+    {
+      "case": "h19-csv-signature",
+      "images": 1,
+      "description_command_order": true
     }
   ],
   "pdf_visual_qa": {
     "result": "passed",
-    "review": "Two independent agents reviewed all 10 content pages; no clipping, split figures, or orphaned case descriptions.",
-    "pages": 20,
-    "content_pages": 10,
-    "google_generated_tab_divider_pages": 10,
-    "sha256": "7c66ac7d9c051695e1a9680e1207c225ecc5cf947526cfa2d758e914831894b2"
+    "review": "Three agents inspected the guide and all 19 actual exported content pages. H16 was rerendered and reviewed after its final control-scope correction. No clipping, split figures or orphaned descriptions.",
+    "pages": 40,
+    "content_pages": 20,
+    "google_generated_tab_divider_pages": 20,
+    "sha256": "b06eaf85f2aa68460811a2940298862003b8a4bebc1d22983cd4e620f383f12f"
   }
 }

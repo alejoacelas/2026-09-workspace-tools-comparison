@@ -268,10 +268,10 @@
     "short": "H16",
     "title": "A phantom text match deletes the chip",
     "intent": "Replace the literal phrase \"Before  after\" with \"Replacement\".",
-    "bug": "gdoc concatenates text on either side of a chip into a phrase that is not actually contiguous, then deletes the chip while replacing that phrase. Both person and file chips were lost. Google’s native replacement and Workspace find zero matches and preserve the chip. Adjacent ordinary edits pass.",
+    "bug": "gdoc concatenates text on either side of a chip into a phrase that is not actually contiguous, then deletes the chip while replacing that phrase. Both person and file chips were lost. On the equivalent person-chip control, Google’s native replacement and Workspace find zero matches and preserve the chip. Adjacent ordinary edits pass.",
     "markdown": "",
     "status": "Live confirmed; command returned success",
-    "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
+    "novelty": "Known native-boundary family. Open PR #66 blocks these chip-spanning matches at reviewed head 70f7184; patch-function verification only, not a live patched-CLI test.",
     "source": "https://github.com/LucaDeLeo/gdoc/tree/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc",
     "before": {
       "kind": "segments",
@@ -322,14 +322,15 @@
       "diagnostic": "gdoc reports 1 replacement; native person count drops from 1 to 0."
     },
     "commands": "gdoc cat DOC --tab TAB --account PERSONAL\ngdoc edit DOC \"Before  after\" Replacement --tab TAB --account PERSONAL",
-    "setup": "Setup: use the person-chip paragraph from chips-edits.py; two spaces separate Before and after in the search phrase. Alex Example is an anonymized account name."
+    "setup": "Setup: use the person-chip paragraph from chips-edits.py; two spaces separate Before and after in the search phrase. Alex Example is an anonymized account name.",
+    "fix_url": "https://github.com/LucaDeLeo/gdoc/pull/66"
   },
   {
     "id": "h17-greek-exact-match",
     "short": "H17",
     "title": "A literal Greek character cannot be found",
     "intent": "Replace the actual uppercase Σ in ΟΣ with X.",
-    "bug": "Lowercasing the whole Greek word turns its final Σ into ς, while lowercasing the query Σ produces σ. gdoc then reports no match for the exact character present in the source. Google replaces it correctly. The same query in Budget Σ works in both tools.",
+    "bug": "Lowercasing the whole Greek word turns its final Σ into ς, while lowercasing the query Σ produces σ. gdoc then reports no match for the exact character present in the source. Google replaces it correctly. The same query in Budget Σ works in both tools. Using --case-sensitive succeeds for this exact-character case.",
     "markdown": "",
     "status": "Live confirmed: exact-character search refused",
     "novelty": "Additional concrete regression trigger; broad campaign repair areas can overlap.",
@@ -404,7 +405,7 @@
   {
     "id": "h19-csv-signature",
     "short": "H19",
-    "title": "UTF-8 file signature becomes part of the header",
+    "title": "CSV signature becomes part of the header",
     "intent": "Import a CSV whose UTF-8 encoding includes a byte-order signature.",
     "bug": "The importer treats the initial UTF-8 signature as a literal U+FEFF character in the first header. Item looks normal but no longer equals Item exactly. Native Google CSV import removes the signature and retains the intended header. This is an encoding interoperability defect, separate from CRLF handling.",
     "markdown": "",

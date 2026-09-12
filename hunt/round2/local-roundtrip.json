@@ -1,0 +1,104 @@
+{
+  "revision": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "scope": "pull/local-edit/push; plain synthetic Docs; tabbed doc safety refusal",
+  "cases": [
+    {
+      "case": "pull_metadata_standard",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pulled \"Budget notes\" -> LOCAL_FILES/standard.md\n",
+      "stderr": ""
+    },
+    {
+      "case": "unchanged_plain_push",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/standard.md\n",
+      "stderr": "",
+      "remote_text": "Status draft.",
+      "scope_note": "Content check only; no claim of zero-write no-op or preservation of rich structure"
+    },
+    {
+      "case": "plain_word_edit_push",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/standard.md\n",
+      "stderr": "",
+      "remote_text": "Status final."
+    },
+    {
+      "case": "punctuation_title_and_local_filename",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pulled \"Director's notes: Plan (Σ) #1\" -> LOCAL_FILES/Owner's notes (Σ) résumé.md\n",
+      "stderr": "",
+      "local_filename": "Owner's notes (Σ) résumé.md",
+      "metadata_title": "Director's notes: Plan (Σ) #1"
+    },
+    {
+      "case": "renamed_local_file_keeps_doc_binding",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/Director's notes: Plan (Σ) #1.md\n",
+      "stderr": "",
+      "source_text": "Status approved.",
+      "other_text": "SIBLING KEEP."
+    },
+    {
+      "case": "title_metadata_does_not_retarget_or_rename",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/standard.md\n",
+      "stderr": "",
+      "remote_title": "Budget notes",
+      "remote_text": "Status ready."
+    },
+    {
+      "case": "crlf_local_file_word_edit",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/standard.md\n",
+      "stderr": "",
+      "remote_text": "Status complete."
+    },
+    {
+      "case": "leading_dash_filename_via_absolute_path",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pushed LOCAL_FILES/--draft Σ.md\n",
+      "stderr": "",
+      "local_filename": "--draft Σ.md",
+      "remote_text": "Status checked."
+    },
+    {
+      "case": "tab_url_pull_is_document_bound",
+      "returncode": 0,
+      "passed": true,
+      "stdout": "OK pulled \"Synthetic local tab binding\" -> LOCAL_FILES/selected-tab-link.md\n",
+      "stderr": "",
+      "metadata_keys": [
+        "gdoc",
+        "title"
+      ],
+      "pulled_body": "# Tab 1\n\nFIRST KEEP.\n\n# Second\n\nSECOND draft.  \n",
+      "scope_note": "pull has no --tab argument; URL query does not become a tab-bound push contract"
+    },
+    {
+      "case": "multi_tab_push_refuses_preserves_siblings",
+      "returncode": 3,
+      "passed": true,
+      "stdout": "",
+      "stderr": "ERR: push would collapse 2 tabs into 1. Use `gdoc edit --tab NAME` for find/replace within a tab, `gdoc insert --tab NAME FILE` to add content to a tab, or pass --force-collapse-tabs to confirm.",
+      "tab_count_before": 2,
+      "tab_count_after": 2,
+      "texts_before": [
+        "FIRST KEEP.\n\n",
+        "SECOND draft.\n\n"
+      ],
+      "texts_after": [
+        "FIRST KEEP.\n\n",
+        "SECOND draft.\n\n"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "revision": "dbfa4c34bfa699ee8dd9839da85eea1fac177d44",
+  "family": "H18 machine-readable delimiter escaping; not new independent bugs",
+  "reader": "Python csv.reader delimiter TAB, quotechar double quote, strict=True",
+  "cases": [
+    {
+      "case": "ls_ordinary_control",
+      "command": "ls",
+      "native_title": "Café Σ budget",
+      "plain_returncode": 0,
+      "json_returncode": 0,
+      "plain_roundtrips_title_and_record_shape": true,
+      "json_roundtrips_title": true,
+      "plain_stdout": "SOURCE\tCafé Σ budget\tapplication/vnd.google-apps.document\nCHILD\tOwner's archive (Σ)\tapplication/vnd.google-apps.folder\n",
+      "csv_reader_records": [
+        [
+          "SOURCE",
+          "Café Σ budget",
+          "application/vnd.google-apps.document"
+        ],
+        [
+          "CHILD",
+          "Owner's archive (Σ)",
+          "application/vnd.google-apps.folder"
+        ]
+      ]
+    },
+    {
+      "case": "tabs_ordinary_control",
+      "command": "tabs",
+      "native_title": "Tab 1",
+      "plain_returncode": 0,
+      "json_returncode": 0,
+      "plain_roundtrips_title_and_record_shape": true,
+      "json_roundtrips_title": true,
+      "plain_stdout": "TAB\tTab 1\n",
+      "csv_reader_records": [
+        [
+          "TAB",
+          "Tab 1"
+        ]
+      ]
+    },
+    {
+      "case": "ls_tab_newline_title",
+      "command": "ls",
+      "native_title": "Budget\tQ4\nBoard",
+      "plain_returncode": 0,
+      "json_returncode": 0,
+      "plain_roundtrips_title_and_record_shape": false,
+      "json_roundtrips_title": true,
+      "plain_stdout": "SOURCE\tBudget\tQ4\nBoard\tapplication/vnd.google-apps.document\nCHILD\tOwner's archive (Σ)\tapplication/vnd.google-apps.folder\n",
+      "csv_reader_records": [
+        [
+          "SOURCE",
+          "Budget",
+          "Q4"
+        ],
+        [
+          "Board",
+          "application/vnd.google-apps.document"
+        ],
+        [
+          "CHILD",
+          "Owner's archive (Σ)",
+          "application/vnd.google-apps.folder"
+        ]
+      ]
+    },
+    {
+      "case": "info_tab_newline_title",
+      "command": "info",
+      "native_title": "Budget\tQ4\nBoard",
+      "plain_returncode": 0,
+      "json_returncode": 0,
+      "plain_roundtrips_title_and_record_shape": false,
+      "json_roundtrips_title": true,
+      "plain_stdout": "title\tBudget\tQ4\nBoard\nowner\tPERSON\nmodified\t2026-09-12T19:33:57.697Z\nwords\t3\n",
+      "csv_reader_records": [
+        [
+          "title",
+          "Budget",
+          "Q4"
+        ],
+        [
+          "Board"
+        ],
+        [
+          "owner",
+          "PERSON"
+        ],
+        [
+          "modified",
+          "2026-09-12T19:33:57.697Z"
+        ],
+        [
+          "words",
+          "3"
+        ]
+      ]
+    },
+    {
+      "case": "tabs_tab_newline_title",
+      "status": "unconfirmed: native setup returned HTTP500",
+      "requested_title": "Budget\tQ4\nBoard",
+      "native_title_after": "Tab 1",
+      "reason": "Backend did not establish the requested tab-title fixture; no gdoc output defect inferred."
+    }
+  ]
+}
