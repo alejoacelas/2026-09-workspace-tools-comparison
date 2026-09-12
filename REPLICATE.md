@@ -72,3 +72,15 @@ The human wanted agents to invent and test additional failure cases, collecting 
 - Kept scratch resource IDs and raw exports local. Published synthetic evidence and reusable probes; no upstream fixes or PRs were made. Stale-read refusals were resolved by fresh reads and excluded from content failures.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 0b7b99c (plan), 1b312c9 (live write evidence), 4dbc545 (publication), e9eb933 (review refinements and extra probe), 7b78965 (live read findings), a9571b4 (report and final verification)
+
+## Continue the hunt across office workflows
+
+The human wanted continued parallel idea generation and live testing, with confirmed errors collected in the existing illustrated Google Doc.
+
+- Added ten live-confirmed cases, bringing the collection to 19: native chip omission/deletion, merged-label targeting, Unicode matching, Markdown links/account numbers, spreadsheet encoding/line endings and malformed plain output. Kept related triggers within their existing repair families rather than claiming ten unrelated discoveries.
+- Checked actual native state and selected Workspace operations. Workspace passed the targeted link/account-number assertions; native Google and Workspace preserved a person chip where gdoc's phantom match deleted it. Native CSV import handled the UTF-8 signature that gdoc retained as header content.
+- Broadened passing controls across Drive, navigation/images, local pull/edit/push and real pending suggestions. Unsupported inputs, Unicode policy differences and a failed native tab-title setup remain distinguished from confirmed defects.
+- Inspected all eleven open gdoc PR heads. Executed search functions from PR #66 block the destructive chip match; the patch is pending and was not installed or tested through the live CLI. The other nine additional cases are not corrected by the reviewed patches.
+- Published 19 Pillow diagrams in 20 Google Doc tabs. Three agents reviewed the exported content pages; native image/tab checks, Python/JSON checks and local-link checks passed. Raw account resources remain local; no upstream fixes or regression tests were added.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: a85b16a (continued plan), 32390ad (seven additional cases), 83d2639 (three cases and broader controls), 71579d6 (repair coverage, final controls and verified publication)
