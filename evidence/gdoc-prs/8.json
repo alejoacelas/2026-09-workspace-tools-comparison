@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n- update `gdoc.__version__` to match the packaged project version\n- add a CLI regression test that checks `gdoc --version` against `pyproject.toml`\n- refresh `uv.lock` so the editable package version is consistent too\n\n## Verification\n- `uv run --extra dev pytest tests/test_cli.py`\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Version bumped to 0.6.2.\n\n* **Tests**\n  * Added test coverage for version command validation, ensuring the CLI version output correctly reflects the package version.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-04-10T10:59:10Z",
+  "number": 8,
+  "state": "MERGED",
+  "title": "Fix version metadata drift",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/8"
+}

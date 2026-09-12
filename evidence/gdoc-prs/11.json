@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n- Fix `__init__.py` version that was stuck at 0.5.0 while pyproject.toml was at 0.6.2\n- Add test to prevent future version drift between `__init__.py`, `pyproject.toml`, and CLI output\n- Bump version to 0.6.3\n\n## Test plan\n- [x] `test_version_matches_project_version` passes \u2014 verifies all three sources agree\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated package version to 0.6.3\n\n* **Tests**\n  * Added new version verification test\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-04-10T10:59:08Z",
+  "number": 11,
+  "state": "MERGED",
+  "title": "Fix version metadata drift",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/11"
+}

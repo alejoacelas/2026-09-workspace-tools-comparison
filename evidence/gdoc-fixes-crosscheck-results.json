@@ -1,0 +1,378 @@
+{
+  "plain_replace_avoids_gdoc_extra_newline_and_markdown_resets": {
+    "replaceAllText": {
+      "containsText": {
+        "text": "old",
+        "matchCase": true
+      },
+      "replaceText": "new",
+      "tabsCriteria": {
+        "tabIds": [
+          "t.0"
+        ]
+      }
+    }
+  },
+  "populate_rich_body": {
+    "result": {
+      "action": "populate_from_markdown",
+      "success": true,
+      "message": "Populated tab 't.0' in document synthetic from 3 characters of markdown.",
+      "requests_applied": 3,
+      "tab_id": "t.0",
+      "link": "https://docs.google.com/document/d/synthetic/edit"
+    },
+    "batch": {
+      "requests": [
+        {
+          "deleteContentRange": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 19,
+              "tabId": "t.0"
+            }
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 1,
+              "tabId": "t.0"
+            },
+            "text": "new\n"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 5,
+              "tabId": "t.0"
+            },
+            "text": "\n"
+          }
+        }
+      ]
+    }
+  },
+  "populate_identical_plain": {
+    "result": {
+      "action": "populate_from_markdown",
+      "success": true,
+      "message": "Populated tab 't.0' in document synthetic from 4 characters of markdown.",
+      "requests_applied": 3,
+      "tab_id": "t.0",
+      "link": "https://docs.google.com/document/d/synthetic/edit"
+    },
+    "batch": {
+      "requests": [
+        {
+          "deleteContentRange": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 5,
+              "tabId": "t.0"
+            }
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 1,
+              "tabId": "t.0"
+            },
+            "text": "same\n"
+          }
+        },
+        {
+          "insertText": {
+            "location": {
+              "index": 6,
+              "tabId": "t.0"
+            },
+            "text": "\n"
+          }
+        }
+      ]
+    }
+  },
+  "batch_revision_observed_but_not_enforced": {
+    "revision_before": "r1",
+    "batch": {
+      "requests": [
+        {
+          "insertText": {
+            "text": "x",
+            "location": {
+              "index": 1,
+              "tabId": "t.0"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "existing_credentials_permissions": {
+    "before": "0644",
+    "after": "0o644",
+    "dummy_credentials_only": true
+  },
+  "gdoc_existing_credentials_permissions": {
+    "before": "0644",
+    "after": "0600"
+  },
+  "retry_ssl": {
+    "attempts": 2,
+    "recovered": true
+  },
+  "retry_connection_reset": {
+    "attempts": 1,
+    "recovered": false
+  },
+  "retry_http_503": {
+    "attempts": 1,
+    "recovered": false
+  },
+  "markdown_nested_list": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1,
+          "tabId": "t.0"
+        },
+        "text": "parent\n"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 8,
+          "tabId": "t.0"
+        },
+        "text": "child\n"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 14,
+          "tabId": "t.0"
+        },
+        "text": "peer\n"
+      }
+    },
+    {
+      "createParagraphBullets": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 19,
+          "tabId": "t.0"
+        },
+        "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 19,
+          "tabId": "t.0"
+        },
+        "text": "\n"
+      }
+    }
+  ],
+  "markdown_table": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1,
+          "tabId": "t.0"
+        },
+        "text": "| A | B | | --- | --- | | x | y |\n"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 35,
+          "tabId": "t.0"
+        },
+        "text": "\n"
+      }
+    }
+  ],
+  "markdown_strikethrough": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1,
+          "tabId": "t.0"
+        },
+        "text": "~~gone~~\n"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 10,
+          "tabId": "t.0"
+        },
+        "text": "\n"
+      }
+    }
+  ],
+  "markdown_image": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1,
+          "tabId": "t.0"
+        },
+        "text": "Diagram\n"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 8,
+          "tabId": "t.0"
+        },
+        "textStyle": {
+          "link": {
+            "url": "https://example.invalid/image.png"
+          }
+        },
+        "fields": "link"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 9,
+          "tabId": "t.0"
+        },
+        "text": "\n"
+      }
+    }
+  ],
+  "markdown_heading_bold": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1,
+          "tabId": "t.0"
+        },
+        "text": "Heading\n"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 9,
+          "tabId": "t.0"
+        },
+        "paragraphStyle": {
+          "namedStyleType": "HEADING_1"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "updateTextStyle": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 8,
+          "tabId": "t.0"
+        },
+        "textStyle": {
+          "bold": true
+        },
+        "fields": "bold"
+      }
+    },
+    {
+      "insertText": {
+        "location": {
+          "index": 9,
+          "tabId": "t.0"
+        },
+        "text": "\n"
+      }
+    }
+  ],
+  "gdoc_nested_list_requests": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1
+        },
+        "text": "parent\n\tchild\npeer\n"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 8
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 8,
+          "endIndex": 15
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 15,
+          "endIndex": 20
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "createParagraphBullets": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 8
+        },
+        "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+      }
+    },
+    {
+      "createParagraphBullets": {
+        "range": {
+          "startIndex": 8,
+          "endIndex": 15
+        },
+        "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+      }
+    },
+    {
+      "createParagraphBullets": {
+        "range": {
+          "startIndex": 14,
+          "endIndex": 19
+        },
+        "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+      }
+    }
+  ],
+  "heading_and_list_export": "# Heading\n\n- Item\n"
+}

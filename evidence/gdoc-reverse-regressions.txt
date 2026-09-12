@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.0.2, pluggy-1.6.0
+rootdir: /Users/alejo/best/once/2026-09-workspace-tools-comparison/repos/gdoc
+configfile: pyproject.toml
+plugins: mock-3.15.1
+collected 142 items
+
+tests/test_find.py .............                                         [  9%]
+tests/test_mdparse.py .................................................. [ 44%]
+.................................................                        [ 78%]
+tests/test_sheets_api.py ..............                                  [ 88%]
+tests/test_cat_tabs.py ................                                  [100%]
+
+============================= 142 passed in 0.18s ==============================

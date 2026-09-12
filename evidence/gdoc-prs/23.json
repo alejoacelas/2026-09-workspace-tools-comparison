@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\nMakes company-wide rollout a one-command onboarding: an admin creates one shared Internal OAuth client and distributes it; users just run `gdoc auth`.\n\n- OAuth client config resolves from three sources, first match wins: `GDOC_CLIENT_ID`+`GDOC_CLIENT_SECRET` env vars \u2192 `GDOC_CLIENT_CREDENTIALS` file path \u2192 `~/.config/gdoc/credentials.json`\n- `gdoc auth --setup-url <url>` fetches the org's client file, validates it looks like a Google OAuth client config, and stores it with 0600 perms before running the flow; `GDOC_SETUP_URL` triggers the same fetch automatically when no client config exists yet\n- `gdoc auth --domain <domain>` / `GDOC_AUTH_DOMAIN` passes an `hd` hint so the account chooser pre-filters to the Workspace domain; email-shaped account names are forwarded as `login_hint`\n- Version 0.10.0, CHANGELOG entry, README \"Org-wide setup\" section\n\n## Test plan\n\n- 16 new tests: each credential source, setup-url fetch/validation/network-failure paths, env-URL only-when-missing, hd/login_hint forwarding\n- Full suite: 965 passed; stub gate clean; ruff clean on touched files\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "mergedAt": "2026-06-09T18:43:21Z",
+  "number": 23,
+  "state": "MERGED",
+  "title": "auth: org-friendly OAuth client sourcing (0.10.0)",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/23"
+}

@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\nFixes both P2 findings from the Codex reviews on #23 and #24.\n\n- **Tab writes no longer claim full-doc knowledge** (#24 review): the 0.10.1 baseline advance keyed off `command in (\"push\", \"write\")`, but `cmd_write` uses `command=\"write\"` for tab writes too \u2014 so `write --tab --force` after unseen remote changes healed the baseline and let the next full-doc `push`/`write` silently overwrite them. `update_state_after_command` now takes an explicit `full_doc_write` flag, set only by `push`, full-doc `write`, the in-sync no-op path, and the sync hook.\n- **Credential overwrites enforce 0600** (#23 review): `os.open(..., O_CREAT, 0o600)` ignores the mode for existing files, so `gdoc auth --setup-url` over a world-readable `credentials.json` left it 0644. New `_write_private` helper writes a fresh 0600 temp file and atomically `os.replace`s it over the target; used by both `_fetch_client_credentials` and `_save_token` (which had the same latent issue).\n\n## Test plan\n\n- 4 new tests: forced tab write doesn't advance the baseline (state + CLI level), setup-url overwrite of a 0644 credentials.json ends 0600, token re-save fixes loose permissions\n- Updated exact-match call assertions for the new kwarg\n- Full suite: 977 passed; stub gate clean; ruff at baseline\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "mergedAt": "2026-06-09T19:20:34Z",
+  "number": 26,
+  "state": "MERGED",
+  "title": "fix: address Codex review findings from #23/#24 (0.10.2)",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/26"
+}

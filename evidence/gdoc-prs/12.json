@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n- Adds `gdoc toc` command that extracts document headings with deep-link URLs\n- Supports `--tab`, `--max-depth`, `--no-links` flags and all output modes (json/plain/verbose/terse)\n- New `get_document_headings()` API-layer function for heading extraction from document body\n\n## Test plan\n- [x] 18 tests covering basic output, max-depth filtering, all output modes, tab support, awareness system integration, and API-layer unit tests\n- [x] All existing tests pass\n- [x] Codex review passed with no issues\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added table of contents generation with support for multiple output formats (JSON, markdown, plain, verbose)\n  * Options to filter by heading depth, control link inclusion, and target specific tabs\n\n* **Chores**\n  * Version updated to 0.7.0\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-04-10T11:33:28Z",
+  "number": 12,
+  "state": "MERGED",
+  "title": "feat: add `gdoc toc` command for deep-linked table of contents",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/12"
+}

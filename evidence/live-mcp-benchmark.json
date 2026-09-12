@@ -1,0 +1,139 @@
+{
+  "started_utc": "2026-09-12T17:26:09.387039+00:00",
+  "checks": [
+    {
+      "case": "non_image_source_error_contract",
+      "tool": "workspace",
+      "pass": false,
+      "mcp_is_error": false,
+      "response": "Error: File RESOURCE_2 is not an image (MIME type: application/vnd.google-apps.document)."
+    },
+    {
+      "case": "gdoc_mcp_replace_0",
+      "tool": "gdoc_mcp",
+      "pass": true
+    },
+    {
+      "case": "gdoc_mcp_replace_1",
+      "tool": "gdoc_mcp",
+      "pass": true
+    },
+    {
+      "case": "gdoc_mcp_replace_2",
+      "tool": "gdoc_mcp",
+      "pass": true
+    },
+    {
+      "case": "gdoc_mcp_replace_3",
+      "tool": "gdoc_mcp",
+      "pass": true
+    },
+    {
+      "case": "gdoc_mcp_replace_4",
+      "tool": "gdoc_mcp",
+      "pass": true
+    }
+  ],
+  "samples": [
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc_mcp",
+      "trial": 0,
+      "seconds": 1.1975,
+      "ok": true,
+      "output_bytes": 4511,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc_mcp",
+      "trial": 0,
+      "seconds": 2.4139,
+      "ok": true,
+      "output_bytes": 24,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc_mcp",
+      "trial": 1,
+      "seconds": 1.06,
+      "ok": true,
+      "output_bytes": 4410,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc_mcp",
+      "trial": 1,
+      "seconds": 2.3079,
+      "ok": true,
+      "output_bytes": 24,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc_mcp",
+      "trial": 2,
+      "seconds": 1.5659,
+      "ok": true,
+      "output_bytes": 4410,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc_mcp",
+      "trial": 2,
+      "seconds": 2.245,
+      "ok": true,
+      "output_bytes": 24,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc_mcp",
+      "trial": 3,
+      "seconds": 1.0547,
+      "ok": true,
+      "output_bytes": 4410,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc_mcp",
+      "trial": 3,
+      "seconds": 2.0007,
+      "ok": true,
+      "output_bytes": 24,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc_mcp",
+      "trial": 4,
+      "seconds": 2.8145,
+      "ok": true,
+      "output_bytes": 4410,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc_mcp",
+      "trial": 4,
+      "seconds": 1.8088,
+      "ok": true,
+      "output_bytes": 24,
+      "error": ""
+    }
+  ],
+  "scope": "corrected setup, native oracle, MCP vs MCP",
+  "resources_created": 36,
+  "gdoc_mcp_startup_seconds": 0.0772,
+  "gdoc_mcp_tools": 30,
+  "ended_utc": "2026-09-12T17:26:39.947631+00:00"
+}

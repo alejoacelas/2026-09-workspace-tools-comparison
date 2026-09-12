@@ -1,0 +1,438 @@
+[
+  {
+    "body": "## Description\n\n`markdown_to_docs_requests` emits explicit `updateParagraphStyle HEADING_N` for headings but **no explicit style for body paragraphs or inter-block spacers**. When the output is applied at a doc index where the boundary paragraph carries a `namedStyleType` other than `NORMAL_TEXT` (e.g. `HEADING_1`), the newly inserted body paragraphs and spacers inherit that style \u2014 every body line renders as a heading.\n\n## Minimal repro\n\n```python\n# Document already contains one HEADING_1 paragraph at index 1.\nrequests = markdown_to_docs_requests(\"Plain body paragraph.\", start_index=1)\n# Before this fix: the inserted paragraph renders as HEADING_1 (inherits from the boundary).\n# After this fix: the inserted paragraph renders as NORMAL_TEXT (explicit reset emitted).\n```\n\nHarmless when targeting the start of a fresh doc (index 1 of an empty body is `NORMAL_TEXT`), but surfaces clearly when the converter is driven against a mid-document index \u2014 for example by `manage_doc_tab(content_markdown=...)` against an existing tab that ends with a heading, or by any future tool that wants to splice markdown into an existing doc.\n\n## Fix\n\n- New `_build_normal_text_style(start, end, tab_id)` helper.\n- `paragraph_open`, `fence`, `blockquote_open`, `hr`, and every inter-block spacer (including the one after `heading_open`, `bullet_list`, `ordered_list`) now emit an explicit `updateParagraphStyle(NORMAL_TEXT)` after their `insertText`.\n- The existing `_build_heading_style` calls still fire after their spacer reset, so heading paragraphs continue to render correctly.\n\n## Tests\n\nTwo existing tests adjusted to expect the additional NORMAL_TEXT resets:\n- `test_h1_emits_insert_and_heading_style`\n- `test_h2_h3_h4_h5_h6_all_emit_correct_named_style`\n\nTwo new regression tests:\n- `test_body_paragraph_emits_normal_text_reset` \u2014 verifies the body paragraph + spacer both carry a NORMAL_TEXT reset.\n- `test_heading_followed_by_body_has_normal_reset_between` \u2014 verifies the full sequence (`HEADING_1`, `NORMAL_TEXT` spacer, `NORMAL_TEXT` body, `NORMAL_TEXT` spacer) for a mixed heading+body markdown input.\n\n`pytest tests/gdocs/test_docs_markdown_writer.py`: **28 passed**.\nFull suite on this branch (`upstream/main` + this fix): **1221 passed, 2 deselected, 0 failures**.\n\n## Type of Change\n\n- [x] Bug fix (non-breaking change which fixes an issue)\n\n## Testing\n\n- [x] Tests added\n- [x] Existing tests updated + passing\n- [x] Verified live: a doc with H1 sections produced clean H1/body/H1 output after running `markdown_to_docs_requests` at a mid-document index (was: every body paragraph rendering as H1 before the fix).\n\n## Checklist\n\n- [x] My code follows the style guidelines of this project (`ruff check`, `ruff format --check` both clean)\n- [x] I have performed a self-review of my own code\n- [x] My changes generate no new warnings\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\n\n## Additional Notes\n\nDiscovered while building section-addressable markdown editing tools (#852 \u2014 depends on this fix to render cleanly). Independently useful: any caller of `markdown_to_docs_requests` that targets a non-empty doc benefits.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+    "files": [
+      {
+        "path": "gdocs/docs_markdown_writer.py",
+        "additions": 54,
+        "deletions": 4,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_docs_markdown_writer.py",
+        "additions": 68,
+        "deletions": 12,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "e2220475cf632d465fbbd4b5e3dd7060484c1481",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 850,
+    "state": "OPEN",
+    "title": "fix(gdocs): emit NORMAL_TEXT reset for body paragraphs + spacers in markdown_to_docs_requests",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/850",
+    "merge_commit_in_pinned_history": null
+  },
+  {
+    "body": "## Live failure (2026-07-16, CO OS agent \u2014 12+ failed tool calls in one turn)\n\nAsked to \"put this on a google sheet\", the agent hit dead ends on every route:\n\n1. **`import_to_google_sheets(content=<csv>, file_name=\"DifferentDog Spend Summary\")` never works** \u2014 a sheet *name* has no file extension, `_detect_source_format` falls to `text/plain`, and the allowlist refuses. The docstring's own primary example only works if the caller remembers `source_format='csv'`.\n2. **HTML pages imported as data** \u2014 an anonymously-fetched Drive share link returns Google's sign-in page; imported, it became a 148\u00d76362-cell garbage \"spreadsheet\" (the \"weird code\" sheet).\n3. **`create_drive_file(content=\u2026, mime_type=application/vnd.google-apps.spreadsheet)` \u2192 HTTP 400** \u2014 native Google types aren't uploadable media formats.\n\n## Fixes\n\n- `_resolve_import_media`: inline `content` with no explicit hint and no recognizable extension defaults to the tool's own text format (tab-sniffed `tsv`, else `csv` for Sheets; docs keep plain/markdown; binary-only tools still refuse).\n- `file_url` fetches: reject `text/html` responses (content-type or `<!doctype`/`<html` sniff) with a clear \"sign-in or error page\" message, unless the tool accepts HTML as a source.\n- `create_drive_file`: text content with a native Google target uploads as a convertible source (csv \u2192 Sheet, plain \u2192 Doc) with the native mimetype in the metadata \u2014 Drive converts on create; Slides from text errors clearly toward `import_to_google_*`.\n\n## Tests\n\n`tests/gdrive/test_sheets_import_fixes.py` \u2014 9 regression cases covering all three paths (incl. explicit-hint-still-wins, binary-tools-still-refuse, real-CSV-URL-still-works, and the exact live call shape end-to-end). gdrive module: 110 passed.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added the ability to move Drive files or folders to Trash or delete them permanently.\n  * Text content can now be used to create native Google Sheets files.\n* **Bug Fixes**\n  * Improved detection of inline CSV and tab-separated content when no file extension is provided.\n  * Added clearer handling for unsupported native Google file types.\n  * Detects and rejects inaccessible or sign-in HTML pages returned from shared links.\n* **Tests**\n  * Added regression coverage for imports, file creation, format detection, and invalid responses.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdrive/drive_helpers.py",
+        "additions": 43,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdrive/drive_tools.py",
+        "additions": 78,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdrive/test_sheets_import_fixes.py",
+        "additions": 227,
+        "deletions": 0,
+        "changeType": "ADDED"
+      }
+    ],
+    "headRefOid": "cfc08cb94f28c6a26412e45dd24786a62192f86b",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 930,
+    "state": "CLOSED",
+    "title": "fix(drive): make the Sheets import paths actually work (inline CSV, HTML-page guard, native-type conversion)",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/930",
+    "merge_commit_in_pinned_history": null
+  },
+  {
+    "body": "@mesozoic for viz\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Spreadsheet reads now display all fetched rows instead of truncating after the first 50.\n  * Large-range results include complete row details without any \u201cmore rows\u201d truncation message.  \n* **Tests**\n  * Added a regression test covering large-range reads (120 rows) to ensure full rendering and absence of truncation output.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gsheets/sheets_tools.py",
+        "additions": 1,
+        "deletions": 2,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gsheets/test_read_sheet_values.py",
+        "additions": 17,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "02b05934274e12f3c519d0f903cb493323f58f74",
+    "mergeCommit": {
+      "oid": "1cae59684f4022b5140236d515d2e8b08d37b118"
+    },
+    "mergedAt": "2026-07-23T16:33:10Z",
+    "number": 955,
+    "state": "MERGED",
+    "title": "fix: sheets only returns 50 rows",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/955",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Summary\n\nValidate `_column_to_index` inputs so only bare column letters (e.g. `A`, `AA`) are accepted. Cell references like `B2` or ranges like `A:B` now return `None`, allowing existing `UserInputError` guards in `resize_sheet_dimensions` and related tools to reject bad input before any `batchUpdate` is issued.\n\n## Motivation\n\nFixes #958. When an LLM passes a cell reference where a bare column letter is expected (e.g. `delete_columns=[\"B2\"]`), the old helper silently resolved to column **AL** (index 37) and permanently deleted the wrong column while reporting success.\n\n## Changes\n\n- Add `COLUMN_LETTER_REGEX` and reject non-letter inputs in `_column_to_index`\n- Add unit tests in `tests/gsheets/test_sheets_helpers.py`\n- Add integration regression test ensuring `delete_columns=[\"B2\"]` raises `UserInputError` without calling the API\n\n## Tests\n\n```bash\npython3 -m pytest tests/gsheets/test_sheets_helpers.py tests/gsheets/test_resize_sheet_dimensions.py -q\n```\n\n- 31/31 passed\n\n## Notes\n\n- No behavioral change for valid bare column letters (`A`, `Z`, `AA`, `AL`, etc.)\n- `_parse_a1_part` is unaffected \u2014 it still extracts only the letter group from A1 notation before calling `_column_to_index`\n\nFixes #958\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Strengthened validation for spreadsheet column-letter inputs, rejecting values with trailing whitespace/newlines and non-letter formats.\n  * Prevents cell-style references (e.g., column+row) from being accepted where only bare column letters are expected.\n  * Improved handling of A1-style parts and safer quoting for sheet titles, including titles containing trailing newlines.\n* **Tests**\n  * Added/expanded coverage for the stricter validation and quoting behavior.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gsheets/sheets_helpers.py",
+        "additions": 4,
+        "deletions": 3,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gsheets/test_resize_sheet_dimensions.py",
+        "additions": 16,
+        "deletions": 18,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gsheets/test_sheets_helpers.py",
+        "additions": 54,
+        "deletions": 0,
+        "changeType": "ADDED"
+      }
+    ],
+    "headRefOid": "825ec4c89311f249f0b5fb1ddbf99f0a0801ce0e",
+    "mergeCommit": {
+      "oid": "f0c4b3400d48c72189c28788dfa1abe8d14aeb0b"
+    },
+    "mergedAt": "2026-07-26T15:14:13Z",
+    "number": 964,
+    "state": "MERGED",
+    "title": "fix(gsheets): reject cell references in column letter parameters",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/964",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Description\r\n\r\nFixes `inspect_doc_structure` for tabbed Google Docs when callers do not provide `tab_id`.\r\n\r\nWhen `documents.get(..., includeTabsContent=True)` returns tabbed document content under `tabs[].documentTab.body`, the current no-`tab_id` path copies the first tab's headers/footers/style for analysis but leaves `analysis_doc[\"body\"]` set to the top-level document body. For tabbed Docs, that top-level body can be empty, so the tool can report `total_length: 0` and zero elements even when the first tab has body content.\r\n\r\nThis PR makes the existing first-document-tab fallback also use the first tab's body and named ranges before parsing structure.\r\n\r\nFixes #975.\r\n\r\n## Type of Change\r\n\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [ ] Documentation update\r\n\r\n## Testing\r\n\r\n- [x] I have added tests that prove my fix is effective or that my feature works\r\n- [x] New and existing unit tests pass locally with my changes\r\n- [x] I have tested this change manually\r\n\r\nCommands run:\r\n\r\n```bash\r\nuv run pytest tests/gdocs/test_header_footer_guardrails.py -q\r\nuv run ruff check gdocs/docs_tools.py tests/gdocs/test_header_footer_guardrails.py\r\n```\r\n\r\n## Checklist\r\n\r\n- [x] My code follows the style guidelines of this project\r\n- [x] I have performed a self-review of my own code\r\n- [x] I have commented my code, particularly in hard-to-understand areas\r\n- [x] My changes generate no new warnings\r\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\r\n.\r\n",
+    "files": [
+      {
+        "path": "gdocs/docs_tools.py",
+        "additions": 2,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_header_footer_guardrails.py",
+        "additions": 21,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "ff59acc0f9deb8fee0b2bda6c5e276f2c613ec30",
+    "mergeCommit": {
+      "oid": "8231a3fe510f4932d3df6080ecde7d3a49aba795"
+    },
+    "mergedAt": "2026-07-28T23:10:42Z",
+    "number": 976,
+    "state": "MERGED",
+    "title": "Fix inspect_doc_structure for tabbed Docs without tab_id",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/976",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Description\n\nFixes a bug where `workspace-cli` silently strips surrounding quotes from string arguments.\n\n`_call_tool` in `core/cli.py` parses each `key=value` argument by running `json.loads(v)` and only falling back to the raw string on `JSONDecodeError`:\n\n```python\nk, v = arg.split(\"=\", 1)\ntry:\n    kwargs[k] = json.loads(v)\nexcept json.JSONDecodeError:\n    kwargs[k] = v\n```\n\nA quoted string value is *itself valid JSON*, so the surrounding quotes are silently stripped. For a Gmail exact-phrase query:\n\n```bash\nworkspace-cli call search_gmail_messages query='\"exact phrase\"'\n```\n\n`json.loads('\"exact phrase\"')` returns `exact phrase` (unquoted), so the server runs an unquoted query. There is **no error** \u2014 it just silently returns different/empty results, which is easy to misread as \"no matches.\"\n\n**Fix:** add `_coerce_cli_value()`, which only attempts `json.loads` when the value actually looks like JSON (empty \u2192 `\"\"`; first non-space char is `{`/`[`; exactly `true`/`false`/`null`; or a numeric literal). Everything else is returned unchanged as a raw string, so quotes and other characters survive verbatim. `page_size=3` still coerces to `int` and `values=[[\"a\"]]` still parses to a list.\n\n## Type of Change\n- [x] Bug fix (non-breaking change which fixes an issue)\n- [ ] New feature (non-breaking change which adds functionality)\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\n- [ ] Documentation update\n\n## Testing\n- [x] I have added tests that prove my fix is effective or that my feature works\n- [x] New and existing unit tests pass locally with my changes\n- [x] I have tested this change manually\n\nAdded `tests/core/test_cli_value_coercion.py` (15 cases): strings preserved verbatim (including quoted phrases and date-like values) and JSON scalars/containers that should still be coerced. Manually verified `query='\"grow therapy\"'` now reaches the server with the quotes intact.\n\n## Checklist\n- [x] My code follows the style guidelines of this project\n- [x] I have performed a self-review of my own code\n- [x] I have commented my code, particularly in hard-to-understand areas\n- [x] My changes generate no new warnings\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\n\n## Additional Notes\n\nScope is intentionally minimal \u2014 one helper plus a two-line change at the call site, no behavior change for existing JSON-typed args. `ruff check` is clean on the changed files and the new test module.\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Improved command-line argument handling so quoted strings and Gmail phrase queries are preserved exactly as entered.\n  * Continued converting JSON-like values, including numbers, booleans, lists, and objects, to their appropriate types.\n  * Improved WebSocket compatibility and reliability for OAuth and dual-transport server connections.\n\n* **Tests**\n  * Added coverage for string preservation and JSON-style value conversion.\n  * Expanded development and test support for HTTP client integration.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "auth/oauth_callback_server.py",
+        "additions": 4,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "core/cli.py",
+        "additions": 15,
+        "deletions": 4,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "main.py",
+        "additions": 8,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "pyproject.toml",
+        "additions": 4,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/core/test_cli_value_coercion.py",
+        "additions": 39,
+        "deletions": 0,
+        "changeType": "ADDED"
+      },
+      {
+        "path": "uv.lock",
+        "additions": 49,
+        "deletions": 3,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "9f9bb842f500088b6213cfd46407d2295e8c5ca3",
+    "mergeCommit": {
+      "oid": "91003ddb634860c373b0a57966159bab48b10beb"
+    },
+    "mergedAt": "2026-08-02T20:43:26Z",
+    "number": 983,
+    "state": "MERGED",
+    "title": "fix(cli): stop workspace-cli from silently stripping quotes on string args",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/983",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "Open-ended or oversized ranges were fully fetched into memory before formatting, which can OOM the process. Clamp before `values().get` and surface a note so callers can page.\r\n\r\n## Description\r\n`read_sheet_values` now clamps A1 ranges to at most **1000 rows** before calling the Sheets API. Open-ended ranges (`A:Z`, `Sheet1!A1:Z`) and oversized finite ranges (`A1:Z50000`) are rewritten to a finite window starting at the requested start row.\r\n\r\nWhen a range is rewritten, the tool response includes a short note with the clamped range so agents/clients can request the next window.\r\n\r\n**Why 1000?** That matches the existing tool default `range_name: str = \"A1:Z1000\"` in `read_sheet_values` (also documented in the sheets skill reference). The cap aligns the worst-case fetch with the default budget callers already get when they omit `range_name`.\r\n\r\nNamed ranges that are not parseable as A1 coordinates are left unchanged.\r\n\r\n## Type of Change\r\n- [x] Bug fix (non-breaking change which fixes an issue)\r\n- [ ] New feature (non-breaking change which adds functionality)\r\n- [x] Breaking change (fix or feature that would cause existing functionality to not work as expected)\r\n- [x] Documentation update\r\n\r\n**Breaking / behavior change:** On current `main`, `read_sheet_values` returns **all** fetched rows (no display truncate). After this change, requests larger than 1000 rows (or open-ended column ranges) return at most 1000 rows plus a clamp note. Callers that previously relied on a single huge read must page with a later A1 window (e.g. `A1001:A2000`).\r\n\r\nThis is still primarily a reliability fix: unbounded fetches can OOM the process. Memory was already unbounded even when older releases only *displayed* the first 50 rows.\r\n\r\n## Testing\r\n- [x] I have added tests that prove my fix is effective or that my feature works\r\n- [x] New and existing unit tests pass locally with my changes\r\n- [x] I have tested this change manually\r\n\r\nUnit:\r\n- `_clamp_a1_read_rows` cases (open / oversized / in-budget / named ranges)\r\n- `read_sheet_values` asserts `values().get` receives the clamped range\r\n\r\nManual:\r\n- Live `read_sheet_values` against a ~100k-row sheet with `range_name='A:Z'` \u2014 response included the clamp note and \u22641000 rows\r\n\r\nMemory A/B (mock harness, `main` vs this branch, median peak traced alloc via tracemalloc):\r\n\r\n| Requested rows | `main` peak traced | clamp peak traced |\r\n|---------------:|-------------------:|------------------:|\r\n| 1,000 | 0.54 MiB | 0.54 MiB |\r\n| 10,000 | 5.1 MiB | 0.54 MiB |\r\n| 50,000 | 26.1 MiB | 0.54 MiB |\r\n| 100,000 | **52.2 MiB** | **0.54 MiB** (~96\u00d7) |\r\n\r\nMax RSS delta at 100k: **~46 MiB** on `main` vs **~0.03 MiB** on clamp. Harness: `scripts/bench_read_sheet_memory.py` (local; not required for CI).\r\n\r\n## Checklist\r\n- [x] My code follows the style guidelines of this project\r\n- [x] I have performed a self-review of my own code\r\n- [x] I have commented my code, particularly in hard-to-understand areas\r\n- [x] My changes generate no new warnings\r\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\r\n\r\n## Additional Notes\r\nHappy to adjust `MAX_READ_SHEET_ROWS` or make it env-configurable if maintainers prefer a different budget than the `A1:Z1000` default.\r\n\r\n---\r\n\r\n**\u26a0\ufe0f IMPORTANT:** This repository requires that you enable \"Allow edits from maintainers\" when creating your pull request. This allows maintainers to make small fixes and improvements directly to your branch, speeding up the review process.\r\n\r\nTo enable this setting:\r\n1. When creating the PR, check the \"Allow edits from maintainers\" checkbox\r\n2. If you've already created the PR, you can enable this in the PR sidebar under \"Allow edits from maintainers\"\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Reading Google Sheets data now limits open-ended or oversized A1 ranges to 1,000 rows, including quoted whole-sheet references (e.g., `'My Sheet'`).\n  * When a range is adjusted, responses include a note with the rewritten range to support paging.\n* **Bug Fixes**\n  * Prevents overly large sheet reads from requesting more rows than supported; clamping is reflected even in \u201cno data\u201d outcomes.\n  * Bare/ambiguous named ranges continue to pass through unchanged.\n* **Documentation**\n  * Updated Google Sheets guidance to describe the 1,000-row cap, rewritten ranges, and named-range behavior.\n* **Tests**\n  * Expanded unit coverage for clamping, quoted sheet titles, and named-range pass-through.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gsheets/sheets_helpers.py",
+        "additions": 102,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gsheets/sheets_tools.py",
+        "additions": 22,
+        "deletions": 3,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "skills/managing-google-workspace/references/sheets.md",
+        "additions": 8,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gsheets/test_read_sheet_values.py",
+        "additions": 71,
+        "deletions": 2,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gsheets/test_sheets_helpers.py",
+        "additions": 53,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "6bc29e409e83d6a2f348de2f05f40f9a0bf34d9c",
+    "mergeCommit": {
+      "oid": "1610613f29490a037c662cd799fe1fe1de971899"
+    },
+    "mergedAt": "2026-07-30T17:25:47Z",
+    "number": 986,
+    "state": "MERGED",
+    "title": "Fix/clamp read sheet values rows",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/986",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "Fixes #998 \u2014 the three Docs styling payload bugs, plus a small feature that falls out of the same code paths.\n\n## Fixes (all verified against the live Docs API)\n\n1. **`update_document_style` background color 400** \u2014 `DocumentStyle.background` is type `Background{color: OptionalColor{color: Color}}`; the builder produced one level short (`background.color.rgbColor`). Now wrapped correctly.\n2. **`update_table_cell_style` border 400 (`DASH_STYLE_UNSPECIFIED`)** \u2014 `TableCellBorder` requires color, width and dashStyle all set. `dashStyle: SOLID` is now always set, and missing width/color default to 1pt/#000000 so color-only or width-only calls form a valid border.\n3. **Integer-only `font_size`** \u2014 annotations and the validator's `isinstance` check now accept floats (`Dimension.magnitude` is a number; 10.5pt etc. are valid).\n\n## Features\n\n- **`border_edges` on `update_table_cell_style`** \u2014 limit borders to named edges (`[\"top\"|\"bottom\"|\"left\"|\"right\"]`); omitted = all four (backward compatible). Enables header-row bottom rules without boxing every cell.\n- **Paragraph borders on `update_paragraph_style`** \u2014 `border_edges` (also `\"between\"`), `border_color`, `border_width`, `border_padding` (default 4pt), `border_dash` (default SOLID). Makes the shaded-callout-with-left-rule pattern fully API-authorable. Threaded through the standalone tool, batch operation schema/manager, and validation.\n\n## Testing\n\nVerified end-to-end against live Google Docs on a production document set: page backgrounds apply; 0.5pt fractional-width borders apply; 10.5pt sizes apply; bottom-only 1.5pt header rules and left-only 3pt paragraph borders render correctly (PDF-export verified). Existing all-edges behavior unchanged when `border_edges` is omitted.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added customizable paragraph and table-cell borders with edge selection, color, width, padding, and dash styles.\n  * Added support for fractional font sizes in text formatting.\n* **Bug Fixes**\n  * Corrected document background color formatting for Google Docs compatibility.\n  * Improved border defaults and validation for complete, valid formatting requests.\n* **Improvements**\n  * Added border options to batch styling operations.\n  * Expanded formatting schemas to support border and font-size options.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdocs/docs_helpers.py",
+        "additions": 123,
+        "deletions": 13,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/docs_tables.py",
+        "additions": 1,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/docs_tools.py",
+        "additions": 59,
+        "deletions": 5,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/managers/batch_operation_manager.py",
+        "additions": 21,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/managers/validation_manager.py",
+        "additions": 118,
+        "deletions": 5,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/operation_schemas.py",
+        "additions": 19,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/golden/docs_tool_schemas.json",
+        "additions": 91,
+        "deletions": 2,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_advanced_doc_formatting.py",
+        "additions": 14,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_paragraph_style.py",
+        "additions": 103,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_table_cell_style.py",
+        "additions": 46,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "5c2a6f849a94b6c6b798d3621904c2bbdfda2703",
+    "mergeCommit": {
+      "oid": "58e5e7977ed557e2de3e8683e5f5104c5adac17e"
+    },
+    "mergedAt": "2026-08-12T19:20:10Z",
+    "number": 999,
+    "state": "MERGED",
+    "title": "Fix Docs styling payload bugs (#998) + per-edge cell/paragraph border support",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/999",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Problem\n\n`get_drive_file_permissions` and `check_drive_file_public_access` read the inline\n`permissions` field returned by `files.get()`. For items in a **Shared Drive**, the\nDrive API does not populate that field \u2014 nor the `shared` boolean \u2014 even when\n`supportsAllDrives=True` is passed. As a result every Shared Drive file is reported\nas private / \"not shared with 'anyone with the link'\", even when it is shared\n\"Anyone with the link\". My Drive files are unaffected because `files.get()` does\npopulate their inline permissions.\n\n## Reproduction\n\n1. Put a file in a Shared Drive (not \"My Drive\") and share it \"Anyone with the link \u2192 Viewer\".\n2. Call `get_drive_file_permissions(file_id=...)` (or `check_drive_file_public_access`).\n3. Result: `Shared: False`, \"No additional permissions (private file)\", \"\u274c NOT shared with 'Anyone with the link'\".\n\nVerified directly against the Drive API on such a file:\n`files.get(fields=\"\u2026permissions\u2026,shared\", supportsAllDrives=True)` returns neither\n`permissions` nor `shared`, while `permissions.list(fileId, supportsAllDrives=True)`\nreturns the full set including `{type: anyone, role: reader}`.\n\n## Fix\n\nWhen the file is in a Shared Drive (`driveId` present), resolve permissions via a\npaginated `permissions.list(..., supportsAllDrives=True)` instead of the empty\ninline field, and derive the \"Shared\" state from the resolved permission set rather\nthan the `shared` boolean. My Drive behaviour is unchanged (inline permissions\nremain the source, no extra API call). Adds `list_all_permissions` and\n`derive_shared_state` helpers in `drive_helpers.py`.\n\n## Test\n\n`tests/gdrive/test_drive_tools.py`: adds a Shared Drive case (fallback surfaces the\n`anyone` grant) and a My Drive case (inline path, no extra `permissions.list` call).\nThe `tests/gdrive` suite passes (98 tests).\n\n## Type of Change\n\n- [x] Bug fix (non-breaking change which fixes an issue)\n- [ ] New feature\n- [ ] Breaking change\n- [ ] Documentation update\n\n## Checklist\n\n- [x] My code follows the style guidelines of this project\n- [x] I have performed a self-review of my own code\n- [x] I have commented my code, particularly in hard-to-understand areas\n- [x] My changes generate no new warnings\n- [x] I have added tests that prove my fix is effective\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Improved Google Drive permission reporting for Shared Drive files.\n  * Shared status and public-link access are now determined more accurately.\n  * Permission details, including organizer access, are displayed consistently across Shared Drive and My Drive files.\n  * Permission results now include complete access details, even when they are not included in the initial file information.\n  * Permission reporting now handles large permission sets and paginated results more reliably.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdrive/drive_helpers.py",
+        "additions": 51,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdrive/drive_tools.py",
+        "additions": 18,
+        "deletions": 5,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdrive/test_drive_tools.py",
+        "additions": 146,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "a113cc8e6385c2c5a5f7edbab59fa8aca47e9801",
+    "mergeCommit": {
+      "oid": "667954461df7e6212b93d66e38a832eef906dc53"
+    },
+    "mergedAt": "2026-08-12T22:40:25Z",
+    "number": 1002,
+    "state": "MERGED",
+    "title": "fix(gdrive): read Shared Drive permissions via permissions.list",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/1002",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Description\nFixes a Drive shortcut targeting bug in `update_drive_file`.\n\n`update_drive_file` currently resolves Drive shortcuts before every update. That is appropriate for content operations, but unsafe for resource-local metadata changes: for example, calling `update_drive_file(file_id=<shortcut>, trashed=True)` sends `files.update()` to the shortcut target and trashes the underlying file instead of the shortcut.\n\nThis change makes shortcut handling depend on the kind of update:\n\n- metadata-only updates (rename, move, trash, star, description, etc.) operate on the supplied Drive resource itself;\n- content replacement keeps the existing behavior of following the shortcut to the underlying file;\n- mixed content + metadata calls continue to apply both to the resolved target, preserving the historical content-update behavior.\n\nThe implementation keeps the existing resolver API backward-compatible by adding a keyword-only `follow_shortcuts=True` option and opting out only for metadata-only `update_drive_file` calls.\n\n## Type of Change\n- [x] Bug fix (non-breaking change which fixes an issue)\n- [ ] New feature (non-breaking change which adds functionality)\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\n- [ ] Documentation update\n\n## Testing\n- [x] I have added tests that prove my fix is effective or that my feature works\n- [x] New and existing unit tests pass locally with my changes\n- [ ] I have tested this change manually\n\nRegression coverage verifies both sides of the contract: metadata-only updates preserve the shortcut ID, while content replacement still follows shortcuts.\n\nLocal validation:\n- `uv sync --extra test --frozen`\n- `uv run pytest` \u2014 1694 passed, 2 skipped\n- `uvx ruff@0.15.22 check`\n- `uvx ruff@0.15.22 format --check`\n- `uv run pytest tests/gdrive` \u2014 135 passed\n- `git diff --check`\n\n## Checklist\n- [x] My code follows the style guidelines of this project\n- [x] I have performed a self-review of my own code\n- [x] I have commented my code, particularly in hard-to-understand areas\n- [x] My changes generate no new warnings\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\n\n## Additional Notes\nThe bug was observed against a real Drive shortcut: attempting to trash the shortcut instead trashed its target. The target was restored immediately. I have left the manual-testing checkbox unchecked because I did not want to mutate another live shortcut merely to exercise the patched path; the regression test models that exact `files.update()` target selection.\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added an option to preserve Google Drive shortcut information without following the shortcut to its target.\n  * Metadata-only updates now apply directly to shortcuts, while content replacements continue updating the target file.\n\n* **Bug Fixes**\n  * Improved shortcut handling for file updates and metadata changes.\n  * Prevented unsupported or mixed shortcut updates that could produce invalid results.\n  * Reduced sensitive details in logs and error messages, including file names, URLs, and queries.\n  * Added coverage for shortcut resolution and file update behavior.\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdrive/drive_helpers.py",
+        "additions": 8,
+        "deletions": 3,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdrive/drive_tools.py",
+        "additions": 77,
+        "deletions": 5,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdrive/test_drive_tools.py",
+        "additions": 197,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "e52b4fd5204fdd560b78b0ed7aeff7c37c99180b",
+    "mergeCommit": {
+      "oid": "e99cc6abfcbc92cf254959ae8355e72fd6ec9c4b"
+    },
+    "mergedAt": "2026-08-25T00:13:30Z",
+    "number": 1051,
+    "state": "MERGED",
+    "title": "fix(drive): preserve shortcuts for metadata updates",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/1051",
+    "merge_commit_in_pinned_history": true
+  },
+  {
+    "body": "## Description\n\nFixes #1085.\n\n`get_doc_content` dropped any paragraph that was empty after `.strip()`, and accumulated only `textRun` content. An empty paragraph is `\"\\n\"` and still occupies an index in the document, as do `inlineObjectElement`, `pageBreak`, `columnBreak`, `horizontalRule`, `footnoteReference`, `person` and `richLink`. Offsets computed by searching the returned text therefore drifted from the document's real indices \u2014 silently, and cumulatively \u2014 so a subsequent `format_text` / `delete_text` / `replace_text` landed on the wrong range.\n\nThis preserves empty paragraphs and represents non-`textRun` elements with U+FFFC (OBJECT REPLACEMENT CHARACTER), sized from each element's own `startIndex`/`endIndex` span so the extracted text keeps the same length as the range it came from.\n\nThe extraction also moves out of the nested closure inside `get_doc_content` into `docs_helpers.extract_text_from_elements`, so it is unit-testable and the tool file stays thin per CONTRIBUTING.\n\n**Known limitation, called out in the docstring:** table cell text is included but is not index-aligned \u2014 the table and row structure occupies indices that are not represented here. Fixing that is a larger change and I left it out deliberately rather than half-doing it. Happy to follow up if you want it.\n\n**Behaviour change worth flagging for review:** callers that treated the output as prose will now see blank lines that were previously swallowed, and U+FFFC where an inline object sits. That is the point of the fix, but it is a visible difference.\n\n## Type of Change\n- [x] Bug fix (non-breaking change which fixes an issue)\n- [ ] New feature (non-breaking change which adds functionality)\n- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)\n- [ ] Documentation update\n\n## Testing\n- [x] I have added tests that prove my fix is effective or that my feature works\n- [x] New and existing unit tests pass locally with my changes\n- [x] I have tested this change manually\n\n`tests/gdocs/test_doc_content_index_alignment.py` \u2014 11 tests. The core one asserts the extracted length equals the document's own span, and that `text.index(\"Bravo\") + 1` equals the index `inspect_doc_structure` reports (8) for the repro in #1085.\n\nLocal run with the CI-pinned toolchain:\n\n```\nuvx ruff@0.15.22 check          -> All checks passed!\nuvx ruff@0.15.22 format --check -> 201 files already formatted\nuv run pytest                   -> 1897 passed, 2 skipped\n```\n\nManually verified against a real ~10k-character document tab: extracted length now matches the API's reported span exactly, where it was previously short by the count of empty paragraphs.\n\n## Checklist\n- [x] My code follows the style guidelines of this project\n- [x] I have performed a self-review of my own code\n- [x] I have commented my code, particularly in hard-to-understand areas\n- [x] My changes generate no new warnings\n- [x] **I have enabled \"Allow edits from maintainers\" for this pull request**\n\n## Additional Notes\n\nTwo related issues are open and I am happy to take either: #1084 (`inspect_doc_structure` truncates `text_preview` at 100 chars, so sub-paragraph offsets cannot be located even once this fix lands) and #1086 (read tools cannot target a tab). Both are parameter additions to existing tools rather than new tools.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Improvements**\n  * Improved document text extraction to preserve character positions accurately, including page breaks, inline objects, and other non-text elements.\n  * Preserved empty paragraphs and whitespace during content extraction.\n  * Added support for extracting text from tables and document tabs, including tab identification.\n  * Added safeguards for deeply nested table content.\n* **Tests**\n  * Expanded coverage for extraction alignment, special elements, tables, tabs, and nested content.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdocs/docs_helpers.py",
+        "additions": 85,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "gdocs/docs_tools.py",
+        "additions": 3,
+        "deletions": 39,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_doc_content_index_alignment.py",
+        "additions": 111,
+        "deletions": 0,
+        "changeType": "ADDED"
+      }
+    ],
+    "headRefOid": "0cc4133cd04eaba2fc42f4dae1343259e94ac87f",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 1087,
+    "state": "CLOSED",
+    "title": "fix(gdocs): keep get_doc_content output aligned with document indices",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/1087",
+    "merge_commit_in_pinned_history": null
+  },
+  {
+    "body": "## Summary\n\n- Fixes #1108: `inspect_doc_structure` failed on every call with `HttpError 400 ... \"Field mask may not contain legacy text-level Document resource fields while requesting tabs content\"`.\n- Root cause: `_STRUCTURE_FIELDS` requested the legacy top-level `body`/`headers`/`footers` fields alongside `tabs(...)` while the request always sets `includeTabsContent=True`. Google's Docs API rejects that combination outright, regardless of `tab_id`/`detailed`/`preview_chars` \u2014 there was no way for a caller to avoid it.\n- Per [Google's tabs guide](https://developers.google.com/workspace/docs/api/how-tos/tabs), when `includeTabsContent=true` the top-level `body`/`headers`/`footers` are left **empty** anyway, so dropping them from the top-level portion of the mask loses no data. The function already has fallback logic that sources `body`/`headers`/`footers`/`documentStyle` from the requested tab, or the first tab when none is specified \u2014 that logic is unaffected by this change since it never actually depended on the top-level values (they were always empty once `includeTabsContent=True` was set, which is exactly why the first-tab fallback was added for #975 in the first place).\n- Kept `title`, `documentStyle`, `namedRanges` at the top level, since those are document-level metadata rather than \"text-level\" content and aren't implicated by the API's rejection.\n\n## Test plan\n\n- [x] Added `test_inspect_doc_structure_field_mask_omits_legacy_top_level_content` in `tests/gdocs/test_read_tab_selection.py`, which asserts the field mask never names `body(`/`headers`/`footers` outside the `tabs(...)` branch. Verified it fails against the pre-fix code (reproducing the exact field mask from the bug report) and passes with the fix.\n- [x] `pytest tests/gdocs/` \u2014 393 passed (up from 392 with the new test).\n- [x] `ruff check gdocs/docs_tools.py tests/gdocs/test_read_tab_selection.py` \u2014 clean.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n- **Bug Fixes**\n  - Improved document tab content retrieval by using the current tab-based structure.\n  - Preserved access to headers, footers, and body content within individual tabs.\n  - Removed reliance on legacy top-level content fields when inspecting document structure.\n\n- **Tests**\n  - Added regression coverage to verify the updated document structure request behavior.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+    "files": [
+      {
+        "path": "gdocs/docs_tools.py",
+        "additions": 8,
+        "deletions": 1,
+        "changeType": "MODIFIED"
+      },
+      {
+        "path": "tests/gdocs/test_read_tab_selection.py",
+        "additions": 32,
+        "deletions": 0,
+        "changeType": "MODIFIED"
+      }
+    ],
+    "headRefOid": "e19c67a86bffbdb0ddc98c26448e18d80e593f60",
+    "mergeCommit": null,
+    "mergedAt": null,
+    "number": 1109,
+    "state": "OPEN",
+    "title": "fix(docs): stop inspect_doc_structure 400ing on every call",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp/pull/1109",
+    "merge_commit_in_pinned_history": null
+  }
+]

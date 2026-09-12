@@ -1,5 +1,7 @@
 # Workspace MCP tools vs gdoc CLI commands
 
+This is an interface inventory; [the measured report](COMPARISON.md) records live failures and route-specific limitations, including the broken structure inspector.
+
 Workspace exposes **named MCP tools**; gdoc exposes **shell subcommands**. The names below are the actual interfaces, not invented workflow labels. This comparison uses Workspace MCP 1.26.0 and gdoc 0.21.0.
 
 Workspace's word **core** is also a specific launch tier: **C** below means core, **E** extended, and **F** complete. Extended includes core; complete includes both. gdoc has no tiers. Some essential office operations, including drafting email, replacing text and sharing files, are outside Workspace's core tier.

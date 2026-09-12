@@ -1,0 +1,188 @@
+[
+  {
+    "indent_spaces": 2,
+    "markdown": "- Parent\n  - Child\n- Peer",
+    "parsed_text": "Parent\n\tChild\nPeer\n",
+    "complete_writer_batches": [
+      {
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n\tChild\nPeer"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 15,
+                "endIndex": 19,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "writeControl": {
+          "requiredRevisionId": "probe-revision"
+        }
+      }
+    ],
+    "observation": "Child tab(s) survive the complete native writer; no subsequent cleanup batch for this no-table fixture."
+  },
+  {
+    "indent_spaces": 4,
+    "markdown": "- Parent\n    - Child\n- Peer",
+    "parsed_text": "Parent\n\t\tChild\nPeer\n",
+    "complete_writer_batches": [
+      {
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n\t\tChild\nPeer"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 16,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "writeControl": {
+          "requiredRevisionId": "probe-revision"
+        }
+      }
+    ],
+    "observation": "Child tab(s) survive the complete native writer; no subsequent cleanup batch for this no-table fixture."
+  }
+]

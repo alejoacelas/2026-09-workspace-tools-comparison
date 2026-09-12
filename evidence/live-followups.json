@@ -1,0 +1,237 @@
+{
+  "started_utc": "2026-09-12T17:22:43.194846+00:00",
+  "checks": [
+    {
+      "case": "append_after_heading_corrected_baseline",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Heading\nPlain paragraph\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Heading\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "Plain paragraph\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "reply_comment_correct_schema",
+      "tool": "workspace",
+      "pass": true
+    },
+    {
+      "case": "ascii_heading_body",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Plan\n\nNext\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Plan\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "Next\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "ascii_heading_body",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Plan\n\nNext\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Plan\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "Next\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "native_grouped_bullets",
+      "tool": "google_api",
+      "pass": true,
+      "paragraphs": [
+        {
+          "elements": [
+            {
+              "startIndex": 1,
+              "endIndex": 8,
+              "textRun": {
+                "content": "Parent\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.x8l85ehwjqvu",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 8,
+              "endIndex": 14,
+              "textRun": {
+                "content": "Child\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.x8l85ehwjqvu",
+            "nestingLevel": 1,
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 14,
+              "endIndex": 19,
+              "textRun": {
+                "content": "Peer\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.x8l85ehwjqvu",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 19,
+              "endIndex": 20,
+              "textRun": {
+                "content": "\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT"
+          }
+        }
+      ]
+    },
+    {
+      "case": "selected_tab_replace",
+      "tool": "gdoc",
+      "pass": true,
+      "tab_texts": [
+        "Status: DRAFT\n\n",
+        "Status: FINAL\n\n"
+      ]
+    },
+    {
+      "case": "read_all_doc_tabs",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "selected_tab_replace",
+      "tool": "workspace",
+      "pass": true,
+      "tab_texts": [
+        "Status: DRAFT\n\n",
+        "Status: FINAL\n\n"
+      ]
+    },
+    {
+      "case": "read_all_doc_tabs",
+      "tool": "workspace",
+      "pass": true
+    }
+  ],
+  "samples": [],
+  "scope": "corrected setup, native oracle, MCP vs MCP",
+  "resources_created": 35
+}

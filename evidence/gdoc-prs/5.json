@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\n- `parse_markdown()` appends `\\n` after every line, including the last. When `replace_formatted()` deletes matched text and inserts the parsed replacement, the existing paragraph in the document already has its own `\\n`. The extra trailing `\\n` from the parser creates a spurious blank line after every `gdoc edit`.\n- Fix: strip the trailing `\\n` from `parsed.plain_text` inside `replace_formatted()` before building the batchUpdate requests. The parser itself is left unchanged since its behavior is correct in general; only the replacement context doesn't need the trailing newline.\n- Updated 3 cleanup-position tests to reflect the corrected character counts.\n\n## Test plan\n\n- [x] All 776 existing tests pass\n- [x] Verified end-to-end on a real Google Doc with 12 edit scenarios:\n  - Simple word swap, shorter/longer replacements, start/end of paragraph\n  - Bold, italic, bold+italic, inline code, link formatting\n  - `--all` flag with 4 simultaneous replacements\n  - Line count stayed constant (3 lines) across all 12 edits\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Fixed handling of trailing newlines in markdown content to prevent introducing unwanted extra paragraph breaks during text replacements.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-03-04T20:01:40Z",
+  "number": 5,
+  "state": "MERGED",
+  "title": "fix: edit command inserts extra newlines",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/5"
+}

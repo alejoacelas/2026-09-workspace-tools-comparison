@@ -1,0 +1,342 @@
+{
+  "checks": [
+    {
+      "case": "same_text_style_per_item",
+      "tool": "google_api",
+      "pass": false,
+      "requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1,
+              "tabId": "t.0"
+            },
+            "text": "Parent\n\tChild\nPeer"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 8,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 8,
+              "endIndex": 15,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 15,
+              "endIndex": 19,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "createParagraphBullets": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 8,
+              "tabId": "t.0"
+            },
+            "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        },
+        {
+          "createParagraphBullets": {
+            "range": {
+              "startIndex": 8,
+              "endIndex": 15,
+              "tabId": "t.0"
+            },
+            "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        },
+        {
+          "createParagraphBullets": {
+            "range": {
+              "startIndex": 14,
+              "endIndex": 18,
+              "tabId": "t.0"
+            },
+            "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "elements": [
+            {
+              "startIndex": 1,
+              "endIndex": 8,
+              "textRun": {
+                "content": "Parent\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.hz080lqu2479",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 8,
+              "endIndex": 14,
+              "textRun": {
+                "content": "Child\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.hz080lqu2479",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 14,
+              "endIndex": 19,
+              "textRun": {
+                "content": "Peer\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.hz080lqu2479",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "same_text_style_grouped",
+      "tool": "google_api",
+      "pass": true,
+      "requests": [
+        {
+          "insertText": {
+            "location": {
+              "index": 1,
+              "tabId": "t.0"
+            },
+            "text": "Parent\n\tChild\nPeer"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 8,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 8,
+              "endIndex": 15,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "updateParagraphStyle": {
+            "range": {
+              "startIndex": 15,
+              "endIndex": 19,
+              "tabId": "t.0"
+            },
+            "paragraphStyle": {
+              "namedStyleType": "NORMAL_TEXT"
+            },
+            "fields": "namedStyleType"
+          }
+        },
+        {
+          "createParagraphBullets": {
+            "range": {
+              "startIndex": 1,
+              "endIndex": 19,
+              "tabId": "t.0"
+            },
+            "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        }
+      ],
+      "paragraphs": [
+        {
+          "elements": [
+            {
+              "startIndex": 1,
+              "endIndex": 8,
+              "textRun": {
+                "content": "Parent\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.pu4f60g1dynj",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 8,
+              "endIndex": 14,
+              "textRun": {
+                "content": "Child\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 54,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 72,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.pu4f60g1dynj",
+            "nestingLevel": 1,
+            "textStyle": {
+              "underline": false
+            }
+          }
+        },
+        {
+          "elements": [
+            {
+              "startIndex": 14,
+              "endIndex": 19,
+              "textRun": {
+                "content": "Peer\n",
+                "textStyle": {}
+              }
+            }
+          ],
+          "paragraphStyle": {
+            "namedStyleType": "NORMAL_TEXT",
+            "direction": "LEFT_TO_RIGHT",
+            "indentFirstLine": {
+              "magnitude": 18,
+              "unit": "PT"
+            },
+            "indentStart": {
+              "magnitude": 36,
+              "unit": "PT"
+            }
+          },
+          "bullet": {
+            "listId": "kix.pu4f60g1dynj",
+            "textStyle": {
+              "underline": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "samples": [],
+  "scope": "native request isolation; not a patched gdoc build",
+  "resources_created": 38
+}

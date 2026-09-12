@@ -1,0 +1,8 @@
+{
+  "body": "## What\n\n`gdoc update` (and the 24h update notice) compared versions with plain `!=` / `==`. Any mismatch counted as an \"update\" \u2014 including the remote being **older** than the installed build.\n\nThis is not hypothetical: `raw.githubusercontent.com` caches `pyproject.toml` for ~5 minutes after a merge, so right after installing 0.8.0 from a fresh merge the CLI printed\n\n```\nUpdate available: 0.8.0 \u2192 0.7.6. Run `gdoc update` to update.\n```\n\n\u2026and running `gdoc update` at that moment would have **downgraded** back to 0.7.6 and written the stale version into the 24h cache.\n\n## How\n\n- New `_is_newer(latest, current)` compares numeric version tuples (`re.findall(r\"\\d+\")` \u2192 `tuple[int]`), so `0.10.0 > 0.9.9` also works where lexicographic comparison wouldn't. No new dependency.\n- `check_for_update` prints the notice only for strictly-newer remotes.\n- `run_update` reports \"Already up to date.\" (instead of downgrading) when the remote is equal **or older**.\n- Drive-by: fixed the pre-existing F541 (placeholder-less f-string) in the same file.\n\nTests in `tests/test_update_version.py` (named to avoid colliding with the in-flight auto-update work's `test_update.py`): tuple parsing, newer/older/equal, the lexicographic trap, and a regression test that a stale-older remote never triggers `subprocess.run`.\n\n936 tests pass. Version bumped 0.8.0 \u2192 0.8.1 so the fix is itself installable via `gdoc update`.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "mergedAt": "2026-06-05T16:54:54Z",
+  "number": 21,
+  "state": "MERGED",
+  "title": "update: compare versions numerically, never downgrade (0.8.1)",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/21"
+}

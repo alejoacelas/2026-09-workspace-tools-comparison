@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\n- Adds `--no-images` flag to `gdoc cat` that strips `![...](...)` image references from output\n- Saves tokens in AI agent workflows where embedded image URLs are useless\n- Stripping happens before `--max-bytes` truncation and before `--comments` annotation\n\n## Test plan\n\n> **Note:** These changes have not been manually tested\u2014they were developed and verified entirely through Claude Code (automated unit/integration tests + lint).\n\n- [x] `uv run pytest tests/test_mdimport.py tests/test_cat.py tests/test_cat_tabs.py -v` \u2014 70 tests pass\n- [x] `uv run ruff check gdoc/ tests/` \u2014 no new lint errors\n- [ ] Manual smoke test: `gdoc cat --no-images <doc-with-images>`\n- [ ] Verify `gdoc cat` without `--no-images` is unchanged\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added `--no-images` flag to the `gdoc cat` command, enabling users to remove image references from all output formats including single-tab views, multi-tab exports, markdown output, and general content display.\n\n* **Tests**\n  * Added comprehensive test coverage for the new flag, validating image removal, interaction with content truncation and comment functionality, and consistent behavior across all output modes.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-03-05T23:18:21Z",
+  "number": 4,
+  "state": "MERGED",
+  "title": "feat: add --no-images flag to gdoc cat",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/4"
+}

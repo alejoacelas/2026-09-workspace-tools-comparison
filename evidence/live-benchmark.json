@@ -1,0 +1,909 @@
+{
+  "started_utc": "2026-09-12T17:13:46.969911+00:00",
+  "trials": 5,
+  "scope": "synthetic personal-account files only",
+  "timing": "wall clock; CLI subprocess vs already-connected stdio MCP; oracle/setup excluded",
+  "samples": [
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.4402,
+      "ok": true,
+      "output_bytes": 4477,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.5254,
+      "ok": true,
+      "output_bytes": 4981,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 2.8634,
+      "ok": true,
+      "output_bytes": 25,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.6857,
+      "ok": true,
+      "output_bytes": 3333,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.4208,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.776,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.8912,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.6966,
+      "ok": true,
+      "output_bytes": 197,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.4031,
+      "ok": true,
+      "output_bytes": 4420,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.463,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.6104,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.9283,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.6389,
+      "ok": true,
+      "output_bytes": 197,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.393,
+      "ok": true,
+      "output_bytes": 4420,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.4322,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.4287,
+      "ok": true,
+      "output_bytes": 4477,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.6542,
+      "ok": true,
+      "output_bytes": 4981,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 2.8348,
+      "ok": true,
+      "output_bytes": 25,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.3347,
+      "ok": true,
+      "output_bytes": 3333,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.3548,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.4746,
+      "ok": true,
+      "output_bytes": 4477,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.7039,
+      "ok": true,
+      "output_bytes": 4981,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 3.0511,
+      "ok": true,
+      "output_bytes": 25,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.2746,
+      "ok": true,
+      "output_bytes": 3333,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.2771,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.6782,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.8336,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.7199,
+      "ok": true,
+      "output_bytes": 197,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.3939,
+      "ok": true,
+      "output_bytes": 4420,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.4395,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "trial": 3,
+      "seconds": 0.6421,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "trial": 3,
+      "seconds": 0.9568,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "trial": 3,
+      "seconds": 0.6555,
+      "ok": true,
+      "output_bytes": 197,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "trial": 3,
+      "seconds": 0.4096,
+      "ok": true,
+      "output_bytes": 4420,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "trial": 3,
+      "seconds": 0.4737,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "trial": 3,
+      "seconds": 1.5093,
+      "ok": true,
+      "output_bytes": 4477,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "trial": 3,
+      "seconds": 1.6323,
+      "ok": true,
+      "output_bytes": 4981,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "trial": 3,
+      "seconds": 2.7038,
+      "ok": true,
+      "output_bytes": 25,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "trial": 3,
+      "seconds": 1.3166,
+      "ok": true,
+      "output_bytes": 3333,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "trial": 3,
+      "seconds": 1.377,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "trial": 4,
+      "seconds": 1.4196,
+      "ok": true,
+      "output_bytes": 4477,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "trial": 4,
+      "seconds": 1.5025,
+      "ok": true,
+      "output_bytes": 4981,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "trial": 4,
+      "seconds": 2.5588,
+      "ok": true,
+      "output_bytes": 25,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "trial": 4,
+      "seconds": 1.3563,
+      "ok": true,
+      "output_bytes": 3333,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "trial": 4,
+      "seconds": 1.6754,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "trial": 4,
+      "seconds": 0.6503,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "trial": 4,
+      "seconds": 0.906,
+      "ok": true,
+      "output_bytes": 4334,
+      "error": ""
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "trial": 4,
+      "seconds": 0.6916,
+      "ok": true,
+      "output_bytes": 197,
+      "error": ""
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "trial": 4,
+      "seconds": 0.3876,
+      "ok": true,
+      "output_bytes": 4420,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "trial": 4,
+      "seconds": 0.4062,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "replace_ten_different_phrases",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 28.1344,
+      "ok": true,
+      "output_bytes": 259,
+      "error": ""
+    },
+    {
+      "case": "inspect_structure",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.3616,
+      "ok": true,
+      "output_bytes": 25341,
+      "error": ""
+    },
+    {
+      "case": "replace_ten_different_phrases",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 2.2745,
+      "ok": true,
+      "output_bytes": 568,
+      "error": ""
+    },
+    {
+      "case": "inspect_structure",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 1.7323,
+      "ok": false,
+      "output_bytes": 0,
+      "error": "Error calling tool 'inspect_doc_structure': API error in inspect_doc_structure: <HttpError 400 when requesting https://docs.googleapis.com/v1/documents/RESOURCE_2?includeTabsContent=true&fields=title%2CdocumentStyle%2CnamedRanges%2Cheaders%2Cfooters%2Cbody%28content%28startIndex%2CendIndex%2Cparagraph%28elements%28startIndex%2CendIndex%2CtextRun%2Fcontent%29%2CparagraphStyle%2Cbullet%2CpositionedObjectIds%2CsuggestedPositionedObjectIds%29%2Ctable%28tableRows%2FtableCells%28startIndex%2CendIndex%2Ccontent%29%2CtableStyle%29%2CsectionBreak%2FsectionStyle%2CtableOfContents%29%29%2Ctabs%28tabProperties%2CchildTabs%2CdocumentTab%28documentStyle%2CnamedRanges%2Cheaders%2Cfooters%2Cbody%28content%28startIndex%2CendIndex%2Cparagraph%28elements%28startIndex%2CendIndex%2CtextRun%2Fcontent%29%2CparagraphStyle%2Cbullet%2CpositionedObjectIds%2CsuggestedPositionedObjectIds%29%2Ctable%28tableRows%2FtableCells%28startIndex%2CendIndex%2Ccontent%29%2CtableStyle%29%2CsectionBreak%2FsectionStyle%2CtableOfContents%29%29%29%29&alt=json returned \"Field mask may not contain legacy text-level Document resource fields while requesting tabs content\". Details: \"Field mask may not contain legacy text-level Document resource fields while requesting tabs content\">"
+    }
+  ],
+  "checks": [
+    {
+      "case": "ten_replacements",
+      "tool": "gdoc",
+      "reported_success": true,
+      "all_replaced": true
+    },
+    {
+      "case": "ten_replacements",
+      "tool": "workspace",
+      "reported_success": true,
+      "all_replaced": true
+    },
+    {
+      "case": "unicode_casefold_1",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "\u0130 cdog\n",
+      "error": "",
+      "expected_text": "\u0130 dog\n",
+      "text_matches": false,
+      "paragraphs": [
+        {
+          "text": "\u0130 cdog\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "unicode_casefold_1",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "\u0130 dog\n\n",
+      "error": "",
+      "expected_text": "\u0130 dog\n",
+      "text_matches": true,
+      "paragraphs": [
+        {
+          "text": "\u0130 dog\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "unicode_casefold_2",
+      "tool": "gdoc",
+      "reported_success": false,
+      "text_after": "\u0130\u0130 cat\n\n",
+      "error": "--- first interaction with this doc ---\n \ud83d\udcc4 \"Comparison synthetic \u2014 gdoc unicode find\" by ACCOUNT, last edited 2026-09-12\n---\nWARN: doc changed since last read\nERR: API error (400): Invalid requests[0].deleteContentRange: The range cannot include the newline character at the end of the segment.\n",
+      "expected_text": "\u0130\u0130 dog\n",
+      "text_matches": false,
+      "paragraphs": [
+        {
+          "text": "\u0130\u0130 cat\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "unicode_casefold_2",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "\u0130\u0130 dog\n\n",
+      "error": "",
+      "expected_text": "\u0130\u0130 dog\n",
+      "text_matches": true,
+      "paragraphs": [
+        {
+          "text": "\u0130\u0130 dog\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "emoji_markdown",
+      "tool": "gdoc",
+      "reported_success": false,
+      "text_after": "\n",
+      "error": "--- first interaction with this doc ---\n \ud83d\udcc4 \"Comparison synthetic \u2014 gdoc unicode markdown\" by ACCOUNT, last edited 2026-09-12\n---\nERR: no read baseline. Run 'gdoc cat' first, or use --force to overwrite.\n",
+      "paragraphs": [
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "emoji_markdown",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Plan \ud83d\ude00\nNext\n\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Plan \ud83d\ude00\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "Next\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "unrelated_bold",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Keep this bold. Send the final today.\n\n",
+      "error": "",
+      "expected_text": "Keep this bold. Send the final today.\n",
+      "text_matches": true,
+      "paragraphs": [
+        {
+          "text": "Keep this bold. Send the final today.\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Keep this bold. Send the final today.\n",
+          "style": {}
+        }
+      ]
+    },
+    {
+      "case": "unrelated_bold",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Keep this bold. Send the final today.\n\n",
+      "error": "",
+      "expected_text": "Keep this bold. Send the final today.\n",
+      "text_matches": true,
+      "paragraphs": [
+        {
+          "text": "Keep this bold. Send the final today.\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Keep this bold.",
+          "style": {
+            "bold": true
+          }
+        },
+        {
+          "text": " Send the final today.\n",
+          "style": {}
+        }
+      ]
+    },
+    {
+      "case": "append_after_heading",
+      "tool": "gdoc",
+      "reported_success": false,
+      "text_after": "Heading\n\n",
+      "error": "--- first interaction with this doc ---\n \ud83d\udcc4 \"Comparison synthetic \u2014 gdoc paragraph inheritance\" by ACCOUNT, last edited 2026-09-12\n---\nERR: no read baseline. Run 'gdoc cat' first, or use --force to overwrite.\n",
+      "paragraphs": [
+        {
+          "text": "Heading\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "append_after_heading",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Heading\nPlain paragraph\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Heading\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "Plain paragraph\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    }
+  ],
+  "resources_created": 14,
+  "startup_seconds": 0.8342,
+  "enabled_tools": 50,
+  "ended_utc": "2026-09-12T17:16:59.147790+00:00",
+  "summary": [
+    {
+      "case": "read_doc_4kb",
+      "tool": "gdoc",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 1.4402,
+      "min_seconds": 1.4196,
+      "max_seconds": 1.5093,
+      "median_output_bytes": 4477
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "gdoc",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 1.6323,
+      "min_seconds": 1.5025,
+      "max_seconds": 1.7039,
+      "median_output_bytes": 4981
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "gdoc",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 2.8348,
+      "min_seconds": 2.5588,
+      "max_seconds": 3.0511,
+      "median_output_bytes": 25
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "gdoc",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 1.3347,
+      "min_seconds": 1.2746,
+      "max_seconds": 1.6857,
+      "median_output_bytes": 3333
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "gdoc",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 1.377,
+      "min_seconds": 1.2771,
+      "max_seconds": 1.6754,
+      "median_output_bytes": 33
+    },
+    {
+      "case": "read_doc_4kb",
+      "tool": "workspace",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 0.6503,
+      "min_seconds": 0.6104,
+      "max_seconds": 0.776,
+      "median_output_bytes": 4334
+    },
+    {
+      "case": "read_with_comments",
+      "tool": "workspace",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 0.906,
+      "min_seconds": 0.8336,
+      "max_seconds": 0.9568,
+      "median_output_bytes": 4334
+    },
+    {
+      "case": "replace_plain_phrase",
+      "tool": "workspace",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 0.6916,
+      "min_seconds": 0.6389,
+      "max_seconds": 0.7199,
+      "median_output_bytes": 197
+    },
+    {
+      "case": "read_100_rows",
+      "tool": "workspace",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 0.3939,
+      "min_seconds": 0.3876,
+      "max_seconds": 0.4096,
+      "median_output_bytes": 4420
+    },
+    {
+      "case": "write_100_rows",
+      "tool": "workspace",
+      "n": 5,
+      "successes": 5,
+      "median_seconds": 0.4395,
+      "min_seconds": 0.4062,
+      "max_seconds": 0.4737,
+      "median_output_bytes": 169
+    },
+    {
+      "case": "replace_ten_different_phrases",
+      "tool": "gdoc",
+      "n": 1,
+      "successes": 1,
+      "median_seconds": 28.1344,
+      "min_seconds": 28.1344,
+      "max_seconds": 28.1344,
+      "median_output_bytes": 259
+    },
+    {
+      "case": "inspect_structure",
+      "tool": "gdoc",
+      "n": 1,
+      "successes": 1,
+      "median_seconds": 1.3616,
+      "min_seconds": 1.3616,
+      "max_seconds": 1.3616,
+      "median_output_bytes": 25341
+    },
+    {
+      "case": "replace_ten_different_phrases",
+      "tool": "workspace",
+      "n": 1,
+      "successes": 1,
+      "median_seconds": 2.2745,
+      "min_seconds": 2.2745,
+      "max_seconds": 2.2745,
+      "median_output_bytes": 568
+    },
+    {
+      "case": "inspect_structure",
+      "tool": "workspace",
+      "n": 1,
+      "successes": 0,
+      "median_seconds": 1.7323,
+      "min_seconds": 1.7323,
+      "max_seconds": 1.7323,
+      "median_output_bytes": 0
+    }
+  ]
+}

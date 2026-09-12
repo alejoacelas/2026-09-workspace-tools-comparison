@@ -1,0 +1,255 @@
+{
+  "network_used": false,
+  "observations": [
+    {
+      "case": "unicode_heading",
+      "heading": "Plan",
+      "expected": 6,
+      "workspace_end": 6,
+      "gdoc_end": 6,
+      "workspace_correct": true
+    },
+    {
+      "case": "unicode_heading",
+      "heading": "Plan 😀",
+      "expected": 9,
+      "workspace_end": 8,
+      "gdoc_end": 9,
+      "workspace_correct": false
+    },
+    {
+      "case": "unicode_heading",
+      "heading": "Plan 😀😀",
+      "expected": 11,
+      "workspace_end": 9,
+      "gdoc_end": 11,
+      "workspace_correct": false
+    },
+    {
+      "case": "unicode_heading",
+      "heading": "Plan 👩‍💻",
+      "expected": 12,
+      "workspace_end": 10,
+      "gdoc_end": 12,
+      "workspace_correct": false
+    },
+    {
+      "case": "unicode_heading",
+      "heading": "Plan é",
+      "expected": 9,
+      "workspace_end": 9,
+      "gdoc_end": 9,
+      "workspace_correct": true
+    },
+    {
+      "case": "body_style_reset",
+      "markdown": "Plain body paragraph.",
+      "workspace_resets": 0,
+      "gdoc_resets": 1
+    },
+    {
+      "case": "body_style_reset",
+      "markdown": "# Heading\n\nBody",
+      "workspace_resets": 0,
+      "gdoc_resets": 2
+    },
+    {
+      "case": "body_style_reset",
+      "markdown": "```\ncode\n```",
+      "workspace_resets": 0,
+      "gdoc_resets": 1
+    },
+    {
+      "case": "tab_field_mask",
+      "workspace_legacy_fields": true,
+      "gdoc_default_request": {
+        "documentId": "synthetic",
+        "includeTabsContent": true
+      }
+    },
+    {
+      "case": "tab_only_body",
+      "gdoc_read": "Present\n"
+    },
+    {
+      "case": "sheet_fetch_bound",
+      "requested": "A:Z",
+      "workspace_fetch": "A1:Z1000",
+      "workspace_discloses_clamp": true,
+      "gdoc_fetch": "A:Z"
+    },
+    {
+      "case": "sheet_fetch_bound",
+      "requested": "A1:Z50000",
+      "workspace_fetch": "A1:Z1000",
+      "workspace_discloses_clamp": true,
+      "gdoc_fetch": "A1:Z50000"
+    },
+    {
+      "case": "sheet_fetch_bound",
+      "requested": "A1001:Z50000",
+      "workspace_fetch": "A1001:Z2000",
+      "workspace_discloses_clamp": true,
+      "gdoc_fetch": "A1001:Z50000"
+    },
+    {
+      "case": "sheet_fetch_bound",
+      "requested": "A1:B120",
+      "workspace_fetch": "A1:B120",
+      "workspace_discloses_clamp": false,
+      "gdoc_fetch": "A1:B120"
+    },
+    {
+      "case": "sheet_display_truncation",
+      "gdoc_rows_returned": 120,
+      "gdoc_last_row_rendered": true
+    },
+    {
+      "case": "workspace_csv_format_hint",
+      "source_format": null,
+      "result": {
+        "error": "[import_to_google_sheets] Detected source MIME type 'text/plain' is not supported by this tool. Supported source formats: csv, ods, tsv, xls, xlsx."
+      }
+    },
+    {
+      "case": "workspace_csv_format_hint",
+      "source_format": "csv",
+      "result": {
+        "mime": "text/csv"
+      }
+    },
+    {
+      "case": "shortcut_rename",
+      "gdoc_target": "shortcut"
+    },
+    {
+      "case": "cli_quote_preservation",
+      "input": "\"exact phrase\"",
+      "gdoc": "\"exact phrase\"",
+      "workspace": "\"exact phrase\""
+    },
+    {
+      "case": "cli_quote_preservation",
+      "input": "\"123\"",
+      "gdoc": "\"123\"",
+      "workspace": "\"123\""
+    },
+    {
+      "case": "cli_quote_preservation",
+      "input": "ordinary text",
+      "gdoc": "ordinary text",
+      "workspace": "ordinary text"
+    },
+    {
+      "case": "workspace_column_validation",
+      "input": "B2",
+      "actual": null
+    },
+    {
+      "case": "workspace_column_validation",
+      "input": "A:B",
+      "actual": null
+    },
+    {
+      "case": "workspace_column_validation",
+      "input": "A\n",
+      "actual": null
+    },
+    {
+      "case": "workspace_column_validation",
+      "input": "AA",
+      "actual": 26
+    },
+    {
+      "case": "blank_and_object_indices",
+      "workspace_extracted": "Alpha\n\n￼Bravo\n",
+      "gdoc_matches": [
+        {
+          "startIndex": 9,
+          "endIndex": 14
+        }
+      ]
+    },
+    {
+      "case": "gdoc_lowercase_expansion",
+      "text": "İ cat\n",
+      "expected": [
+        {
+          "startIndex": 3,
+          "endIndex": 6
+        }
+      ],
+      "actual": [
+        {
+          "startIndex": 4,
+          "endIndex": 7
+        }
+      ]
+    },
+    {
+      "case": "gdoc_lowercase_expansion",
+      "text": "İİ cat\n",
+      "expected": [
+        {
+          "startIndex": 4,
+          "endIndex": 7
+        }
+      ],
+      "actual": {
+        "exception": "IndexError",
+        "message": "list index out of range"
+      }
+    },
+    {
+      "case": "gdoc_lowercase_expansion",
+      "text": "😀 İ cat\n",
+      "expected": [
+        {
+          "startIndex": 6,
+          "endIndex": 9
+        }
+      ],
+      "actual": [
+        {
+          "startIndex": 7,
+          "endIndex": 10
+        }
+      ]
+    },
+    {
+      "case": "gdoc_lowercase_expansion",
+      "text": "İ cat sat\n",
+      "expected": [
+        {
+          "startIndex": 3,
+          "endIndex": 6
+        }
+      ],
+      "actual": [
+        {
+          "startIndex": 4,
+          "endIndex": 7
+        }
+      ]
+    },
+    {
+      "case": "unicode_wrong_delete_request",
+      "text": "İ cat sat\n",
+      "intended_delete": "cat",
+      "actual_delete": "at ",
+      "gdoc_delete_range": {
+        "startIndex": 4,
+        "endIndex": 7
+      },
+      "workspace_request": {
+        "replaceAllText": {
+          "containsText": {
+            "text": "cat",
+            "matchCase": false
+          },
+          "replaceText": "dog"
+        }
+      }
+    }
+  ]
+}

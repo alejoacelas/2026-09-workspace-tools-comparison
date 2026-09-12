@@ -1,71 +1,44 @@
 # Google office tools comparison
 
-[Read the side-by-side comparison](COMPARISON.md) · [Compare actual command names](COMMANDS.md) · [Local installation and authorization status](SETUP.md).
+**[Read the measured comparison](COMPARISON.md).** It covers every public gdoc command, practical Workspace equivalents, live speed/correctness checks, and bugs transferred between the repositories.
 
-Workspace MCP is the broader office connector; gdoc is a useful document-review companion for shell-capable agents. The report compares feature coverage, agent calls, underlying Google API executions, collaboration behavior and deployment. It uses public source and synthetic tests, with no live Google account operations.
+Workspace is the broader and faster sampled office connector; gdoc supplies exclusive review and local-file workflows. Both have confirmed document-fidelity defects. The report explains which routes passed, which failed, and which claims remain source-only.
 
-The upstream snapshots are Workspace MCP `54b1c56f7f9912ce32681460d7ca38f9c2a37564` and gdoc `dbfa4c34bfa699ee8dd9839da85eea1fac177d44`, inspected September 12, 2026. Local clones live in the ignored `repos/` directory; their upstream remotes remain intact.
+## What to inspect
 
-The active project is at `~/best/once/2026-09-workspace-tools-comparison`, restored from the archive to continue evaluating and using the tools. Local installation and live authorization checks are documented separately in [SETUP.md](SETUP.md).
+| Artifact | Contents |
+|---|---|
+|[Main report](COMPARISON.md)|Recommendations, feature gaps, timings, live failures and three Pillow illustrations|
+|[Feature matrix](evidence/feature-matrix.md)|All 39 public gdoc commands, consequential flags and CLI/MCP differences|
+|[Command names](COMMANDS.md)|Actual Workspace tools and gdoc subcommands|
+|[gdoc fixes → Workspace](evidence/gdoc-fixes-crosscheck.md)|12 public patch families cross-checked against the other implementation|
+|[Workspace fixes → gdoc](evidence/workspace-fixes-crosscheck.md)|12 reverse patch families, PR states, ancestry and executable observations|
+|[Markdown corpus](evidence/markdown-corpus.md)|36 adversarial specimens, explicit expectations and observer limitations|
+|[Regression assessment](evidence/regression-assessment.md)|Full upstream tests, CI enforcement limits, concurrency and retry behavior|
+|[Live methodology](evidence/performance.md)|Timing samples, native-state checks, runtime versions and harness corrections|
+|[Installation](SETUP.md)|Local Workspace MCP registration and completed account authorization|
 
-## Evidence
-
-- [Call-count probe](probe-calls.py) and [results for gdoc](gdoc-call-probes.json) / [Workspace](workspace-call-probes.json) distinguish agent operations from Google API executions.
-- [Markdown probe](probe-markdown.py) and [gdoc output](gdoc-markdown-probe.json) / [Workspace output](workspace-markdown-probe.json) characterize a UTF-16 indexing difference.
-- [Inventory](inventory.json) records configured tool names and pinned revisions.
-- [gdoc test output](gdoc-tests.txt) and [Workspace test output](workspace-tests.txt) record 459 and 144 selected passing upstream tests.
+The active project is `~/best/once/2026-09-workspace-tools-comparison`; it was restored from the archive for continued evaluation. Both upstream Git clones are retained in ignored `repos/`. Public evidence uses synthetic content; credentials, live resource IDs and transport logs remain Git-ignored in `.local-benchmark/`.
 
 ## Reproduce
 
-Clone into an empty `repos/` directory and select the inspected revisions:
+Pinned public upstreams:
+
+- gdoc 0.21.0: `dbfa4c34bfa699ee8dd9839da85eea1fac177d44`.
+- Workspace MCP 1.26.0: `54b1c56f7f9912ce32681460d7ca38f9c2a37564`.
 
 ```sh
 mkdir -p repos
-git clone https://github.com/taylorwilsdon/google_workspace_mcp.git repos/google-workspace-mcp
-git -C repos/google-workspace-mcp checkout 54b1c56f7f9912ce32681460d7ca38f9c2a37564
 git clone https://github.com/LucaDeLeo/gdoc.git repos/gdoc
 git -C repos/gdoc checkout dbfa4c34bfa699ee8dd9839da85eea1fac177d44
-```
-
-Install each checkout's dependencies:
-
-```sh
+git clone https://github.com/taylorwilsdon/google_workspace_mcp.git repos/google-workspace-mcp
+git -C repos/google-workspace-mcp checkout 54b1c56f7f9912ce32681460d7ca38f9c2a37564
 (cd repos/gdoc && uv sync --frozen --extra dev)
 (cd repos/google-workspace-mcp && uv sync --frozen --extra test)
 ```
 
-Run the synthetic probes from this project directory. They replace Google services with mocks, use invented document data, and do not need credentials:
+[Full reproduction instructions](evidence/performance.md#run-the-evidence) distinguish offline checks from live scripts that create synthetic Google files. The live install uses a different dependency resolution from the clone's frozen test environment; [runtime metadata](evidence/runtime.json) records that distinction.
 
-```sh
-repos/gdoc/.venv/bin/python probe-calls.py gdoc
-repos/google-workspace-mcp/.venv/bin/python probe-calls.py workspace
-repos/gdoc/.venv/bin/python probe-markdown.py gdoc
-repos/google-workspace-mcp/.venv/bin/python probe-markdown.py workspace
-```
+The original synthetic API-call counts remain reproducible with `probe-calls.py` and each clone's Python; `probe-markdown.py` characterizes the initial emoji-index finding. Later native-state checks are stronger evidence than those first request-only observations. Historical first-pass conclusions remain in Git history rather than being silently treated as current findings.
 
-The Markdown assertions characterize these exact snapshots, including Workspace's incorrect heading end index; an upstream fix will require updating that expectation. The call probe excludes OAuth wrappers, retries, pagination beyond one page and resumable-upload exchanges. It is not a performance or integration test.
-
-The selected upstream tests were:
-
-```sh
-(cd repos/gdoc && GDOC_AUTO_UPDATE=0 .venv/bin/python -m pytest -q -o addopts= \
-  tests/test_edit.py tests/test_edit_cell.py tests/test_suggest.py \
-  tests/test_anchored_comment.py tests/test_cat.py tests/test_cat_tabs.py \
-  tests/test_write.py tests/test_mcp.py tests/test_sheets_cmd.py \
-  tests/test_docs_batch.py tests/test_structure.py tests/test_new_file.py)
-
-(cd repos/google-workspace-mcp && .venv/bin/python -m pytest -q \
-  tests/gdocs/test_semantic_anchors.py tests/gdocs/test_batch_metadata.py \
-  tests/gdocs/test_docs_markdown_writer.py tests/gdocs/test_read_tab_selection.py \
-  tests/gdocs/test_suggestions_view_mode.py tests/gsheets/test_read_sheet_values.py \
-  tests/gsheets/test_format_sheet_range.py tests/gmail/test_search_gmail_messages_headers.py \
-  tests/gmail/test_batch_modify_label_verification.py)
-```
-
-## Plan
-
-1. Clone upstream repositories, pin revisions, and inventory supported services and operations.
-2. Trace representative office workflows to count agent interactions and underlying API requests, including batching and verification.
-3. Produce a source-linked comparison and practical recommendations, clearly separating inspected behavior from live validation.
-
-[Run overview](OVERVIEW.md) · [Run log](RUN-LOG.md) · [Session record](REPLICATE.md).
+[Plan](PLAN.md) · [Overview](OVERVIEW.md) · [Run log](RUN-LOG.md) · [Session record](REPLICATE.md)

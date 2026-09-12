@@ -8,7 +8,7 @@ Both configured Google accounts have their identities verified using Drive's acc
 
 ## Authorization status
 
-Both personal and work accounts completed broader OAuth consent. Live Gmail search and Calendar listing passed for each account, in addition to the earlier Drive checks. Other enabled services have not been individually smoke-tested. `gcloud` infrastructure credentials alone do not grant Gmail or Calendar access. The existing OAuth client's Cloud project already has the relevant APIs enabled, so no Cloud project or API enablement changes were needed.
+Both personal and work accounts completed broader OAuth consent. Live Gmail search and Calendar listing passed for each account, in addition to the earlier Drive checks. The comparison also exercised selected Docs, Drive and Sheets operations on synthetic personal-account files; [the report](COMPARISON.md) records both passes and failures. Other enabled services have not been individually smoke-tested. `gcloud` infrastructure credentials alone do not grant Gmail or Calendar access. The existing OAuth client's Cloud project already has the relevant APIs enabled, so no Cloud project or API enablement changes were needed.
 
 The user completed Google's browser consent screens. The OAuth client is displayed by Google as `everything-app`; it is the existing client also used by gdoc.
 

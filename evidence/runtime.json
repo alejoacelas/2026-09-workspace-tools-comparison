@@ -1,0 +1,26 @@
+{
+  "live_orchestrator_python": "3.11.16",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "packages": {
+    "workspace-mcp": "1.26.0",
+    "fastmcp": "4.0.3",
+    "mcp": "2.2.0",
+    "google-api-python-client": "2.200.0",
+    "google-auth": "2.58.0"
+  },
+  "workspace_source_matches": {
+    "gdocs/docs_tools.py": true,
+    "gdocs/docs_markdown_writer.py": true,
+    "core/comments.py": true
+  },
+  "gdoc_cli_runtime": {
+    "python": "3.12.13",
+    "google-api-python-client": "2.189.0"
+  },
+  "workspace_clone_test_runtime": {
+    "python": "3.11.16",
+    "fastmcp": "3.4.7",
+    "mcp": "1.28.1",
+    "google-api-python-client": "2.194.0"
+  }
+}

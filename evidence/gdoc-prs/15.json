@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n- Fixes #14 \u2014 `gdoc write` against a non-tabbed doc was failing with `Field mask cannot retrieve comment-specific fields when include_comments is false` on every call. The Docs API now rejects the recursive `childTabs` selector in `count_document_tabs`'s field mask.\n- Dropped the mask and collapsed the function from 18 lines to 2 by reusing the existing `get_document_with_tabs` and `flatten_tabs` helpers.\n- Bumped version to `0.7.2` (in `pyproject.toml` + `gdoc/__init__.py`) so installed clients pick up the fix.\n\n## Test plan\n- [x] `uv run pytest tests/` \u2014 836 passed\n- [x] Targeted: `tests/test_api_docs.py::TestCountDocumentTabs` (3 tests) and `tests/test_write.py` (39 tests) all pass\n- [ ] Smoke test: run `gdoc write <doc-id> file.md` against a real single-tab doc\n- [ ] Smoke test: run `gdoc write <doc-id> file.md` against a real multi-tab doc and verify it still refuses without `--force-collapse-tabs`\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n## Release Notes\n\n* **Bug Fixes**\n  * Resolved a multi-tab safety check failure in `gdoc write` that prevented the command from completing successfully in documents with multiple tabs.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-05-07T19:38:01Z",
+  "number": 15,
+  "state": "MERGED",
+  "title": "fix: drop fields mask in count_document_tabs (issue #14)",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/15"
+}

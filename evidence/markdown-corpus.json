@@ -1,0 +1,5304 @@
+{
+  "method": "Independent bounded UTF-16 request replay; explicit semantic expectations; no Google API",
+  "cases": [
+    {
+      "case": {
+        "id": "plain",
+        "md": "Hello office.",
+        "text": "Hello office."
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Hello office.\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Hello office.\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Hello office.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Hello office.\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Hello office.\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "paragraphs",
+        "md": "Alpha\n\nBeta",
+        "text": "Alpha Beta"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\n\nBeta\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Alpha\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Beta\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\n\nBeta\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\n\nBeta\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 7,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "Beta\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 13,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "heading",
+        "md": "# Meeting\n\nNotes",
+        "text": "Meeting Notes",
+        "heading": "Meeting"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Meeting\n\nNotes\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Meeting\n",
+            "paragraph": {
+              "namedStyleType": "HEADING_1"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Notes\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Meeting\n\nNotes\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_1"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 9,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 10,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Meeting\n\nNotes\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Meeting\n",
+            "paragraph": {
+              "namedStyleType": "HEADING_1"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Meeting\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_1"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 10,
+                "tabId": "probe-tab"
+              },
+              "text": "Notes\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 16,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "h6",
+        "md": "###### Small heading",
+        "text": "Small heading",
+        "heading": "Small heading"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Small heading\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Small heading\n",
+            "paragraph": {
+              "namedStyleType": "HEADING_6"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Small heading\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_6"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Small heading\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Small heading\n",
+            "paragraph": {
+              "namedStyleType": "HEADING_6"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Small heading\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_6"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "bold",
+        "md": "Please **approve** today.",
+        "text": "Please approve today.",
+        "bold": "approve"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Please approve today.\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Please approve today.\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "approve",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Please approve today.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 23,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Please approve today.\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "approve",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Please approve today.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 23,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "italic",
+        "md": "This is *draft* copy.",
+        "text": "This is draft copy.",
+        "italic": "draft"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "This is draft copy.\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "This is draft copy.\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "draft",
+            "style": {
+              "italic": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "This is draft copy.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 21,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 9,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "This is draft copy.\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "draft",
+            "style": {
+              "italic": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "This is draft copy.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 9,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 21,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "bold-italic",
+        "md": "***Important***",
+        "text": "Important",
+        "bold": "Important",
+        "italic": "Important"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Important\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Important\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Important",
+            "style": {
+              "bold": true
+            }
+          },
+          {
+            "text": "Important",
+            "style": {
+              "italic": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Important\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Important\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Important",
+            "style": {
+              "bold": true
+            }
+          },
+          {
+            "text": "Important",
+            "style": {
+              "italic": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Important\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 11,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "nested-emphasis",
+        "md": "**Bold and _italic_**",
+        "text": "Bold and italic",
+        "bold": "Bold and italic",
+        "italic": "italic"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Bold and italic\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Bold and italic\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "italic",
+            "style": {
+              "italic": true
+            }
+          },
+          {
+            "text": "Bold and italic",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Bold and italic\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 10,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Bold and italic\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "italic",
+            "style": {
+              "italic": true
+            }
+          },
+          {
+            "text": "Bold and italic",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Bold and italic\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 10,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 17,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "link",
+        "md": "[Policy](https://example.com/policy)",
+        "text": "Policy",
+        "link": [
+          "Policy",
+          "https://example.com/policy"
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Policy\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com/policy"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Policy\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com/policy"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/policy"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "link-parentheses",
+        "md": "[Policy](https://example.com/Policy_(2026))",
+        "text": "Policy",
+        "link": [
+          "Policy",
+          "https://example.com/Policy_(2026)"
+        ]
+      },
+      "gdoc": {
+        "status": "difference",
+        "findings": [
+          "visible text differs",
+          "link label/URL differs"
+        ],
+        "nesting_scope": null,
+        "text": "Policy)\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy)\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com/Policy_(2026"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy)\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/Policy_(2026"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Policy\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com/Policy_(2026)"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/Policy_(2026)"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "bold-link",
+        "md": "[**Policy**](https://example.com)",
+        "text": "Policy",
+        "bold": "Policy",
+        "link": [
+          "Policy",
+          "https://example.com"
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Policy\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "bold": true
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Policy\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Policy",
+            "style": {
+              "bold": true
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "inline-code",
+        "md": "Run `x = **literal**`.",
+        "text": "Run x = **literal**.",
+        "code": "x = **literal**"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Run x = **literal**.\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Run x = **literal**.\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "x = **literal**",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Run x = **literal**.\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Run x = **literal**.\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "x = **literal**",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Run x = **literal**.\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "fenced-code",
+        "md": "```python\nx = 1\nprint(x)\n```",
+        "text": "x = 1 print(x)",
+        "code": "x = 1\nprint(x)"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "x = 1\nprint(x)\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "x = 1\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "print(x)\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "x = 1",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            }
+          },
+          {
+            "text": "print(x)",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "x = 1\nprint(x)\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "x = 1\nprint(x)\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "x = 1\nprint(x)",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "x = 1\nprint(x)\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 16,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "bullets",
+        "md": "- Alpha\n- Beta",
+        "text": "Alpha Beta",
+        "depths": [
+          0,
+          0
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\nBeta\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Alpha\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Beta\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Alpha",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Beta",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\nBeta\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\nBeta\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "Alpha",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Beta",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 7,
+                "tabId": "probe-tab"
+              },
+              "text": "Beta\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 12,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "nested-bullets",
+        "md": "- Parent\n  - Child\n- Sibling",
+        "text": "Parent Child Sibling",
+        "depths": [
+          0,
+          1,
+          0
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": "leading-tab request intent only; not final Google nesting",
+        "text": "Parent\nChild\nSibling\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Parent\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\tChild\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Sibling\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Parent",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Child",
+            "depth": 1,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Sibling",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n\tChild\nSibling\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 15,
+                "endIndex": 23,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "list nesting differs"
+        ],
+        "nesting_scope": "leading-tab request intent only; not final Google nesting",
+        "text": "Parent\nChild\nSibling\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "Parent",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Child",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Sibling",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "Child\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "Sibling\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "numbered",
+        "md": "1. Alpha\n2. Beta",
+        "text": "Alpha Beta",
+        "depths": [
+          0,
+          0
+        ],
+        "numbered": true
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\nBeta\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Alpha\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Beta\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Alpha",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Beta",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\nBeta\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Alpha\nBeta\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "Alpha",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Beta",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Alpha\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 7,
+                "tabId": "probe-tab"
+              },
+              "text": "Beta\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 12,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "nested-numbered",
+        "md": "1. Parent\n   1. Child\n2. Sibling",
+        "text": "Parent Child Sibling",
+        "depths": [
+          0,
+          1,
+          0
+        ],
+        "numbered": true
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": "leading-tab request intent only; not final Google nesting",
+        "text": "Parent\nChild\nSibling\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Parent\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\tChild\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Sibling\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "Parent",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Child",
+            "depth": 1,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Sibling",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n\tChild\nSibling\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 15,
+                "endIndex": 23,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "list nesting differs"
+        ],
+        "nesting_scope": "leading-tab request intent only; not final Google nesting",
+        "text": "Parent\nChild\nSibling\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "Parent",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Child",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          },
+          {
+            "text": "Sibling",
+            "depth": 0,
+            "preset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Parent\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "Child\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "Sibling\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 22,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "NUMBERED_DECIMAL_ALPHA_ROMAN"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "list-continuation",
+        "md": "- First paragraph\n\n  Continuation paragraph\n\n- Second item",
+        "text": "First paragraph Continuation paragraph Second item"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "First paragraph\n\n  Continuation paragraph\n\nSecond item\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "First paragraph\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "  Continuation paragraph\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Second item\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "First paragraph",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Second item",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "First paragraph\n\n  Continuation paragraph\n\nSecond item\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 17,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 18,
+                "endIndex": 43,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 43,
+                "endIndex": 44,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 44,
+                "endIndex": 56,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 44,
+                "endIndex": 56,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "visible text differs"
+        ],
+        "nesting_scope": null,
+        "text": "First paragraph\nSecond item\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "First paragraph",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Second item",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "First paragraph\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 17,
+                "tabId": "probe-tab"
+              },
+              "text": "Second item\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 29,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 29,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "table",
+        "md": "| Key | Value |\n| --- | --- |\n| Budget | 100 |",
+        "table": [
+          [
+            "Key",
+            "Value"
+          ],
+          [
+            "Budget",
+            "100"
+          ]
+        ],
+        "unsupported": [
+          "workspace"
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "rows": [
+              [
+                "Key",
+                "Value"
+              ],
+              [
+                "Budget",
+                "100"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ]
+      },
+      "workspace": {
+        "status": "unsupported-route",
+        "findings": [
+          "native table cells differ/missing"
+        ],
+        "nesting_scope": null,
+        "text": "| Key | Value | | --- | --- | | Budget | 100 |\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "| Key | Value | | --- | --- | | Budget | 100 |\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 48,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "table-escaped-pipe",
+        "md": "| Key | Value |\n| --- | --- |\n| A\\|B | 100 |",
+        "table": [
+          [
+            "Key",
+            "Value"
+          ],
+          [
+            "A|B",
+            "100"
+          ]
+        ],
+        "unsupported": [
+          "workspace"
+        ]
+      },
+      "gdoc": {
+        "status": "difference",
+        "findings": [
+          "native table cells differ/missing"
+        ],
+        "nesting_scope": null,
+        "text": "\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": [
+          {
+            "rows": [
+              [
+                "Key",
+                "Value"
+              ],
+              [
+                "A\\",
+                "B"
+              ]
+            ],
+            "num_rows": 2,
+            "num_cols": 2,
+            "plain_text_offset": 0,
+            "removed_tabs_before": 0
+          }
+        ]
+      },
+      "workspace": {
+        "status": "unsupported-route",
+        "findings": [
+          "native table cells differ/missing"
+        ],
+        "nesting_scope": null,
+        "text": "| Key | Value | | --- | --- | | A|B | 100 |\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "| Key | Value | | --- | --- | | A|B | 100 |\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 45,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "strike",
+        "md": "~~obsolete~~ current",
+        "text": "obsolete current",
+        "strike": "obsolete",
+        "unsupported": [
+          "workspace"
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "obsolete current\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "obsolete current\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "obsolete",
+            "style": {
+              "strikethrough": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "obsolete current\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "strikethrough": true
+              },
+              "fields": "strikethrough"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "unsupported-route",
+        "findings": [
+          "visible text differs",
+          "strike target differs"
+        ],
+        "nesting_scope": null,
+        "text": "~~obsolete~~ current\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "~~obsolete~~ current\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 22,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "image-alt",
+        "md": "![Diagram](https://example.com/a.png)",
+        "text": "Diagram",
+        "link": [
+          "Diagram",
+          "https://example.com/a.png"
+        ],
+        "unsupported": [
+          "gdoc"
+        ]
+      },
+      "gdoc": {
+        "status": "unsupported-route",
+        "findings": [
+          "visible text differs"
+        ],
+        "nesting_scope": null,
+        "text": "!Diagram\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "!Diagram\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Diagram",
+            "style": {
+              "link": {
+                "url": "https://example.com/a.png"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "!Diagram\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 2,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/a.png"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Diagram\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Diagram",
+            "style": {
+              "link": {
+                "url": "https://example.com/a.png"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Diagram\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com/a.png"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "escaped-markers",
+        "md": "Literal \\*stars\\* and \\[brackets\\].",
+        "text": "Literal *stars* and [brackets]."
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Literal *stars* and [brackets].\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Literal *stars* and [brackets].\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Literal *stars* and [brackets].\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 33,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Literal *stars* and [brackets].\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Literal *stars* and [brackets].\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 33,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "intraword-underscore",
+        "md": "office_budget_total",
+        "text": "office_budget_total"
+      },
+      "gdoc": {
+        "status": "difference",
+        "findings": [
+          "visible text differs"
+        ],
+        "nesting_scope": null,
+        "text": "officebudgettotal\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "officebudgettotal\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "budget",
+            "style": {
+              "italic": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "officebudgettotal\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 19,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "italic": true
+              },
+              "fields": "italic"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "office_budget_total\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "office_budget_total\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 21,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "blockquote",
+        "md": "> Review **carefully**",
+        "text": "Review carefully",
+        "bold": "carefully"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Review carefully\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Review carefully\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT",
+              "indentStart": {
+                "magnitude": 36,
+                "unit": "PT"
+              },
+              "indentFirstLine": {
+                "magnitude": 36,
+                "unit": "PT"
+              }
+            }
+          },
+          {
+            "text": "carefully",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Review carefully\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                },
+                "indentFirstLine": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "fields": "namedStyleType,indentStart,indentFirstLine"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Review carefully\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "carefully",
+            "style": {
+              "bold": true
+            }
+          },
+          {
+            "text": "Review carefully\n",
+            "paragraph": {
+              "indentStart": {
+                "magnitude": 36,
+                "unit": "PT"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Review carefully\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 18,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "fields": "indentStart"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 18,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "horizontal-rule",
+        "md": "Above\n\n---\n\nBelow",
+        "text": "Above Below"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Above\n\n\n\nBelow\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Above\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT",
+              "borderBottom": {
+                "color": {
+                  "color": {
+                    "rgbColor": {
+                      "red": 0.5,
+                      "green": 0.5,
+                      "blue": 0.5
+                    }
+                  }
+                },
+                "width": {
+                  "magnitude": 1,
+                  "unit": "PT"
+                },
+                "padding": {
+                  "magnitude": 1,
+                  "unit": "PT"
+                },
+                "dashStyle": "SOLID"
+              }
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Below\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Above\n\n\n\nBelow\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 7,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 8,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "borderBottom": {
+                  "color": {
+                    "color": {
+                      "rgbColor": {
+                        "red": 0.5,
+                        "green": 0.5,
+                        "blue": 0.5
+                      }
+                    }
+                  },
+                  "width": {
+                    "magnitude": 1,
+                    "unit": "PT"
+                  },
+                  "padding": {
+                    "magnitude": 1,
+                    "unit": "PT"
+                  },
+                  "dashStyle": "SOLID"
+                }
+              },
+              "fields": "namedStyleType,borderBottom"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 9,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 10,
+                "endIndex": 16,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Above\n\n\nBelow\n\n\n",
+        "range_errors": [],
+        "styles": [],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Above\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 7,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "Below\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 15,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-heading",
+        "md": "# Plan 😀\n\nNext",
+        "text": "Plan 😀 Next",
+        "heading": "Plan 😀"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Plan 😀\n\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Plan 😀\n",
+            "paragraph": {
+              "namedStyleType": "HEADING_1"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Plan 😀\n\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_1"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 9,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 10,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 8 differs from append frontier 9",
+          "3: insertion 9 differs from append frontier 10",
+          "4: insertion 14 differs from append frontier 15"
+        ],
+        "nesting_scope": null,
+        "text": "Plan 😀\nNext\n\n\n\n",
+        "range_errors": [
+          "2: insertion 8 differs from append frontier 9",
+          "3: insertion 9 differs from append frontier 10",
+          "4: insertion 14 differs from append frontier 15"
+        ],
+        "styles": [
+          {
+            "text": "Plan 😀",
+            "paragraph": {
+              "namedStyleType": "HEADING_1"
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Plan 😀\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "HEADING_1"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-before-bold",
+        "md": "😀 **approved**",
+        "text": "😀 approved",
+        "bold": "approved"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "😀 approved\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "😀 approved\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "approved",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀 approved\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 12 differs from append frontier 13",
+          "bold target differs"
+        ],
+        "nesting_scope": null,
+        "text": "😀 approved\n\n\n",
+        "range_errors": [
+          "2: insertion 12 differs from append frontier 13"
+        ],
+        "styles": [
+          {
+            "text": " approve",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀 approved\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 3,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 12,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-in-bold",
+        "md": "**A😀B**",
+        "text": "A😀B",
+        "bold": "A😀B"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "A😀B\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "A😀B\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "A😀B",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "A😀B\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 6,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 5,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 5 differs from append frontier 6",
+          "bold target differs"
+        ],
+        "nesting_scope": null,
+        "text": "A😀B\n\n\n",
+        "range_errors": [
+          "2: insertion 5 differs from append frontier 6"
+        ],
+        "styles": [
+          {
+            "text": "A😀",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "A😀B\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 4,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 5,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-after-bold",
+        "md": "**approved** 😀\n\nNext",
+        "text": "approved 😀 Next",
+        "bold": "approved"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "approved 😀\n\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "approved 😀\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "approved",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "approved 😀\n\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 13,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 19,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 12 differs from append frontier 13",
+          "3: insertion 13 differs from append frontier 14",
+          "4: insertion 18 differs from append frontier 19"
+        ],
+        "nesting_scope": null,
+        "text": "approved 😀\nNext\n\n\n\n",
+        "range_errors": [
+          "2: insertion 12 differs from append frontier 13",
+          "3: insertion 13 differs from append frontier 14",
+          "4: insertion 18 differs from append frontier 19"
+        ],
+        "styles": [
+          {
+            "text": "approved",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "approved 😀\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 12,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 13,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 18,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-link",
+        "md": "😀 [Policy](https://example.com)",
+        "text": "😀 Policy",
+        "link": [
+          "Policy",
+          "https://example.com"
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "😀 Policy\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "😀 Policy\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Policy",
+            "style": {
+              "link": {
+                "url": "https://example.com"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀 Policy\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com"
+                }
+              },
+              "fields": "link"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 10 differs from append frontier 11",
+          "link label/URL differs"
+        ],
+        "nesting_scope": null,
+        "text": "😀 Policy\n\n\n",
+        "range_errors": [
+          "2: insertion 10 differs from append frontier 11"
+        ],
+        "styles": [
+          {
+            "text": " Polic",
+            "style": {
+              "link": {
+                "url": "https://example.com"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀 Policy\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 3,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "link": {
+                  "url": "https://example.com"
+                }
+              },
+              "fields": "link"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 10,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-list",
+        "md": "- 😀\n- Next",
+        "text": "😀 Next",
+        "depths": [
+          0,
+          0
+        ]
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "😀\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "😀\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          }
+        ],
+        "bullets": [
+          {
+            "text": "😀",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          },
+          {
+            "text": "Next",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 4,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 4,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "1: insertion 3 differs from append frontier 4",
+          "3: insertion 8 differs from append frontier 9",
+          "visible text differs",
+          "list nesting differs"
+        ],
+        "nesting_scope": null,
+        "text": "😀Next\n\n\n\n",
+        "range_errors": [
+          "1: insertion 3 differs from append frontier 4",
+          "3: insertion 8 differs from append frontier 9"
+        ],
+        "styles": [],
+        "bullets": [
+          {
+            "text": "😀Next",
+            "depth": 0,
+            "preset": "BULLET_DISC_CIRCLE_SQUARE"
+          }
+        ],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 3,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "createParagraphBullets": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 8,
+                "tabId": "probe-tab"
+              },
+              "bulletPreset": "BULLET_DISC_CIRCLE_SQUARE"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 8,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "emoji-code",
+        "md": "```\n😀\n```\n\nNext",
+        "text": "😀 Next",
+        "code": "😀"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "😀\n\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "😀\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "😀",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New"
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀\n\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 4,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 5,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 3,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New"
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "1: updateTextStyle [1,2) splits UTF-16 character",
+          "2: insertion 3 differs from append frontier 4",
+          "3: insertion 4 differs from append frontier 5",
+          "4: insertion 9 differs from append frontier 10",
+          "code target differs"
+        ],
+        "nesting_scope": null,
+        "text": "😀\nNext\n\n\n\n",
+        "range_errors": [
+          "1: updateTextStyle [1,2) splits UTF-16 character",
+          "2: insertion 3 differs from append frontier 4",
+          "3: insertion 4 differs from append frontier 5",
+          "4: insertion 9 differs from append frontier 10"
+        ],
+        "styles": [
+          {
+            "text": "�",
+            "style": {
+              "weightedFontFamily": {
+                "fontFamily": "Courier New",
+                "weight": 400
+              }
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "😀\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 2,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "weightedFontFamily": {
+                  "fontFamily": "Courier New",
+                  "weight": 400
+                }
+              },
+              "fields": "weightedFontFamily"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 3,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 4,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 9,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "combining-marks",
+        "md": "Café **review**",
+        "text": "Café review",
+        "bold": "review"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Café review\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "Café review\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "review",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Café review\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "Café review\n\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "review",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "Café review\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 14,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "zwj-emoji",
+        "md": "👩‍💻 **review**\n\nNext",
+        "text": "👩‍💻 review Next",
+        "bold": "review"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "👩‍💻 review\n\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "👩‍💻 review\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "review",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "👩‍💻 review\n\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 14,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 14,
+                "endIndex": 15,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 15,
+                "endIndex": 20,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 7,
+                "endIndex": 13,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "1: updateTextStyle [5,11) splits UTF-16 character",
+          "2: insertion 12 differs from append frontier 14",
+          "3: insertion 13 differs from append frontier 15",
+          "4: insertion 18 differs from append frontier 20",
+          "visible text differs",
+          "bold target differs"
+        ],
+        "nesting_scope": null,
+        "text": "👩‍💻 revie\nNext\n\nw\n\n",
+        "range_errors": [
+          "1: updateTextStyle [5,11) splits UTF-16 character",
+          "2: insertion 12 differs from append frontier 14",
+          "3: insertion 13 differs from append frontier 15",
+          "4: insertion 18 differs from append frontier 20"
+        ],
+        "styles": [
+          {
+            "text": "� revi",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "👩‍💻 review\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 5,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 12,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 13,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 18,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    },
+    {
+      "case": {
+        "id": "astral-cjk",
+        "md": "𠮷 **review**\n\nNext",
+        "text": "𠮷 review Next",
+        "bold": "review"
+      },
+      "gdoc": {
+        "status": "pass",
+        "findings": [],
+        "nesting_scope": null,
+        "text": "𠮷 review\n\nNext\n\n",
+        "range_errors": [],
+        "styles": [
+          {
+            "text": "𠮷 review\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "Next\n",
+            "paragraph": {
+              "namedStyleType": "NORMAL_TEXT"
+            }
+          },
+          {
+            "text": "review",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "𠮷 review\n\nNext\n"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 1,
+                "endIndex": 11,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 11,
+                "endIndex": 12,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateParagraphStyle": {
+              "range": {
+                "startIndex": 12,
+                "endIndex": 17,
+                "tabId": "probe-tab"
+              },
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT"
+              },
+              "fields": "namedStyleType"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 4,
+                "endIndex": 10,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          }
+        ],
+        "tables": []
+      },
+      "workspace": {
+        "status": "difference",
+        "findings": [
+          "2: insertion 10 differs from append frontier 11",
+          "3: insertion 11 differs from append frontier 12",
+          "4: insertion 16 differs from append frontier 17",
+          "bold target differs"
+        ],
+        "nesting_scope": null,
+        "text": "𠮷 review\nNext\n\n\n\n",
+        "range_errors": [
+          "2: insertion 10 differs from append frontier 11",
+          "3: insertion 11 differs from append frontier 12",
+          "4: insertion 16 differs from append frontier 17"
+        ],
+        "styles": [
+          {
+            "text": " revie",
+            "style": {
+              "bold": true
+            }
+          }
+        ],
+        "bullets": [],
+        "requests": [
+          {
+            "insertText": {
+              "location": {
+                "index": 1,
+                "tabId": "probe-tab"
+              },
+              "text": "𠮷 review\n"
+            }
+          },
+          {
+            "updateTextStyle": {
+              "range": {
+                "startIndex": 3,
+                "endIndex": 9,
+                "tabId": "probe-tab"
+              },
+              "textStyle": {
+                "bold": true
+              },
+              "fields": "bold"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 10,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 11,
+                "tabId": "probe-tab"
+              },
+              "text": "Next\n"
+            }
+          },
+          {
+            "insertText": {
+              "location": {
+                "index": 16,
+                "tabId": "probe-tab"
+              },
+              "text": "\n"
+            }
+          }
+        ],
+        "tables": []
+      }
+    }
+  ]
+}

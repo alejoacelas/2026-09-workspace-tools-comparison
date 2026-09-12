@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\nFixes the false \"doc changed since last read\" conflict observed when pushing after the sync hook (or any own write) already updated the doc.\n\n- **Root cause:** conflict detection compares against `last_read_version`, but successful writes only advanced `last_version` \u2014 so the tool treated your own push as a stranger's edit. `push`/`write` (including `_sync-hook`) now advance the read baseline: a full-content write means you know exactly what the doc contains.\n- **Defense in depth:** when the version check still fails for a full-doc `push`/`write`, export the doc and compare with the outgoing content. Identical \u2192 succeed as a no-op (`OK already in sync`, `in_sync: true` in JSON) and heal the baseline. Real divergence still errors with exit 3. Tab writes never use the content comparison (tab body \u2260 whole-doc export).\n- Version 0.10.1 + CHANGELOG.\n\n## Test plan\n\n- 8 new tests: push/write advance `last_read_version` (edit doesn't), no-op on matching content (with/without baseline, JSON output, state healing), blocked tests now explicitly mock differing export, tab-write conflict not rescued by content match\n- Full suite: 973 passed; stub gate clean; ruff at baseline\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "mergedAt": "2026-06-09T19:07:33Z",
+  "number": 24,
+  "state": "MERGED",
+  "title": "fix: writes advance conflict baseline; in-sync writes no-op (0.10.1)",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/24"
+}

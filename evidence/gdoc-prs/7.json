@@ -1,0 +1,8 @@
+{
+  "body": "## Summary\n\n- Adds `modifiedByMeTime` to the fields requested by `list_files()` in `gdoc/api/drive.py`\n\n## Motivation\n\nThe Drive API's `modifiedByMeTime` field lets callers distinguish documents the authenticated user personally edited from documents modified by collaborators. Without this field, `list_files()` results filtered by `modifiedTime` include all documents modified by anyone with access.\n\n`modifiedByMeTime` is not queryable in Drive API search (server returns 400), so it must be filtered client-side after retrieval. This one-line change makes that possible by including the field in the API response.\n\n## Example usage\n\n```python\nfrom gdoc.api.drive import list_files\n\nfiles = list_files(\"modifiedTime > '2026-03-14T00:00:00' and mimeType='application/vnd.google-apps.document'\")\nmy_edits = [f for f in files if (f.get(\"modifiedByMeTime\") or \"\").startswith(\"2026-03-14\")]\n```\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * File listings now include modification timestamps, showing when files were last updated by you. This provides improved visibility into your recent work and helps you track file changes more effectively.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+  "mergedAt": "2026-04-10T11:22:39Z",
+  "number": 7,
+  "state": "MERGED",
+  "title": "Include modifiedByMeTime in list_files response",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/7"
+}

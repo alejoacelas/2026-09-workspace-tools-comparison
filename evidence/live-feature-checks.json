@@ -1,0 +1,1593 @@
+{
+  "started_utc": "2026-09-12T17:18:09.165525+00:00",
+  "scope": "synthetic fixtures, additional native state checks; not a representative reliability rate",
+  "samples": [
+    {
+      "case": "read_with_one_comment",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.4429,
+      "ok": true,
+      "output_bytes": 141,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_one_comment",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.7898,
+      "ok": true,
+      "output_bytes": 141,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_one_comment",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.6491,
+      "ok": true,
+      "output_bytes": 141,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_one_comment",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 1.2211,
+      "ok": true,
+      "output_bytes": 101,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_one_comment",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.8881,
+      "ok": true,
+      "output_bytes": 101,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "read_with_one_comment",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.8575,
+      "ok": true,
+      "output_bytes": 101,
+      "error": "",
+      "expected_content_present": true
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "gdoc",
+      "trial": 0,
+      "seconds": 1.354,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "workspace",
+      "trial": 0,
+      "seconds": 0.7505,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "workspace",
+      "trial": 1,
+      "seconds": 0.4152,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "gdoc",
+      "trial": 1,
+      "seconds": 1.2659,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "gdoc",
+      "trial": 2,
+      "seconds": 1.5014,
+      "ok": true,
+      "output_bytes": 33,
+      "error": ""
+    },
+    {
+      "case": "write_changed_100_rows",
+      "tool": "workspace",
+      "trial": 2,
+      "seconds": 0.4705,
+      "ok": true,
+      "output_bytes": 169,
+      "error": ""
+    }
+  ],
+  "checks": [
+    {
+      "case": "emoji_markdown",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Plan \ud83d\ude00\n\nNext\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Plan \ud83d\ude00\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "Next\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Plan \ud83d\ude00\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "Next\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": "Plan \ud83d\ude00\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.9oq59f97xlls",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 10,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 9,
+                  "endIndex": 10,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 10,
+            "endIndex": 15,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 10,
+                  "endIndex": 15,
+                  "textRun": {
+                    "content": "Next\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "emoji_markdown",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Plan \ud83d\ude00\nNext\n\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Plan \ud83d\ude00\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "Next\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Plan \ud83d\ude00\n",
+          "style": {}
+        },
+        {
+          "text": "Next\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": "Plan \ud83d\ude00\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.u504zjiv46jc",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 14,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 9,
+                  "endIndex": 14,
+                  "textRun": {
+                    "content": "Next\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.6hxhttwypb5",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 15,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 14,
+                  "endIndex": 15,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.g3rbde9rae4v",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 15,
+            "endIndex": 16,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 15,
+                  "endIndex": 16,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.7a1aovjm4pu8",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 16,
+            "endIndex": 17,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 16,
+                  "endIndex": 17,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "paragraph_after_heading",
+      "tool": "gdoc",
+      "reported_success": false,
+      "text_after": "Heading\n\n",
+      "error": "--- since last interaction (1 sec ago) ---\n \u270e doc edited by Alejo Acelas (v3 \u2192 v4)\n---\nERR: doc changed since last read. Run 'gdoc cat' first, or use --force to overwrite.\n",
+      "paragraphs": [
+        {
+          "text": "Heading\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Heading\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": "Heading\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.4kea2romzlnl",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 10,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 9,
+                  "endIndex": 10,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "paragraph_after_heading",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Heading\nPlain paragraph\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Heading\n",
+          "style": "HEADING_1",
+          "bullet": false
+        },
+        {
+          "text": "Plain paragraph\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Heading\n",
+          "style": {}
+        },
+        {
+          "text": "Plain paragraph\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": "Heading\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "headingId": "h.or917d87rm1h",
+                "namedStyleType": "HEADING_1",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 25,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 9,
+                  "endIndex": 25,
+                  "textRun": {
+                    "content": "Plain paragraph\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 25,
+            "endIndex": 26,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 25,
+                  "endIndex": 26,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 26,
+            "endIndex": 27,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 26,
+                  "endIndex": 27,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "nested_lists",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Parent\nChild\nPeer\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Parent\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        },
+        {
+          "text": "Child\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        },
+        {
+          "text": "Peer\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Parent\n",
+          "style": {}
+        },
+        {
+          "text": "Child\n",
+          "style": {}
+        },
+        {
+          "text": "Peer\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 8,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Parent\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.t5o7nm55nh5m",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          },
+          {
+            "startIndex": 8,
+            "endIndex": 14,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 8,
+                  "endIndex": 14,
+                  "textRun": {
+                    "content": "Child\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.t5o7nm55nh5m",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 19,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 14,
+                  "endIndex": 19,
+                  "textRun": {
+                    "content": "Peer\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.t5o7nm55nh5m",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "nested_lists",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Parent\nChild\nPeer\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Parent\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        },
+        {
+          "text": "Child\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        },
+        {
+          "text": "Peer\n",
+          "style": "NORMAL_TEXT",
+          "bullet": true
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Parent\n",
+          "style": {}
+        },
+        {
+          "text": "Child\n",
+          "style": {}
+        },
+        {
+          "text": "Peer\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 8,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "Parent\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.qsso9hbn89r9",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          },
+          {
+            "startIndex": 8,
+            "endIndex": 14,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 8,
+                  "endIndex": 14,
+                  "textRun": {
+                    "content": "Child\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.qsso9hbn89r9",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          },
+          {
+            "startIndex": 14,
+            "endIndex": 19,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 14,
+                  "endIndex": 19,
+                  "textRun": {
+                    "content": "Peer\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT",
+                "indentFirstLine": {
+                  "magnitude": 18,
+                  "unit": "PT"
+                },
+                "indentStart": {
+                  "magnitude": 36,
+                  "unit": "PT"
+                }
+              },
+              "bullet": {
+                "listId": "kix.qsso9hbn89r9",
+                "textStyle": {
+                  "underline": false
+                }
+              }
+            }
+          },
+          {
+            "startIndex": 19,
+            "endIndex": 20,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 19,
+                  "endIndex": 20,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 20,
+            "endIndex": 21,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 20,
+                  "endIndex": 21,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "markdown_links",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "Policy)\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Policy)\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Policy",
+          "style": {
+            "underline": true,
+            "foregroundColor": {
+              "color": {
+                "rgbColor": {
+                  "red": 0.06666667,
+                  "green": 0.33333334,
+                  "blue": 0.8
+                }
+              }
+            },
+            "link": {
+              "url": "https://example.com/Policy_(2026"
+            }
+          }
+        },
+        {
+          "text": ")\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 7,
+                  "textRun": {
+                    "content": "Policy",
+                    "textStyle": {
+                      "underline": true,
+                      "foregroundColor": {
+                        "color": {
+                          "rgbColor": {
+                            "red": 0.06666667,
+                            "green": 0.33333334,
+                            "blue": 0.8
+                          }
+                        }
+                      },
+                      "link": {
+                        "url": "https://example.com/Policy_(2026"
+                      }
+                    }
+                  }
+                },
+                {
+                  "startIndex": 7,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": ")\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "markdown_links",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "Policy\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "Policy\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "Policy",
+          "style": {
+            "underline": true,
+            "foregroundColor": {
+              "color": {
+                "rgbColor": {
+                  "red": 0.06666667,
+                  "green": 0.33333334,
+                  "blue": 0.8
+                }
+              }
+            },
+            "link": {
+              "url": "https://example.com/Policy_(2026)"
+            }
+          }
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 8,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 7,
+                  "textRun": {
+                    "content": "Policy",
+                    "textStyle": {
+                      "underline": true,
+                      "foregroundColor": {
+                        "color": {
+                          "rgbColor": {
+                            "red": 0.06666667,
+                            "green": 0.33333334,
+                            "blue": 0.8
+                          }
+                        }
+                      },
+                      "link": {
+                        "url": "https://example.com/Policy_(2026)"
+                      }
+                    }
+                  }
+                },
+                {
+                  "startIndex": 7,
+                  "endIndex": 8,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 8,
+            "endIndex": 9,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 8,
+                  "endIndex": 9,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 9,
+            "endIndex": 10,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 9,
+                  "endIndex": 10,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "intraword_underscore",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "officebudgettotal\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "officebudgettotal\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "office",
+          "style": {}
+        },
+        {
+          "text": "budget",
+          "style": {
+            "italic": true
+          }
+        },
+        {
+          "text": "total\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 19,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 7,
+                  "textRun": {
+                    "content": "office",
+                    "textStyle": {}
+                  }
+                },
+                {
+                  "startIndex": 7,
+                  "endIndex": 13,
+                  "textRun": {
+                    "content": "budget",
+                    "textStyle": {
+                      "italic": true
+                    }
+                  }
+                },
+                {
+                  "startIndex": 13,
+                  "endIndex": 19,
+                  "textRun": {
+                    "content": "total\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "intraword_underscore",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "office_budget_total\n\n\n",
+      "error": "",
+      "paragraphs": [
+        {
+          "text": "office_budget_total\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ],
+      "text_runs": [
+        {
+          "text": "office_budget_total\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        },
+        {
+          "text": "\n",
+          "style": {}
+        }
+      ],
+      "native_body": {
+        "content": [
+          {
+            "endIndex": 1,
+            "sectionBreak": {
+              "sectionStyle": {
+                "columnSeparatorStyle": "NONE",
+                "contentDirection": "LEFT_TO_RIGHT",
+                "sectionType": "CONTINUOUS"
+              }
+            }
+          },
+          {
+            "startIndex": 1,
+            "endIndex": 21,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 1,
+                  "endIndex": 21,
+                  "textRun": {
+                    "content": "office_budget_total\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 21,
+            "endIndex": 22,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 21,
+                  "endIndex": 22,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          },
+          {
+            "startIndex": 22,
+            "endIndex": 23,
+            "paragraph": {
+              "elements": [
+                {
+                  "startIndex": 22,
+                  "endIndex": 23,
+                  "textRun": {
+                    "content": "\n",
+                    "textStyle": {}
+                  }
+                }
+              ],
+              "paragraphStyle": {
+                "namedStyleType": "NORMAL_TEXT",
+                "direction": "LEFT_TO_RIGHT"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "casefold_visible_corruption",
+      "tool": "gdoc",
+      "reported_success": true,
+      "text_after": "\u0130 cdogsat\n\n",
+      "error": "",
+      "expected_text": "\u0130 dog sat\n",
+      "text_matches": false,
+      "paragraphs": [
+        {
+          "text": "\u0130 cdogsat\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "casefold_visible_corruption",
+      "tool": "workspace",
+      "reported_success": true,
+      "text_after": "\u0130 dog sat\n\n",
+      "error": "",
+      "expected_text": "\u0130 dog sat\n",
+      "text_matches": true,
+      "paragraphs": [
+        {
+          "text": "\u0130 dog sat\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        },
+        {
+          "text": "\n",
+          "style": "NORMAL_TEXT",
+          "bullet": false
+        }
+      ]
+    },
+    {
+      "case": "create_comment",
+      "tool": "gdoc",
+      "pass": true,
+      "error": ""
+    },
+    {
+      "case": "reply_comment",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "resolve_comment",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "reopen_comment",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "create_comment",
+      "tool": "workspace",
+      "pass": true,
+      "error": ""
+    },
+    {
+      "case": "reply_comment",
+      "tool": "workspace",
+      "pass": false
+    },
+    {
+      "case": "resolve_comment",
+      "tool": "workspace",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_0",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_0",
+      "tool": "workspace",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_1",
+      "tool": "workspace",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_1",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_2",
+      "tool": "gdoc",
+      "pass": true
+    },
+    {
+      "case": "changed_cells_2",
+      "tool": "workspace",
+      "pass": true
+    },
+    {
+      "case": "native_table_phrase_edit",
+      "tool": "gdoc",
+      "pass": true,
+      "text_after": "\nLabel\nValue\nStatus\nFINAL\n\n"
+    },
+    {
+      "case": "native_table_phrase_edit",
+      "tool": "workspace",
+      "pass": true,
+      "text_after": "\nLabel\nValue\nStatus\nFINAL\n\n"
+    },
+    {
+      "case": "revisions",
+      "tool": "gdoc",
+      "pass": true,
+      "output_bytes": 78
+    },
+    {
+      "case": "toc",
+      "tool": "gdoc",
+      "pass": true,
+      "output_bytes": 0
+    },
+    {
+      "case": "info",
+      "tool": "gdoc",
+      "pass": true,
+      "output_bytes": 99
+    },
+    {
+      "case": "tabs",
+      "tool": "gdoc",
+      "pass": true,
+      "output_bytes": 10
+    },
+    {
+      "case": "export_pdf",
+      "tool": "gdoc",
+      "pass": true
+    }
+  ],
+  "resources_created": 30,
+  "ended_utc": "2026-09-12T17:20:33.605820+00:00"
+}

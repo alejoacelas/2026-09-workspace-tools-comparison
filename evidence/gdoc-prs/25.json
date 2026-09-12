@@ -1,0 +1,8 @@
+{
+  "body": "One-line lockfile sync missed in #24 (version 0.10.0 \u2192 0.10.1).\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "mergedAt": "2026-06-09T19:08:27Z",
+  "number": 25,
+  "state": "MERGED",
+  "title": "chore: sync uv.lock to 0.10.1",
+  "url": "https://github.com/LucaDeLeo/gdoc/pull/25"
+}

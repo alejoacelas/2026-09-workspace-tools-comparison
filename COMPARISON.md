@@ -1,182 +1,280 @@
-# Google Workspace MCP vs gdoc for everyday office work
+# Google Workspace MCP vs gdoc: measured office-work comparison
 
-**Choose Workspace MCP as the general office connector; choose gdoc as a document-review companion to a shell-capable agent.** If email and calendar are already covered by another integration, gdoc's revision diffs, concise output, and text-oriented editing become more valuable. If the agent must handle inboxes, meetings, spreadsheets, and presentations through one connector, Workspace MCP covers much more.
+**Use Workspace for plain replacements, bulk template filling, spreadsheet operations, and broad office access; keep gdoc for revision review, local-file workflows, and its exclusive document commands. Neither should be trusted to preserve arbitrary Google Docs formatting without verification.** The measured advantage of Workspace's simple edit path is substantial, but it has broken and incomplete document tools of its own.
 
-Both repositories were cloned and inspected on **12 September 2026**. This evaluates the public upstreams, not any local fork or installed version.
+The strongest result is not a winner: **both tools flattened the same nested list, while a direct Google API reference preserved it.** Comparing the apps with each other would have accepted a shared failure. Conversely, tests that examined gdoc's emitted requests predicted correct nesting and were contradicted by the live result. That is why the report separates interface coverage, generated requests, and actual native document state.
 
-| Snapshot | Workspace MCP | gdoc |
+This report concerns **public gdoc 0.21.0 (`dbfa4c3`) and Workspace MCP 1.26.0 (`54b1c56`)**, inspected and tested on 12 September 2026. It does not give public upstream credit for fixes in the user's private campaign branch or open PRs.
+
+[Feature matrix: all 39 gdoc commands](evidence/feature-matrix.md) · [Actual tool names](COMMANDS.md) · [gdoc fixes → Workspace](evidence/gdoc-fixes-crosscheck.md) · [Workspace fixes → gdoc](evidence/workspace-fixes-crosscheck.md) · [Regression assessment](evidence/regression-assessment.md) · [36-input Markdown corpus](evidence/markdown-corpus.md) · [Local installation](SETUP.md)
+
+## 1. What changed after testing
+
+| Question | Evidence-backed answer |
+|---|---|
+| Which is faster for ordinary read/edit work? | Workspace's persistent stdio MCP path was faster than separate gdoc CLI invocations in this local sample: about 0.65 vs 1.44 seconds to read a 4 KB Doc, and 0.69 vs 2.83 seconds to replace a phrase. See the transport and sample-size qualifications below. |
+| Which handles bulk changes better? | Workspace replaced ten different placeholders in one call, taking 2.27 seconds; ten gdoc commands took 28.13 seconds. Both completed all replacements. This was one paired workflow observation. |
+| Which better preserves existing formatting? | No universal winner. gdoc silently removed unrelated bold formatting during a plain phrase edit; Workspace's native replacement preserved it. Workspace's Markdown writer mishandled emoji and flattened lists; gdoc's native writer had other formatting/parser defects. |
+| Which has more features? | Workspace spans many office apps and broader native layout controls. gdoc has important exclusive document-review/local-file operations, including revision diffs, suggestion writing with preview access, comment reopening/deletion, and image replacement. |
+| Are the tests reassuring? | Both full offline suites passed: gdoc 1,563 tests; Workspace 2,114 non-integration tests. Several live failures still occurred. Workspace has checked-in PR pytest CI; pinned gdoc has no checked-in CI workflow. |
+| Can one be the other's executable ground truth? | No. They are useful differential comparators, but a native Google operation or independently defined invariant must adjudicate disagreements—and catch shared mistakes. |
+
+This changes the earlier recommendation to prefer gdoc for routine editing: **its conveniences are useful, but the pinned plain-edit implementation can modify formatting outside the requested replacement.** Prefer Workspace's native find/replace for plain wording changes until that gdoc failure is fixed and regression-tested. This is a route-specific recommendation, not an endorsement of every Workspace write tool.
+
+## 2. Scope and strength of evidence
+
+Three agents independently audited feature/regression coverage and public patch families in opposite directions. The coordinator measured live operations and checked synthetic documents through Google APIs. Independent review caught harness setup errors and an overly optimistic offline list-nesting assumption; those were corrected or explicitly excluded.
+
+| Evidence | What it establishes | What it does not establish |
 |---|---|---|
-| Repository | [taylorwilsdon/google_workspace_mcp][w-repo] | [LucaDeLeo/gdoc][g-repo] |
-| Checked-out revision | `54b1c56`, v1.26.0, September 6 | `dbfa4c3`, v0.21.0, August 27 |
-| Main interface | MCP server over stdio or HTTP; CLI client connects to that server | Direct CLI; optional local stdio MCP server |
-| Tool surface | 122 entries in the tier configuration; importing all service modules registers 123 including a diagnostic tool | 30 MCP tools; additional CLI commands for local files and setup |
-| Scope | 12 service groups, including Apps Script and Custom Search | Google Docs, Drive, and basic Sheets |
-| Runtime dependencies declared | 18 | 4 |
-| Public project size at inspection | 3,146 stars; 982 forks | 17 stars; 5 forks |
+| Complete command/tool inventory and source inspection | Whether an intention has an exposed operation and which defaults/guards it uses | That Google's service accepts every constructed request |
+| 12 gdoc patch families cross-checked in Workspace; 12 Workspace patch families cross-checked in gdoc | Concrete transferred bugs, avoided mechanisms, missing features, and proposed-versus-released fixes | An exhaustive census of all historical issues or vulnerabilities |
+| Complete offline upstream suites | Existing regression assertions pass at the pinned commits | Live document fidelity, branch-protection enforcement, or a failure probability |
+| 36 deliberately tricky Markdown specimens, 72 converter executions | Explicit text, style-target, URL, range and table-parser observations | A representative quality percentage or a complete Google Docs emulator |
+| Repeated live latency samples | Observed local wall-clock time and returned text size for named routes | Global latency, p95 under load, long-term uptime, model reasoning time, or token billing |
+| Live native-state checks on invented files | Actual content/style/tab/comment/cell behavior for the selected cases | Lossless handling of arbitrary real office documents |
 
-Tool and dependency counts come from [Workspace's tier file][w-tiers], [package metadata][w-package], [gdoc's MCP registry][g-mcp], and [package metadata][g-package]. Stars and forks describe adoption, not reliability. The tier file includes an authentication tool, and its service counts are not perfectly comparable to gdoc's command counts.
+All live documents were created for this run in a dedicated personal-account Drive folder. No existing office document was edited, no email, chat message or invitation was sent, no access was granted to another person, and nothing was permanently deleted. Private credentials and resource ledgers stay outside tracked evidence. The report publishes synthetic content and redacted errors, not private inbox or Drive contents.
 
-## Feature coverage
+**Interpret labels literally:** *live confirmed* means Google state was read after the operation; *offline confirmed* means code or request behavior was executed locally; *source-only* is an inspected capability/guard; *reported* attributes an upstream author's claim. A passing characterization probe can mean a bug was successfully reproduced.
 
-| Office task | Workspace MCP | gdoc |
+## 3. Operations one tool cannot expose for the other
+
+“Unavailable” means unavailable through the inspected CLI or named MCP tools. An agent can often write custom Python or Apps Script against Google, but that is additional programming, not a built-in equivalent. The comparison assumes Workspace's complete tool tier and the relevant service enabled.
+
+### gdoc capabilities without a Workspace equivalent
+
+| Intention | gdoc interface | Workspace boundary |
 |---|---|---|
-| Find, read, create, copy and share documents | Yes; rich Drive queries, imports, permissions and batch sharing | Yes; short commands, URLs accepted, Markdown/file workflows |
-| Read documents with comments | Markdown with inline references or comment appendix; all tabs or a selected tab | Line-numbered Markdown with inline threads; `--comments` cannot be combined with `--tab` or `--all-tabs` |
-| Change ordinary wording | Plain global find/replace; indexed and batched edits; text/heading anchors for insertions | Find/replace with Markdown formatting; optional smart-quote/dash normalization; rejects ambiguous matches unless `--all` |
-| Edit native layout | Extensive text/paragraph styles, headers/footers, page/section properties, tables, rows/columns and cell styles | Markdown formatting, native tables, named/coordinate cell replacement, page/pageless mode; narrower layout controls |
-| Manage document tabs | Create, rename, delete, nest, populate from Markdown | List/read, add, and insert/replace content by tab; fewer topology controls |
-| Review revisions | No dedicated retained-revision listing/diff workflow found | Revision selectors, word diffs, HTML diff artifacts, past-revision reads |
-| Make suggested edits | Reads suggestion views; no exposed suggest-write operation found | `suggest`, gated on Developer Preview; verifies returned suggestions |
-| Comments and discussion | List, add, reply, resolve and delete on Docs/Sheets/Slides; new comments are document-level | Docs-oriented comment/reply/resolve/reopen; quote-based anchoring with preview access and explicit fallback status |
-| Spreadsheet values | Read/write/clear ranges; formula reads, notes/hyperlinks, error reporting | Read tabs/ranges/all tabs; CSV/TSV imports; append rows; formula writes with `--user-entered` |
-| Spreadsheet structure and formatting | Create workbooks/tabs; duplicate/move/resize; formatting, conditional rules, native table rows | No first-class workbook creation, cell formatting, conditional formatting or chart tools |
-| Presentations | Create/read, raw batch updates, geometry, speaker notes, slide thumbnails, comments; import PPTX | No dedicated presentation tools |
-| Email and meetings | Gmail search/read/draft/send/reply/forward/attachments/labels/filters; Calendar events, recurrence, free/busy, Meet links | Not supported |
-| Other office services | Contacts, Tasks, Forms, Chat, Apps Script, Custom Search | Not supported |
-| Local document workflow | Import files through server-accessible paths, URLs or content | Pull/edit/diff/push, local PDF/DOCX exports, image downloads and insertion |
+| See retained version history and compare earlier versions | `revisions`, `cat --revision`, `diff --rev prev`, time selectors | No history/revision-fetch/diff tools. Reading the current document cannot reconstruct an unavailable earlier state. |
+| Make an actual suggested edit for a person to accept | `suggest` | No exposed suggestion-writing operation. gdoc requires Google's Developer Preview; ordinary OAuth consent does not enable it. |
+| Reopen a resolved comment or delete a comment | `reopen`, `delete-comment` | Comment dispatcher accepts create/reply/resolve only. |
+| Replace an existing image while retaining its object identity | `replace-image` | No typed `replaceImage` operation. Delete/insert is not equivalent identity/layout preservation. |
+| Edit a local Markdown file with document binding and baseline checks | `pull`, `diff`, `push` | Can compose read/export/upload, but no matching metadata/baseline workflow. |
+| Append rows with one native request to an ordinary spreadsheet range | `cells --append` | Workspace's append tool requires a native Sheets table ID; “find last row then write” is a different, race-prone workflow. |
 
-Sources: [Docs tools and operation schemas][w-docs], [Workspace services][w-tiers], [Sheets implementation][w-sheets], [Slides implementation][w-slides], [gdoc commands][g-cli], [gdoc Docs implementation][g-docs], and [revision implementation][g-revisions].
+Other gdoc conveniences are achievable but more cumbersome in Workspace: quoted/normalized matching, ambiguity refusal, formatted phrase replacement, native table cells addressed by label, compact metadata, heading deep links, and image enumeration/download. A general batch API does not automatically supply those targeting semantics.
 
-**Breadth does not imply polished authoring in every app.** Workspace's Slides tool takes native Google API batch requests: an agent still needs to construct a layout or import a prepared presentation. Its Sheets tools do not expose every Sheets API feature; a custom Apps Script is an additional programming workflow, not equivalent to a ready-made chart/pivot tool. gdoc's basic Sheets support is useful for reading trackers and updating values, but does not replace a spreadsheet authoring integration.
+### Workspace capabilities without a gdoc equivalent
 
-## How many agent calls?
+| Intention | Workspace interface | gdoc boundary |
+|---|---|---|
+| Audit, revoke or update file access | `get_drive_file_permissions`, `manage_drive_access` | `share` grants access; no equivalent permission-management suite. |
+| Control document layout | Paragraph/text styles, headers/footers, page/section properties, named ranges | Markdown editing does not expose general native layout controls. |
+| Change table geometry | Insert/delete rows/columns, merge/unmerge, widths, row styles, pinned headers | Content/cell edits and Markdown table creation do not provide those controls. |
+| Create/format workbooks and worksheets | Workbook/tab creation, range formatting, conditional rules, resizing/moving dimensions | Basic Sheets reading/value writing only. |
+| Inspect formulas, notes and hyperlink metadata in Sheets | Reader flags | No corresponding structured spreadsheet inspection. |
+| Create a nested document tab | Parent ID on new-tab creation | `add-tab` has no parent control. Neither interface exposes reparenting an existing tab. |
+| Import prepared Word, Excel or PowerPoint files | `import_to_google_doc/sheets/slides` | No general DOCX/XLSX/PPTX import command. |
+| Handle Gmail, Calendar, Slides, Forms, Contacts and Tasks | Dedicated service tool families | Not supported. |
 
-These are **successful tool invocations or CLI command executions**, with authentication complete and identifiers/content already available unless the row says otherwise. They exclude help/schema discovery, model reasoning, retries and human review. Counts are inferred from supported interfaces; several underlying request paths were also exercised with synthetic API responses.
+Workspace has 122 tier-configured entries across all services, plus a diagnostic registration outside the tier file. The installed office registration exposes **99 tools** across nine services. gdoc has **39 public CLI commands and 30 MCP tools**. These are surface counts, not scores: management tools bundle actions, setup commands are not office capabilities, and an unavailable feature does not earn a correctness point because it cannot fail.
 
-| Operation | Workspace MCP | gdoc CLI | gdoc MCP |
+### gdoc CLI and gdoc MCP are materially different
+
+For shell-capable agents, gdoc's CLI is the relevant comparison. Its MCP wrapper deliberately removes local-file interfaces:
+
+- A 100-row CSV write is **one CLI command**, but the MCP wrapper exposes only one-row value input: **100 MCP calls** for the equivalent rectangle.
+- Export, pull/push, local image insertion and image replacement are absent over gdoc MCP.
+- Local-file diffs and HTML diff artifacts are narrowed; revision-oriented review remains.
+
+Workspace's CLI is itself a client for a running HTTP server. The installed configuration uses stdio, launched on demand by the agent client; typing `workspace-cli call` alone does not start that server. [Full interface map](evidence/feature-matrix.md)
+
+## 4. Shared names conceal different operations
+
+| Same-looking request | gdoc behavior | Workspace behavior | Fair comparison requires |
+|---|---|---|---|
+| Replace repeated wording | Default rejects ambiguous multiple matches | Native find/replace is global | gdoc `--all` versus Workspace global replacement |
+| Replacement contains `**approved**` | Interprets Markdown and applies bold | Plain replacement inserts literal asterisks | Native style operations in Workspace, or plain replacement text on both |
+| Write `00123` or `=SUM(A1:A3)` to cells | RAW/literal default | USER_ENTERED default | Explicitly match input mode; otherwise identifiers and formulas can differ |
+| Read a multi-tab Doc | Ordinary `cat` uses first-tab export; `--all-tabs` is explicit | Markdown reader walks tabs | Match tab selection and compare native tabs separately |
+| Read comments with a selected tab | Annotated comments cannot combine with tab selection | Selected-tab Markdown and comments can combine | Recognize gdoc's narrower combined view |
+| Read 5,000 spreadsheet rows | Can fetch in one command | Reader caps each range at 1,000 rows and discloses it | Five Workspace windows; output-size policy is not silent equality |
+| Write a whole tab from Markdown | Baseline checks plus native rebuild | Native rebuild without equivalent persistent baseline guard | Do not equate “overwrite” with preserving native content |
+| Insert text at a location | gdoc has phrase/Markdown-oriented conveniences | Indexed and semantic-anchor operations | Native UTF-16 coordinates, not Python string offsets |
+
+These differences make “same arguments, same result” an invalid universal test specification. Tests need an explicit intention—such as “replace every exact plain-text occurrence in this tab”—and an expected preservation boundary. [Source-backed defaults](evidence/feature-matrix.md#differences-hidden-behind-apparently-shared-features)
+
+## 5. How fast are the useful operations?
+
+The main latency run used a Mac on the user's connection, authenticated synthetic documents, five sequential samples per repeated operation, and alternating tool order. gdoc ran as a fresh **pinned CLI subprocess** each time, with its document-awareness state warmed. Workspace ran through one already-connected **stdio MCP process**. Google setup and independent post-write reads are excluded from timed calls; any reads/checks performed by the application itself are included.
+
+| Operation | gdoc CLI | Workspace MCP | Samples per tool |
 |---|---:|---:|---:|
-| Read a known document | 1 | 1 | 1 |
-| Read a known document with comments | 1 | 1 | 1 |
-| Create a formatted document from prepared Markdown, without images | 1: `import_to_google_doc` | 1: `new --file` | 1: `gdoc_new` with inline text |
-| Replace one phrase everywhere, without adding formatting | 1: `find_and_replace_doc` | 1: `edit --all` | 1 |
-| Replace 10 different template placeholders | 1: `batch_update_doc` with 10 `find_replace` operations | 10 edits | 10 edits |
-| Share one file with five people | 1: `manage_drive_access`, `grant_batch` | 5 shares | 5 shares |
-| Read one known spreadsheet range, up to 1,000 rows | 1 | 1 | 1 |
-| Write a rectangular 100-row spreadsheet dataset | 1 | 1, from CSV/TSV | **100**, one row per call |
-| Read 5,000 rows from one known worksheet | 5 range reads | 1 | 1, possibly large output |
-| Read all worksheets of an unknown workbook with three small tabs | 4: workbook info + 3 range reads | 1: `cat --all-tabs` | 1 |
-| Search, read, change one phrase, then read back | 4 | 4 | 4 |
-| Copy a template, fill 10 placeholders, share with five reviewers | 3; add 1 for content read-back | 16; add 1 for read-back | 16; add 1 for read-back |
-| Compare a document's latest two retained revisions | No dedicated operation | 1: `diff --rev prev` | 1 |
-| Search and read 20 emails | 2: search + batch content read | Unsupported | Unsupported |
-| Check several calendars for availability, then create an event | 2: free/busy + create | Unsupported | Unsupported |
-| Create a deck from a prepared PPTX | 1 import | Unsupported | Unsupported |
+| Read a roughly 4 KB Doc | **1.44 s** (1.42–1.51) | **0.65 s** (0.61–0.78) | 5 |
+| Read Doc with comment fetching enabled, no comments present | **1.63 s** (1.50–1.70) | **0.91 s** (0.83–0.96) | 5 |
+| Replace one plain phrase | **2.83 s** (2.56–3.05) | **0.69 s** (0.64–0.72) | 5 |
+| Read 100 × 4 spreadsheet cells | **1.33 s** (1.27–1.69) | **0.39 s** (0.39–0.41) | 5 |
+| Write a changed 100 × 4 rectangle, explicit RAW | **1.35 s** | **0.47 s** | 3, separate follow-up |
+| Read a small Doc containing one actual comment | **1.65 s** | **0.89 s** | 3, separate follow-up |
+| Replace ten different placeholders | **28.13 s** | **2.27 s** | 1 paired workflow |
 
-The **100-row gdoc MCP difference is real interface narrowing**: the MCP wrapper hides `--file` and `--stdin`; its remaining `value` parameter becomes exactly one row in `_read_cell_rows`. The CLI has no such restriction. Likewise, gdoc MCP omits export, pull/push, image insertion and image replacement tools. See [wrapper restrictions][g-mcp] and [row input handling][g-rows].
+Repeated rows show the median; parentheses show the observed min–max, **not a confidence interval**. The changed-cell follow-up varies a sentinel in every row so an unchanged/preloaded sheet cannot satisfy the oracle. The first run's identical-value write timings remain in raw evidence but are not used as proof that a mutation occurred. Actual comment content was checked in the follow-up's returned text.
 
-Workspace's range reader clamps reads to **1,000 rows**. gdoc's all-worksheet read uses one Sheets `batchGet` internally, after obtaining workbook metadata. These are different optimizations: Workspace bounds output per call; gdoc offers a convenient whole-workbook operation. See [range limit][w-sheet-helpers] and [gdoc's spreadsheet reader][g-sheet-reader].
+Workspace connected and listed its 50 enabled Drive/Docs/Sheets tools in **0.83 seconds** in this run. That is one startup observation with locally cached dependencies, not a cold-machine install time. A separate five-sample run through **gdoc's persistent MCP wrapper** measured medians of **1.20 seconds for reading** (1.05–2.81) and **2.25 seconds for plain replacement** (1.81–2.41). Its startup/tool listing took 0.08 seconds in one observation. Keeping gdoc alive narrowed but did not eliminate the sampled operation gap. The runs occurred in different time windows on similar specimens, so their differences cannot all be attributed to process startup. [Full performance methodology](evidence/performance.md)
 
-**A shell call is not the same as an agent round trip.** A coding agent can put ten gdoc commands in one shell script and return only a summary; similarly it can script Workspace's CLI/MCP client. That reduces model interactions, but leaves ten underlying operations. With ordinary MCP tool calling, the differences in the table are much more consequential. Neither side gets credited with arbitrary custom API code as a built-in operation.
+**Output size has no universal winner.** The 4 KB read returned about 4,477 bytes from gdoc versus 4,334 from Workspace. The 100-row spreadsheet read returned 3,333 versus 4,420 bytes. A one-phrase edit returned 25 versus 197 bytes. These are tool-result text bytes, not model tokens, full MCP wire sizes, or total context cost. We did not measure tool-schema token loading or model reasoning.
 
-## Google requests hidden inside each call
+Sources: [main raw samples](evidence/live-benchmark.json), [changed writes and actual comments](evidence/live-feature-checks.json), [reproduction and limits](evidence/performance.md).
 
-The following counts were reproduced by [a runnable probe](probe-calls.py), substituting synthetic responses at the Google client boundary. They count **API method executions**, not OAuth requests, network connection setup, upload chunks, retries, or quota units. Each comment list fits one page; no errors, images, shortcuts or extra formatting cleanup occur. This is not a latency benchmark.
+### Why the difference is plausible—and sometimes buys useful protection
 
-| One agent operation | Workspace MCP | gdoc, previously seen file | gdoc, first interaction | gdoc `--quiet` |
-|---|---:|---:|---:|---:|
-| Read Doc as Markdown, no comment content | 1 | 3 | 4 | 2 |
-| Read Doc with comment content | 2 | 4 | 5 | 3 |
-| Replace one plain phrase | 1 | 6 | 7 | 4 |
-| Read a Sheets range | 1 | 4 | 5 | 3 |
-| Write a Sheets range | 1 | 4 | 5 | 2 |
+Our earlier synthetic request-boundary probes found a warm gdoc plain edit executes six Google methods: awareness/version, comments, native content, revision-pinned write, cleanup check, and updated awareness state. Workspace's plain find/replace executes one native `replaceAllText`. Ten Workspace batch replacements use three executions—read, batch, post-read—versus roughly 60 on ten simple warm gdoc edits. Extra cleanup or errors can change those counts. [Runnable request-count probes](probe-calls.py)
 
-Workspace uses `get_doc_as_markdown` with comments disabled for the first row; its separate `get_doc_content` uses two requests on a native Doc. Operation choice matters.
+Those extra reads are not all waste: conflict checks and verification can prevent data loss. But the observed gdoc bold loss shows that more checking is not sufficient if the implementation checks text and misses unintended style changes.
 
-A normal gdoc edit makes these six calls:
+At the agent interface, copying a template, filling ten placeholders, and sharing with five reviewers is **3 Workspace calls versus 16 gdoc commands**, before optional read-back. This workflow count is inferred from interfaces; we did not actually share files in the benchmark. A shell agent can put all 16 commands into one script, reducing model turns without reducing Google operations.
 
-1. Fetch Drive version metadata.
-2. Fetch comment changes.
-3. Fetch document structure and revision to locate the text.
-4. Send a revision-pinned formatted replacement batch.
-5. Read the result to detect paragraph cleanup needs.
-6. Fetch the new Drive version for local awareness state.
+## 6. Reliability: concrete failures and successful counterparts
 
-A first interaction adds title/owner metadata. Required paragraph cleanup and native-table insertion add more requests. `--quiet` skips awareness reads, but is not a universal “subtract two” switch: reading with `cat` still needs MIME detection, and guarded overwrites still check their baseline. See [awareness implementation][g-notify], [replacement implementation][g-replace], and [probe results](gdoc-call-probes.json).
+This is an adversarial case ledger, **not a failure-rate estimate**. Several failures share a root cause, and the corpus deliberately targets suspicious code and public reports.
 
-Workspace's ten-placeholder batch makes **three requests**: revision metadata, one batch update, and a result read. The ten equivalent warm gdoc edits make **60** on the simple path above. They are not semantically identical: gdoc reconstructs formatted replacements and pins the initial write to a revision, whereas Workspace's plain replacements use the native `replaceAllText` operation. See [batch manager][w-batch] and [Workspace probe results](workspace-call-probes.json).
+| Case | gdoc result | Workspace result | Evidence |
+|---|---|---|---|
+| Replace `draft` beside unrelated bold wording | Reports success; unrelated bold disappears | Plain native replacement preserves bold | **Live confirmed**, native text-run styles |
+| Replace `cat` after Turkish `İ` | Reports success; changes wrong substring (`İ cat` → `İ cdog`) | Produces `İ dog` | **Live confirmed**, also traced to local lowercase/index mapping |
+| Same search after two `İ` characters | Live Google rejects illegal deletion range; related offline fixture raises IndexError | Correct replacement in live fixture | **Live + offline**, distinguish exact inputs |
+| Populate `# Plan 😀` followed by `Next` | Heading/body distinction preserved after proper read baseline | Reports success; `Next` becomes a heading, spacing changes | **Live confirmed**; generated UTF-16 offsets are wrong |
+| Same heading/body input without emoji | Correct on our live control | Correct on our live control | **Live pass**, prevents overclaiming all heading/body conversion is broken |
+| Native tab Markdown link ending `Policy_(2026)` | Link destination truncated; visible `Policy)` | Correct label and complete URL | **Live confirmed** plus offline parser evidence |
+| Native tab text `office_budget_total` | Underscores disappear; middle becomes italic | Text preserved | **Live confirmed**, CommonMark-style expectation; not a claim of full gdoc CommonMark compliance |
+| Two-space nested bullet list | Flattens child despite plausible emitted tabs | Flattens child; converter emits no nesting tab | **Live confirmed in both**; native API grouped-list reference preserves nesting |
+| List item with continuation paragraph | Corpus retains words; list relationship not fully modeled | Drops continuation paragraph | **Offline confirmed**, Google rendering not tested for this case |
+| Escaped pipe in native table Markdown | Parser splits intended `A\|B` cell and loses intended `100` value | Native writer does not support Markdown tables | **Offline confirmed**; gdoc live insertion not tested for this fixture |
+| Pass a non-image Drive file to image insertion | Not compared on this path | Returns an `Error: …` payload with MCP `isError=false` | **Live confirmed**, rejected before any image write; automation must inspect this payload |
+| Inspect native document structure | `structure` succeeds | `inspect_doc_structure` fails with HTTP 400 field-mask error | **Live confirmed**; other Workspace readers still work |
+| Replace wording inside a native table | Correct replacement; 2 × 2 table remains | Correct replacement; 2 × 2 table remains | **Live pass**, simple table only |
+| Replace wording in the second tab | First tab unchanged; second updated | First tab unchanged; second updated | **Live pass**, plus both all-tab reads include both texts |
+| Add, read, reply to and resolve a comment | Correct lifecycle; reopen also succeeds | Correct lifecycle after correcting harness's reply parameter | **Live pass**; unanchored comments only |
+| Write changed RAW spreadsheet cells | Exact 100 × 4 values, including `00123` | Exact same values | **Live pass**, three changed inputs per tool |
+| Overwrite existing loose-mode credential file | Repairs file mode to `0600` | Existing `0644` remains `0644` | **Offline confirmed** using dummy credentials only |
+| Populate tab from Markdown over a native-rich body | Broad loss-prevention patches are still open | Deletes/rebuilds without richness/no-op/revision guard | **Source/offline request capture**; intentional overwrite may legitimately discard content |
 
-Creating a small Markdown document without images is one Drive upload in gdoc; Workspace's import additionally resolves/checks the destination folder, making two API method executions. For email, searching and reading 20 results takes two agent calls but **21 logical Google operations**: one search plus 20 message gets bundled into one HTTP batch. Workspace chunks content batches at 25. “One batch” does not mean one operation for quota purposes. See [gdoc creation][g-create], [Workspace import][w-import], and [Gmail batching][w-gmail].
+The field-mask error is particularly instructive. Google returned: “Field mask may not contain legacy text-level Document resource fields while requesting tabs content.” Workspace's tests had asserted that the mask included certain strings, not that Google accepted their combination. [Reported fix #1109](https://github.com/taylorwilsdon/google_workspace_mcp/pull/1109) · [Live error](evidence/live-benchmark.json)
 
-## Document fidelity and collaboration
+### D01 — A plain wording edit removes unrelated bold
 
-**gdoc provides a better ready-made review workflow, but neither tool guarantees lossless editing.** Its advantages include change banners, refusal of stale whole-document overwrites, native cell targeting by label, retained-revision diffs, and the preview-gated `suggest` command. `edit` warns about changes since the last read and pins its main batch to the revision it just fetched; later cleanup/table batches are not all pinned. Whole-document Markdown import reconstructs content, so it should not be treated as a lossless round trip of an elaborate template. Sources: [gdoc write/edit commands][g-cli], [Docs mutations][g-docs].
+Requested change: replace `draft` with `final`; leave everything else alone.
 
-Workspace's native Docs controls are substantially broader. It can batch unrelated replacements and formatting operations, manipulate table geometry, and edit headers, footers and section properties. It also has semantic insertion anchors, so not every edit requires the model to calculate indices. Its batch implementation reads revision IDs and returns a post-write snapshot, but **does not submit `requiredRevisionId`** on that batch: revision reporting is not a concurrency guard. Sources: [operation schemas][w-operations], [batch manager][w-batch].
+![Before, expected and observed bold preservation](figures/gdoc-bold-loss.png)
 
-Three limitations materially affect office use:
+**Bug:** gdoc changes the requested word but also removes the explicit bold style from “Keep this bold.” The live native response contains a single unbolded run; Workspace's plain replacement leaves that bold run intact. gdoc's open [PR #60](https://github.com/LucaDeLeo/gdoc/pull/60) addresses inline-style preservation; it is not in the pinned release.
 
-1. **Suggestions and anchored comments need special access in gdoc.** `suggest` requires the OAuth client project to be enrolled in Google's Developer Preview and fails closed if it cannot establish support. Quoted comments fall back to unanchored Drive comments when the preview path is unavailable. Workspace's exposed comment writer creates document-level comments, not highlighted text anchors. These are the implementations at the pinned revisions, not promises about availability on every Google account. Sources: [suggest implementation][g-suggest], [comment command][g-comment], [Workspace comments][w-comments].
-2. **Multi-tab defaults differ.** Workspace's Markdown reader walks document tabs. gdoc's ordinary `cat` uses Drive export; its documentation identifies that as first-tab-only, with `--all-tabs` for the Docs API path. gdoc prevents an ordinary whole-document write from collapsing multiple tabs unless explicitly overridden. Its comment-annotated view cannot be combined with tab selection. Sources: [Workspace reader][w-markdown-reader], [gdoc reader/write commands][g-cli].
-3. **Workspace's native Markdown-to-tab converter has a reproducible Unicode-index defect.** For `# Plan 😀` followed by `Next`, it calculates a heading end index of 8, while Google's UTF-16 indexing requires 9; subsequent insertions are also shifted. gdoc's converter uses 9. The [reproducer](probe-markdown.py) and [Workspace output](workspace-markdown-probe.json) demonstrate request generation only, without a live write. This affects `populate_from_markdown`'s converter, not every Workspace editing tool or the separate Drive import path. That same converter documents no GFM-table/strikethrough support and renders images as linked alt text. Use native table/image tools or an appropriate import path instead. Sources: [Workspace converter][w-converter], [gdoc converter][g-converter].
+**Commands**, on a prepared document with the first sentence bold:
 
-The isolated converter finding is useful evidence against assuming fidelity, not a basis for declaring an overall failure rate. Neither repository was tested against a representative collection of real office documents here.
+```sh
+gdoc edit DOC 'draft' 'final' --account ACCOUNT
+```
 
-## Agent ergonomics and deployment
+Workspace counterpart: `find_and_replace_doc(document_id=DOC, find_text="draft", replace_text="final", user_google_email=ACCOUNT)`.
 
-| Consideration | Workspace MCP | gdoc |
+### D02 — Lowercasing changes the index map
+
+Requested change: replace `cat` with `dog` after `İ`.
+
+![Before, expected and observed Unicode replacement](figures/gdoc-unicode-search.png)
+
+**Bug:** `İ` lowercases into two code points, but gdoc searches that transformed string using an index map built from the untransformed text. The wrong range reaches its actual replacement builder. On the longer live specimen, `İ cat sat` became `İ cdogsat`, making the removed space obvious. `--case-sensitive` avoids this demonstrated path; Workspace delegates plain matching to Google. [Root-cause evidence](evidence/workspace-fixes-crosscheck.md#a-new-gdoc-bug-discovered-by-transferring-the-unicode-concern)
+
+**Commands**, on a prepared `İ cat` specimen:
+
+```sh
+gdoc edit DOC 'cat' 'dog' --all --account ACCOUNT
+```
+
+### D03 — Agreement can hide a shared failure
+
+Requested change: populate a blank tab with Parent, a nested Child, and sibling Peer.
+
+![Before, expected and observed shared nested-list failure](figures/shared-nested-list.png)
+
+**Bug:** both live native writers returned success but produced equal parent/child indentation and no child `nestingLevel`. Workspace discards indentation in its emitted requests. gdoc emits a leading tab, yet its per-item bullet requests flatten the resulting list. Holding its text and paragraph-style requests fixed and replacing only the three bullet requests with one grouped request restored nesting in a controlled native replay; this is a demonstrated fix direction, not an applied gdoc patch. A direct Google reference using one grouped bullet request produced `nestingLevel: 1` and 72-point child indentation, versus 36 points for the parent. [Native follow-up evidence](evidence/live-followups.json) · [Controlled grouping comparison](evidence/live-list-oracle.json) · [gdoc full request capture](evidence/nested-list-crosscheck.json)
+
+**Commands**, after preparing an empty tab and `list.md` containing `- Parent`, a two-space-indented `- Child`, and `- Peer`:
+
+```sh
+gdoc cat DOC --tab TAB --account ACCOUNT
+gdoc write DOC list.md --tab TAB --account ACCOUNT
+```
+
+Workspace counterpart: `manage_doc_tab(action="populate_from_markdown", document_id=DOC, tab_id=TAB, markdown_text=MARKDOWN, user_google_email=ACCOUNT)`.
+
+These Pillow images follow the campaign's Before / Expected / Observed convention, with equal text scale and diagnostics outside the specimen. They are **reconstructions of synthetic native-state observations, not screenshots**. Shared setup is described once here; no image implies that a private campaign document was retested.
+
+## 7. What public patches reveal across repositories
+
+The full audits cover 24 selected patch families, including overlapping concerns. They distinguish merged fixes, open proposals, closed unmerged PRs, and equivalent code present through other commits. **“There is a PR” is not the same as “the installed version is fixed.”**
+
+| Patch lead | Cross-repository result |
+|---|---|
+| gdoc merged #26 repaired credential overwrite permissions | The same defect remains reproducible in Workspace's existing-file save path. Fresh private files are different; our installed credential directory/files were already owner-only. |
+| gdoc open #60 preserves inline/paragraph formatting | The live gdoc bold-loss fixture fails; Workspace plain native replacement avoids that mechanism and passes the fixture. |
+| gdoc open #62/#65 guard lossy rebuilds | Workspace also lacks equivalent rich-content/no-op safeguards on its native tab rebuild. These proposals are not released gdoc protections. |
+| gdoc open #61 expands non-body editing | Workspace exposes segment-aware operations and delegates plain replacement to Google. Header/footer/footnote parity was not live-certified in this run. |
+| gdoc open #64 adds safe GET retries | Workspace recovers from injected SSL read failure, but a connection reset or HTTP 503 is not retried by the same wrapper. |
+| Workspace open #1109 fixes inspector field mask | gdoc's structure request avoids the bad combination and succeeds live. |
+| Workspace merged #986 caps unbounded Sheets reads | gdoc still forwards unbounded ranges. That is a memory/output exposure and also a convenience for large reads; we did not cause an OOM. |
+| Workspace open #850 controls inherited paragraph styles | gdoc emits normal-style resets; Workspace's live ASCII control passed here, while emoji input failed. The PR's broader inheritance scenario is not automatically reproduced by our control. |
+| Workspace merged #1051 preserves shortcut identity for metadata | gdoc rename likewise addresses the shortcut itself; the target-substitution mechanism does not transfer. |
+| Workspace merged #964/#999 fix column deletion/layout payloads | gdoc lacks those operations. Record a feature gap, not “gdoc is immune and therefore better.” |
+
+An especially useful research pattern is to transfer the **failure mechanism**, not just the exact reproduction: Workspace's Unicode concern led to a different gdoc Unicode defect; a gdoc token-mode fix exposed the same save behavior in Workspace; a shared list comparison required an independent native oracle to reject both outputs.
+
+[Full gdoc → Workspace audit with executable evidence](evidence/gdoc-fixes-crosscheck.md) · [Full Workspace → gdoc audit with PR ancestry](evidence/workspace-fixes-crosscheck.md)
+
+## 8. Are regressions likely to be caught?
+
+| Protection | gdoc public upstream | Workspace public upstream |
 |---|---|---|
-| Shell-capable agent | Verbose named tools and JSON arguments; CLI requires a running server | Short commands, pipes, Markdown files, CSV/TSV and stable JSON/plain output |
-| Local MCP client | Native stdio support | Built-in stdio wrapper with 30 tools |
-| Remote connector | HTTP transport and OAuth flows; deployable centrally | No built-in HTTP transport; requires a local process-launching client or an additional bridge |
-| Tool discovery/context | 45 core entries, 91 through extended, 122 through complete; service filters and individual disable list | Smaller default surface; `--allow` and `--read-only` narrow it further |
-| Large content | Field masks, structure summaries, bounded Sheets reads; file imports avoid putting all bytes into model context | `--max-bytes`, `--no-images`, selected tabs/ranges, terse output, file-based workflows |
-| Accounts/team use | Multiple auth/deployment modes, per-user identity, service accounts and gateway support | Named local accounts and a shared OAuth-client onboarding path |
-| Read-only controls | Filters tools and requests read-only scopes; per-service permission levels | Filters commands/tools; normal authentication still requests Drive and Docs write scopes |
-| Installation footprint | Python plus web/MCP/auth stack, persistent server or hosted deployment | Smaller Python CLI; MCP adds no dependency |
-| Declared license | MIT | No license file or package license declaration found in this checkout |
+| Full offline suite on pinned snapshot | 1,563 passed | 2,114 passed; two live integration tests deliberately deselected |
+| Checked-in PR test automation | No `.github` workflow found | Pytest on Python 3.11/Ubuntu, frozen `uv.lock` |
+| Required-to-merge enforcement | Not established | Not established; a workflow file alone is not branch protection |
+| Live fidelity tests in ordinary CI | Not established | Existing live Markdown tests skip without credentials/specimens; CI does not supply them |
+| Live test assertions | No corresponding upstream live oracle suite found | Length/count/success checks, not full native content/style invariants |
+| Property-based input generation | No Hypothesis suite found | No Hypothesis suite found |
+| Snapshot protection | Specific request/behavior assertions | Includes golden tool schemas, which protect interface shape rather than document fidelity |
+| Revision guard on ordinary phrase edits | Principal batch uses `requiredRevisionId` | Plain replacement is position-independent; general indexed batch reads revisions but does not enforce a precondition |
+| Whole-workflow transaction/rollback | Not guaranteed; cleanup/table phases can be separate writes | Not guaranteed; higher-level table operations can span batches |
+| General transient failure recovery | Routine `.execute()` calls generally lack custom retries | Read-only wrapper retries SSL errors; not a universal 429/5xx policy |
 
-Sources: [Workspace CLI][w-cli], [server flags][w-main], [permission implementation][w-permissions], [gdoc MCP][g-mcp], [gdoc auth scopes][g-auth], and package metadata linked above. Client compatibility here means matching transport capabilities; this was **not** a live Claude Cowork/desktop integration test.
+The test counts are not comparable quality scores. Both suites have valuable targeted assertions, and both missed live failures found here. The most consequential gap is **what the oracle checks**, followed by whether it runs on every change. A length assertion will not catch a wrong hyperlink, removed bold, or a flattened list. An emitted tab assertion does not establish how Google resolves several bullet requests.
 
-There is no defensible universal token-cost winner from source inspection alone. gdoc has concise prose output and easy local filtering, but Workspace also emits Markdown and offers service/tier filtering. A client with dynamic tool discovery pays a different schema cost from one that loads every tool up front. Long documents and repeated model turns can dominate both. No tokenizer, model-task benchmark, or wall-clock API benchmark was run.
+A stale-write refusal is useful protection even when inconvenient. One gdoc append check saw a Drive version advance between its read baseline and write; it refused. A later fresh-read retry succeeded. We did not classify that as content corruption or bypass it to manufacture a pass. Conversely, revision metadata in Workspace's response is not a guarantee against another person's edit between read and indexed write.
 
-Workspace's README advertises “Code Mode,” but a case-insensitive source search found that phrase only in the README, with no corresponding executable feature in the inspected entrypoints. This report credits the working CLI and batch operations, not that unverified claim.
+[Full regression/CI assessment and raw pytest logs](evidence/regression-assessment.md)
 
-## Recommendation
+## 9. What the gdoc test suite should borrow
 
-1. **One connector for a general office assistant: Workspace MCP.** Gmail, Calendar, Sheets formatting, presentation imports and multi-operation batches outweigh gdoc's stronger document-review conveniences. Expose only the service groups the assistant actually needs.
-2. **A coding agent already equipped for mail/calendar: gdoc is a useful addition.** Its best use is reviewing and revising Google Docs with comments, revision diffs, Markdown files and explicit text anchors. Basic spreadsheet value updates also fit well through the CLI.
-3. **A chat/desktop workflow without shell access: prefer Workspace MCP.** gdoc's MCP wrapper loses bulk multi-row input and several local-file features, and it cannot itself serve a remote HTTP connector. A local stdio client can still use its document-review tools.
-4. **For your likely mixed workflow: keep Workspace for broad office operations and gdoc for document review.** Route tasks explicitly so the agent does not arbitrarily choose between duplicate document tools. Use Workspace's native style/layout tools when the document task exceeds gdoc's editing surface.
+The user's proposed executable-reference approach is the right direction, with a narrower reference than “whatever Workspace does.”
 
-## What was verified
+1. **Native-operation differential tests.** Generate a synthetic Doc, make two copies, run gdoc plain replacement on one and Google `replaceAllText` on the other, then compare normalized native text, styles, lists, tables, links and untouched tabs. Generated identifiers/timestamps are noise; lost formatting is not.
+2. **Independent Unicode mapping properties.** Pick source substrings and verify located ranges against a separately calculated UTF-16 map, including case transformations that expand text. Exercise callers, not just the helper in isolation.
+3. **A native structural oracle for Markdown.** Use an independently specified input tree—paragraph, heading, nested list, link, table—to construct a known-good native reference and the corresponding Markdown. Compare gdoc's result with the reference. The list finding shows why simply inspecting requests is insufficient.
+4. **Preservation assertions around every mutation.** Check that unrequested runs, links, paragraph styles, list relationships and sibling tabs remain the same. Text equality alone would have passed the bold-loss case.
+5. **Fault injection at each request boundary.** Distinguish rejected-before-write, partial-write, and unknown-outcome failures. Do not demand automatic retries of comments/appends merely to raise a success count.
+6. **Run deterministic regressions on every PR; run credentialed differential cases in an explicit integration job.** Keep failed synthetic specimens and minimized anonymous real-document cases. Open PRs should each bring a regression that fails on the pinned pre-fix implementation.
 
-- Both upstream repositories were cloned at the revisions above and remain available in `repos/`; no upstream tracked files were changed.
-- [Inventory](inventory.json) records configured tools and source test counts; registration checks returned 123 Workspace tools and 30 gdoc tools.
-- **459 selected gdoc tests and 144 selected Workspace tests passed.** They cover document edits, comments/suggestions, tab handling, MCP, Sheets, Markdown conversion and selected Gmail paths. These were existing, mostly mocked unit tests, not equal-sized comparative benchmarks or whole-suite certifications. [gdoc output](gdoc-tests.txt), [Workspace output](workspace-tests.txt).
-- **25 synthetic call-count scenarios** passed assertions, plus two converter-characterization runs. [Call probe](probe-calls.py), [Markdown probe](probe-markdown.py).
-- No private Google data, authenticated Google API operations, permission changes, or live document mutations were used. Real-world fidelity, latency, OAuth onboarding and sustained multi-user operation remain unmeasured.
+Workspace remains useful as a third implementation and a source of test seeds. Agreement is supporting evidence; it is not the correctness definition. Formal guarantees are possible for a bounded local transformation/model, but neither repository currently proves end-to-end equivalence with Google's evolving service.
 
-[Reproduction instructions and project overview](README.md).
+## 10. Practical routing for this installation
 
-[w-repo]: https://github.com/taylorwilsdon/google_workspace_mcp
-[g-repo]: https://github.com/LucaDeLeo/gdoc
-[w-tiers]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/core/tool_tiers.yaml
-[w-package]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/pyproject.toml
-[g-package]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/pyproject.toml
-[g-mcp]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mcp.py
-[w-docs]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdocs/docs_tools.py
-[w-sheets]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gsheets/sheets_tools.py
-[w-slides]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gslides/slides_tools.py
-[g-cli]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/cli.py
-[g-docs]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py
-[g-revisions]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/revisions.py
-[g-rows]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/cli.py#L726
-[w-sheet-helpers]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gsheets/sheets_helpers.py#L23
-[g-sheet-reader]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/cli.py#L120
-[g-notify]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/notify.py#L62
-[g-replace]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py#L1542
-[w-batch]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdocs/managers/batch_operation_manager.py
-[g-create]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/drive.py#L231
-[w-import]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdrive/drive_tools.py#L1332
-[w-gmail]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gmail/gmail_tools.py#L1913
-[w-operations]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdocs/operation_schemas.py
-[g-suggest]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py#L1932
-[g-comment]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/cli.py#L2307
-[w-comments]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/core/comments.py
-[w-markdown-reader]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdocs/docs_tools.py#L2575
-[w-converter]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/gdocs/docs_markdown_writer.py
-[g-converter]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/mdparse.py
-[w-cli]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/core/cli.py
-[w-main]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/main.py
-[w-permissions]: https://github.com/taylorwilsdon/google_workspace_mcp/blob/54b1c56f7f9912ce32681460d7ca38f9c2a37564/auth/permissions.py
-[g-auth]: https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/auth.py#L25
+| Work to delegate | Route today | Why / condition |
+|---|---|---|
+| Read Docs, review comments, examine history | gdoc CLI | Concise local workflow and exclusive revision tools; use explicit tabs when needed. |
+| Replace ordinary wording or many placeholders | Workspace native find/replace/batch | Faster measured path; passed targeted text/style fixtures that exposed gdoc's plain-edit defects. Read back important edits. |
+| Create simple Docs from prepared Markdown | Either Drive import route, then verify | The native-writer failures do not automatically apply to the separate import route. We did not certify arbitrary imported layouts. |
+| Rewrite an elaborate existing Doc through Markdown | Neither as a blind round trip | Native structures and formatting exceed the conversion formats; use a native copy and targeted mutations. |
+| Native layout or table-geometry changes | Workspace, with working content/API inspection | Much broader controls, but the named structure inspector currently fails on our pinned installation. |
+| Update spreadsheet trackers | Workspace MCP or gdoc CLI | Both changed-value fixtures pass; set RAW/USER_ENTERED explicitly. Avoid gdoc MCP for multi-row bulk input. |
+| Review earlier versions, reopen comments, replace images | gdoc CLI | Real capability gaps in Workspace. Image upload has a separate temporary-public-access behavior described in the feature matrix; no live image upload was performed here. |
+| Email, meetings, contacts, tasks, presentations | Workspace | gdoc has no corresponding service coverage; Gmail/Calendar authentication is verified on both accounts. |
+
+**Do not interpret this as a permanent ranking.** Fixing gdoc's style/index bugs and running native-state regressions could change the editing recommendation. Fixing Workspace's inspector and Markdown writer would improve its authoring path. The evidence and pinned commits make those improvements measurable rather than matters of preference.
+
+## 11. Limits and reproduction
+
+This is a broad practical comparison, not every feature exercised against every Google account. Suggestions/anchored comments need special preview access and were not live-certified. We did not send mail, grant sharing permissions, exercise Shared Drives, upload images publicly, test real-time collaborator races, simulate production load, or benchmark very large files. PDF export was checked for a valid PDF signature, not pixel-level layout. Retained-history listing succeeded, but a meaningful old-revision diff was not forced into newly created fixtures. UI/Cowork end-to-end behavior and long-term service uptime remain unmeasured.
+
+All named gdoc commands are mapped, but setup commands and unavailable operations are evaluated by source/interface evidence rather than invented live comparisons. The standalone local Markdown observer explicitly omits parts of Google's semantics; its nesting false positive is retained and explained. No adversarial pass fraction is presented as a real-world reliability rate.
+
+[Reproduction guide](evidence/performance.md) describes versions, accounts, fixture isolation, timing, raw outputs, and harness corrections. [README](README.md) links all runnable artifacts. [Run log](RUN-LOG.md) records completed work. Public sources and raw synthetic evidence support the conclusions; historical first-pass claims have been superseded by this report.

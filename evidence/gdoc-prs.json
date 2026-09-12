@@ -1,0 +1,389 @@
+{
+  "description": "Public PR records split into individual files; audit discusses a selected12-family subset.",
+  "records": [
+    {
+      "number": 66,
+      "title": "Protect native edit boundaries with versioned offline API fixtures",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/66",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/66.json"
+    },
+    {
+      "number": 65,
+      "title": "Refuse lossy Markdown replacement within the exact write scope",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/65",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/65.json"
+    },
+    {
+      "number": 64,
+      "title": "fix: retry idempotent Docs document reads twice",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/64",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/64.json"
+    },
+    {
+      "number": 63,
+      "title": "fix: preserve direct target styles in suggested replacements",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/63",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/63.json"
+    },
+    {
+      "number": 62,
+      "title": "fix: guard lossy Markdown rebuilds and skip unchanged uploads",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/62",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/62.json"
+    },
+    {
+      "number": 61,
+      "title": "fix: replace text in headers, footers, and footnotes",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/61",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/61.json"
+    },
+    {
+      "number": 60,
+      "title": "fix: preserve paragraph and run formatting in inline edits",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/60",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/60.json"
+    },
+    {
+      "number": 58,
+      "title": "share: quiet by default, --notify opts into the notification email",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/58",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/58.json"
+    },
+    {
+      "number": 56,
+      "title": "feat: ?tab= URL deep links + per-tab write-conflict baselines (0.22.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/56",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/56.json"
+    },
+    {
+      "number": 55,
+      "title": "feat: native comment assignment and post operations (Docs API preview)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/55",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/55.json"
+    },
+    {
+      "number": 54,
+      "title": "feat: list and decide native suggestion threads (developer preview)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/54",
+      "state": "OPEN",
+      "mergedAt": null,
+      "record": "gdoc-prs/54.json"
+    },
+    {
+      "number": 53,
+      "title": "feat: `gdoc suggest` \u2014 find/replace as a suggested edit (Docs API preview, 0.21.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/53",
+      "state": "MERGED",
+      "mergedAt": "2026-08-27T07:50:45Z",
+      "record": "gdoc-prs/53.json"
+    },
+    {
+      "number": 52,
+      "title": "refactor: per-request credential injection in the API layer (0.20.1)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/52",
+      "state": "MERGED",
+      "mergedAt": "2026-08-17T10:49:15Z",
+      "record": "gdoc-prs/52.json"
+    },
+    {
+      "number": 44,
+      "title": "feat(mcp): add MCP server to enable gdoc on Claude Cowork etc",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/44",
+      "state": "MERGED",
+      "mergedAt": "2026-08-14T22:38:11Z",
+      "record": "gdoc-prs/44.json"
+    },
+    {
+      "number": 43,
+      "title": "feat: gdoc structure \u2014 native document JSON with UTF-16 ranges (0.17.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/43",
+      "state": "MERGED",
+      "mergedAt": "2026-08-07T12:07:14Z",
+      "record": "gdoc-prs/43.json"
+    },
+    {
+      "number": 42,
+      "title": "feat: Drive file management \u2014 mkdir, mv, rename, drives, find --raw, domain/anyone share (0.19.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/42",
+      "state": "MERGED",
+      "mergedAt": "2026-08-07T16:41:36Z",
+      "record": "gdoc-prs/42.json"
+    },
+    {
+      "number": 41,
+      "title": "feat: export to PDF/DOCX/HTML and edit images in existing docs (0.18.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/41",
+      "state": "MERGED",
+      "mergedAt": "2026-08-07T16:37:46Z",
+      "record": "gdoc-prs/41.json"
+    },
+    {
+      "number": 40,
+      "title": "feat: real anchored comments via Docs API insertComment (developer preview)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/40",
+      "state": "MERGED",
+      "mergedAt": "2026-08-07T10:20:47Z",
+      "record": "gdoc-prs/40.json"
+    },
+    {
+      "number": 32,
+      "title": "Render inline formatting and lists in per-tab cat export",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/32",
+      "state": "MERGED",
+      "mergedAt": "2026-07-07T10:56:32Z",
+      "record": "gdoc-prs/32.json"
+    },
+    {
+      "number": 31,
+      "title": "Preserve headings in per-tab cat export",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/31",
+      "state": "MERGED",
+      "mergedAt": "2026-07-07T10:52:59Z",
+      "record": "gdoc-prs/31.json"
+    },
+    {
+      "number": 30,
+      "title": "feat: configurable page mode for `gdoc new` (0.13.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/30",
+      "state": "MERGED",
+      "mergedAt": "2026-07-14T11:50:24Z",
+      "record": "gdoc-prs/30.json"
+    },
+    {
+      "number": 29,
+      "title": "Per-tab markdown: fix bold/italic & escapes, expand supported subset (0.12.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/29",
+      "state": "MERGED",
+      "mergedAt": "2026-06-22T19:42:05Z",
+      "record": "gdoc-prs/29.json"
+    },
+    {
+      "number": 28,
+      "title": "Per-tab markdown: fix bold/italic & escapes, expand supported subset (0.11.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/28",
+      "state": "CLOSED",
+      "mergedAt": null,
+      "record": "gdoc-prs/28.json"
+    },
+    {
+      "number": 27,
+      "title": "feat: revision history and revision diffs (0.11.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/27",
+      "state": "MERGED",
+      "mergedAt": "2026-06-22T19:35:46Z",
+      "record": "gdoc-prs/27.json"
+    },
+    {
+      "number": 26,
+      "title": "fix: address Codex review findings from #23/#24 (0.10.2)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/26",
+      "state": "MERGED",
+      "mergedAt": "2026-06-09T19:20:34Z",
+      "record": "gdoc-prs/26.json"
+    },
+    {
+      "number": 25,
+      "title": "chore: sync uv.lock to 0.10.1",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/25",
+      "state": "MERGED",
+      "mergedAt": "2026-06-09T19:08:27Z",
+      "record": "gdoc-prs/25.json"
+    },
+    {
+      "number": 24,
+      "title": "fix: writes advance conflict baseline; in-sync writes no-op (0.10.1)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/24",
+      "state": "MERGED",
+      "mergedAt": "2026-06-09T19:07:33Z",
+      "record": "gdoc-prs/24.json"
+    },
+    {
+      "number": 23,
+      "title": "auth: org-friendly OAuth client sourcing (0.10.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/23",
+      "state": "MERGED",
+      "mergedAt": "2026-06-09T18:43:21Z",
+      "record": "gdoc-prs/23.json"
+    },
+    {
+      "number": 22,
+      "title": "update: auto-update on top-level help (0.9.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/22",
+      "state": "MERGED",
+      "mergedAt": "2026-06-09T18:22:34Z",
+      "record": "gdoc-prs/22.json"
+    },
+    {
+      "number": 21,
+      "title": "update: compare versions numerically, never downgrade (0.8.1)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/21",
+      "state": "MERGED",
+      "mergedAt": "2026-06-05T16:54:54Z",
+      "record": "gdoc-prs/21.json"
+    },
+    {
+      "number": 20,
+      "title": "Google Sheets support: transparent reads, explicit writes (0.8.0)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/20",
+      "state": "MERGED",
+      "mergedAt": "2026-06-05T16:01:56Z",
+      "record": "gdoc-prs/20.json"
+    },
+    {
+      "number": 19,
+      "title": "edit: work inside tables, plus cell addressing, --normalize, and stdin anchors",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/19",
+      "state": "MERGED",
+      "mergedAt": "2026-06-02T10:10:19Z",
+      "record": "gdoc-prs/19.json"
+    },
+    {
+      "number": 18,
+      "title": "fix: correct toc deep-link tab id prefix and fragment placement",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/18",
+      "state": "MERGED",
+      "mergedAt": "2026-06-01T11:24:53Z",
+      "record": "gdoc-prs/18.json"
+    },
+    {
+      "number": 17,
+      "title": "Fix default account auth resolution",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/17",
+      "state": "MERGED",
+      "mergedAt": "2026-05-23T14:48:25Z",
+      "record": "gdoc-prs/17.json"
+    },
+    {
+      "number": 16,
+      "title": "feat(safety): extend multi-tab guard to push and _sync-hook",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/16",
+      "state": "MERGED",
+      "mergedAt": "2026-05-23T14:44:21Z",
+      "record": "gdoc-prs/16.json"
+    },
+    {
+      "number": 15,
+      "title": "fix: drop fields mask in count_document_tabs (issue #14)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/15",
+      "state": "MERGED",
+      "mergedAt": "2026-05-07T19:38:01Z",
+      "record": "gdoc-prs/15.json"
+    },
+    {
+      "number": 13,
+      "title": "feat(write): tab-aware writes, insert command, multi-tab safety (0.7.1)",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/13",
+      "state": "MERGED",
+      "mergedAt": "2026-04-11T17:01:26Z",
+      "record": "gdoc-prs/13.json"
+    },
+    {
+      "number": 12,
+      "title": "feat: add `gdoc toc` command for deep-linked table of contents",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/12",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T11:33:28Z",
+      "record": "gdoc-prs/12.json"
+    },
+    {
+      "number": 11,
+      "title": "Fix version metadata drift",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/11",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T10:59:08Z",
+      "record": "gdoc-prs/11.json"
+    },
+    {
+      "number": 10,
+      "title": "feat: add `gdoc toc` command for deep-linked table of contents",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/10",
+      "state": "CLOSED",
+      "mergedAt": null,
+      "record": "gdoc-prs/10.json"
+    },
+    {
+      "number": 9,
+      "title": "feat: add multi-account support via --account flag",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/9",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T10:22:42Z",
+      "record": "gdoc-prs/9.json"
+    },
+    {
+      "number": 8,
+      "title": "Fix version metadata drift",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/8",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T10:59:10Z",
+      "record": "gdoc-prs/8.json"
+    },
+    {
+      "number": 7,
+      "title": "Include modifiedByMeTime in list_files response",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/7",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T11:22:39Z",
+      "record": "gdoc-prs/7.json"
+    },
+    {
+      "number": 6,
+      "title": "Add supportsAllDrives=True to Drive API calls",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/6",
+      "state": "MERGED",
+      "mergedAt": "2026-04-10T11:23:19Z",
+      "record": "gdoc-prs/6.json"
+    },
+    {
+      "number": 5,
+      "title": "fix: edit command inserts extra newlines",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/5",
+      "state": "MERGED",
+      "mergedAt": "2026-03-04T20:01:40Z",
+      "record": "gdoc-prs/5.json"
+    },
+    {
+      "number": 4,
+      "title": "feat: add --no-images flag to gdoc cat",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/4",
+      "state": "MERGED",
+      "mergedAt": "2026-03-05T23:18:21Z",
+      "record": "gdoc-prs/4.json"
+    },
+    {
+      "number": 3,
+      "title": "feat: include quoted text in comments output",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/3",
+      "state": "MERGED",
+      "mergedAt": "2026-02-20T17:24:59Z",
+      "record": "gdoc-prs/3.json"
+    },
+    {
+      "number": 1,
+      "title": "feat: add --tab support to edit command",
+      "url": "https://github.com/LucaDeLeo/gdoc/pull/1",
+      "state": "MERGED",
+      "mergedAt": "2026-02-20T17:11:42Z",
+      "record": "gdoc-prs/1.json"
+    }
+  ]
+}
