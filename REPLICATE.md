@@ -31,3 +31,16 @@ The human wanted the comparison project moved back here from the archive for con
 - Updated the Workspace MCP installation to use the restored source location and recorded successful personal and work Gmail/Calendar authorization checks.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: 627d2a6
+
+## Measure office workflows and transfer bug regressions
+
+The human wanted a comprehensive gdoc-versus-Workspace report, including agents cross-checking public bug patches, feature gaps, speed, reliability, regression protection, and campaign-style Pillow illustrations.
+
+- Mapped all 39 public gdoc commands and investigated 12 public patch families in each direction; separated open proposals, released behavior, missing operations and executable findings.
+- Ran complete offline suites: 1,563 gdoc tests and 2,114 Workspace tests passed; two live Workspace integration tests were deliberately excluded. Added 36 adversarial Markdown specimens and retained their observer limitations.
+- Measured synthetic live workflows: plain replacement medians were 2.83 seconds for gdoc CLI, 2.25 seconds for persistent gdoc MCP, and 0.69 seconds for Workspace MCP. A single ten-placeholder comparison took 28.13 versus 2.27 seconds; runtime and sample limits are explicit.
+- Confirmed silent gdoc bold loss, Unicode misindexing, link/underscore conversion defects, Workspace's rejected inspector field mask, and shared native-list flattening. Holding gdoc text/style requests fixed while grouping its bullet requests restored nesting in a native reference replay; neither upstream was patched.
+- Independent review caught and excluded harness baseline/parameter errors and an offline nesting false positive. Published raw synthetic evidence, three reviewed Pillow figures, reproduction scripts, and revised routing recommendations; retained 38 synthetic resources in one personal-account test folder with its ledger untracked.
+- Kept the active project in `~/best/once/2026-09-workspace-tools-comparison` as requested. No private office document was changed and no credentials were committed.
+
+Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: f19c463 (plan), 6b04f1b (initial harness), e15a3cb (review corrections), 36cdfbd (report and evidence)
