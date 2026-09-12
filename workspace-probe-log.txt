@@ -1,0 +1,14 @@
+INFO:gdocs.docs_tools:[get_doc_as_markdown] Doc=1SyntheticOfficeComparisonDocument0123456789, comments=False, mode=inline
+INFO:gdocs.docs_tools:[get_doc_as_markdown] Doc=1SyntheticOfficeComparisonDocument0123456789, comments=True, mode=inline
+INFO:gdocs.docs_tools:[find_and_replace_doc] Doc=1SyntheticOfficeComparisonDocument0123456789, find_len=5, replace_len=2, tab='None'
+INFO:gdocs.managers.batch_operation_manager:Executing batch operations on document 1SyntheticOfficeComparisonDocument0123456789
+INFO:gdocs.managers.batch_operation_manager:Operations count: 10
+INFO:gsheets.sheets_tools:[read_sheet_values] Invoked. Email: 'user@example.com', Spreadsheet: 1SyntheticOfficeComparisonDocument0123456789, Range: Sheet1!A1:B1
+INFO:gsheets.sheets_tools:Successfully read 1 rows for user@example.com.
+INFO:gsheets.sheets_tools:[modify_sheet_values] Invoked. Operation: write, Email: 'user@example.com', Spreadsheet: 1SyntheticOfficeComparisonDocument0123456789, Range: Sheet1!A1:B1
+INFO:gsheets.sheets_tools:Successfully updated 2 cells for user@example.com.
+INFO:gdrive.drive_tools:[import_to_google_doc] Invoked. Email: 'user@example.com', file_name_len=10, Source Format: 'None', Folder ID: 'root'
+INFO:gdrive.drive_helpers:[import_to_google_doc] Detected source MIME type: text/markdown
+INFO:gdrive.drive_helpers:[import_to_google_doc] Using content: 7 bytes
+INFO:gdrive.drive_tools:[import_to_google_doc] Uploading to Google Drive with conversion: text/markdown → application/vnd.google-apps.document
+INFO:gdrive.drive_tools:[import_to_google_doc] Success. Link: No link available

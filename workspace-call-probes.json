@@ -1,0 +1,55 @@
+[
+  {
+    "case": "read_doc",
+    "count": 1,
+    "requests": [
+      "documents.get"
+    ]
+  },
+  {
+    "case": "read_doc_comments",
+    "count": 2,
+    "requests": [
+      "documents.get",
+      "comments.list"
+    ]
+  },
+  {
+    "case": "replace_phrase",
+    "count": 1,
+    "requests": [
+      "documents.batchUpdate"
+    ]
+  },
+  {
+    "case": "replace_ten_phrases",
+    "count": 3,
+    "requests": [
+      "documents.get",
+      "documents.batchUpdate",
+      "documents.get"
+    ]
+  },
+  {
+    "case": "read_sheet",
+    "count": 1,
+    "requests": [
+      "spreadsheets.values.get"
+    ]
+  },
+  {
+    "case": "write_sheet",
+    "count": 1,
+    "requests": [
+      "spreadsheets.values.update"
+    ]
+  },
+  {
+    "case": "create_markdown_doc",
+    "count": 2,
+    "requests": [
+      "files.get",
+      "files.create"
+    ]
+  }
+]

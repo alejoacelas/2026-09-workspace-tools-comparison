@@ -1,0 +1,54 @@
+{
+  "markdown": "# Plan \ud83d\ude00\n\nNext",
+  "expected_heading_end": 9,
+  "actual_heading_range": {
+    "startIndex": 1,
+    "endIndex": 9
+  },
+  "requests": [
+    {
+      "insertText": {
+        "location": {
+          "index": 1
+        },
+        "text": "Plan \ud83d\ude00\n\nNext\n"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 1,
+          "endIndex": 9
+        },
+        "paragraphStyle": {
+          "namedStyleType": "HEADING_1"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 9,
+          "endIndex": 10
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT"
+        },
+        "fields": "namedStyleType"
+      }
+    },
+    {
+      "updateParagraphStyle": {
+        "range": {
+          "startIndex": 10,
+          "endIndex": 15
+        },
+        "paragraphStyle": {
+          "namedStyleType": "NORMAL_TEXT"
+        },
+        "fields": "namedStyleType"
+      }
+    }
+  ]
+}

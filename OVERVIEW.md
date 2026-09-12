@@ -14,4 +14,4 @@ Determine which tool best complements everyday office work with an AI agent.
 
 This is a source-based review; live Google API reliability and latency require separate authenticated testing.
 
-The result will include both local clones, pinned revisions, and a side-by-side report.
+The result includes both local clones, [pinned revisions](inventory.json), and a [side-by-side report](COMPARISON.md).

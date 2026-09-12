@@ -1,0 +1,197 @@
+[
+  {
+    "case": "read_doc",
+    "mode": "warm",
+    "count": 3,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.export_media"
+    ]
+  },
+  {
+    "case": "read_doc",
+    "mode": "first",
+    "count": 4,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "files.export_media"
+    ]
+  },
+  {
+    "case": "read_doc",
+    "mode": "quiet",
+    "count": 2,
+    "requests": [
+      "files.get",
+      "files.export_media"
+    ]
+  },
+  {
+    "case": "read_doc_comments",
+    "mode": "warm",
+    "count": 4,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.export_media",
+      "comments.list"
+    ]
+  },
+  {
+    "case": "read_doc_comments",
+    "mode": "first",
+    "count": 5,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "files.export_media",
+      "comments.list"
+    ]
+  },
+  {
+    "case": "read_doc_comments",
+    "mode": "quiet",
+    "count": 3,
+    "requests": [
+      "files.get",
+      "files.export_media",
+      "comments.list"
+    ]
+  },
+  {
+    "case": "replace_phrase",
+    "mode": "warm",
+    "count": 6,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "documents.get",
+      "documents.batchUpdate",
+      "documents.get",
+      "files.get"
+    ]
+  },
+  {
+    "case": "replace_phrase",
+    "mode": "first",
+    "count": 7,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "documents.get",
+      "documents.batchUpdate",
+      "documents.get",
+      "files.get"
+    ]
+  },
+  {
+    "case": "replace_phrase",
+    "mode": "quiet",
+    "count": 4,
+    "requests": [
+      "documents.get",
+      "documents.batchUpdate",
+      "documents.get",
+      "files.get"
+    ]
+  },
+  {
+    "case": "read_sheet",
+    "mode": "warm",
+    "count": 4,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "spreadsheets.get",
+      "spreadsheets.values.get"
+    ]
+  },
+  {
+    "case": "read_sheet",
+    "mode": "first",
+    "count": 5,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "spreadsheets.get",
+      "spreadsheets.values.get"
+    ]
+  },
+  {
+    "case": "read_sheet",
+    "mode": "quiet",
+    "count": 3,
+    "requests": [
+      "files.get",
+      "spreadsheets.get",
+      "spreadsheets.values.get"
+    ]
+  },
+  {
+    "case": "write_sheet",
+    "mode": "warm",
+    "count": 4,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "spreadsheets.values.update",
+      "files.get"
+    ]
+  },
+  {
+    "case": "write_sheet",
+    "mode": "first",
+    "count": 5,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "spreadsheets.values.update",
+      "files.get"
+    ]
+  },
+  {
+    "case": "write_sheet",
+    "mode": "quiet",
+    "count": 2,
+    "requests": [
+      "spreadsheets.values.update",
+      "files.get"
+    ]
+  },
+  {
+    "case": "share_one",
+    "mode": "warm",
+    "count": 3,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "permissions.create"
+    ]
+  },
+  {
+    "case": "share_one",
+    "mode": "first",
+    "count": 4,
+    "requests": [
+      "files.get",
+      "comments.list",
+      "files.get",
+      "permissions.create"
+    ]
+  },
+  {
+    "case": "share_one",
+    "mode": "quiet",
+    "count": 1,
+    "requests": [
+      "permissions.create"
+    ]
+  }
+]
