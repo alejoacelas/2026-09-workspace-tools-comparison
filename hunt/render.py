@@ -28,9 +28,8 @@ def panel(label,kind,data,color,diagnostic=None):
    x=42
    for seg in row:
     f=font(32,seg.get('bold',False),seg.get('code',False));t=seg['text'];width=d.textlength(t,font=f)
-    if seg.get('code'):d.rectangle((x,y-2,x+width,y+37),fill='#f1f3f4')
-    d.text((x,y),t,fill='#202124',font=f)
-    if seg.get('link'):d.line((x,y+35,x+width,y+35),fill='#202124',width=1)
+    d.text((x,y),t,fill='#1155cc' if seg.get('link') else '#202124',font=f)
+    if seg.get('link'):d.line((x,y+35,x+width,y+35),fill='#1155cc',width=1)
     x+=width
    assert x<W-20,(label,x,row)
    y+=48
