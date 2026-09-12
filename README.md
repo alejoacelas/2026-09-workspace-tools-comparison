@@ -8,7 +8,7 @@ Workspace is the broader and faster sampled office connector; gdoc supplies excl
 
 | Artifact | Contents |
 |---|---|
-|[Main report](COMPARISON.md)|Recommendations, feature gaps, timings, live failures and three Pillow illustrations|
+|[Main report](COMPARISON.md)|Recommendations, feature gaps, timings, live failures and four Pillow illustrations|
 |[Feature matrix](evidence/feature-matrix.md)|All 39 public gdoc commands, consequential flags and CLI/MCP differences|
 |[Command names](COMMANDS.md)|Actual Workspace tools and gdoc subcommands|
 |[gdoc fixes → Workspace](evidence/gdoc-fixes-crosscheck.md)|12 public patch families cross-checked against the other implementation|

@@ -1,4 +1,4 @@
-"""Pillow Before / Expected / Observed illustrations from synthetic live evidence.
+"""Pillow Before / Expected / Observed illustrations from synthetic evidence.
 Follows campaign-private's visual convention; these are reconstructions, not screenshots.
 Run: uv run --with pillow python figures/render.py
 """
@@ -51,3 +51,37 @@ for name,c in cases.items():
  ImageDraw.Draw(final).text((25,y+2),'Reconstructed illustration from synthetic tests; not a Google Docs screenshot.',font=font(17),fill='#5f6368')
  final.save(ROOT/(name+'.png'))
  print(name,final.size)
+
+# The table case is an offline parser observation, unlike the live cases above.
+import json
+record=next(r for r in json.loads((ROOT.parent/'evidence/markdown-corpus.json').read_text())['cases'] if r['case']['id']=='table-escaped-pipe')
+expected=record['case']['table'];observed=record['gdoc']['tables'][0]['rows']
+assert expected==[['Key','Value'],['A|B','100']]
+assert observed==[['Key','Value'],['A\\','B']]
+def table_panel(label,color,rows=None,source=None,diagnostic=None):
+    h=270 if source else 285
+    im=Image.new('RGB',(W,h),'white');d=ImageDraw.Draw(im)
+    d.rounded_rectangle((12,8,W-12,49),radius=7,fill=color[1])
+    d.text((26,13),label,fill=color[0],font=font(26,True))
+    if source:
+        d.rectangle((28,67,W-28,217),fill='#eef1f4')
+        d.text((42,74),'Markdown source — the backslash escapes the pipe inside the cell',fill='#5f6368',font=font(23))
+        mono=ImageFont.truetype(str(FONT/'Courier New.ttf'),30)
+        for i,line in enumerate(source.splitlines()):d.text((44,111+i*32),line,fill='#202124',font=mono)
+    else:
+        left,top,col,rowh=42,76,480,65
+        for i,row in enumerate(rows):
+            for j,value in enumerate(row):
+                x,y=left+j*col,top+i*rowh
+                d.rectangle((x,y,x+col,y+rowh),outline='#5f6368',width=2)
+                d.text((x+18,y+13),value,fill='#202124',font=font(32,i==0))
+    if diagnostic:d.text((42,h-46),diagnostic,fill='#5f6368',font=font(23))
+    return im
+panels=[table_panel('BEFORE — INPUT',COLORS[0],source=record['case']['md']),
+        table_panel('EXPECTED — TWO COLUMNS',COLORS[1],rows=expected,diagnostic='A|B is one key; its value should remain 100.'),
+        table_panel('OBSERVED — PARSER OUTPUT',COLORS[2],rows=observed,diagnostic='The pipe splits the cell. B takes the value column; 100 is discarded.')]
+final=Image.new('RGB',(W,sum(p.height for p in panels)+35),'white');y=0
+for im in panels:final.paste(im,(0,y));y+=im.height
+ImageDraw.Draw(final).text((25,y+5),'Reconstructed from executed parser output. No live Google Docs write was tested for this case.',font=font(19),fill='#5f6368')
+final.save(ROOT/'gdoc-escaped-table-pipe.png')
+print('gdoc-escaped-table-pipe',final.size)

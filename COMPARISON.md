@@ -201,7 +201,17 @@ gdoc write DOC list.md --tab TAB --account ACCOUNT
 
 Workspace counterpart: `manage_doc_tab(action="populate_from_markdown", document_id=DOC, tab_id=TAB, markdown_text=MARKDOWN, user_google_email=ACCOUNT)`.
 
-These Pillow images follow the campaign's Before / Expected / Observed convention, with equal text scale and diagnostics outside the specimen. They are **reconstructions of synthetic native-state observations, not screenshots**. Shared setup is described once here; no image implies that a private campaign document was retested.
+### D04 — An escaped table pipe discards a value
+
+Requested result: a two-column table whose key is `A|B` and value is `100`.
+
+![Escaped pipe splits a table cell and discards its value](figures/gdoc-escaped-table-pipe.png)
+
+**Bug:** the native Markdown table parser treats the escaped pipe as a column separator. Its parsed data row becomes `A` followed by a backslash in the first cell, and `B` in the second; the intended `100` is discarded. This is confirmed parser output, not a live Google Docs mutation. The separate Drive-import route is outside this finding.
+
+**Reproduce:** run `python3 probes/markdown-corpus.py` and inspect `table-escaped-pipe` in [the results](evidence/markdown-corpus.json). The illustration reads its expected and observed cells directly from that evidence and asserts their values before rendering.
+
+These Pillow images follow the campaign's Before / Expected / Observed convention, with equal text scale and diagnostics outside the specimen. They are **reconstructions, not screenshots**: D01–D03 show synthetic live native-state observations; D04 shows executed offline parser output. Shared setup is described once here; no image implies that a private campaign document was retested.
 
 ## 7. What public patches reveal across repositories
 
