@@ -1,6 +1,6 @@
 # Google office tools comparison
 
-[Read the side-by-side comparison](COMPARISON.md).
+[Read the side-by-side comparison](COMPARISON.md) · [Compare actual command names](COMMANDS.md) · [Local installation and authorization status](SETUP.md).
 
 Workspace MCP is the broader office connector; gdoc is a useful document-review companion for shell-capable agents. The report compares feature coverage, agent calls, underlying Google API executions, collaboration behavior and deployment. It uses public source and synthetic tests, with no live Google account operations.
 
