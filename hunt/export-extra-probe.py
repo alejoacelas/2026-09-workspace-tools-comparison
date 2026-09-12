@@ -26,9 +26,9 @@ d=b.state(resource);b.save('export-extra-native.json',d)
 tab=d['tabs'][0]['tabProperties']['tabId'];native=d['tabs'][0]['documentTab'];tables=list(walk(native['body']))
 results={'gdoc_revision':'dbfa4c34bfa699ee8dd9839da85eea1fac177d44','input_html':HTML,'native_tables':tables,'native_text':text(native['body']),'native_lists':native.get('lists',{}),'native_nested_table_confirmed':any(t['depth']>=1 for t in tables),'reads':[]}
 # List IDs are generated, not meaningful. Publish their values only.
-results['native_lists']=list(results['native_lists'].values())
+results['native_lists']=[{'listProperties':{'nestingLevels':v['listProperties']['nestingLevels'][:1]}} for v in results['native_lists'].values()]
 for name,argv in [('default',['cat',resource]),('selected_tab',['cat',resource,'--tab',tab])]:
  r=b.cli(argv)
- results['reads'].append({'route':name,'returncode':r['returncode'],'stdout':scrub(r['stdout'],resource,tab),'stderr':scrub(r['stderr'],resource,tab),'contains_inner_materials':'Materials' in r['stdout'],'contains_inner_475':'475' in r['stdout']})
+ results['reads'].append({'route':name,'returncode':r['returncode'],'stdout':scrub(r['stdout'],resource,tab),'stderr':scrub('\n'.join(line for line in r['stderr'].splitlines() if line.startswith('ERR:')),resource,tab),'contains_inner_materials':'Materials' in r['stdout'],'contains_inner_475':'475' in r['stdout']})
 (b.ROOT/'hunt/export-extra-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(results,ensure_ascii=False,indent=2))

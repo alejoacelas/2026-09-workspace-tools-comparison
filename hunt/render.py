@@ -10,6 +10,7 @@ def font(size=32,bold=False,code=False):
 def panel(label,kind,data,color,diagnostic=None):
  lines=textwrap.wrap(diagnostic,78) if diagnostic else []
  if kind=='source': data=[line for s in data.splitlines() for line in (textwrap.wrap(s,62,replace_whitespace=False,drop_whitespace=False) or [''])];h=80+38*len(data)
+ elif kind=='nested-table':h=280
  elif kind=='table':h=80+65*len(data)
  else:h=80+48*len(data)
  h+=22+32*len(lines)
@@ -18,6 +19,10 @@ def panel(label,kind,data,color,diagnostic=None):
  if kind=='source':
   d.rectangle((28,65,W-28,h-20-32*len(lines)),fill='#f1f3f4')
   for t in data:d.text((42,y),t,fill='#202124',font=font(28,code=True));y+=38
+ elif kind=='nested-table':
+  d.rectangle((42,76,1022,242),outline='#5f6368',width=2);d.text((60,86),'Outer cell',fill='#202124',font=font())
+  for j,t in enumerate(['Materials','475']):
+   x=66+j*450;d.rectangle((x,140,x+450,205),outline='#5f6368',width=2);d.text((x+16,153),t,fill='#202124',font=font())
  elif kind=='table':
   for i,row in enumerate(data):
    for j,t in enumerate(row):
@@ -40,11 +45,12 @@ def panel(label,kind,data,color,diagnostic=None):
 def main():
  out=ROOT/'figures';out.mkdir(exist_ok=True)
  for c in json.loads((ROOT/'confirmed.json').read_text()):
-  panels=[panel('BEFORE — MARKDOWN SOURCE','source',c['markdown'],COLORS[0])]
+  before=c.get('before',{'kind':'source','data':c['markdown'],'label':'BEFORE — MARKDOWN SOURCE'})
+  panels=[panel(before['label'],before['kind'],before['data'],COLORS[0])]
   for label,key,col in [('EXPECTED','expected',COLORS[1]),('OBSERVED — LIVE GOOGLE DOC','observed',COLORS[2])]:
-   p=c[key];panels.append(panel(label,p['kind'],p['data'],col,p.get('diagnostic')))
+   p=c[key];panels.append(panel(p.get('label',label),p['kind'],p['data'],col,p.get('diagnostic')))
   im=Image.new('RGB',(W,sum(p.height for p in panels)+34),'white');y=0
   for p in panels:im.paste(p,(0,y));y+=p.height
-  ImageDraw.Draw(im).text((25,y+4),'Reconstructed from synthetic inputs and native Google Docs readback; not a screenshot.',font=font(19),fill='#5f6368')
+  ImageDraw.Draw(im).text((25,y+4),'Reconstructed from synthetic fixtures and executed read/write results; not a screenshot.',font=font(19),fill='#5f6368')
   im.save(out/(c['id']+'.png'));print(c['id'],im.size)
 if __name__=='__main__':main()

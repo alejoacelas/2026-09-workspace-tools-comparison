@@ -52,286 +52,6 @@
               "baselineOffset": "NONE"
             },
             "startNumber": 7
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 54,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 72,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 90,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 108,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 126,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 144,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 162,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 180,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 198,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 216,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 234,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 252,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 270,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 288,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
-          },
-          {
-            "bulletAlignment": "START",
-            "glyphType": "GLYPH_TYPE_UNSPECIFIED",
-            "indentFirstLine": {
-              "magnitude": 306,
-              "unit": "PT"
-            },
-            "indentStart": {
-              "magnitude": 324,
-              "unit": "PT"
-            },
-            "textStyle": {
-              "bold": false,
-              "italic": false,
-              "underline": false,
-              "strikethrough": false,
-              "smallCaps": false,
-              "backgroundColor": {},
-              "foregroundColor": {
-                "color": {
-                  "rgbColor": {}
-                }
-              },
-              "fontSize": {
-                "magnitude": 11,
-                "unit": "PT"
-              },
-              "weightedFontFamily": {
-                "fontFamily": "Arial",
-                "weight": 400
-              },
-              "baselineOffset": "NONE"
-            },
-            "startNumber": 1
           }
         ]
       }
@@ -343,7 +63,7 @@
       "route": "default",
       "returncode": 0,
       "stdout": "# **Export fidelity specimen**\n\n| Outer cell Materials 475  |\n| :---- |\n\nNumbered procedure\n\n> 7. Review budget  \n> 8. Approve purchase",
-      "stderr": "--- first interaction with this doc ---\n 📄 \"Synthetic gdoc export nesting and list start\" by PERSONAL, last edited 2026-09-12\n---\n",
+      "stderr": "",
       "contains_inner_materials": true,
       "contains_inner_475": true
     },
@@ -351,9 +71,17 @@
       "route": "selected_tab",
       "returncode": 0,
       "stdout": "# Export fidelity specimen\nOuter cell\nNumbered procedure\n- Review budget\n- Approve purchase\n",
-      "stderr": "--- since last interaction (0 sec ago) ---\n ✎ doc edited by Alejo Acelas (v5 → v6)\n---\n",
+      "stderr": "",
       "contains_inner_materials": false,
       "contains_inner_475": false
     }
-  ]
+  ],
+  "pdf_verification": {
+    "source": "Google Drive PDF export of same synthetic document",
+    "sha256": "6ba6141e468cd1b0ddc74a243713371aa8be7a60a25a1a6f915a1bf4d9e9f4f8",
+    "bytes": 37700,
+    "extracted_text": "Export fidelity specimen\nOuter cell\nMaterials                475\n\nNumbered procedure\n  7.​ Review budget\n  8.​ Approve purchase\n\f",
+    "visually_checked": true,
+    "observed": "Nested Materials / 475 table visible; numbered items visibly start at7 and continue8."
+  }
 }

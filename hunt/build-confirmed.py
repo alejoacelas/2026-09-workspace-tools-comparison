@@ -48,5 +48,38 @@ for r in json.loads((ROOT/'live-results.json').read_text()):
    expected_text='\n'.join(''.join(s['text'] for s in line) for line in exp)
    assert actual_text!=expected_text,(key,actual_text)
  out.append(c)
+extra=json.loads((ROOT/'export-extra-results.json').read_text()) if (ROOT/'export-extra-results.json').exists() else None
+if extra and extra['native_nested_table_confirmed']:
+ read=next(r for r in extra['reads'] if r['route']=='selected_tab')
+ assert read['returncode']==0 and not read['contains_inner_materials'] and not read['contains_inner_475']
+ assert 'Materials' in extra['native_text'] and '475' in extra['native_text']
+ out.append({'id':'h08-nested-table-read','short':'H08','title':'Selected-tab read drops nested table contents',
+ 'intent':'Read the selected tab, retaining the contents of its nested table.',
+ 'bug':'The selected-tab reader omits the inner table entirely. Materials and 475 disappear without an error. Reading the same document without --tab retains both values; the source document itself is unchanged.',
+ 'novelty':'Additional native read-path content omission; independently confirmed on a real nested table.',
+ 'markdown':'','status':'Live selected-tab read failure; gdoc returns success',
+ 'before':{'label':'BEFORE — NATIVE GOOGLE DOC EXCERPT','kind':'nested-table','data':[]},
+ 'expected':{'label':'EXPECTED — READABLE CONTENT','kind':'source','data':'Outer cell\nMaterials  475','diagnostic':'Any text representation retaining both inner values is acceptable.'},
+ 'observed':{'label':'OBSERVED — SELECTED-TAB OUTPUT EXCERPT','kind':'source','data':'Outer cell','diagnostic':'Both inner values are absent from the complete command output.'},
+ 'commands':'gdoc cat DOC --tab TAB --account PERSONAL\ngdoc cat DOC --account PERSONAL',
+ 'setup':'Setup: import the synthetic nested-table HTML from export-extra-probe.py; the first command fails the content check, the second is the passing control.',
+ 'source':'https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py'})
+# The rendered native PDF and default-cat control independently retain7/8.
+if extra and (ROOT.parent/'.local-hunt/export-extra-pdf.txt').exists():
+ pdf=(ROOT.parent/'.local-hunt/export-extra-pdf.txt').read_text()
+ assert '7.' in pdf and 'Review budget' in pdf and '8.' in pdf and 'Approve purchase' in pdf
+ read=next(r for r in extra['reads'] if r['route']=='selected_tab')
+ assert '- Review budget' in read['stdout'] and '- Approve purchase' in read['stdout']
+ out.append({'id':'h09-numbered-list-read','short':'H09','title':'Selected-tab read changes numbers to bullets',
+ 'intent':'Read a procedure while retaining steps7 and8.',
+ 'bug':'The selected-tab reader emits unordered bullet markers for an imported numbered list. Steps7 and8 disappear. The native Google PDF displays7 and8, and gdoc cat without --tab preserves those numbers. The source document is unchanged.',
+ 'novelty':'Additional live list-read trigger; distinct from the offline counter examples.',
+ 'markdown':'','status':'Live selected-tab read failure; gdoc returns success',
+ 'before':{'label':'BEFORE — NATIVE GOOGLE DOC EXCERPT','kind':'segments','data':[[{'text':'7.  Review budget'}],[{'text':'8.  Approve purchase'}]]},
+ 'expected':{'label':'EXPECTED — READABLE NUMBERED STEPS','kind':'source','data':'7. Review budget\n8. Approve purchase'},
+ 'observed':{'label':'OBSERVED — SELECTED-TAB OUTPUT EXCERPT','kind':'source','data':'- Review budget\n- Approve purchase'},
+ 'commands':'gdoc cat DOC --tab TAB --account PERSONAL\ngdoc cat DOC --account PERSONAL',
+ 'setup':'Setup: import the HTML ol start=7 specimen from export-extra-probe.py. Google PDF confirms the numbering; the second command is the passing read control.',
+ 'source':'https://github.com/LucaDeLeo/gdoc/blob/dbfa4c34bfa699ee8dd9839da85eea1fac177d44/gdoc/api/docs.py'})
 (ROOT/'confirmed.json').write_text(json.dumps(out,indent=2,ensure_ascii=False)+'\n')
 print('Promoted',len(out),'live cases')

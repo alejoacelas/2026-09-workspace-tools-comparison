@@ -17,7 +17,7 @@ def main():
   r=b.cli(['add-tab',id,c['short']+' '+c['title'],'--json']);assert r['returncode']==0,r
   tab=json.loads(r['stdout'])['id']
   top=c['short']+' · '+c['title']+'\n'+c['intent']+'\n'
-  tail='\nBug. '+c['bug']+'\nCommands\n'+c['commands']+'\nSetup: use a separate blank tab; specimen.md contains the exact Markdown shown above.\nEvidence: live native readback; command returned success. '+c['novelty']+'\nSource and reproduction evidence\n'
+  tail='\nBug. '+c['bug']+'\nCommands\n'+c['commands']+'\n'+c.get('setup','Setup: use a separate blank tab; specimen.md contains the exact Markdown shown above.')+'\nEvidence: live native readback; command returned success. '+c['novelty']+'\nSource and reproduction evidence\n'
   text=top+'\n'+tail
   rg={'tabId':tab,'startIndex':1,'endIndex':1+u(text)}
   req=[{'insertText':{'location':{'index':1,'tabId':tab},'text':text}},
