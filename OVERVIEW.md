@@ -1,17 +1,24 @@
-# Comparison at a glance
+# Comprehensive comparison at a glance
 
-[Plan](README.md#plan)
+[Authoritative plan](PLAN.md)
 
-Determine which tool best complements everyday office work with an AI agent.
+Determine which tool handles each practical gdoc workflow, how quickly representative operations complete, and what evidence supports its reliability.
 
-## Inspect and compare [25m]
+## Gather evidence [40m, parallel work]
 
-- Establish feature coverage and realistic call costs from pinned upstream source.
+- Establish feature parity, transferred bug findings, regression safeguards, and measured behavior.
 
-1. [5m] Clone both projects and inventory their commands, tools, and integration options.
-2. [15m] Trace document, spreadsheet, email, calendar, and collaboration workflows and inspect relevant tests.
-3. [5m] Write a comparison with source links, call-count assumptions, and recommendations.
+1. [30m] Two agents investigate public bug fixes in opposite directions and produce source-linked cross-checks and runnable reproducers.
+2. [30m] One agent maps the useful gdoc command surface and audits upstream tests and CI.
+3. [40m] The coordinator benchmarks synthetic personal-account operations and independently checks their results through Google APIs.
 
-This is a source-based review; live Google API reliability and latency require separate authenticated testing.
+These steps overlap; live Google access is already authorized and verified, and specimens contain only invented data.
 
-The result includes both local clones, [pinned revisions](inventory.json), and a [side-by-side report](COMPARISON.md).
+## Synthesize and verify [20m]
+
+- Produce a report whose conclusions can be traced to concrete observations.
+
+1. [15m] Assemble feature, performance, and reliability findings and render selected Before / Expected / Observed illustrations.
+2. [5m] Review the report and images against raw evidence, record remaining limitations, and commit the deliverables.
+
+The deliverables are a main report, complete feature matrix, bug-transfer audits, raw benchmark results, and reproducible probes.

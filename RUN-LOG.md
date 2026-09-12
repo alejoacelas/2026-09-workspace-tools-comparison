@@ -11,3 +11,14 @@
 3. [x] [est 5m | actual 3m] Wrote and checked the source-linked comparison and reproduction instructions.
    a. [Comparison](COMPARISON.md) — feature matrix, workflow call counts, collaboration limits and recommendations.
    b. Live Google API behavior, latency and client onboarding remain outside this source-based review.
+
+## Expanded evidence gathering [est 40m | actual —]
+
+1. [ ] [est 30m | actual —] Cross-check public gdoc and Workspace bug fixes in both directions.
+2. [ ] [est 30m | actual —] Map gdoc features and assess regression safeguards and CI.
+3. [ ] [est 40m | actual —] Benchmark live synthetic office operations and validate resulting native document state.
+
+## Expanded synthesis [est 20m | actual —]
+
+1. [ ] [est 15m | actual —] Write the measured report and selected Pillow illustrations.
+2. [ ] [est 5m | actual —] Review evidence, verify figures, and commit the report and reproduction artifacts.
