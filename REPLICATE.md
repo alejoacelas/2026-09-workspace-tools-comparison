@@ -84,3 +84,12 @@ The human wanted continued parallel idea generation and live testing, with confi
 - Published 19 Pillow diagrams in 20 Google Doc tabs. Three agents reviewed the exported content pages; native image/tab checks, Python/JSON checks and local-link checks passed. Raw account resources remain local; no upstream fixes or regression tests were added.
 
 Agent session 01a09580-cd9e-7c92-8257-3f4e20733d15 · Commits workspace-tools-comparison: a85b16a (continued plan), 32390ad (seven additional cases), 83d2639 (three cases and broader controls), 71579d6 (repair coverage, final controls and verified publication)
+
+## Agent instructions cleanup — 2026-09-19
+
+Alejo asked to refresh project instructions and remove redundant Claude instruction files where native AGENTS.md loading is available.
+
+- Updated the applicable instructions and removed redundant local Claude copies; distinct content and preserved snapshots remain.
+- Checked instruction references and shared-context freshness; native Claude loading requires 2.1.277+ with the built-in feature enabled.
+
+Agent session 01a0b915-3eb2-78b2-9add-6ba48ad9a3b1 · Commits e6e5f442efa97de127a445dbfd17f92298b7eb15
