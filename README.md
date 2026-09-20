@@ -42,4 +42,4 @@ git -C repos/google-workspace-mcp checkout 54b1c56f7f9912ce32681460d7ca38f9c2a37
 
 The original synthetic API-call counts remain reproducible with `probe-calls.py` and each clone's Python; `probe-markdown.py` characterizes the initial emoji-index finding. Later native-state checks are stronger evidence than those first request-only observations. Historical first-pass conclusions remain in Git history rather than being silently treated as current findings.
 
-[Plan](PLAN.md) · [Overview](OVERVIEW.md) · [Run log](RUN-LOG.md) · [Session record](REPLICATE.md)
+[Plan](PLAN.md) · [Overview](OVERVIEW.md) · [Run log](RUN-LOG.md) · [Decisions](DECISIONS.md)
