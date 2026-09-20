@@ -19,7 +19,7 @@ Workspace is the broader and faster sampled office connector; gdoc supplies excl
 |[Live methodology](evidence/performance.md)|Timing samples, native-state checks, runtime versions and harness corrections|
 |[Installation](SETUP.md)|Local Workspace MCP registration and completed account authorization|
 
-The active project is `~/best/once/2026-09-workspace-tools-comparison`; it was restored from the archive for continued evaluation. Both upstream Git clones are retained in ignored `repos/`. Public evidence uses synthetic content; credentials, live resource IDs and transport logs remain Git-ignored in `.local-benchmark/` and `.local-hunt/`.
+Both upstream Git clones are retained in ignored `repos/`. Public evidence uses synthetic content; credentials, live resource IDs and transport logs remain Git-ignored in `.local-benchmark/` and `.local-hunt/`.
 
 ## Reproduce
 
@@ -40,6 +40,6 @@ git -C repos/google-workspace-mcp checkout 54b1c56f7f9912ce32681460d7ca38f9c2a37
 
 [Full reproduction instructions](evidence/performance.md#run-the-evidence) distinguish offline checks from live scripts that create synthetic Google files. The live install uses a different dependency resolution from the clone's frozen test environment; [runtime metadata](evidence/runtime.json) records that distinction.
 
-The original synthetic API-call counts remain reproducible with `probe-calls.py` and each clone's Python; `probe-markdown.py` characterizes the initial emoji-index finding. Later native-state checks are stronger evidence than those first request-only observations. Historical first-pass conclusions remain in Git history rather than being silently treated as current findings.
+The original synthetic API-call counts remain reproducible with `probes/probe-calls.py` and each clone's Python; `probes/probe-markdown.py` characterizes the initial emoji-index finding. Later native-state checks are stronger evidence than those first request-only observations. Historical first-pass conclusions remain in Git history rather than being silently treated as current findings.
 
-[Plan](PLAN.md) · [Overview](OVERVIEW.md) · [Run log](RUN-LOG.md) · [Decisions](DECISIONS.md)
+[Decisions](DECISIONS.md)

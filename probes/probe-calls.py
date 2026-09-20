@@ -112,7 +112,7 @@ async def workspace_cases():
 
 if __name__ == '__main__':
     choice = sys.argv[1]
-    root = Path(__file__).resolve().parent
+    root = Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(root / 'repos' / ('gdoc' if choice == 'gdoc' else 'google-workspace-mcp')))
     result = gdoc_cases() if choice == 'gdoc' else asyncio.run(workspace_cases())
     print(json.dumps(result, indent=2))

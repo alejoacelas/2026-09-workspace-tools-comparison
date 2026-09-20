@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 choice = sys.argv[1]
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(root / 'repos' / ('gdoc' if choice == 'gdoc' else 'google-workspace-mcp')))
 source = '# Plan 😀\n\nNext'
 if choice == 'gdoc':

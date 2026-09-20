@@ -78,7 +78,7 @@ This distinction matters for the Unicode bug: a document can contain “more tha
 3. Persistent MCP processes can amortize imports/service construction; cold standalone CLI invocations cannot be compared with an already-running server without reporting that distinction.
 4. An extra read for conflict detection or verification is useful work, not inherently waste. Conversely, a “success” string without verification does not establish correctness.
 
-The existing [synthetic request-count probes](../probe-calls.py) count Google API method executions, not HTTP retries, OAuth refreshes, payload size, quota units or model latency. A defensible latency benchmark should separately report cold/warm startup, Google network time, request size, repeated trials, and whether the requested output and safeguards actually match.
+The existing [synthetic request-count probes](../probes/probe-calls.py) count Google API method executions, not HTTP retries, OAuth refreshes, payload size, quota units or model latency. A defensible latency benchmark should separately report cold/warm startup, Google network time, request size, repeated trials, and whether the requested output and safeguards actually match.
 
 ## Highest-value gdoc regression additions
 
