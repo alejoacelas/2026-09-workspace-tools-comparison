@@ -289,7 +289,7 @@ This is a broad practical comparison, not every feature exercised against every 
 
 All named gdoc commands are mapped, but setup commands and unavailable operations are evaluated by source/interface evidence rather than invented live comparisons. The standalone local Markdown observer explicitly omits parts of Google's semantics; its nesting false positive is retained and explained. No adversarial pass fraction is presented as a real-world reliability rate.
 
-[Reproduction guide](evidence/performance.md) describes versions, accounts, fixture isolation, timing, raw outputs, and harness corrections. [README](README.md) links all runnable artifacts. [Run log](RUN-LOG.md) records completed work. Public sources and raw synthetic evidence support the conclusions; historical first-pass claims have been superseded by this report.
+[Reproduction guide](evidence/performance.md) describes versions, accounts, fixture isolation, timing, raw outputs, and harness corrections. [README](README.md) links all runnable artifacts. Public sources and raw synthetic evidence support the conclusions; historical first-pass claims have been superseded by this report.
 
 ## Follow-up: parallel regression hunt
 
